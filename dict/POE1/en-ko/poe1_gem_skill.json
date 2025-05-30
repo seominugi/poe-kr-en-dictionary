@@ -372,6 +372,7 @@
     "Animate Weapon of Self Reflection": "자기 반사의 무기 기동",
     "Autoexertion": "자동 전력",
     "Automation": "자동화",
+    "Automation Support": "자동화",
     "Pride": "자부심",
     "Scorching Ray": "작열 광선",
     "Generals Cry": "장군의 함성",
@@ -560,5 +561,9 @@
     "Aspect of the Cat": "고양이의 위상",
     "Aspect of the Crab": "게의 위상",
     "Aspect of the Spider": "거미의 위상",
-    "Cat's Stealth": "고양이의 은신"
+    "Cat's Stealth": "고양이의 은신",
+    "Blood Sacrament": "피 성체",
+    "Icestorm":"얼음태풍",
+    "Death Wish": "죽음 동경",
+    "Queen's Demand": "여왕의 요구"
 }
