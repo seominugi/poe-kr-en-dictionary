@@ -151,6 +151,7 @@
     "회피: #": "Evasion Rating: #",
     "에너지 보호막: #": "Energy Shield: #",
     "치명타 확률: #%": "Critical Strike Chance: #%",
+    "막기 확률: #%": "Chance to Block: #%",
     "장착된 공격 스킬을 사용하는 동안 기절 무시": "Ignore Stuns while using Socketed Attack Skills",
     "장착된 공격의 총 마나 소모 -#": "Socketed Attacks have -# to Total Mana Cost",
     "사용 시 충전 # 중 # 소모": "Consumes # of # Charges on use",
@@ -160,5 +161,6 @@
     "추가된 소형 패시브 스킬 효과": "Added Small Passive Skills grant",
     "제정신 상태일 때 받는 물리 및 카오스 피해 #% 감폭": "#% less Physical and Chaos Damage Taken while Sane",
 
-    "사술 스킬 효과 범위 #% 감소": "#% reduced Area of Effect of Hex Skills"
+    "사술 스킬 효과 범위 #% 감소": "#% reduced Area of Effect of Hex Skills",
+    "소환수의 최대 생명력 #% 감소": "Minions have #% reduced maximum Life"
 }
