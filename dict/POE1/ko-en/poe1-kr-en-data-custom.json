@@ -162,5 +162,7 @@
     "제정신 상태일 때 받는 물리 및 카오스 피해 #% 감폭": "#% less Physical and Chaos Damage Taken while Sane",
 
     "사술 스킬 효과 범위 #% 감소": "#% reduced Area of Effect of Hex Skills",
-    "소환수의 최대 생명력 #% 감소": "Minions have #% reduced maximum Life"
+    "소환수의 최대 생명력 #% 감소": "Minions have #% reduced maximum Life",
+    "물리 피해: #-#": "Physical Damage: #-#",
+    "원소 피해: #-#": "Elemental Damage: #-#"
 }
