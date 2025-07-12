@@ -167,5 +167,15 @@
     "사술 스킬 효과 범위 #% 감소": "#% reduced Area of Effect of Hex Skills",
     "소환수의 최대 생명력 #% 감소": "Minions have #% reduced maximum Life",
     "물리 피해: #-#": "Physical Damage: #-#",
-    "원소 피해: #-#": "Elemental Damage: #-#"
+    "원소 피해: #-#": "Elemental Damage: #-#",
+
+    "명중 시 화염 노출을 유발하여 화염 저항 -#% 적용": "Inflict Fire Exposure on Hit, applying -#% to Fire Resistance",
+    "명중 시 냉기 노출을 유발하여 냉기 저항 -#% 적용": "Inflict Cold Exposure on Hit, applying -#% to Cold Resistance",
+    "명중 시 번개 노출을 유발하여 번개 저항 -#% 적용": "Inflict Lightning Exposure on Hit, applying -#% to Lightning Resistance",
+    "고유 적이 접근해 있는 동안, 명중 시 화염 노출을 유발하여 화염 저항 -#% 적용": "While a Unique Enemy is in your Presence, Inflict Fire Exposure on Hit, applying -#% to Fire Resistance",
+    "고유 적이 접근해 있는 동안, 명중 시 냉기 노출을 유발하여 냉기 저항 -#% 적용": "While a Unique Enemy is in your Presence, Inflict Cold Exposure on Hit, applying -#% to Cold Resistance",
+    "고유 적이 접근해 있는 동안, 명중 시 번개 노출을 유발하여 번개 저항 -#% 적용": "While a Unique Enemy is in your Presence, Inflict Lightning Exposure on Hit, applying -#% to Lightning Resistance",
+    "최종 아틀라스 보스가 접근해 있는 동안, 명중 시 화염 노출을 유발하여 화염 저항 -#% 적용": "While a Pinnacle Atlas Boss is in your Presence, Inflict Fire Exposure on Hit, applying -#% to Fire Resistance",
+    "최종 아틀라스 보스가 접근해 있는 동안, 명중 시 냉기 노출을 유발하여 냉기 저항 -#% 적용": "While a Pinnacle Atlas Boss is in your Presence, Inflict Cold Exposure on Hit, applying -#% to Cold Resistance",
+    "최종 아틀라스 보스가 접근해 있는 동안, 명중 시 번개 노출을 유발하여 번개 저항 -#% 적용": "While a Pinnacle Atlas Boss is in your Presence, Inflict Lightning Exposure on Hit, applying -#% to Lightning Resistance"
 }
