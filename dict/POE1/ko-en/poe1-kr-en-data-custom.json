@@ -74,6 +74,9 @@
     "에너지 보호막 최대치 -#": "-# to maximum Energy Shield",
     "최대 생명력 #% 감소": "#% reduced maximum Life",
     "에너지 보호막 최대치 #% 감소": "#% reduced maximum Energy Shield",
+    "이동 속도 #% 감소": "#% reduced Movement Speed",
+
+
     "모든 원소 저항 -#%": "-#% to all Elemental Resistances",
     "화염 저항 -#%": "-#% to Fire Resistance",
     "냉기 저항 -#%": "-#% to Cold Resistance",

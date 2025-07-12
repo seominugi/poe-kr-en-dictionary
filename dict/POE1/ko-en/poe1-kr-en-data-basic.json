@@ -43,6 +43,7 @@
     "카오스 피해": "Chaos Damage",
     "치명타 확률": "Critical Strike Chance",
     "초당 공격 횟수": "Attacks per Second",
+    "초당 공격 횟수: #": "Attacks per Second: #",
     "무기 범위": "Weapon Range",
     "#미터": "# metre",
     "방어도": "Armour",
