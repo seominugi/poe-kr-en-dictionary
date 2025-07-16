@@ -169,7 +169,7 @@
     "물리 피해: #-#": "Physical Damage: #-#",
     "원소 피해: #-#": "Elemental Damage: #-#",
 
-    "주변의 적의 카오스 저항 %" :"Nearby Enemies have %% to Chaos Resistance",
+    "주변의 적의 카오스 저항 -#%" :"Nearby Enemies have -% to Chaos Resistance",
 
     "명중 시 화염 노출을 유발하여 화염 저항 -#% 적용": "Inflict Fire Exposure on Hit, applying -#% to Fire Resistance",
     "명중 시 냉기 노출을 유발하여 냉기 저항 -#% 적용": "Inflict Cold Exposure on Hit, applying -#% to Cold Resistance",
