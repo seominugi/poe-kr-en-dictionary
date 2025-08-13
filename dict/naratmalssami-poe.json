@@ -132,5 +132,9 @@
     "Crit Multi": "치명타 피해 배율",
     "Hit Chance": "정확도",
     "Defense": " 방어 속성",
-    "Keystones": "키스톤"
+    "Keystones": "키스톤",
+    "Fire": "화염",
+    "Cold": "냉기",
+    "Lightning": "번개",
+    "Chaos": "카오스"
 }
