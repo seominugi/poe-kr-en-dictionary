@@ -1,9 +1,16 @@
 {
-    "Item Level: #" : "아이템 레벨: #",
+    "Item Level: #": "아이템 레벨: #",
     "#% increased Duration": "지속시간 #% 증가",
     "#% reduced Charges per use": "사용 시 #% 충전 감소",
     "Lasts # Seconds": "#초 지속",
     "Consumes # of # Charges on use": "사용 시 충전 # 중 # 소모",
     "Currently has # Charges": "현재 # 충전량 보유",
-    "Requires Level #": "요구 사항:레벨 #"
+    "Requires Level #": "요구 사항:레벨 #",
+    "Charm Slots: #": "호신부 슬롯 +1개",
+    "Has # Charm Slot": "호신부 슬롯 #개 보유",
+    "# Charm Slot": "호신부 슬롯 #개",
+    "#% increased Charm Charges gained": "호신부 충전량 #% 증가",
+    "#% increased Charm Charges used": "호신부 충전 소모량 #% 증가",
+    "#% reduced Charm Charges gained": "호신부 충전량 #% 감소",
+    "#% reduced Charm Charges used": "호신부 충전 소모량 #% 감소"
 }
