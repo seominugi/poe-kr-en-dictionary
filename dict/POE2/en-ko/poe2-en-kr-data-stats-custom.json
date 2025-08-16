@@ -1,4 +1,5 @@
 {
+    "Item Level: #" : "아이템 레벨: #",
     "#% increased Duration": "지속시간 #% 증가",
     "#% reduced Charges per use": "사용 시 #% 충전 감소",
     "Lasts # Seconds": "#초 지속",
