@@ -1,3 +1,8 @@
 {
-    "#% increased Duration": "지속시간 #% 증가"
+    "#% increased Duration": "지속시간 #% 증가",
+    "#% reduced Charges per use": "사용 시 #% 충전 감소",
+    "Lasts # Seconds": "#초 지속",
+    "Consumes # of # Charges on use": "사용 시 충전 # 중 # 소모",
+    "Currently has # Charges": "현재 # 충전량 보유",
+    "Requires Level #": "요구 사항:레벨 #"
 }
