@@ -13,5 +13,9 @@
     "#% increased Charm Charges used": "호신부 충전 소모량 #% 증가",
     "#% reduced Charm Charges gained": "호신부 충전량 #% 감소",
     "#% reduced Charm Charges used": "호신부 충전 소모량 #% 감소",
-    "Lasts # Second": "#초 지속"
+    "Lasts # Second": "#초 지속",
+    "Quality: #%": "퀄리티: #%",
+    "Armour: #": "방어도: #",
+    "Evasion: #": "회피: #",
+    "Energy Shield: #": "에너지 보호막: #"
 }
