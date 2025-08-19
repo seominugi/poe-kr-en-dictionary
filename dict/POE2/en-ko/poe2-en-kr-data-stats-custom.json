@@ -12,5 +12,6 @@
     "#% increased Charm Charges gained": "호신부 충전량 #% 증가",
     "#% increased Charm Charges used": "호신부 충전 소모량 #% 증가",
     "#% reduced Charm Charges gained": "호신부 충전량 #% 감소",
-    "#% reduced Charm Charges used": "호신부 충전 소모량 #% 감소"
+    "#% reduced Charm Charges used": "호신부 충전 소모량 #% 감소",
+    "Lasts # Second": "#초 지속"
 }
