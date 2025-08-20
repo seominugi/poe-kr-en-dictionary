@@ -12,14 +12,14 @@
     "Requires Level #, Dex #":"요구사항 레벨 #, 민첩 #",
     "Requires Level #, Int #":"요구사항 레벨 #, 지능 #",
 
-    "Recovers # Life over 3 Second":"3초 동안 # 생명력 회복",
-    "Recovers # Life over 4 Second":"4초 동안 # 생명력 회복",
-    "Recovers # Life over 5 Second":"5초 동안 # 생명력 회복",
+    "Recovers # Life over 3 Seconds":"3초 동안 # 생명력 회복",
+    "Recovers # Life over 4 Seconds":"4초 동안 # 생명력 회복",
+    "Recovers # Life over 5 Seconds":"5초 동안 # 생명력 회복",
 
-    "Recovers # Mana over 2 Second": "2초 동안 # 마나 회복",
-    "Recovers # Mana over 2.5 Second": "2.5초 동안 # 마나 회복",
-    "Recovers # Mana over 3 Second": "3초 동안 # 마나 회복",
-    "Recovers # Mana over 3.5 Second": "3.5초 동안 # 마나 회복",
+    "Recovers # Mana over 2 Seconds": "2초 동안 # 마나 회복",
+    "Recovers # Mana over 2.5 Seconds": "2.5초 동안 # 마나 회복",
+    "Recovers # Mana over 3 Seconds": "3초 동안 # 마나 회복",
+    "Recovers # Mana over 3.5 Seconds": "3.5초 동안 # 마나 회복",
 
     "#% increased Duration": "지속시간 #% 증가",
     "#% reduced Charges per use": "사용 시 #% 충전 감소",
