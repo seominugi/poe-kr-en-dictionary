@@ -8,12 +8,12 @@
     "Chaos Damage: #-#": "카오스 피해: #-#",
     "Critical Hit Chance: #%": "치명타 명중 확률: #%",
     "Attacks per Second: #": "초당 공격 횟수: #",
-    "Requires: Level #, Str #":"요구사항 레벨 #, 힘 #",
-    "Requires: Level #, Dex #":"요구사항 레벨 #, 민첩 #",
-    "Requires: Level #, Int #":"요구사항 레벨 #, 지능 #",
+    "Requires Level #, Str #":"요구사항 레벨 #, 힘 #",
+    "Requires Level #, Dex #":"요구사항 레벨 #, 민첩 #",
+    "Requires Level #, Int #":"요구사항 레벨 #, 지능 #",
 
 
-    
+
     "Recovers # Life over # Seconds":"#초 동안 # 생명력 회복",
     "Recovers # Mana over # Seconds":"#초 동안 # 마나 회복",
 
@@ -22,7 +22,7 @@
     "Lasts # Second": "#초 지속",
     "Consumes # of # Charges on use": "사용 시 충전 # 중 # 소모",
     "Currently has # Charges": "현재 # 충전량 보유",
-    "Requires Level #": "요구 사항:레벨 #",
+
     "Charm Slots: #": "호신부 슬롯 +1개",
     "Has # Charm Slot": "호신부 슬롯 #개 보유",
     "# Charm Slot": "호신부 슬롯 #개",
