@@ -12,11 +12,6 @@
     "Requires Level #, Dex #":"요구사항 레벨 #, 민첩 #",
     "Requires Level #, Int #":"요구사항 레벨 #, 지능 #",
 
-
-
-    "Recovers # Life over # Seconds":"#초 동안 # 생명력 회복",
-    "Recovers # Mana over # Seconds":"#초 동안 # 마나 회복",
-
     "#% increased Duration": "지속시간 #% 증가",
     "#% reduced Charges per use": "사용 시 #% 충전 감소",
     "Lasts # Second": "#초 지속",
@@ -25,7 +20,7 @@
 
     "Charm Slots: #": "호신부 슬롯 +1개",
     "Has # Charm Slot": "호신부 슬롯 #개 보유",
-    "# Charm Slot": "호신부 슬롯 #개",
+    "# Charm Slots": "호신부 슬롯 #개",
     "#% increased Charm Charges gained": "호신부 충전량 #% 증가",
     "#% increased Charm Charges used": "호신부 충전 소모량 #% 증가",
     "#% reduced Charm Charges gained": "호신부 충전량 #% 감소",
