@@ -180,7 +180,7 @@
     "Lightning": "번개",
     "Chaos": "카오스",
     "Requires Level": "요구사항 레벨",
-    "Requires": "요구사항",
+    "Requires ": "요구사항 ",
     "Level": "레벨",
     "Corrupted": "타락"
 }
