@@ -15,6 +15,7 @@
     "#% increased Duration": "지속시간 #% 증가",
     "#% reduced Charges per use": "사용 시 #% 충전 감소",
     "Lasts # Second": "#초 지속",
+    "Lasts # Seconds": "#초 지속",
     "Consumes # of # Charges on use": "사용 시 충전 # 중 # 소모",
     "Currently has # Charges": "현재 # 충전량 보유",
 
@@ -39,7 +40,7 @@
     "Critical Hits with Spells apply # Stacks of Critical Weakness": "주문으로 치명타 명중 시 치명타 약화 #중첩 적용",
     
     "Bow Attacks fire an additional Arrow": "활 공격 시 화살 1개 추가 발사",
-    "Loads 2 additional bolts": "볼트 2개 추가 장전",
+    "Loads # additional bolts": "볼트 #개 추가 장전",
 
     "Quality (Attribute Modifiers):": "퀄리티 (능력치 속성 부여):",
     "Quality (Defence Modifiers):": "퀄리티 (방어 속성 부여):",
