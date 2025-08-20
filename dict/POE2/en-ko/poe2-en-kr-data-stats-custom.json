@@ -11,25 +11,22 @@
     "Requires Level #, Str #":"요구사항 레벨 #, 힘 #",
     "Requires Level #, Dex #":"요구사항 레벨 #, 민첩 #",
     "Requires Level #, Int #":"요구사항 레벨 #, 지능 #",
-
     "Recovers # Life over 3 Seconds":"3초 동안 # 생명력 회복",
     "Recovers # Life over 4 Seconds":"4초 동안 # 생명력 회복",
     "Recovers # Life over 5 Seconds":"5초 동안 # 생명력 회복",
-
     "Recovers # Mana over 2 Seconds": "2초 동안 # 마나 회복",
     "Recovers # Mana over 2.5 Seconds": "2.5초 동안 # 마나 회복",
     "Recovers # Mana over 3 Seconds": "3초 동안 # 마나 회복",
     "Recovers # Mana over 3.5 Seconds": "3.5초 동안 # 마나 회복",
-
     "#% increased Duration": "지속시간 #% 증가",
     "#% reduced Charges per use": "사용 시 #% 충전 감소",
     "Lasts # Second": "#초 지속",
     "Lasts # Seconds": "#초 지속",
     "Consumes # of # Charges on use": "사용 시 충전 # 중 # 소모",
     "Currently has # Charges": "현재 # 충전량 보유",
-
     "Charm Slots: #": "호신부 슬롯 #개",
     "Has # Charm Slot": "호신부 슬롯 #개 보유",
+    "Has # Charm Slots": "호신부 슬롯 #개 보유",
     "# Charm Slots": "호신부 슬롯 #개",
     "#% increased Charm Charges gained": "호신부 충전량 #% 증가",
     "#% increased Charm Charges used": "호신부 충전 소모량 #% 증가",
