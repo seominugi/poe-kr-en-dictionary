@@ -12,14 +12,24 @@
     "Requires: Level #, Dex #":"요구사항 레벨 #, 민첩 #",
     "Requires: Level #, Int #":"요구사항 레벨 #, 지능 #",
 
+    "Block chance": "막기 확률",
+    "Item Level": "아이템 레벨",
+    "Physical Damage": "물리 피해",
+    "Fire Damage": "화염 피해",
+    "Cold Damage": "냉기 피해",
+    "Lightning Damage": "번개 피해",
+    "Chaos Damage": "카오스 피해",
+    "Critical Hit Chance": "치명타 명중 확률",
+    "Attacks per Second": "초당 공격 횟수",
 
 
 
-
+    "Recovers # Life over # Seconds":"#초 동안 # 생명력 회복",
+    "Recovers # Mana over # Seconds":"#초 동안 # 마나 회복",
 
     "#% increased Duration": "지속시간 #% 증가",
     "#% reduced Charges per use": "사용 시 #% 충전 감소",
-    "Lasts # Seconds": "#초 지속",
+    "Lasts # Second": "#초 지속",
     "Consumes # of # Charges on use": "사용 시 충전 # 중 # 소모",
     "Currently has # Charges": "현재 # 충전량 보유",
     "Requires Level #": "요구 사항:레벨 #",
@@ -30,7 +40,6 @@
     "#% increased Charm Charges used": "호신부 충전 소모량 #% 증가",
     "#% reduced Charm Charges gained": "호신부 충전량 #% 감소",
     "#% reduced Charm Charges used": "호신부 충전 소모량 #% 감소",
-    "Lasts # Second": "#초 지속",
     "Quality: #%": "퀄리티: #%",
     "Armour: #": "방어도: #",
     "Evasion: #": "회피: #",
@@ -41,6 +50,7 @@
     "#% reduced Poison Duration on you": "플레이어에게 적용되는 중독 지속시간 #% 감소",
     "#% reduced Ignite Duration on you": "플레이어에게 적용되는 점화 지속시간 #% 감소",
     "#% reduced Attack and Cast Speed" :"공격 및 시전 속도 #% 감소",
+
     "Bow Attacks fire an additional Arrow": "활 공격 시 화살 1개 추가 발사"
 }
 
