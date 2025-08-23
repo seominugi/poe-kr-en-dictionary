@@ -111,6 +111,9 @@
     "One Handed Sword": "한손 검",
     "One Handed Axe": "한손 도끼",
     "One Handed Mace": "한손 철퇴",
+    "One Hand Sword": "한손 검",
+    "One Hand Axe": "한손 도끼",
+    "One Hand Mace": "한손 철퇴",
     "Sceptre": "셉터",
     "Spear": "창",
     "Flail": "도리깨",
@@ -119,6 +122,9 @@
     "Two Handed Sword": "양손 검",
     "Two Handed Axe": "양손 도끼",
     "Two Handed Mace": "양손 철퇴",
+    "Two Hand Sword": "양손 검",
+    "Two Hand Axe": "양손 도끼",
+    "Two Hand Mace": "양손 철퇴",
     "Quarterstaff": "육척봉",
     "Crossbow": "석궁",
     "Trap": "덫",
@@ -185,5 +191,6 @@
     "Requires": "요구사항 ",
     "Requires Level": "요구사항 레벨",
     "Level": "레벨",
+    "Mirrored": "복제된",
     "Corrupted": "타락"
 }
