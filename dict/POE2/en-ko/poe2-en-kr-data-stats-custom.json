@@ -53,6 +53,7 @@
 
     "Bow Attacks fire an additional Arrow": "활 공격 시 화살 1개 추가 발사",
     "Loads # additional bolts": "볼트 #개 추가 장전",
+    "When you Kill a Rare monster, you gain its Modifiers for # seconds": "희귀 몬스터를 처치 시 #초 동안 해당 몬스터의 속성 획득",
 
     "Quality (Attribute Modifiers): #%": "퀄리티 (능력치 속성 부여): #%",
     "Quality (Defence Modifiers): #%": "퀄리티 (방어 속성 부여): #%",

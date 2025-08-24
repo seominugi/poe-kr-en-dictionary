@@ -145,8 +145,11 @@
     "Unknown": "알수 없는 일반 아이템",
     "Tincture": "팅크",
     "Jewel": "주얼",
-    "Limited to:": "중복 사용 제한: ",
-    "Radius:": "적용 반경:",
+    "Limited to: #": "중복 사용 제한: #",
+    "Radius: Small": "적용 반경: 작게",
+    "Radius: Medium": "적용 반경: 중간",
+    "Radius: Variable": "적용 반경: 변수",
+    "Radius": "적용 반경",
     "Small": "작게",
     "Medium": "중간",
     "Variable": "변수",
@@ -191,6 +194,7 @@
     "Requires": "요구사항 ",
     "Requires Level": "요구사항 레벨",
     "Level": "레벨",
+    "Jewel Socket": "주얼 슬롯",
     "Mirrored": "복제된",
     "Corrupted": "타락"
 }
