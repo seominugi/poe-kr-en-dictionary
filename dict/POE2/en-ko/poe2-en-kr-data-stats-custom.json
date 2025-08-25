@@ -66,5 +66,9 @@
     "Quality (Speed Modifiers): #%": "퀄리티 (속도 속성 부여): #%",
     "Quality (Cold Modifiers): #%": "퀄리티 (냉기 속성 부여): #%",
     "Quality (Physical Modifiers): #%": "퀄리티 (물리 속성 부여): #%",
-    "Quality (Fire Modifiers): #%": "퀄리티 (화염 속성 부여): #%"
+    "Quality (Fire Modifiers): #%": "퀄리티 (화염 속성 부여): #%",
+
+    "Martial Weapon: # to Accuracy Rating": "무도 무기: 정확도 #",
+    "Armour: #% increased Life and Mana Recovery from Flasks": "방어도: 플라스크로 얻는 생명력과 마나 회복 #% 증가",
+    "Wand or Staff: #% increased Critical Hit Chance for Spells": "마법봉 또는 지팡이: 주문 치명타 명중 확률 #% 증가"
 }
