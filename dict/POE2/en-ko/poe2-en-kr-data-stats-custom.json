@@ -8,6 +8,7 @@
     "Lightning Damage: #-#": "번개 피해: #-#",
     "Chaos Damage: #-#": "카오스 피해: #-#",
     "Critical Hit Chance: #%": "치명타 명중 확률: #%",
+    "Critical Hit Chance: #%, #%": "치명타 명중 확률: #%, #% ",
     "Attacks per Second: #": "초당 공격 횟수: #",
     "Requires Level #, Str #": "요구사항 레벨 #, 힘 #",
     "Requires Level #, Dex #": "요구사항 레벨 #, 민첩 #",
