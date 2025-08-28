@@ -46,6 +46,18 @@
     "#% reduced Attack and Cast Speed": "공격 및 시전 속도 #% 감소",
     "#% reduced Presence Area of Effect": "접근 효과 범위 #% 감소",
     "#% reduced Light Radius": "시야 반경 #% 감소",
+    "#% reduced Slowing Potency of Debuffs on You":"디버프의 감속 효력 #% 감소",
+
+    "# to all Attributes per Socket filled": "채운 홈 하나당 모든 능력치 #",
+    "#% to all Elemental Resistances per Socket filled": "채운 홈 하나당 모든 원소 저항 #%",
+    "# to maximum Life per Socket filled": "채운 홈 하나당 최대 생명력 #",
+    "# to maximum Mana per Socket filled": "채운 홈 하나당 최대 마나 #",
+    "#% to Chaos Resistance per Socket filled": "채운 홈 하나당 카오스 저항 #%",
+    "#% increased Global Defences per Socket filled": "채운 홈 하나당 일반 방어력 #% 증가",
+    "# Life Regeneration per second per Socket filled": "채운 홈 하나당 초당 생명력 재생 #",
+    "Hits against you have #% reduced Critical Damage Bonus per Socket filled": "채운 홈 하나당 플레이어에 대한 명중의 치명타 피해 보너스 #% 감소",
+    "# to Spirit per Socket filled": "채운 홈 하나당 정신력 #",
+    "# to Stun Threshold per Socket filled": "채운 홈 하나당 기절 한계치 #",
 
     "Leech #% of Physical Attack Damage as Life": "물리 공격 피해의 #%를 생명력으로 흡수",
     "Leech #% of Physical Attack Damage as Mana": "물리 공격 피해의 #%를 마나로 흡수",
@@ -68,7 +80,7 @@
     "Quality (Cold Modifiers): #%": "퀄리티 (냉기 속성 부여): #%",
     "Quality (Physical Modifiers): #%": "퀄리티 (물리 속성 부여): #%",
     "Quality (Fire Modifiers): #%": "퀄리티 (화염 속성 부여): #%",
-    
+
     "All Equipment: # to Dexterity": "모든 장비: 민첩 #",
     "All Equipment: # to Intelligence": "모든 장비: 지능 #",
     "All Equipment: # to Strength": "모든 장비: 힘 #",
@@ -214,5 +226,4 @@
     "Wand or Staff: Gain #% of Damage as Extra Lightning Damage": "마법봉 또는 지팡이: 피해의 #%를 추가 번개 피해로 획득",
     "Wand or Staff: Gain additional Stun Threshold equal to #% of maximum Energy Shield": "마법봉 또는 지팡이: 최대 에너지 보호막 의 #%와 동일한 추가 기절 한계치 획득",
     "Wand or Staff: Minions deal #% increased Damage with Command Skills": "마법봉 또는 지팡이: Minions deal #% increased Damage with Command Skills"
-
 }
