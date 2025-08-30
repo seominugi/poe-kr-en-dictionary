@@ -253,6 +253,19 @@
     "Passives in Radius of Elemental Equilibrium can be Allocated without being connected to your tree": "반경 원소 균형 내 패시브 스킬이 트리와 연결되지 않아도 할당 가능",
     "Passives in Radius of Bulwark can be Allocated without being connected to your tree": "반경 방벽 내 패시브 스킬이 트리와 연결되지 않아도 할당 가능",
     "Passives in Radius of Crimson Assault can be Allocated without being connected to your tree": "반경 진홍색 공격 내 패시브 스킬이 트리와 연결되지 않아도 할당 가능",
-    "Passives in Radius of Trusted Kinship can be Allocated without being connected to your tree": "반경 신뢰의 연대감 내 패시브 스킬이 트리와 연결되지 않아도 할당 가능"
+    "Passives in Radius of Trusted Kinship can be Allocated without being connected to your tree": "반경 신뢰의 연대감 내 패시브 스킬이 트리와 연결되지 않아도 할당 가능",
 
+    "Helmets: Remove a Damaging Ailment when you use a Command Skill": "투구: 명령 스킬 사용 시 피해를 주는 상태 이상 제거",
+    "Helmets: # to Accuracy Rating per 1 Item Evasion Rating on Equipped Helmet": "투구: 장착한 투구의 아이템 회피 1당 정확도 #",
+    "Helmets: Increases and Reductions to Life Regeneration Rate also apply to Mana Regeneration Rate": "투구: 생명력 재생 속도 증가 및 감소 수치가 마나 재생 속도에도 적용",
+    "Gloves: #% increased effect of Arcane Surge on you": "장갑: 플레이어에게 적용되는 비전 쇄도 효과 #% 증가",
+    "Gloves: #% increased Life Cost Efficiency": "장갑: 생명력 소모 효율 #% 증가",
+    "Gloves: Critical Hit chance is Lucky against Parried enemies": "장갑: 흘려보낸 적에 대한 치명타 명중 확률에 행운 적용",
+    "Body Armours: Regenerate #% of maximum Life per second": "갑옷: 1초마다 생명력의 #% 재생",
+    "Body Armours: # to Armour per 1 Spirit": "갑옷: 정신력 1당 방어도 #",
+    "Body Armours: Prevent #% of Damage from Deflected Hits": "갑옷: 튕겨낸 명중의 피해 중 방지하는 피해 #%",
+    "Boots: #% increased Movement Speed per 15 Spirit, up to a maximum of #%": "장화: 정신력 15당 이동 속도 #% 증가, 최대 #% 증가",
+    "Boots: #% increased Movement Speed when on Low Life": "장화: 낮은 생명력 상태일 때 이동 속도 #% 증가",
+    "Boots: #% increased Mana Cost Efficiency if you haven't Dodge Rolled Recently": "장화: 최근 4초 이내 회피 구르기를 사용하지 않은 경우 마나 소모 효율 #% 증가",
+    "Other Modifiers to Movement Speed do not apply": "다른 이동 속도 속성이 적용되지 않음"
 }
