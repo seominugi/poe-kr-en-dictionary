@@ -214,5 +214,16 @@
     "Level": "레벨",
     "Jewel Socket": "주얼 슬롯",
     "Mirrored": "복제된",
-    "Corrupted": "타락"
+    "Corrupted": "타락",
+
+    "Bow / Quiver": "활 / 화살통",
+    "Wand / Focus": "마법봉 / 집중구",
+    "Wand / Shield": "마법봉 / 방패",
+    "Sceptre / Focus": "셉터 / 집중구",
+    "Sceptre / Shield": "셉터 / 방패",
+    "Spear / Sceptre": "창, 셉터",
+    "Spear / Shield": "창, 방패",
+    "One Handed Mace / Shield": "한손 철퇴 / 방패",
+    "Two Handed Mace / Shield": "양손 철퇴 / 방패",
+    "Unarmed": "비무장"
 }
