@@ -54,11 +54,12 @@
     "기절할 수 없음": "Cannot be Stunned",
     "플레이어의 속도가 감속의 영향을 받지 않음": "Your speed is unaffected by Slows",
     "#초 지속": "Lasts # Seconds",
-    "# (augmented)초 지속":"Lasts # (augmented) Seconds",
+    "# (augmented)초 지속": "Lasts # (augmented) Seconds",
     "#초 동안 # 생명력 회복": "Recovers # Life over # Seconds",
     "#초 동안 # (augmented) 생명력 회복": "Recovers # (augmented) Life over # Seconds",
     "#초 동안 # 마나 회복": "Recovers # Mana over # Seconds",
     "#초 동안 # (augmented) 마나 회복": "Recovers # (augmented) Mana over # Seconds",
     "스킬 부여: 창 투척": "Grants Skill: Spear Throw (implicit)",
-    "메모":"Note"
+    "축성": "Sanctified",
+    "메모": "Note"
 }
