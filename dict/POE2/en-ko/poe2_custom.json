@@ -28,5 +28,20 @@
 
     "ascendancy::Monk": "몽크",
     "ascendancy::Acolyte of Chayula": "애컬라이트 오브 차율라",
-    "ascendancy::Invoker": "인보커"
+    "ascendancy::Invoker": "인보커",
+
+    "Currency": "화폐",
+    "Fragments": "조각",
+    "Abyssal Bones": "심연 뼈",
+    "Uncut Gems": "미가공 젬",
+    "Lineage Gems": "혈통 젬",
+    "Essences": "에센스",
+    "Vault Keys": "금고실 열쇠",
+    "Soul Cores": "영혼 핵",
+    "Talismans": "부적",
+    "Runes": "룬",
+    "Omens": "징조",
+    "Expedition": "탐험",
+    "Distilled Emotions": "액체 감정",
+    "Catalysts": "기폭제"
 }
