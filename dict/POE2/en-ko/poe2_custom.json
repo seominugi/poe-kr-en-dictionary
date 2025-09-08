@@ -8,7 +8,7 @@
     "ascendancy::Amazon": "아마존",
 
     "ascendancy::Warrior": "워리어",
-    "ascendancy::Smith Of Kitava": "스미스 오브 키타바",
+    "ascendancy::Smith of Kitava": "스미스 오브 키타바",
     "ascendancy::Warbringer": "워브링어",
     "ascendancy::Titan": "타이탄",
     "ascendancy::Sorceress": "소서리스",
@@ -17,6 +17,7 @@
 
     "ascendancy::Witch": "위치",
     "ascendancy::Lich": "리치",
+    "ascendancy::Abyssal Lich": "심연의 리치",
     "ascendancy::Blood Mage": "블러드 메이지",
     "ascendancy::Infernalist": "인퍼널리스트",
 
