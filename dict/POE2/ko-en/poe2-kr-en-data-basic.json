@@ -12,6 +12,11 @@
     "고유": "Unique",
     "퀄리티": "Quality",
     "물리 피해": "Physical Damage",
+    "화염 피해": "Fire Damage",
+    "냉기 피해": "Cold Damage",
+    "번개 피해": "Lightning Damage",
+    "원소 피해": "Elemental Damage",
+    "카오스 피해": "Chaos Damage",
     "초당 공격 횟수": "Attacks per Second",
     "요구 사항": "Requirements",
     "홈": "Sockets",
@@ -36,10 +41,6 @@
     "# (augmented) 힘": "# (augmented) Str",
     "# (augmented) 민첩": "# (augmented) Dex",
     "# (augmented) 지능": "# (augmented) Int",
-    "화염 피해": "Fire Damage",
-    "냉기 피해": "Cold Damage",
-    "번개 피해": "Lightning Damage",
-    "원소 피해": "Elemental Damage",
     "호신부": "Charms",
     "호신부 슬롯": "Charm Slots",
     "사용 시 충전 # 중 # 소모": "Consumes # of # Charges on use",
@@ -58,5 +59,6 @@
     "#초 동안 # (augmented) 생명력 회복": "Recovers # (augmented) Life over # Seconds",
     "#초 동안 # 마나 회복": "Recovers # Mana over # Seconds",
     "#초 동안 # (augmented) 마나 회복": "Recovers # (augmented) Mana over # Seconds",
-    "스킬 부여: 창 투척": "Grants Skill: Spear Throw (implicit)"
+    "스킬 부여: 창 투척": "Grants Skill: Spear Throw (implicit)",
+    "메모":"Note"
 }

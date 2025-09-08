@@ -267,5 +267,6 @@
     "Boots: #% increased Movement Speed per 15 Spirit, up to a maximum of #%": "장화: 정신력 15당 이동 속도 #% 증가, 최대 #% 증가",
     "Boots: #% increased Movement Speed when on Low Life": "장화: 낮은 생명력 상태일 때 이동 속도 #% 증가",
     "Boots: #% increased Mana Cost Efficiency if you haven't Dodge Rolled Recently": "장화: 최근 4초 이내 회피 구르기를 사용하지 않은 경우 마나 소모 효율 #% 증가",
-    "Other Modifiers to Movement Speed do not apply": "다른 이동 속도 속성이 적용되지 않음"
+    "Other Modifiers to Movement Speed do not apply": "다른 이동 속도 속성이 적용되지 않음",
+    "#% reduced Projectile Range": "투사체 사거리 #% 감소"
 }
