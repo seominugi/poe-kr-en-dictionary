@@ -256,5 +256,6 @@
     "장화: 낮은 생명력 상태일 때 이동 속도 #% 증가": "Boots: #% increased Movement Speed when on Low Life",
     "장화: 최근 4초 이내 회피 구르기를 사용하지 않은 경우 마나 소모 효율 #% 증가": "Boots: #% increased Mana Cost Efficiency if you haven't Dodge Rolled Recently",
     "다른 이동 속도 속성이 적용되지 않음": "Other Modifiers to Movement Speed do not apply",
-    "투사체 사거리 #% 감소": "#% reduced Projectile Range"
+    "투사체 사거리 #% 감소": "#% reduced Projectile Range",
+    "명중 시 #% 확률로 혼미": "#% chance to Daze on Hit"
 }

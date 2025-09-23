@@ -61,5 +61,20 @@
     "#초 동안 # (augmented) 마나 회복": "Recovers # (augmented) Mana over # Seconds",
     "스킬 부여: 창 투척": "Grants Skill: Spear Throw (implicit)",
     "축성": "Sanctified",
-    "메모": "Note"
+    "메모": "Note",
+
+    "분열된 아이템": "Fractured Item",
+    "주얼": "Jewel",
+    
+    "장갑": "Gloves",
+    "장화": "Boots",
+    "투구": "Helmets",
+    "갑옷": "Body Armours",
+
+    "방어도": "Armour",
+    "회피": "Evasion Rating",
+    "에너지 보호막": "Energy Shield",
+    "중복 사용 제한":"Limited to",
+    "적용 반경": "Radius",
+    "작게": "Small"
 }

@@ -44,5 +44,19 @@
     "Expedition": "탐험",
     "Distilled Emotions": "액체 감정",
     "Catalysts": "기폭제",
-    "Sanctified": "축성"
+    "Sanctified": "축성",
+
+    "Fractured Item": "분열된 아이템",
+    "Jewel": "주얼",
+    "Gloves": "장갑",
+    "Boots": "장화",
+    "Helmets": "투구",
+    "Body Armours": "갑옷",
+
+    "Armour": "방어도",
+    "Evasion Rating": "회피",
+    "Energy Shield": "에너지 보호막",
+    "Limited to": "중복 사용 제한",
+    "Radius": "적용 반경",
+    "Small": "작게"
 }
