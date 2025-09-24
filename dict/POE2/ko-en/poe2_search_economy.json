@@ -4,14 +4,14 @@
     "하위": "Lesser",
     "우측": "Dextral",
     "좌측": "Sinistral",
-    "말소의" : "Erasure",
-    "연금술의" : "Alchemy",
+    "말소의": "Erasure",
+    "연금술의": "Alchemy",
     "대관식의": "Coronation",
     "찬미의": "Exaltation",
     "소멸의": "Annulment",
     "동질화하는": "Homogenising",
     "혼란스러운": "Chaotic",
-    "결정화의": "Crystallisation",   
+    "결정화의": "Crystallisation",
     "강령술의": "Necromancy",
 
 
@@ -364,6 +364,6 @@
     "적응형 기폭제": "Adaptive Catalyst",
     "쇳소리 기폭제": "Sibilant Catalyst",
     "신경 기폭제": "Neural Catalyst",
-    "달리는 기폭제": "Skittering Catalyst"
-
+    "달리는 기폭제": "Skittering Catalyst",
+    "쥬얼러": "Jeweller"
 }
