@@ -309,5 +309,6 @@
     "스킬 부여: 레벨 13 신성화": "Grants Skill: Level 13 Consecrate",
     "스킬 부여: 레벨 15 어둠의 서약": "Grants Skill: Level 15 Dark Pact",
     "스킬 부여: 레벨 15 육체의 연회": "Grants Skill: Level 15 Feast of Flesh",
-    "스킬 부여: 레벨 17 얼음의 심장": "Grants Skill: Level 17 Heart of Ice"
+    "스킬 부여: 레벨 17 얼음의 심장": "Grants Skill: Level 17 Heart of Ice",
+    "이 무기로 명중시켜 처치 시 #%의 확률로 맹공 획득": "#% chance to gain Onslaught on Killing Hits with this Weapon"
 }
