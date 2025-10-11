@@ -39,6 +39,7 @@
     "플레이어에게 적용되는 출혈 지속시간 #% 감소": "#% reduced Bleeding Duration on you",
     "플레이어에게 적용되는 중독 지속시간 #% 감소": "#% reduced Poison Duration on you",
     "플레이어에게 적용되는 점화 지속시간 #% 감소": "#% reduced Ignite Duration on you",
+    "플레이어에 대한 명중의 치명타 피해 보너스 #% 감소":"Hits against you have #% reduced Critical Damage Bonus",
     "공격 및 시전 속도 #% 감소": "#% reduced Attack and Cast Speed",
     "접근 효과 범위 #% 감소": "#% reduced Presence Area of Effect",
     "시야 반경 #% 감소": "#% reduced Light Radius",
