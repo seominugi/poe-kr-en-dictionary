@@ -61,5 +61,6 @@
     "에너지 보호막 최대치 #% 감소": "#% reduced maximum Energy Shield",
     "이동 속도 #% 감소": "#% reduced Movement Speed",
     "적에게 피격 시 충전 # 획득": "Gain # Charges when you are Hit by an Enemy",
-    "지속시간 #% 감폭": "#% less Duration"
+    "지속시간 #% 감폭": "#% less Duration",
+    "플레이어가 유발하는 위축의 만료 #% 감속": "Withered you Inflict expires #% slower"
 }
