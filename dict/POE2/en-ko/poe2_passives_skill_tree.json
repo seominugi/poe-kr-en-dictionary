@@ -3116,5 +3116,10 @@
     "20% increased Evasion Rating if you have Hit an Enemy Recently": "최근 4초 이내 적 명중 시 회피 20% 증가",
     "Attack Damage and Speed": "공격 피해 및 속도",
     "Blind Effect": "실명 효과",
-    "Charge Duration and Dexterity": "충전 지속시간 및 민첩"
+    "Charge Duration and Dexterity": "충전 지속시간 및 민첩",
+    "10% increased Duration of Ailments on Beasts": "야수에게 적용되는 상태 이상 지속시간 10% 증가",
+    "18% increased Critical Damage Bonus with Quarterstaves": "육척봉 사용 시 치명타 피해 보너스 18% 증가",
+    "Ailment Duration": "상태 이상 지속시간",
+    "Quarterstaff Critical Chance": "육척봉 치명타 확률",
+    "Hex Master": "사술의 대가"
 }
