@@ -319,7 +319,7 @@
     "Require # fewer enemies to be Surrounded": "포위된 것으로 간주되는 데 필요한 적의 수 #마리 감소",
     "Radius: Small": "반경: 작게",
     "Radius: Medium": "반경: 중간",
-    "Radius: Large": "반경: 넓음",
+    "Radius: Large": "반경: 대형",
     "Recovers #{1} Life over #{2} Seconds": "#{2}초 동안 #{1} 생명력 회복",
     "Recovers #{1} Mana over #{2} Seconds": "#{2}초 동안 #{1} 마나 회복"
 }
