@@ -9,11 +9,9 @@
     "대관식의": "Coronation",
     "찬미의": "Exaltation",
     "소멸의": "Annulment",
-    "동질화하는": "Homogenising",
     "혼란스러운": "Chaotic",
     "결정화의": "Crystallisation",
     "강령술의": "Necromancy",
-
 
     "미가공 스킬 젬": "Uncut Skill Gem",
     "미가공 보조 젬": "Uncut Support Gem",
@@ -31,6 +29,7 @@
     "상위 카오스 오브": "Greater Chaos Orb",
     "상위 엑잘티드 오브": "Greater Exalted Orb",
     "완벽한 확장의 오브": "Perfect Orb of Augmentation",
+    "카오스 오브": "Chaos Orb",
     "엑잘티드 오브": "Exalted Orb",
     "기회의 파편": "Chance Shard",
     "세공사의 프리즘": "Gemcutter's Prism",
@@ -77,7 +76,6 @@
     "쿨레막의 초대": "Kulemak's Invitation",
     "보존된 빗장뼈": "Preserved Collarbone",
     "보존된 두개골": "Preserved Cranium",
-    "보존된 등골": "Preserved Vertebrae",
     "보존된 갈비뼈": "Preserved Rib",
     "갉힌 빗장뼈": "Gnawed Collarbone",
     "갉힌 갈비뼈": "Gnawed Rib",
