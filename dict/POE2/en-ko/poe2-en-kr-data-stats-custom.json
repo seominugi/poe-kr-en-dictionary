@@ -324,6 +324,11 @@
     "Radius: Medium": "반경: 중간",
     "Radius: Large": "반경: 대형",
     "#% increased Magnitude of Non-Damaging Ailments you inflict": "플레이어가 유발하는 비-피해 상태 이상의 강도 #% 증가",
+    "#% reduced Skill Effect Duration": "스킬 효과 지속시간 #% 감소",
+    "Allies in your Presence deal # to # additional Attack Physical Damage": "접근해 있는 동료들이 주는 공격 물리 피해 #~# 추가",
+    "Allies in your Presence deal # to # additional Attack Fire Damage": "접근해 있는 동료들이 주는 공격 화염 피해 #~# 추가",
+    "Allies in your Presence deal # to # additional Attack Cold Damage": "접근해 있는 동료들이 주는 공격 냉기 피해 #~# 추가",
+    "Allies in your Presence deal # to # additional Attack Lightning Damage": "접근해 있는 동료들이 주는 공격 번개 피해 #~# 추가",
     "Recovers #{1} Life over #{2} Seconds": "#{2}초 동안 #{1} 생명력 회복",
     "Recovers #{1} Mana over #{2} Seconds": "#{2}초 동안 #{1} 마나 회복"
 }
