@@ -22,5 +22,7 @@
     "Upgrades a Normal item to a Magic item with 1 modifier": "일반 아이템을 속성 1개가 포함된 마법 아이템으로 업그레이드합니다.",
     "Upgrades a Normal or Magic item to a Rare item with 4 random modifiers": "일반 또는 마법 아이템을 무작위 속성 4개가 포함된 희귀 아이템으로 업그레이드합니다.",
     "Allows an item to foresee the result of the next Currency item used on it Modifying the item in any way removes the ability to foresee": "사용 시 해당 아이템에 다음에 사용할 화폐 아이템의 결과를 예측할 수 있습니다. 어떤 방식으로든 해당 아이템에 속성을 부여하면 예측 능력이 제거됩니다.",
-    "A stack of 10 shards becomes an Orb of Chance.": "파편 10개를 모으면 기회의 오브가 됩니다."
+    "A stack of 10 shards becomes an Orb of Chance.": "파편 10개를 모으면 기회의 오브가 됩니다.",
+    "A stack of 10 shards becomes a Regal Orb.": "파편 10개를 모으면 제왕의 오브가 됩니다.",
+    "A stack of 10 shards becomes an Artificer's Orb.": "파편 10개를 모으면 숙련공의 오브가 됩니다."
 }
