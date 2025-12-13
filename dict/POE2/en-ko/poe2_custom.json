@@ -11,9 +11,11 @@
     "ascendancy::Smith of Kitava": "스미스 오브 키타바",
     "ascendancy::Warbringer": "워브링어",
     "ascendancy::Titan": "타이탄",
+    
     "ascendancy::Sorceress": "소서리스",
     "ascendancy::Chronomancer": "크로노맨서",
     "ascendancy::Stormweaver": "스톰위버",
+    "ascendancy::Disciple of Varashta": "디사이플 오브 바라시타",
 
     "ascendancy::Witch": "위치",
     "ascendancy::Lich": "리치",
@@ -29,6 +31,15 @@
     "ascendancy::Monk": "몽크",
     "ascendancy::Acolyte of Chayula": "애컬라이트 오브 차율라",
     "ascendancy::Invoker": "인보커",
+    
+    "ascendancy::Druid": "드루이드",
+    "ascendancy::Shaman": "샤먼",
+    "ascendancy::Oracle": "오라클",
+    
+    "Fate of the Vaal": "바알의 운명", 
+    "HC Fate of the Vaal": "HC 바알의 운명",
+    "Dawn of the Hunt": "사냥의 서막",
+    "HC Dawn of the Hunt": "HC 사냥의 서막",
 
     "Currency": "화폐",
     "Fragments": "조각",
