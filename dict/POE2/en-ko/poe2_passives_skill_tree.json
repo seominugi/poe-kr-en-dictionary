@@ -3579,5 +3579,7 @@
     "Can Allocate Passives from the Warrior's starting point": "워리어의 시작 포인트에서 패시브 스킬 할당 가능",
     "Attribute Passive Skills can instead grant 5% increased Damage": "능력치 패시브 스킬이 피해 5% 증가로 대체 가능",
     "Attribute Passive Skills can instead grant 5% increased Defences": "능력치 패시브 스킬이 방어력 5% 증가로 대체 가능",
-    "Attribute Passive Skills can instead grant 5% increased Cost Efficiency": "능력치 패시브 스킬이 비용 효율 5% 증가로 대체 가능"
+    "Attribute Passive Skills can instead grant 5% increased Cost Efficiency": "능력치 패시브 스킬이 비용 효율 5% 증가로 대체 가능",
+    "Mirage Deadeye": "신기루 명사수",
+    "Apply 10 Critical Weakness to Enemies when Consuming a Mark on them": "적에게 걸린 징표를 소모하면 해당 적에게 치명타 약화 10중첩 유발"
 }
