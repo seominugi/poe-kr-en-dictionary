@@ -2451,6 +2451,8 @@
     "All bonuses from Equipped Amulet apply to your Minions instead of you": "장착 한 목걸이가 주는 모든 보너스가 플레이어 대신 소환수 에게 적용",
     "Cannot use Charms 30% more Recovery from Flasks": "호신부 사용 불가 플라스크 로 얻는 회복 30% 증폭",
     "30% less Critical Damage Bonus when on Full Life 30% more Critical Damage Bonus when on Low Life": "생명력이 최대일 때 치명타 피해 보너스 30% 감폭 낮은 생명력 상태일 때 치명타 피해 보너스 30% 증폭",
+    "30% less Critical Damage Bonus when on Full Life": "생명력이 최대일 때 치명타 피해 보너스 30% 감폭",
+    "30% more Critical Damage Bonus when on Low Life": "낮은 생명력 상태일 때 치명타 피해 보너스 30% 증폭",
     "Accuracy Rating is Doubled Never deal Critical Hits": "정확도 2배 치명타 명중 불가",
     "Gain Power Charges instead of Frenzy Charges Gain Frenzy Charges instead of Endurance Charges Gain Endurance Charges instead of Power Charges": "격분 충전 대신 권능 충전 획득 인내 충전 대신 격분 충전 획득 권능 충전 대신 인내 충전 획득",
     "Invocation Skills instead Trigger Spells every 2 seconds Invocation Skills cannot gain Energy while Triggering Spells Invoked Spells consume 50% less Energy": "기원형 스킬이 대신 2초에 한 번씩 주문 발동 기원형 스킬이 주문 을 발동 하는 동안 에너지 를 획득하지 않음 기원 한 주문의 에너지 소모량 50% 감소",
@@ -3581,5 +3583,8 @@
     "Attribute Passive Skills can instead grant 5% increased Defences": "능력치 패시브 스킬이 방어력 5% 증가로 대체 가능",
     "Attribute Passive Skills can instead grant 5% increased Cost Efficiency": "능력치 패시브 스킬이 비용 효율 5% 증가로 대체 가능",
     "Mirage Deadeye": "신기루 명사수",
-    "Apply 10 Critical Weakness to Enemies when Consuming a Mark on them": "적에게 걸린 징표를 소모하면 해당 적에게 치명타 약화 10중첩 유발"
+    "Apply 10 Critical Weakness to Enemies when Consuming a Mark on them": "적에게 걸린 징표를 소모하면 해당 적에게 치명타 약화 10중첩 유발",
+    "8% increased Attack Cold Damage": "공격 냉기 피해 8% 증가",
+    "Attack Speed with Companion in Presence": "반려수가 접근해 있을 때 공격 속도",
+    "Damage with Companion in Presence": "반려수가 접근해 있을 때 피해"
 }
