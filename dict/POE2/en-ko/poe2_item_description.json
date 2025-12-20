@@ -24,5 +24,12 @@
     "Allows an item to foresee the result of the next Currency item used on it Modifying the item in any way removes the ability to foresee": "사용 시 해당 아이템에 다음에 사용할 화폐 아이템의 결과를 예측할 수 있습니다. 어떤 방식으로든 해당 아이템에 속성을 부여하면 예측 능력이 제거됩니다.",
     "A stack of 10 shards becomes an Orb of Chance.": "파편 10개를 모으면 기회의 오브가 됩니다.",
     "A stack of 10 shards becomes a Regal Orb.": "파편 10개를 모으면 제왕의 오브가 됩니다.",
-    "A stack of 10 shards becomes an Artificer's Orb.": "파편 10개를 모으면 숙련공의 오브가 됩니다."
+    "A stack of 10 shards becomes an Artificer's Orb.": "파편 10개를 모으면 숙련공의 오브가 됩니다.",
+    "Destroys an Equipment item, returning any Augments socketed in it": "장비 아이템을 파괴하고, 홈에 장착된 증강물을 돌려받습니다.",
+    "Improves the quality of a Martial Weapon, Caster Weapon or Armour above 20% with a chance of Corrupting it": "무도 무기, 시전자 무기 또는 방어구의 퀄리티를 20% 위로 향상시킵니다. 일정 확률로 아이템이 타락합니다.",
+    "Modifies a Corrupted Equipment or Jewel item unpredictably or destroys it": "타락한 장비 또는 주얼 아이템을 예측 불가능하게 변경하거나 파괴합니다.",
+    "Modifies a Corrupted Skill Gem unpredictably or destroys it": "타락한 스킬 젬을 예측 불가능하게 변경하거나 파괴합니다.",
+    "Modifies a Precursor Tablet unpredictably, with a chance to destroy it": "선도자 서판을 예측 불가능하게 변경합니다. 일정 확률로 선도자 서판이 파괴됩니다.",
+    "Modifies a Soul Core unpredictably, with a chance to destroy it": "영혼 핵을 예측 불가능하게 변경합니다. 일정 확률로 영혼 핵이 파괴됩니다.",
+    "Replaces up to 2 modifiers on a Corrupted Vaal Unique Replaces other Uniques with a Corrupted Unique of the same Item Class": "타락한 바알 고유 아이템의 속성을 최대 2개까지 교체합니다. 다른 고유 아이템은 아이템 종류가 같은 타락한 고유 아이템으로 교체합니다."
 }
