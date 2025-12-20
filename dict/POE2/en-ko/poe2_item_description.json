@@ -7,7 +7,7 @@
     "Identifies an item": "미확인 아이템 식별",
     "Improves the quality of a flask": "플라스크의 퀄리티 향상",
     "Improves the quality of a martial weapon": "무도 무기의 퀄리티의 퀄리티 향상",
-    "Improves the quality of a skill gem": "스킬 젬의 퀄리티 향상",
+    "Improves the quality of a Skill Gem": "스킬 젬의 퀄리티 향상",
     "Improves the quality of a wand, staff or sceptre": "마법봉이나 지팡이, 셉터의 퀄리티 향상",
     "Improves the quality of an armour": "방어구 퀄리티 향상",
     "Modifies an item unpredictably and Corrupts it": "아이템을 예측 불가능하게 변경하고 타락시킵니다.",
@@ -31,5 +31,8 @@
     "Modifies a Corrupted Skill Gem unpredictably or destroys it": "타락한 스킬 젬을 예측 불가능하게 변경하거나 파괴합니다.",
     "Modifies a Precursor Tablet unpredictably, with a chance to destroy it": "선도자 서판을 예측 불가능하게 변경합니다. 일정 확률로 선도자 서판이 파괴됩니다.",
     "Modifies a Soul Core unpredictably, with a chance to destroy it": "영혼 핵을 예측 불가능하게 변경합니다. 일정 확률로 영혼 핵이 파괴됩니다.",
-    "Replaces up to 2 modifiers on a Corrupted Vaal Unique Replaces other Uniques with a Corrupted Unique of the same Item Class": "타락한 바알 고유 아이템의 속성을 최대 2개까지 교체합니다. 다른 고유 아이템은 아이템 종류가 같은 타락한 고유 아이템으로 교체합니다."
+    "Replaces up to 2 modifiers on a Corrupted Vaal Unique Replaces other Uniques with a Corrupted Unique of the same Item Class": "타락한 바알 고유 아이템의 속성을 최대 2개까지 교체합니다. 다른 고유 아이템은 아이템 종류가 같은 타락한 고유 아이템으로 교체합니다.",
+    "Adds a kill threshold to a Corrupted Rare Jewellery item, when threshold is met Siphons a random modifier and improves the numeric values of other modifiers": "타락한 희귀 장신구 아이템에 처치 한계치를 추가합니다. 한계치에 도달하면 무작위 속성 1개를 착취하고 다른 속성들의 수치를 향상시킵니다."
 }
+
+
