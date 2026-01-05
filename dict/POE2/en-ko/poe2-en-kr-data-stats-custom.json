@@ -418,5 +418,6 @@
     "Wand or Staff: Archon recovery period expires 30% faster": "마법봉 또는 지팡이: 집정관 회복 시간이 30% 빠르게 만료",
     "Wand or Staff: Break Armour on Critical Hit with Spells equal to 12% of Physical Damage dealt": "마법봉 또는 지팡이: 주문 치명타 명중 시 준 물리 피해의 12%와 동일한 방어구 파괴",
     "Wand or Staff: Every Rage also grants 1% increased Spell Damage": "마법봉 또는 지팡이: 격노마다 주문 피해도 1% 증가",
-    "Wand or Staff: Gain 8% of Damage as Extra Physical Damage": "마법봉 또는 지팡이: 피해의 8%를 추가 물리 피해로 획득"
+    "Wand or Staff: Gain 8% of Damage as Extra Physical Damage": "마법봉 또는 지팡이: 피해의 8%를 추가 물리 피해로 획득",
+    "Enemies Immobilised by you take #% more Damage": "플레이어가 이동 불가 상태로 만든 적이 받는 피해 #% 증폭"
 }
