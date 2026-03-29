@@ -1,0 +1,76 @@
+name: Build Translation Dictionary
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: '빌드할 게임 버전'
+        required: true
+        default: 'both'
+        type: choice
+        options:
+          - poe1
+          - poe2
+          - both
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout dictionary repo
+        uses: actions/checkout@v4
+
+      - name: Checkout poe-i18n data
+        uses: actions/checkout@v4
+        with:
+          repository: seominugi/poe-i18n-json-data-generator-dev
+          path: poe-i18n-data
+          token: ${{ secrets.PAT_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build dictionary
+        run: |
+          if [ "${{ inputs.version }}" = "both" ]; then
+            POEDB_DATA_ROOT="${{ github.workspace }}/poe-i18n-data/assets/data" node scripts/build.js
+          else
+            POEDB_DATA_ROOT="${{ github.workspace }}/poe-i18n-data/assets/data" node scripts/build.js --version ${{ inputs.version }}
+          fi
+
+      - name: Show build report
+        run: |
+          echo "## Build Report" >> $GITHUB_STEP_SUMMARY
+          for f in reports/build-report-*.json; do
+            if [ -f "$f" ]; then
+              echo "### $(basename $f)" >> $GITHUB_STEP_SUMMARY
+              echo '```json' >> $GITHUB_STEP_SUMMARY
+              cat "$f" >> $GITHUB_STEP_SUMMARY
+              echo '```' >> $GITHUB_STEP_SUMMARY
+            fi
+          done
+
+      - name: Show diff stats
+        run: |
+          echo "## File Changes" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          git diff --stat >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+
+      - name: Commit and push
+        run: |
+          git config user.name "서민욱"
+          git config user.email "alsdnr0712@gmail.com"
+          git add v2/ reports/
+          if git diff --cached --quiet; then
+            echo "변경사항 없음, 커밋 건너뜀"
+          else
+            git commit -m "chore: v2 사전 빌드 (${{ inputs.version }}) - $(date -u +%Y-%m-%d)"
+            git push
+          fi
