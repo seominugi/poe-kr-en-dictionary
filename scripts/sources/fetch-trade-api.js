@@ -47,9 +47,11 @@ export function matchStatsByLabel(krStats, enStats) {
 export async function fetchAndMatchTradeStats(version) {
   const urls = CONFIG.TRADE_API[version]
 
+  const headers = { 'User-Agent': 'poe-kr-en-dictionary/2.0 (contact: alsdnr0712@gmail.com)' }
+
   const [krResponse, enResponse] = await Promise.all([
-    fetch(urls.kr).then((r) => r.json()),
-    fetch(urls.en).then((r) => r.json()),
+    fetch(urls.kr, { headers }).then((r) => r.json()),
+    fetch(urls.en, { headers }).then((r) => r.json()),
   ])
 
   const krStats = parseStatsResponse(krResponse)

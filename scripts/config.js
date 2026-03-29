@@ -18,7 +18,7 @@ export const CONFIG = {
       en: 'https://www.pathofexile.com/api/trade/data/stats',
     },
     poe2: {
-      kr: 'https://poe2.game.daum.net/api/trade2/data/stats',
+      kr: 'https://poe.game.daum.net/api/trade2/data/stats',
       en: 'https://www.pathofexile.com/api/trade2/data/stats',
     },
   },
