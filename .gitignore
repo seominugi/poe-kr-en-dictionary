@@ -31,6 +31,4 @@ out/
 logs/
 *.log
 
-package.json
-
 worked/
