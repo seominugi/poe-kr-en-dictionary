@@ -1,6 +1,7 @@
 import { readFileSync, readdirSync, statSync } from 'fs'
 import { join, relative } from 'path'
 import { CONFIG } from '../config.js'
+import { normalizeStatPair } from './normalize-stat.js'
 
 /**
  * JSON 배열에서 name.kr → name.en 쌍을 추출한다.
@@ -18,7 +19,7 @@ export function extractNamesFromFile(data) {
 }
 
 /**
- * implicits 배열에서 인덱스 기반 kr→en 쌍을 추출한다.
+ * implicits 배열에서 인덱스 기반 kr→en 쌍을 추출하고 정규화한다.
  * @param {Array} data
  * @returns {Object} { kr: en, ... }
  */
@@ -31,14 +32,16 @@ export function extractImplicitsFromFile(data) {
     for (let i = 0; i < len; i++) {
       const kr = krList[i]?.trim()
       const en = enList[i]?.trim()
-      if (kr && en) result[kr] = en
+      if (!kr || !en) continue
+      const pair = normalizeStatPair(kr, en)
+      if (pair) result[pair.kr] = pair.en
     }
   }
   return result
 }
 
 /**
- * explicits 배열에서 인덱스 기반 kr→en 쌍을 추출한다.
+ * explicits 배열에서 인덱스 기반 kr→en 쌍을 추출하고 정규화한다.
  * @param {Array} data
  * @returns {Object} { kr: en, ... }
  */
@@ -51,7 +54,9 @@ export function extractExplicitsFromFile(data) {
     for (let i = 0; i < len; i++) {
       const kr = krList[i]?.trim()
       const en = enList[i]?.trim()
-      if (kr && en) result[kr] = en
+      if (!kr || !en) continue
+      const pair = normalizeStatPair(kr, en)
+      if (pair) result[pair.kr] = pair.en
     }
   }
   return result

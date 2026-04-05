@@ -1,4 +1,5 @@
 import { CONFIG } from '../config.js'
+import { normalizeStatPair } from './normalize-stat.js'
 
 export function parseStatsResponse(response) {
   const stats = []
@@ -29,7 +30,8 @@ export function matchStatsByLabel(krStats, enStats) {
       const kr = krStat.text?.trim()
       const en = enStat.text?.trim()
       if (kr && en) {
-        matched[kr] = en
+        const pair = normalizeStatPair(kr, en)
+        if (pair) matched[pair.kr] = pair.en
       }
     } else {
       unmatched.push({

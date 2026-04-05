@@ -64,3 +64,38 @@ describe('matchStatsByLabel', () => {
     expect(result.unmatched[0].kr).toBe('알 수 없는 스탯')
   })
 })
+
+describe('matchStatsByLabel - 정규화 적용', () => {
+  it('매칭된 쌍을 정규화하여 저장', () => {
+    const krStats = [
+      { id: 'stat.1', text: '힘 +20', category: 'explicit' },
+    ]
+    const enStats = [
+      { id: 'stat.1', text: '+20 to Strength', category: 'explicit' },
+    ]
+    const { matched } = matchStatsByLabel(krStats, enStats)
+    expect(matched['힘 +#']).toBe('+{0} to Strength')
+  })
+
+  it('매핑 실패 시 스킵', () => {
+    const krStats = [
+      { id: 'stat.1', text: '힘 +20', category: 'explicit' },
+    ]
+    const enStats = [
+      { id: 'stat.1', text: '+30 to Strength', category: 'explicit' },
+    ]
+    const { matched } = matchStatsByLabel(krStats, enStats)
+    expect(Object.keys(matched).length).toBe(0)
+  })
+
+  it('숫자 없는 스탯도 정상 매칭', () => {
+    const krStats = [
+      { id: 'stat.2', text: '모든 에너지 보호막 제거', category: 'explicit' },
+    ]
+    const enStats = [
+      { id: 'stat.2', text: 'Removes all Energy Shield', category: 'explicit' },
+    ]
+    const { matched } = matchStatsByLabel(krStats, enStats)
+    expect(matched['모든 에너지 보호막 제거']).toBe('Removes all Energy Shield')
+  })
+})

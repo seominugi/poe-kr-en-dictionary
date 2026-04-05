@@ -42,7 +42,7 @@ describe('extractImplicitsFromFile', () => {
     const result = extractImplicitsFromFile(data)
     expect(result).toEqual({
       '갑옷': 'Body Armour',
-      '방어도: 19—27': 'Armour: 19—27',
+      '방어도: #~#': 'Armour: {0}~{1}',
     })
   })
 })
@@ -60,8 +60,85 @@ describe('extractExplicitsFromFile', () => {
     ]
     const result = extractExplicitsFromFile(data)
     expect(result).toEqual({
-      '생명력 최대치 +(30—60)': '+(30—60) to maximum Life',
+      '생명력 최대치 +#': '+{0} to maximum Life',
     })
+  })
+})
+
+describe('extractExplicitsFromFile - 정규화 적용', () => {
+  it('kr/en 쌍을 정규화하여 #과 {N} 인덱스로 저장', () => {
+    const data = [
+      {
+        explicits: {
+          kr: ['힘 +20', '민첩 +15'],
+          en: ['+20 to Strength', '+15 to Dexterity'],
+        },
+      },
+    ]
+    const result = extractExplicitsFromFile(data)
+    expect(result['힘 +#']).toBe('+{0} to Strength')
+    expect(result['민첩 +#']).toBe('+{0} to Dexterity')
+  })
+
+  it('구체 수치 여러 개를 단일 # 키로 통합', () => {
+    const data = [
+      {
+        explicits: {
+          kr: ['최대 생명력 20% 증가'],
+          en: ['20% increased maximum Life'],
+        },
+      },
+      {
+        explicits: {
+          kr: ['최대 생명력 30% 증가'],
+          en: ['30% increased maximum Life'],
+        },
+      },
+    ]
+    const result = extractExplicitsFromFile(data)
+    expect(Object.keys(result).length).toBe(1)
+    expect(result['최대 생명력 #% 증가']).toBeDefined()
+  })
+
+  it('매핑 실패 시 해당 엔트리 스킵', () => {
+    const data = [
+      {
+        explicits: {
+          kr: ['힘 +20'],
+          en: ['+30 to Strength'], // 값 불일치
+        },
+      },
+    ]
+    const result = extractExplicitsFromFile(data)
+    expect(Object.keys(result).length).toBe(0)
+  })
+
+  it('숫자 없는 스탯도 정상 추출', () => {
+    const data = [
+      {
+        explicits: {
+          kr: ['모든 에너지 보호막 제거'],
+          en: ['Removes all Energy Shield'],
+        },
+      },
+    ]
+    const result = extractExplicitsFromFile(data)
+    expect(result['모든 에너지 보호막 제거']).toBe('Removes all Energy Shield')
+  })
+})
+
+describe('extractImplicitsFromFile - 정규화 적용', () => {
+  it('implicits도 동일하게 정규화됨', () => {
+    const data = [
+      {
+        implicits: {
+          kr: ['힘 +10'],
+          en: ['+10 to Strength'],
+        },
+      },
+    ]
+    const result = extractImplicitsFromFile(data)
+    expect(result['힘 +#']).toBe('+{0} to Strength')
   })
 })
 
