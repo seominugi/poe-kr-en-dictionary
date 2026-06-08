@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-06-01T15:16:26.859Z",
+  "generatedAt": "2026-06-08T06:23:49.848Z",
   "source": "passive-tree",
   "stats": {
     "classes": 12,
     "ascendancies": 25,
-    "nodes": 5102,
+    "nodes": 5151,
     "skillOverrides": 80,
-    "anointedPassives": 865,
-    "matched": 2002,
-    "conflicts": 88,
-    "displayAliases": 2021,
-    "displayAliasConflicts": 22,
+    "anointedPassives": 875,
+    "matched": 2003,
+    "conflicts": 106,
+    "displayAliases": 2031,
+    "displayAliasConflicts": 25,
     "unmatched": 0,
     "skippedIncompleteAscendancies": 2,
     "skippedIncompleteNodes": 239
@@ -2302,6 +2302,18 @@
       ]
     },
     {
+      "nodeId": "13693",
+      "stableId": "cold58",
+      "skill": 13693,
+      "en": "Rhythm of Ice",
+      "ko": "얼음의 노래",
+      "recipe": [
+        "DilutedLiquidGuilt",
+        "DilutedLiquidIre",
+        "DilutedLiquidGuilt"
+      ]
+    },
+    {
       "nodeId": "13708",
       "stableId": "two_handed15",
       "skill": 13708,
@@ -2407,6 +2419,18 @@
         "LiquidParanoia",
         "DilutedLiquidIre",
         "ConcentratedLiquidSuffering"
+      ]
+    },
+    {
+      "nodeId": "14265",
+      "stableId": "fire85",
+      "skill": 14265,
+      "en": "Arsonist",
+      "ko": "화염 피해",
+      "recipe": [
+        "DilutedLiquidGuilt",
+        "DilutedLiquidGuilt",
+        "DilutedLiquidGuilt"
       ]
     },
     {
@@ -3754,6 +3778,18 @@
       ]
     },
     {
+      "nodeId": "23907",
+      "stableId": "cold68",
+      "skill": 23907,
+      "en": "Ice Storm",
+      "ko": "냉기 피해",
+      "recipe": [
+        "LiquidParanoia",
+        "ConcentratedLiquidIsolation",
+        "LiquidDisgust"
+      ]
+    },
+    {
       "nodeId": "23939",
       "stableId": "life_recoup18",
       "skill": 23939,
@@ -3883,6 +3919,18 @@
         "ConcentratedLiquidFear",
         "DilutedLiquidIre",
         "ConcentratedLiquidIsolation"
+      ]
+    },
+    {
+      "nodeId": "24721",
+      "stableId": "cold69_",
+      "skill": 24721,
+      "en": "Brain Freeze",
+      "ko": "냉기 피해",
+      "recipe": [
+        "DilutedLiquidGreed",
+        "DilutedLiquidIre",
+        "ConcentratedLiquidSuffering"
       ]
     },
     {
@@ -5254,6 +5302,18 @@
       ]
     },
     {
+      "nodeId": "33852",
+      "stableId": "cold59",
+      "skill": 33852,
+      "en": "Flurry",
+      "ko": "냉기 피해",
+      "recipe": [
+        "DilutedLiquidIre",
+        "DilutedLiquidGreed",
+        "DilutedLiquidIre"
+      ]
+    },
+    {
       "nodeId": "33887",
       "stableId": "crossbow18",
       "skill": 33887,
@@ -5911,6 +5971,18 @@
         "LiquidDespair",
         "LiquidEnvy",
         "DilutedLiquidGuilt"
+      ]
+    },
+    {
+      "nodeId": "37619",
+      "stableId": "fire76",
+      "skill": 37619,
+      "en": "Rhythm of Fire",
+      "ko": "불의 노래",
+      "recipe": [
+        "DilutedLiquidGuilt",
+        "DilutedLiquidGuilt",
+        "DilutedLiquidIre"
       ]
     },
     {
@@ -7546,6 +7618,18 @@
       ]
     },
     {
+      "nodeId": "47387",
+      "stableId": "lightning68",
+      "skill": 47387,
+      "en": "Stormkeeper",
+      "ko": "번개 피해",
+      "recipe": [
+        "DilutedLiquidIre",
+        "DilutedLiquidGuilt",
+        "DilutedLiquidGuilt"
+      ]
+    },
+    {
       "nodeId": "47418",
       "stableId": "mana_flasks13",
       "skill": 47418,
@@ -8026,6 +8110,18 @@
       ]
     },
     {
+      "nodeId": "50498",
+      "stableId": "lightning70",
+      "skill": 50498,
+      "en": "Brain Storm",
+      "ko": "번개 피해",
+      "recipe": [
+        "ConcentratedLiquidSuffering",
+        "DilutedLiquidGuilt",
+        "DilutedLiquidGuilt"
+      ]
+    },
+    {
       "nodeId": "50562",
       "stableId": "criticals74",
       "skill": 50562,
@@ -8419,6 +8515,18 @@
         "ConcentratedLiquidFear",
         "ConcentratedLiquidSuffering",
         "LiquidParanoia"
+      ]
+    },
+    {
+      "nodeId": "52669",
+      "stableId": "fire75",
+      "skill": 52669,
+      "en": "Flamekeeper",
+      "ko": "화염 피해",
+      "recipe": [
+        "DilutedLiquidGuilt",
+        "DilutedLiquidIre",
+        "DilutedLiquidIre"
       ]
     },
     {
@@ -9718,6 +9826,18 @@
       ]
     },
     {
+      "nodeId": "60878",
+      "stableId": "lightning69_",
+      "skill": 60878,
+      "en": "Lightning Storm",
+      "ko": "번개 피해",
+      "recipe": [
+        "DilutedLiquidGuilt",
+        "LiquidDespair",
+        "ConcentratedLiquidIsolation"
+      ]
+    },
+    {
       "nodeId": "60992",
       "stableId": "companions3",
       "skill": 60992,
@@ -10551,6 +10671,15 @@
       "skill": 12183
     },
     {
+      "ko": "화염 피해",
+      "existingEn": "Fire Damage",
+      "incomingEn": "Arsonist",
+      "type": "node",
+      "nodeId": "14265",
+      "stableId": "fire85",
+      "skill": 14265
+    },
+    {
       "ko": "치명타 확률",
       "existingEn": "Critical Hit Chance",
       "incomingEn": "Critical Chance",
@@ -10567,6 +10696,15 @@
       "nodeId": "16861",
       "stableId": "criticals70",
       "skill": 16861
+    },
+    {
+      "ko": "원소 피해",
+      "existingEn": "Elemental Damage",
+      "incomingEn": "Cold and Lightning Damage",
+      "type": "node",
+      "nodeId": "17044",
+      "stableId": "elemental47",
+      "skill": 17044
     },
     {
       "ko": "복수",
@@ -10632,6 +10770,24 @@
       "skill": 21721
     },
     {
+      "ko": "방어력 및 반려수 생명력",
+      "existingEn": "Defenses and Companion Life",
+      "incomingEn": "Defences and Companion Life",
+      "type": "node",
+      "nodeId": "22368",
+      "stableId": "companions20",
+      "skill": 22368
+    },
+    {
+      "ko": "냉기 피해",
+      "existingEn": "Cold Damage",
+      "incomingEn": "Ice Storm",
+      "type": "node",
+      "nodeId": "23907",
+      "stableId": "cold68",
+      "skill": 23907
+    },
+    {
       "ko": "치명타 확률",
       "existingEn": "Critical Hit Chance",
       "incomingEn": "Critical Chance",
@@ -10648,6 +10804,15 @@
       "nodeId": "24420",
       "stableId": "criticals93_",
       "skill": 24420
+    },
+    {
+      "ko": "냉기 피해",
+      "existingEn": "Cold Damage",
+      "incomingEn": "Brain Freeze",
+      "type": "node",
+      "nodeId": "24721",
+      "stableId": "cold69_",
+      "skill": 24721
     },
     {
       "ko": "내열 처리",
@@ -10675,6 +10840,15 @@
       "nodeId": "26969",
       "stableId": "criticals69",
       "skill": 26969
+    },
+    {
+      "ko": "방어력 및 반려수 생명력",
+      "existingEn": "Defenses and Companion Life",
+      "incomingEn": "Defences and Companion Life",
+      "type": "node",
+      "nodeId": "27048",
+      "stableId": "companions14",
+      "skill": 27048
     },
     {
       "ko": "명중 시 격노",
@@ -10756,6 +10930,24 @@
       "nodeId": "33829",
       "stableId": "criticals94",
       "skill": 33829
+    },
+    {
+      "ko": "냉기 피해",
+      "existingEn": "Cold Damage",
+      "incomingEn": "Flurry",
+      "type": "node",
+      "nodeId": "33852",
+      "stableId": "cold59",
+      "skill": 33852
+    },
+    {
+      "ko": "원소 피해",
+      "existingEn": "Elemental Damage",
+      "incomingEn": "Fire and Cold Damage",
+      "type": "node",
+      "nodeId": "34331",
+      "stableId": "elemental19",
+      "skill": 34331
     },
     {
       "ko": "명중 시 격노",
@@ -10938,6 +11130,24 @@
       "skill": 47175
     },
     {
+      "ko": "방어력 및 반려수 생명력",
+      "existingEn": "Defenses and Companion Life",
+      "incomingEn": "Defences and Companion Life",
+      "type": "node",
+      "nodeId": "47375",
+      "stableId": "companions16",
+      "skill": 47375
+    },
+    {
+      "ko": "번개 피해",
+      "existingEn": "Lightning Damage",
+      "incomingEn": "Stormkeeper",
+      "type": "node",
+      "nodeId": "47387",
+      "stableId": "lightning68",
+      "skill": 47387
+    },
+    {
       "ko": "출혈 확률",
       "existingEn": "Bleed Chance",
       "incomingEn": "Bleeding Chance",
@@ -10983,6 +11193,15 @@
       "skill": 50459
     },
     {
+      "ko": "번개 피해",
+      "existingEn": "Lightning Damage",
+      "incomingEn": "Brain Storm",
+      "type": "node",
+      "nodeId": "50498",
+      "stableId": "lightning70",
+      "skill": 50498
+    },
+    {
       "ko": "집정관 효과",
       "existingEn": "Archon Duration",
       "incomingEn": "Archon Effect",
@@ -11026,6 +11245,24 @@
       "nodeId": "51534",
       "stableId": "criticals7",
       "skill": 51534
+    },
+    {
+      "ko": "방어력 및 반려수 생명력",
+      "existingEn": "Defenses and Companion Life",
+      "incomingEn": "Defences and Companion Life",
+      "type": "node",
+      "nodeId": "51807",
+      "stableId": "companions39",
+      "skill": 51807
+    },
+    {
+      "ko": "화염 피해",
+      "existingEn": "Fire Damage",
+      "incomingEn": "Flamekeeper",
+      "type": "node",
+      "nodeId": "52669",
+      "stableId": "fire75",
+      "skill": 52669
     },
     {
       "ko": "위치",
@@ -11100,6 +11337,15 @@
       "skill": 56342
     },
     {
+      "ko": "방어력 및 반려수 생명력",
+      "existingEn": "Defenses and Companion Life",
+      "incomingEn": "Defences and Companion Life",
+      "type": "node",
+      "nodeId": "57089",
+      "stableId": "companions23",
+      "skill": 57089
+    },
+    {
       "ko": "치명타 확률",
       "existingEn": "Critical Hit Chance",
       "incomingEn": "Critical Chance",
@@ -11127,6 +11373,15 @@
       "skill": 59256
     },
     {
+      "ko": "방어력 및 반려수 생명력",
+      "existingEn": "Defenses and Companion Life",
+      "incomingEn": "Defences and Companion Life",
+      "type": "node",
+      "nodeId": "59647",
+      "stableId": "duelist_minions8",
+      "skill": 59647
+    },
+    {
       "ko": "치명타 확률",
       "existingEn": "Critical Hit Chance",
       "incomingEn": "Critical Chance",
@@ -11134,6 +11389,15 @@
       "nodeId": "60107",
       "stableId": "criticals24",
       "skill": 60107
+    },
+    {
+      "ko": "번개 피해",
+      "existingEn": "Lightning Damage",
+      "incomingEn": "Lightning Storm",
+      "type": "node",
+      "nodeId": "60878",
+      "stableId": "lightning69_",
+      "skill": 60878
     },
     {
       "ko": "정확도",
@@ -11190,6 +11454,24 @@
       "skill": 62424
     },
     {
+      "ko": "방어력 및 반려수 생명력",
+      "existingEn": "Defenses and Companion Life",
+      "incomingEn": "Defences and Companion Life",
+      "type": "node",
+      "nodeId": "63182",
+      "stableId": "duelist_minions7",
+      "skill": 63182
+    },
+    {
+      "ko": "방어력 및 반려수 생명력",
+      "existingEn": "Defenses and Companion Life",
+      "incomingEn": "Defences and Companion Life",
+      "type": "node",
+      "nodeId": "63618",
+      "stableId": "companions17",
+      "skill": 63618
+    },
+    {
       "ko": "출혈 확률",
       "existingEn": "Bleed Chance",
       "incomingEn": "Bleeding Chance",
@@ -11219,6 +11501,15 @@
       "skill": 13715
     },
     {
+      "en": "Arsonist",
+      "existingKo": "방화범",
+      "incomingKo": "화염 피해",
+      "type": "node",
+      "nodeId": "14265",
+      "stableId": "fire85",
+      "skill": 14265
+    },
+    {
       "en": "Stun Buildup",
       "existingKo": "기절 누적",
       "incomingKo": "기절 축적",
@@ -11244,6 +11535,15 @@
       "nodeId": "22538",
       "stableId": "slowed_enemies17",
       "skill": 22538
+    },
+    {
+      "en": "Cold and Lightning Damage",
+      "existingKo": "원소 피해",
+      "incomingKo": "냉기 및 번개 피해",
+      "type": "node",
+      "nodeId": "22851",
+      "stableId": "monkchakra21",
+      "skill": 22851
     },
     {
       "en": "Shapeshifted Damage",
@@ -11352,6 +11652,15 @@
       "nodeId": "45301",
       "stableId": "energy_shield_and_armour28__",
       "skill": 45301
+    },
+    {
+      "en": "Cold and Lightning Damage",
+      "existingKo": "원소 피해",
+      "incomingKo": "냉기 및 번개 피해",
+      "type": "node",
+      "nodeId": "50268",
+      "stableId": "monkchakra20_",
+      "skill": 50268
     },
     {
       "en": "Slow Effect on You",

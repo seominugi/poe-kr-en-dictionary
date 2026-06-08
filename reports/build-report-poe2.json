@@ -1,19 +1,19 @@
 {
   "version": "poe2",
-  "buildDate": "2026-06-01T15:16:26.854Z",
+  "buildDate": "2026-06-08T06:23:49.844Z",
   "stats": {
-    "total": 16565,
-    "fromPoedb": 3537,
-    "fromTradeApi": 3422,
-    "fromPassiveTree": 2002,
+    "total": 19979,
+    "fromPoedb": 6864,
+    "fromTradeApi": 3508,
+    "fromPassiveTree": 2003,
     "fromOverrides": 59,
     "fromLegacyFallback": 7545,
     "unmatched": 1
   },
   "unmatched": [
     {
-      "kr": "피해의 #%를 추가 카오스 피해로 획득",
-      "id": "crafted.stat_3398787959",
+      "kr": "할당 엔트로피의 화신",
+      "id": "crafted.stat_2954116742|30720",
       "category": "제작된",
       "source": "trade-api"
     }
