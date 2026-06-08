@@ -98,20 +98,13 @@ function findJsonFiles(dir) {
 /**
  * poe-i18n-json-data-generator-dev에서 특정 버전의 kr↔en 사전을 추출한다.
  * @param {'poe1'|'poe2'} version
- * @returns {{ items: Object, uniques: Object, gems: Object, currency: Object, common: Object, stats: Object }}
+ * @returns {Record<string, Object>}
  */
 export function extractPoedbData(version) {
   const dataDir = join(CONFIG.POEDB_DATA_ROOT, version, 'json')
   const jsonFiles = findJsonFiles(dataDir)
 
-  const extracted = {
-    items: {},
-    uniques: {},
-    gems: {},
-    currency: {},
-    common: {},
-    stats: {},
-  }
+  const extracted = Object.fromEntries(CONFIG.CATEGORIES.map((category) => [category, {}]))
 
   for (const filePath of jsonFiles) {
     const relPath = relative(dataDir, filePath).replace(/\\/g, '/')

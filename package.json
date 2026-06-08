@@ -6,6 +6,8 @@
     "build": "node scripts/build.js",
     "build:poe1": "node scripts/build.js --version poe1",
     "build:poe2": "node scripts/build.js --version poe2",
+    "collect:passive-tree:poe2": "node scripts/collect-poe2-passive-tree.js --version poe2",
+    "collect:poe-ninja:poe2": "node scripts/collect-poe-ninja-text.js --version poe2",
     "test": "vitest run",
     "test:watch": "vitest"
   },

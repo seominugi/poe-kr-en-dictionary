@@ -23,6 +23,14 @@ export const CONFIG = {
     },
   },
 
+  // 공식 POE2 패시브 트리 데이터
+  PASSIVE_TREE_API: {
+    poe2: {
+      en: 'https://pathofexile2.com/internal-api/content/game-passive-skill-tree',
+      ko: 'https://poe2.game.daum.net/internal-api/content/game-passive-skill-tree',
+    },
+  },
+
   // 기존 legacy 사전 경로 (폴백용)
   LEGACY_DICT: {
     poe1: resolve(ROOT, 'dict/POE1/ko-en'),
@@ -40,5 +48,5 @@ export const CONFIG = {
   REPORTS: resolve(ROOT, 'reports'),
 
   // v2 카테고리 파일 목록
-  CATEGORIES: ['stats', 'items', 'uniques', 'gems', 'currency', 'common'],
+  CATEGORIES: ['stats', 'items', 'uniques', 'gems', 'passives', 'currency', 'common'],
 }

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { mergeDictionaries, loadLegacyDict } from '../scripts/build.js'
+import { mergeDictionaries, loadLegacyDict, loadOverrides } from '../scripts/build.js'
 
 describe('mergeDictionaries', () => {
   it('우선순위대로 병합한다 (overrides > poedb > tradeApi > legacy)', () => {
@@ -30,5 +30,20 @@ describe('loadLegacyDict', () => {
     expect(typeof result).toBe('object')
     // 기존 사전에 있는 항목 확인
     expect(Object.keys(result).length).toBeGreaterThan(0)
+  })
+})
+
+describe('loadOverrides', () => {
+  it('카테고리별 overrides를 로드한다', () => {
+    const common = loadOverrides('poe2', 'common')
+    const currency = loadOverrides('poe2', 'currency')
+
+    expect(common['알두르의 룬']).toBe('Runes of Aldur')
+    expect(common['마셜 아티스트']).toBe('Martial Artist')
+    expect(currency['바알 대장장이의 주입기']).toBe("Vaal Blacksmith's Infuser")
+  })
+
+  it('카테고리가 없으면 global overrides만 반환한다', () => {
+    expect(loadOverrides('poe2', 'not-a-category')).toEqual(loadOverrides('poe2'))
   })
 })

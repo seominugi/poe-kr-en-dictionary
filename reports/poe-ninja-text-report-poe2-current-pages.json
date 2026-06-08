@@ -1,0 +1,4473 @@
+{
+  "version": "poe2",
+  "generatedAt": "2026-06-01T15:57:31.987Z",
+  "urls": [
+    "https://poe.ninja/poe2/economy/runesofaldur/currency",
+    "https://poe.ninja/poe2/builds",
+    "https://poe.ninja/poe2/builds/runesofaldur"
+  ],
+  "summary": {
+    "pages": 3,
+    "uniqueTexts": 958,
+    "translated": 256,
+    "deferred": 24,
+    "candidates": 5,
+    "ignored": 673
+  },
+  "pages": [
+    {
+      "url": "https://poe.ninja/poe2/economy/runesofaldur/currency",
+      "title": "Currency - Runes of Aldur - Path of Exile 2 - poe.ninja",
+      "stats": {
+        "uniqueTexts": 213,
+        "translated": 76,
+        "deferred": 0,
+        "candidates": 0,
+        "ignored": 137
+      },
+      "translated": [
+        {
+          "text": "Abyssal Bones",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "GENERAL"
+          ],
+          "ko": "심연 뼈",
+          "match": "exact",
+          "sources": [
+            "poe2/common"
+          ]
+        },
+        {
+          "text": "Ancient Infuser",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "고대 주입기",
+          "match": "exact",
+          "sources": [
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "Architect's Orb",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "건축가의 오브",
+          "match": "exact",
+          "sources": [
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "Armourer's Scrap",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "방어구 장인의 고철",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "Artificer's Orb",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "숙련공의 오브",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "Catalysts",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "GENERAL"
+          ],
+          "ko": "기폭제",
+          "match": "exact",
+          "sources": [
+            "poe2/common"
+          ]
+        },
+        {
+          "text": "Chance Shard",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "기회의 파편",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "Chaos Orb",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "카오스 오브",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "Core Destabiliser",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "핵 불안정화기",
+          "match": "exact",
+          "sources": [
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "Cryptic Key",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "난해한 열쇠",
+          "match": "exact",
+          "sources": [
+            "poe2/items",
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "Crystallised Corruption",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "결정화된 타락",
+          "match": "exact",
+          "sources": [
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "Currency",
+          "count": 4,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency",
+            "GENERAL"
+          ],
+          "ko": "화폐",
+          "match": "exact",
+          "sources": [
+            "poe2/common"
+          ]
+        },
+        {
+          "text": "Divine Orb",
+          "count": 15,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "신성한 오브",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "Equipment",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [
+            "GENERAL"
+          ],
+          "ko": "장비",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Essences",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "GENERAL"
+          ],
+          "ko": "에센스",
+          "match": "exact",
+          "sources": [
+            "poe2/common"
+          ]
+        },
+        {
+          "text": "Exalted Orb",
+          "count": 151,
+          "kinds": [
+            "attribute:alt",
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "엑잘티드 오브",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "Expedition",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "GENERAL"
+          ],
+          "ko": "탐험",
+          "match": "exact",
+          "sources": [
+            "poe2/common"
+          ]
+        },
+        {
+          "text": "Filter by Name",
+          "count": 1,
+          "kinds": [
+            "attribute:placeholder"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "이름으로 필터",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Fracturing Orb",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "분열의 오브",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "Fragments",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "GENERAL"
+          ],
+          "ko": "조각",
+          "match": "exact",
+          "sources": [
+            "poe2/common"
+          ]
+        },
+        {
+          "text": "Gemcutter's Prism",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "세공사의 프리즘",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "General",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [
+            "GENERAL"
+          ],
+          "ko": "일반",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Glassblower's Bauble",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "유리직공의 방울",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "Greater Chaos Orb",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "상위 카오스 오브",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "Greater Exalted Orb",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "상위 엑잘티드 오브",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "Greater Jeweller's Orb",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "상위 쥬얼러 오브",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "Greater Orb of Transmutation",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "상위 진화의 오브",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "Greater Regal Orb",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "상위 제왕의 오브",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "Hinekora's Lock",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "히네코라의 머리카락",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "Idols",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "GENERAL"
+          ],
+          "ko": "우상",
+          "match": "exact",
+          "sources": [
+            "poe2/common"
+          ]
+        },
+        {
+          "text": "Last 7 days",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "최근 7일",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "League",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [
+            "GENERAL"
+          ],
+          "ko": "리그",
+          "match": "exact",
+          "sources": [
+            "poe2/common",
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Lineage Gems",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "GENERAL"
+          ],
+          "ko": "혈통 젬",
+          "match": "exact",
+          "sources": [
+            "poe2/common"
+          ]
+        },
+        {
+          "text": "Liquid Emotions",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "GENERAL"
+          ],
+          "ko": "액체 감정",
+          "match": "exact",
+          "sources": [
+            "poe2/common"
+          ]
+        },
+        {
+          "text": "Mirror of Kalandra",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "칼란드라의 거울",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "More",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "더보기",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Most Popular",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "인기 기준",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Name",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "이름",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Omens",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "GENERAL"
+          ],
+          "ko": "징조",
+          "match": "exact",
+          "sources": [
+            "poe2/common"
+          ]
+        },
+        {
+          "text": "Orb of Alchemy",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "연금술의 오브",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "Orb of Annulment",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "소멸의 오브",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "Orb of Chance",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "기회의 오브",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "Orb of Extraction",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "추출의 오브",
+          "match": "exact",
+          "sources": [
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "Passive Skill Tree",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "패시브 스킬 트리",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Perfect Chaos Orb",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "완벽한 카오스 오브",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "Perfect Exalted Orb",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "완벽한 엑잘티드 오브",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "Perfect Jeweller's Orb",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "완벽한 쥬얼러 오브",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "Perfect Orb of Augmentation",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "완벽한 확장의 오브",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "Perfect Orb of Transmutation",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "완벽한 진화의 오브",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "Perfect Regal Orb",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "완벽한 제왕의 오브",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "Regal Orb",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "제왕의 오브",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "Runes",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "GENERAL"
+          ],
+          "ko": "룬",
+          "match": "exact",
+          "sources": [
+            "poe2/common"
+          ]
+        },
+        {
+          "text": "Search by item…",
+          "count": 1,
+          "kinds": [
+            "attribute:placeholder"
+          ],
+          "sectionHeadings": [
+            "GENERAL"
+          ],
+          "ko": "아이템 검색...",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Show more",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "더 보기",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Soul Cores",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "GENERAL"
+          ],
+          "ko": "영혼 핵",
+          "match": "exact",
+          "sources": [
+            "poe2/common"
+          ]
+        },
+        {
+          "text": "Transmutation Shard",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "진화의 파편",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "Uncut Gems",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "GENERAL"
+          ],
+          "ko": "미가공 젬",
+          "match": "exact",
+          "sources": [
+            "poe2/common"
+          ]
+        },
+        {
+          "text": "Unique Accessories",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "GENERAL"
+          ],
+          "ko": "고유 장신구",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Unique Armours",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "GENERAL"
+          ],
+          "ko": "고유 방어구",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Unique Charms",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "GENERAL"
+          ],
+          "ko": "고유 호신부",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Unique Flasks",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "GENERAL"
+          ],
+          "ko": "고유 플라스크",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Unique Jewels",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "GENERAL"
+          ],
+          "ko": "고유 쥬얼",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Unique Maps",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "GENERAL"
+          ],
+          "ko": "고유 경로석",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Unique Relics",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "GENERAL"
+          ],
+          "ko": "고유 성역 유물",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Unique Weapons",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "GENERAL"
+          ],
+          "ko": "고유 무기",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Vaal Arcanist's Infuser",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "바알 신비학자의 주입기",
+          "match": "exact",
+          "sources": [
+            "poe2/items",
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "Vaal Armourer's Infuser",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "바알 방어구 장인의 주입기",
+          "match": "exact",
+          "sources": [
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "Vaal Blacksmith's Infuser",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "바알 대장장이의 주입기",
+          "match": "exact",
+          "sources": [
+            "poe2/items",
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "Vaal Catalysing Infuser",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "바알 촉진시키는 주입기",
+          "match": "exact",
+          "sources": [
+            "poe2/items",
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "Vaal Cultivation Orb",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "함양 오브",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "Vaal Orb",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "바알 오브",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "Vaal Siphoner",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "바알 착취기",
+          "match": "exact",
+          "sources": [
+            "poe2/currency"
+          ]
+        },
+        {
+          "text": "Value",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "가치",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Value Display",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "가치 표시",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Verisium",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "GENERAL"
+          ],
+          "ko": "베리시움",
+          "match": "exact",
+          "sources": [
+            "poe2/items",
+            "poe2/common"
+          ]
+        },
+        {
+          "text": "Volume / Hour",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [
+            "Currency"
+          ],
+          "ko": "시간당 거래량",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        }
+      ],
+      "deferred": [],
+      "candidates": []
+    },
+    {
+      "url": "https://poe.ninja/poe2/builds",
+      "title": "Builds - Path of Exile 2 - poe.ninja",
+      "stats": {
+        "uniqueTexts": 130,
+        "translated": 40,
+        "deferred": 0,
+        "candidates": 5,
+        "ignored": 85
+      },
+      "translated": [
+        {
+          "text": "Acolyte of Chayula",
+          "count": 2,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "RUNES OF ALDUR"
+          ],
+          "ko": "애컬라이트 오브 차율라",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Amazon",
+          "count": 2,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "RUNES OF ALDUR"
+          ],
+          "ko": "아마존",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Available Leagues",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "사용 가능한 리그",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "characters",
+          "count": 14,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "명",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Chronomancer",
+          "count": 4,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "RUNES OF ALDUR"
+          ],
+          "ko": "크로노맨서",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Deadeye",
+          "count": 12,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "RUNES OF ALDUR"
+          ],
+          "ko": "데드아이",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Disciple of Varashta",
+          "count": 10,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "RUNES OF ALDUR"
+          ],
+          "ko": "디사이플 오브 바라시타",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Fate of the Vaal",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "바알의 운명",
+          "match": "exact",
+          "sources": [
+            "poe2/common"
+          ]
+        },
+        {
+          "text": "Gemling Legionnaire",
+          "count": 2,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "RUNES OF ALDUR"
+          ],
+          "ko": "젬링 리저네어",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "HC Fate of the Vaal",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "HC 바알의 운명",
+          "match": "exact",
+          "sources": [
+            "poe2/common"
+          ]
+        },
+        {
+          "text": "HC Runes of Aldur",
+          "count": 2,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [
+            "RUNES OF ALDUR"
+          ],
+          "ko": "HC 알두르의 룬",
+          "match": "exact",
+          "sources": [
+            "poe2/common"
+          ]
+        },
+        {
+          "text": "HC SSF Fate of the Vaal",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "HC SSF 바알의 운명",
+          "match": "exact",
+          "sources": [
+            "poe2/common"
+          ]
+        },
+        {
+          "text": "HC SSF Runes of Aldur",
+          "count": 2,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [
+            "RUNES OF ALDUR"
+          ],
+          "ko": "HC SSF 알두르의 룬",
+          "match": "exact",
+          "sources": [
+            "poe2/common"
+          ]
+        },
+        {
+          "text": "Huntress",
+          "count": 2,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "RUNES OF ALDUR"
+          ],
+          "ko": "헌트리스",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Infernalist",
+          "count": 6,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "RUNES OF ALDUR"
+          ],
+          "ko": "인퍼널리스트",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Invoker",
+          "count": 2,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "RUNES OF ALDUR"
+          ],
+          "ko": "인보커",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Lich",
+          "count": 12,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "RUNES OF ALDUR"
+          ],
+          "ko": "리치",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Martial Artist",
+          "count": 12,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "RUNES OF ALDUR"
+          ],
+          "ko": "마셜 아티스트",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Mercenary",
+          "count": 2,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "RUNES OF ALDUR"
+          ],
+          "ko": "머서너리",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Monk",
+          "count": 4,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "RUNES OF ALDUR"
+          ],
+          "ko": "몽크",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "More",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "더보기",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Oracle",
+          "count": 14,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "RUNES OF ALDUR"
+          ],
+          "ko": "오라클",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Passive Leagues (",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "비공개 리그 (",
+          "match": "private-leagues-label",
+          "sources": [
+            "poe.ninja-pattern"
+          ]
+        },
+        {
+          "text": "Passive Skill Tree",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "패시브 스킬 트리",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Ranger",
+          "count": 2,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "RUNES OF ALDUR"
+          ],
+          "ko": "레인저",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Runes of Aldur",
+          "count": 2,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [
+            "RUNES OF ALDUR"
+          ],
+          "ko": "알두르의 룬",
+          "match": "exact",
+          "sources": [
+            "poe2/common"
+          ]
+        },
+        {
+          "text": "See all builds",
+          "count": 7,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [
+            "RUNES OF ALDUR"
+          ],
+          "ko": "모든 빌드 보기",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Shaman",
+          "count": 4,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "RUNES OF ALDUR"
+          ],
+          "ko": "샤먼",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Smith of Kitava",
+          "count": 2,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "RUNES OF ALDUR"
+          ],
+          "ko": "스미스 오브 키타바",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Sorceress",
+          "count": 2,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "RUNES OF ALDUR"
+          ],
+          "ko": "소서리스",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Spirit Walker",
+          "count": 12,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "RUNES OF ALDUR"
+          ],
+          "ko": "스피릿 워커",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "SSF Fate of the Vaal",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "SSF 바알의 운명",
+          "match": "exact",
+          "sources": [
+            "poe2/common"
+          ]
+        },
+        {
+          "text": "SSF Runes of Aldur",
+          "count": 2,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [
+            "RUNES OF ALDUR"
+          ],
+          "ko": "SSF 알두르의 룬",
+          "match": "exact",
+          "sources": [
+            "poe2/common"
+          ]
+        },
+        {
+          "text": "Standard",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "스탠다드",
+          "match": "exact",
+          "sources": [
+            "poe2/common"
+          ]
+        },
+        {
+          "text": "Stormweaver",
+          "count": 2,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "RUNES OF ALDUR"
+          ],
+          "ko": "스톰위버",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Tactician",
+          "count": 10,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "RUNES OF ALDUR"
+          ],
+          "ko": "택티션",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Titan",
+          "count": 4,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "RUNES OF ALDUR"
+          ],
+          "ko": "타이탄",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Top Classes Per League",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [
+            "RUNES OF ALDUR"
+          ],
+          "ko": "리그별 상위 클래스",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Witch",
+          "count": 2,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "RUNES OF ALDUR"
+          ],
+          "ko": "위치",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Witchhunter",
+          "count": 14,
+          "kinds": [
+            "attribute:alt",
+            "text"
+          ],
+          "sectionHeadings": [
+            "RUNES OF ALDUR"
+          ],
+          "ko": "위치헌터",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        }
+      ],
+      "deferred": [],
+      "candidates": [
+        {
+          "text": "Die Doppelten EinundDreißiger (PL81612)",
+          "count": 2,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [
+            "RUNES OF ALDUR"
+          ]
+        },
+        {
+          "text": "Hate of the Vaal (PL81261)",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": []
+        },
+        {
+          "text": "Jagodki Nadina (PL81655)",
+          "count": 2,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [
+            "RUNES OF ALDUR"
+          ]
+        },
+        {
+          "text": "Stallathon League (PL81355)",
+          "count": 2,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [
+            "RUNES OF ALDUR"
+          ]
+        },
+        {
+          "text": "suikun league overcome despair (PL81066)",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": []
+        }
+      ]
+    },
+    {
+      "url": "https://poe.ninja/poe2/builds/runesofaldur",
+      "title": "Builds - Runes of Aldur - Path of Exile 2 - poe.ninja",
+      "stats": {
+        "uniqueTexts": 615,
+        "translated": 140,
+        "deferred": 24,
+        "candidates": 0,
+        "ignored": 451
+      },
+      "translated": [
+        {
+          "text": "Abyssal Lich",
+          "count": 5,
+          "kinds": [
+            "attribute:alt",
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "심연의 리치",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Acolyte of Chayula",
+          "count": 5,
+          "kinds": [
+            "attribute:alt",
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "애컬라이트 오브 차율라",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Add your character",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "캐릭터 추가",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "All Skills",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [
+            "ALL SKILLS"
+          ],
+          "ko": "모든 스킬",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Amazon",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "아마존",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Ancestral Bond",
+          "count": 7,
+          "kinds": [
+            "attribute:alt"
+          ],
+          "sectionHeadings": [],
+          "ko": "선대의 유대",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Anointed Passives",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [
+            "ANOINTED PASSIVES"
+          ],
+          "ko": "성유 부여 패시브",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Barbaric Strength",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "ANOINTED PASSIVES"
+          ],
+          "ko": "야만적인 힘",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Barrage",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "MAIN SKILLS"
+          ],
+          "ko": "연발 사격",
+          "match": "exact",
+          "sources": [
+            "poe2/stats"
+          ]
+        },
+        {
+          "text": "Blood Mage",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "블러드 메이지",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Blood Magic",
+          "count": 3,
+          "kinds": [
+            "attribute:alt"
+          ],
+          "sectionHeadings": [],
+          "ko": "혈마법",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Bone Cage",
+          "count": 1,
+          "kinds": [
+            "attribute:alt"
+          ],
+          "sectionHeadings": [],
+          "ko": "뼈 창살",
+          "match": "exact",
+          "sources": [
+            "poe2/stats"
+          ]
+        },
+        {
+          "text": "Chakra of Thought",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "ANOINTED PASSIVES"
+          ],
+          "ko": "사고의 차크라",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Chaos Inoculation",
+          "count": 19,
+          "kinds": [
+            "attribute:alt"
+          ],
+          "sectionHeadings": [],
+          "ko": "카오스 면역",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Chronomancer",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "크로노맨서",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Columns",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "열",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Comet",
+          "count": 2,
+          "kinds": [
+            "attribute:alt"
+          ],
+          "sectionHeadings": [],
+          "ko": "혜성",
+          "match": "exact",
+          "sources": [
+            "poe2/stats"
+          ]
+        },
+        {
+          "text": "Concentrated Area",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "ALL SKILLS"
+          ],
+          "ko": "범위 집중",
+          "match": "exact",
+          "sources": [
+            "poe2/stats"
+          ]
+        },
+        {
+          "text": "Conduit",
+          "count": 4,
+          "kinds": [
+            "attribute:alt"
+          ],
+          "sectionHeadings": [],
+          "ko": "도관",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Conservative Casting",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "ANOINTED PASSIVES"
+          ],
+          "ko": "보수적인 시전",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Cooldown Recovery II",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "ALL SKILLS"
+          ],
+          "ko": "재사용 대기시간 회복 II",
+          "match": "exact",
+          "sources": [
+            "poe2/stats"
+          ]
+        },
+        {
+          "text": "Critical Exploit",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "ANOINTED PASSIVES"
+          ],
+          "ko": "치명타 악용",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Crossbow Shot",
+          "count": 3,
+          "kinds": [
+            "attribute:alt"
+          ],
+          "sectionHeadings": [],
+          "ko": "석궁 사격",
+          "match": "exact",
+          "sources": [
+            "poe2/stats"
+          ]
+        },
+        {
+          "text": "Dance with Death",
+          "count": 21,
+          "kinds": [
+            "attribute:alt",
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "PASSIVES"
+          ],
+          "ko": "죽음의 춤",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Deadeye",
+          "count": 43,
+          "kinds": [
+            "attribute:alt",
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "데드아이",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Disciple of Varashta",
+          "count": 19,
+          "kinds": [
+            "attribute:alt",
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "디사이플 오브 바라시타",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "DPS",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "DPS",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Druid",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "드루이드",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Efficient Casting",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "ANOINTED PASSIVES"
+          ],
+          "ko": "효율적인 시전",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "EHP",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "유효 생명력",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Eldritch Battery",
+          "count": 3,
+          "kinds": [
+            "attribute:alt"
+          ],
+          "sectionHeadings": [],
+          "ko": "섬뜩한 충전기",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Elemental Armament II",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "ALL SKILLS"
+          ],
+          "ko": "원소 병기 II",
+          "match": "exact",
+          "sources": [
+            "poe2/stats"
+          ]
+        },
+        {
+          "text": "Elemental Focus",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "ALL SKILLS"
+          ],
+          "ko": "원소 집중",
+          "match": "exact",
+          "sources": [
+            "poe2/stats"
+          ]
+        },
+        {
+          "text": "Endless Munitions",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "PASSIVES"
+          ],
+          "ko": "끝없는 탄약",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Entangle",
+          "count": 2,
+          "kinds": [
+            "attribute:alt"
+          ],
+          "sectionHeadings": [],
+          "ko": "얽어매기",
+          "match": "exact",
+          "sources": [
+            "poe2/stats"
+          ]
+        },
+        {
+          "text": "ES",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "ES",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Explosive Grenade",
+          "count": 5,
+          "kinds": [
+            "attribute:alt"
+          ],
+          "sectionHeadings": [],
+          "ko": "폭발 유탄",
+          "match": "exact",
+          "sources": [
+            "poe2/stats"
+          ]
+        },
+        {
+          "text": "Flicker Strike",
+          "count": 2,
+          "kinds": [
+            "attribute:alt"
+          ],
+          "sectionHeadings": [],
+          "ko": "점멸 타격",
+          "match": "exact",
+          "sources": [
+            "poe2/stats"
+          ]
+        },
+        {
+          "text": "Freezing Mark",
+          "count": 4,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "ALL SKILLS",
+            "MAIN SKILLS"
+          ],
+          "ko": "동결의 징표",
+          "match": "exact",
+          "sources": [
+            "poe2/stats"
+          ]
+        },
+        {
+          "text": "Frost Bomb",
+          "count": 4,
+          "kinds": [
+            "attribute:alt"
+          ],
+          "sectionHeadings": [],
+          "ko": "서리 폭탄",
+          "match": "exact",
+          "sources": [
+            "poe2/stats"
+          ]
+        },
+        {
+          "text": "Gas Grenade",
+          "count": 1,
+          "kinds": [
+            "attribute:alt"
+          ],
+          "sectionHeadings": [],
+          "ko": "가스 유탄",
+          "match": "exact",
+          "sources": [
+            "poe2/stats"
+          ]
+        },
+        {
+          "text": "Gathering Winds",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "PASSIVES"
+          ],
+          "ko": "몰려드는 바람",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Gemling Legionnaire",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "젬링 리저네어",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Giant's Blood",
+          "count": 6,
+          "kinds": [
+            "attribute:alt"
+          ],
+          "sectionHeadings": [],
+          "ko": "거인의 피",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Glancing Blows",
+          "count": 1,
+          "kinds": [
+            "attribute:alt"
+          ],
+          "sectionHeadings": [],
+          "ko": "비껴내기",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Heavy Ammunition",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "ANOINTED PASSIVES"
+          ],
+          "ko": "중량 탄약",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Herald of Ice",
+          "count": 4,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "ALL SKILLS",
+            "MAIN SKILLS"
+          ],
+          "ko": "얼음의 전령",
+          "match": "exact",
+          "sources": [
+            "poe2/stats"
+          ]
+        },
+        {
+          "text": "Herald of Thunder",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "MAIN SKILLS"
+          ],
+          "ko": "천둥의 전령",
+          "match": "exact",
+          "sources": [
+            "poe2/stats"
+          ]
+        },
+        {
+          "text": "Hollow Focus Technique",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "PASSIVES"
+          ],
+          "ko": "공허의 집중 기술",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Hollow Form Technique",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "PASSIVES"
+          ],
+          "ko": "공허의 형상 기술",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Huntress",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "헌트리스",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Ice Shot",
+          "count": 22,
+          "kinds": [
+            "attribute:alt",
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "MAIN SKILLS"
+          ],
+          "ko": "얼음 화살",
+          "match": "exact",
+          "sources": [
+            "poe2/stats"
+          ]
+        },
+        {
+          "text": "Ice-Tipped Arrows",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "MAIN SKILLS"
+          ],
+          "ko": "얼음촉 화살",
+          "match": "exact",
+          "sources": [
+            "poe2/stats"
+          ]
+        },
+        {
+          "text": "Infernalist",
+          "count": 7,
+          "kinds": [
+            "attribute:alt",
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "인퍼널리스트",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Invoker",
+          "count": 5,
+          "kinds": [
+            "attribute:alt",
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "인보커",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Iron Reflexes",
+          "count": 2,
+          "kinds": [
+            "attribute:alt"
+          ],
+          "sectionHeadings": [],
+          "ko": "철의 반사신경",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Items",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [
+            "ITEMS"
+          ],
+          "ko": "아이템",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Kelari's Deception",
+          "count": 4,
+          "kinds": [
+            "attribute:alt"
+          ],
+          "sectionHeadings": [],
+          "ko": "켈라리의 기만",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Keystones",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "키스톤",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Killing Palm",
+          "count": 2,
+          "kinds": [
+            "attribute:alt"
+          ],
+          "sectionHeadings": [],
+          "ko": "살상 장법",
+          "match": "exact",
+          "sources": [
+            "poe2/stats"
+          ]
+        },
+        {
+          "text": "League",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "리그",
+          "match": "exact",
+          "sources": [
+            "poe2/common",
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Level",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "레벨",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Lich",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "리치",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Life",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "생명력",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/ui/poe-ninja.json",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Long Distance Relationship",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "ANOINTED PASSIVES"
+          ],
+          "ko": "장거리 관계",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Lord of the Wilds",
+          "count": 2,
+          "kinds": [
+            "attribute:alt"
+          ],
+          "sectionHeadings": [],
+          "ko": "Lord of the Wilds",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Magnified Area I",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "ALL SKILLS"
+          ],
+          "ko": "범위 확대 I",
+          "match": "exact",
+          "sources": [
+            "poe2/stats"
+          ]
+        },
+        {
+          "text": "Magnified Area II",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "ALL SKILLS"
+          ],
+          "ko": "범위 확대 II",
+          "match": "exact",
+          "sources": [
+            "poe2/stats"
+          ]
+        },
+        {
+          "text": "Main Skill Modes",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [
+            "MAIN SKILL MODES"
+          ],
+          "ko": "주요 스킬 모드",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Main Skills",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [
+            "MAIN SKILLS"
+          ],
+          "ko": "주요 스킬",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Martial Artist",
+          "count": 17,
+          "kinds": [
+            "attribute:alt",
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "마셜 아티스트",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Mercenary",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "머서너리",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Mind Over Matter",
+          "count": 8,
+          "kinds": [
+            "attribute:alt"
+          ],
+          "sectionHeadings": [],
+          "ko": "물질보다 정신",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Mirage Archer",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "MAIN SKILLS"
+          ],
+          "ko": "신기루 궁수",
+          "match": "exact",
+          "sources": [
+            "poe2/stats"
+          ]
+        },
+        {
+          "text": "Monk",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "몽크",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "More",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "더보기",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Name",
+          "count": 2,
+          "kinds": [
+            "attribute:placeholder",
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "이름",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Navira's Fracturing",
+          "count": 2,
+          "kinds": [
+            "attribute:alt"
+          ],
+          "sectionHeadings": [],
+          "ko": "나비라의 파열",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Normal",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "MAIN SKILL MODES"
+          ],
+          "ko": "일반",
+          "match": "exact",
+          "sources": [
+            "poe2/stats"
+          ]
+        },
+        {
+          "text": "Oasis",
+          "count": 1,
+          "kinds": [
+            "attribute:alt"
+          ],
+          "sectionHeadings": [],
+          "ko": "오아시스",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Oil Barrage",
+          "count": 2,
+          "kinds": [
+            "attribute:alt"
+          ],
+          "sectionHeadings": [],
+          "ko": "기름 포화",
+          "match": "exact",
+          "sources": [
+            "poe2/stats"
+          ]
+        },
+        {
+          "text": "Only show items of type",
+          "count": 2,
+          "kinds": [
+            "attribute:aria-label"
+          ],
+          "sectionHeadings": [
+            "ITEMS",
+            "PASSIVES"
+          ],
+          "ko": "다음 유형 아이템만 표시",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Oracle",
+          "count": 13,
+          "kinds": [
+            "attribute:alt",
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "오라클",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Overwhelming Strike",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "ANOINTED PASSIVES"
+          ],
+          "ko": "압도적인 타격",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Pain Attunement",
+          "count": 3,
+          "kinds": [
+            "attribute:alt"
+          ],
+          "sectionHeadings": [],
+          "ko": "고통의 조율",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Passive Skill Tree",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "패시브 스킬 트리",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Passives",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [
+            "PASSIVES"
+          ],
+          "ko": "패시브",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Pathfinder",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "패스파인더",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Point Blank",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "PASSIVES"
+          ],
+          "ko": "근접 사격",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Pounce",
+          "count": 1,
+          "kinds": [
+            "attribute:alt"
+          ],
+          "sectionHeadings": [],
+          "ko": "급습",
+          "match": "exact",
+          "sources": [
+            "poe2/stats"
+          ]
+        },
+        {
+          "text": "Preservation",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "ANOINTED PASSIVES"
+          ],
+          "ko": "보존",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Primal Bounty",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "PASSIVES"
+          ],
+          "ko": "원시 하사품",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Primal Hunger",
+          "count": 1,
+          "kinds": [
+            "attribute:alt"
+          ],
+          "sectionHeadings": [],
+          "ko": "Primal Hunger",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Profane Ritual",
+          "count": 3,
+          "kinds": [
+            "attribute:alt"
+          ],
+          "sectionHeadings": [],
+          "ko": "부정한 의식",
+          "match": "exact",
+          "sources": [
+            "poe2/stats"
+          ]
+        },
+        {
+          "text": "Projectile Proximity Specialisation",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "PASSIVES"
+          ],
+          "ko": "투사체 근접성 전문화",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Prolonged Duration II",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "ALL SKILLS"
+          ],
+          "ko": "지속시간 연장 II",
+          "match": "exact",
+          "sources": [
+            "poe2/stats"
+          ]
+        },
+        {
+          "text": "Rampage",
+          "count": 1,
+          "kinds": [
+            "attribute:alt"
+          ],
+          "sectionHeadings": [],
+          "ko": "광란:스킬",
+          "match": "exact",
+          "sources": [
+            "poe2/stats"
+          ]
+        },
+        {
+          "text": "Ranger",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "레인저",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Rapid Attacks II",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "ALL SKILLS"
+          ],
+          "ko": "빠른 공격 II",
+          "match": "exact",
+          "sources": [
+            "poe2/stats"
+          ]
+        },
+        {
+          "text": "Rapid Casting II",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "ALL SKILLS"
+          ],
+          "ko": "빠른 시전 II",
+          "match": "exact",
+          "sources": [
+            "poe2/stats"
+          ]
+        },
+        {
+          "text": "Reset all filters",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "모든 필터 초기화",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Ritualist",
+          "count": 11,
+          "kinds": [
+            "attribute:alt",
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "리추얼리스트",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Runic Meridians",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "PASSIVES"
+          ],
+          "ko": "룬 기혈",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Search filters...",
+          "count": 1,
+          "kinds": [
+            "attribute:placeholder"
+          ],
+          "sectionHeadings": [],
+          "ko": "필터 검색...",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Serrated Edges",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "ANOINTED PASSIVES"
+          ],
+          "ko": "톱니 칼날",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Shaman",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "샤먼",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Shield Wall",
+          "count": 3,
+          "kinds": [
+            "attribute:alt"
+          ],
+          "sectionHeadings": [],
+          "ko": "방패의 벽",
+          "match": "exact",
+          "sources": [
+            "poe2/stats"
+          ]
+        },
+        {
+          "text": "Show passive heatmap",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "패시브 히트맵 보기",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Smith of Kitava",
+          "count": 5,
+          "kinds": [
+            "attribute:alt",
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "스미스 오브 키타바",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Snipe",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "MAIN SKILLS"
+          ],
+          "ko": "저격",
+          "match": "exact",
+          "sources": [
+            "poe2/stats"
+          ]
+        },
+        {
+          "text": "Sorceress",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "소서리스",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Spirit Walker",
+          "count": 41,
+          "kinds": [
+            "attribute:alt",
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "스피릿 워커",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Storm Wave",
+          "count": 1,
+          "kinds": [
+            "attribute:alt"
+          ],
+          "sectionHeadings": [],
+          "ko": "폭풍 파도",
+          "match": "exact",
+          "sources": [
+            "poe2/stats"
+          ]
+        },
+        {
+          "text": "Stormweaver",
+          "count": 3,
+          "kinds": [
+            "attribute:alt",
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "스톰위버",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Summon Infernal Hound",
+          "count": 1,
+          "kinds": [
+            "attribute:alt"
+          ],
+          "sectionHeadings": [],
+          "ko": "지옥불 사냥개 소환",
+          "match": "exact",
+          "sources": [
+            "poe2/stats"
+          ]
+        },
+        {
+          "text": "Tactician",
+          "count": 17,
+          "kinds": [
+            "attribute:alt",
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "택티션",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "The Mhacha's Gift",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "PASSIVES"
+          ],
+          "ko": "마하의 선물",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Thrashing Vines",
+          "count": 3,
+          "kinds": [
+            "attribute:alt"
+          ],
+          "sectionHeadings": [],
+          "ko": "몸부림치는 덩굴",
+          "match": "exact",
+          "sources": [
+            "poe2/stats"
+          ]
+        },
+        {
+          "text": "Time machine",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "시간 선택",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Time machine - see the league at earlier stages",
+          "count": 1,
+          "kinds": [
+            "attribute:title"
+          ],
+          "sectionHeadings": [],
+          "ko": "이전 시점 리그 보기",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Titan",
+          "count": 9,
+          "kinds": [
+            "attribute:alt",
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "타이탄",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Triggered",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "MAIN SKILL MODES"
+          ],
+          "ko": "발동형",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Trusted Kinship",
+          "count": 2,
+          "kinds": [
+            "attribute:alt"
+          ],
+          "sectionHeadings": [],
+          "ko": "신뢰의 연대감",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Twister",
+          "count": 23,
+          "kinds": [
+            "attribute:alt",
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "MAIN SKILLS"
+          ],
+          "ko": "돌개바람",
+          "match": "exact",
+          "sources": [
+            "poe2/stats"
+          ]
+        },
+        {
+          "text": "Vulgar Methods",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "ANOINTED PASSIVES"
+          ],
+          "ko": "저속한 수법",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Warbringer",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "워브링어",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Warrior",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "워리어",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Way of the Stonefist",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "PASSIVES"
+          ],
+          "ko": "돌주먹의 도",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Weapon Configuration",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [
+            "WEAPON CONFIGURATION"
+          ],
+          "ko": "무기 구성",
+          "match": "exact",
+          "sources": [
+            "poe2/ui/poe-ninja.json"
+          ]
+        },
+        {
+          "text": "Well of Power",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "ANOINTED PASSIVES"
+          ],
+          "ko": "힘의 우물",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Whirling Assault",
+          "count": 1,
+          "kinds": [
+            "attribute:alt"
+          ],
+          "sectionHeadings": [],
+          "ko": "선회 공격",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Whirling Slash",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "MAIN SKILLS"
+          ],
+          "ko": "소용돌이 베기",
+          "match": "exact",
+          "sources": [
+            "poe2/stats"
+          ]
+        },
+        {
+          "text": "Whispers of Doom",
+          "count": 3,
+          "kinds": [
+            "attribute:alt"
+          ],
+          "sectionHeadings": [],
+          "ko": "멸망의 속삭임",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Wild Protector",
+          "count": 4,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "MAIN SKILLS",
+            "PASSIVES"
+          ],
+          "ko": "야생 보호자",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Wildsurge Incantation",
+          "count": 4,
+          "kinds": [
+            "attribute:alt"
+          ],
+          "sectionHeadings": [],
+          "ko": "Wildsurge Incantation",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Wind Dancer",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "ALL SKILLS"
+          ],
+          "ko": "바람의 무희",
+          "match": "exact",
+          "sources": [
+            "poe2/stats"
+          ]
+        },
+        {
+          "text": "Witch",
+          "count": 1,
+          "kinds": [
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "위치",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Witchhunter",
+          "count": 9,
+          "kinds": [
+            "attribute:alt",
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [],
+          "ko": "위치헌터",
+          "match": "exact",
+          "sources": [
+            "poe2/passives",
+            "poe2/common",
+            "poe2/display/passives.json"
+          ]
+        },
+        {
+          "text": "Wolf Pack",
+          "count": 2,
+          "kinds": [
+            "attribute:alt"
+          ],
+          "sectionHeadings": [],
+          "ko": "늑대 무리",
+          "match": "exact",
+          "sources": [
+            "poe2/stats"
+          ]
+        },
+        {
+          "text": "Zealot's Oath",
+          "count": 1,
+          "kinds": [
+            "attribute:alt"
+          ],
+          "sectionHeadings": [],
+          "ko": "맹신자의 서약",
+          "match": "exact",
+          "sources": [
+            "poe2/stats",
+            "poe2/passives",
+            "poe2/display/passives.json"
+          ]
+        }
+      ],
+      "deferred": [
+        {
+          "text": "Bow / Quiver",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "WEAPON CONFIGURATION"
+          ],
+          "reason": "game-data-section-content",
+          "sectionHeading": "WEAPON CONFIGURATION"
+        },
+        {
+          "text": "Crossbow",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "WEAPON CONFIGURATION"
+          ],
+          "reason": "game-data-section-content",
+          "sectionHeading": "WEAPON CONFIGURATION"
+        },
+        {
+          "text": "Hollow Focus",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "MAIN SKILLS"
+          ],
+          "reason": "game-data-section-content",
+          "sectionHeading": "MAIN SKILLS"
+        },
+        {
+          "text": "Magic Charm",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "ITEMS"
+          ],
+          "reason": "game-data-section-content",
+          "sectionHeading": "ITEMS"
+        },
+        {
+          "text": "Magic Flask",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "ITEMS"
+          ],
+          "reason": "game-data-section-content",
+          "sectionHeading": "ITEMS"
+        },
+        {
+          "text": "Normal Charm",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "ITEMS"
+          ],
+          "reason": "game-data-section-content",
+          "sectionHeading": "ITEMS"
+        },
+        {
+          "text": "Rare Amulet",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "ITEMS"
+          ],
+          "reason": "game-data-section-content",
+          "sectionHeading": "ITEMS"
+        },
+        {
+          "text": "Rare Belt",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "ITEMS"
+          ],
+          "reason": "game-data-section-content",
+          "sectionHeading": "ITEMS"
+        },
+        {
+          "text": "Rare Body Armour",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "ITEMS"
+          ],
+          "reason": "game-data-section-content",
+          "sectionHeading": "ITEMS"
+        },
+        {
+          "text": "Rare Boots",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "ITEMS"
+          ],
+          "reason": "game-data-section-content",
+          "sectionHeading": "ITEMS"
+        },
+        {
+          "text": "Rare Gloves",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "ITEMS"
+          ],
+          "reason": "game-data-section-content",
+          "sectionHeading": "ITEMS"
+        },
+        {
+          "text": "Rare Helmet",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "ITEMS"
+          ],
+          "reason": "game-data-section-content",
+          "sectionHeading": "ITEMS"
+        },
+        {
+          "text": "Rare Jewel",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "ITEMS"
+          ],
+          "reason": "game-data-section-content",
+          "sectionHeading": "ITEMS"
+        },
+        {
+          "text": "Rare Ring",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "ITEMS"
+          ],
+          "reason": "game-data-section-content",
+          "sectionHeading": "ITEMS"
+        },
+        {
+          "text": "Rare Sceptre",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "ITEMS"
+          ],
+          "reason": "game-data-section-content",
+          "sectionHeading": "ITEMS"
+        },
+        {
+          "text": "Sceptre / Focus",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "WEAPON CONFIGURATION"
+          ],
+          "reason": "game-data-section-content",
+          "sectionHeading": "WEAPON CONFIGURATION"
+        },
+        {
+          "text": "Spear",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "WEAPON CONFIGURATION"
+          ],
+          "reason": "game-data-section-content",
+          "sectionHeading": "WEAPON CONFIGURATION"
+        },
+        {
+          "text": "Spear / Sceptre",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "WEAPON CONFIGURATION"
+          ],
+          "reason": "game-data-section-content",
+          "sectionHeading": "WEAPON CONFIGURATION"
+        },
+        {
+          "text": "Staff",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "WEAPON CONFIGURATION"
+          ],
+          "reason": "game-data-section-content",
+          "sectionHeading": "WEAPON CONFIGURATION"
+        },
+        {
+          "text": "Talisman",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "WEAPON CONFIGURATION"
+          ],
+          "reason": "game-data-section-content",
+          "sectionHeading": "WEAPON CONFIGURATION"
+        },
+        {
+          "text": "Unarmed",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "WEAPON CONFIGURATION"
+          ],
+          "reason": "game-data-section-content",
+          "sectionHeading": "WEAPON CONFIGURATION"
+        },
+        {
+          "text": "Unknown / Sceptre",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "WEAPON CONFIGURATION"
+          ],
+          "reason": "game-data-section-content",
+          "sectionHeading": "WEAPON CONFIGURATION"
+        },
+        {
+          "text": "Wand / Focus",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "WEAPON CONFIGURATION"
+          ],
+          "reason": "game-data-section-content",
+          "sectionHeading": "WEAPON CONFIGURATION"
+        },
+        {
+          "text": "Wand / Sceptre",
+          "count": 2,
+          "kinds": [
+            "attribute:title",
+            "text"
+          ],
+          "sectionHeadings": [
+            "WEAPON CONFIGURATION"
+          ],
+          "reason": "game-data-section-content",
+          "sectionHeading": "WEAPON CONFIGURATION"
+        }
+      ],
+      "candidates": []
+    }
+  ]
+}

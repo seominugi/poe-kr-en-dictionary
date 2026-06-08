@@ -1,8 +1,9 @@
-import { readFileSync, writeFileSync, mkdirSync, readdirSync } from 'fs'
+import { existsSync, readFileSync, writeFileSync, mkdirSync, readdirSync } from 'fs'
 import { join } from 'path'
 import { CONFIG } from './config.js'
 import { extractPoedbData } from './sources/extract-poedb.js'
 import { fetchAndMatchTradeStats } from './sources/fetch-trade-api.js'
+import { fetchAndMatchPassiveTree } from './sources/fetch-passive-tree.js'
 import { generateReport } from './utils/reporter.js'
 
 /**
@@ -33,15 +34,30 @@ export function loadLegacyDict(version) {
   return merged
 }
 
-/**
- * v2/poe{version}/overrides.json을 로드한다. 없으면 빈 객체.
- */
-export function loadOverrides(version) {
-  const overridesPath = join(CONFIG.OUTPUT[version], 'overrides.json')
+function readJsonObject(filePath) {
   try {
-    return JSON.parse(readFileSync(overridesPath, 'utf-8'))
+    const data = JSON.parse(readFileSync(filePath, 'utf-8'))
+    return data && typeof data === 'object' && !Array.isArray(data) ? data : {}
   } catch {
     return {}
+  }
+}
+
+/**
+ * v2/poe{version}/overrides.json과 카테고리별 overrides/{category}.json을 로드한다.
+ */
+export function loadOverrides(version, category = null) {
+  const outputDir = CONFIG.OUTPUT[version]
+  const globalOverrides = readJsonObject(join(outputDir, 'overrides.json'))
+
+  if (!category) return globalOverrides
+
+  const categoryPath = join(outputDir, 'overrides', `${category}.json`)
+  if (!existsSync(categoryPath)) return globalOverrides
+
+  return {
+    ...globalOverrides,
+    ...readJsonObject(categoryPath),
   }
 }
 
@@ -79,51 +95,89 @@ async function build(version) {
     console.warn(`[Step 2] Trade API fetch 실패, 건너뜀: ${err.message}`)
   }
 
-  // Step 3: 기존 legacy 사전 로드
-  console.log('[Step 3] Legacy 사전 로드 중...')
+  // Step 3: 공식 POE2 패시브 트리 fetch + 매칭
+  let passiveResult = { matched: {}, displayAliases: {}, unmatched: [], report: null }
+  if (version === 'poe2') {
+    console.log('[Step 3] 공식 Passive Tree API 매칭 중...')
+    try {
+      passiveResult = await fetchAndMatchPassiveTree(version)
+      console.log(`[Step 3] Passive Tree에서 ${Object.keys(passiveResult.matched).length}개 매칭 완료`)
+      console.log(`[Step 3] Anointed Passives ${passiveResult.report.stats.anointedPassives}개 확인`)
+    } catch (err) {
+      console.warn(`[Step 3] Passive Tree API fetch 실패, 건너뜀: ${err.message}`)
+    }
+  } else {
+    console.log('[Step 3] Passive Tree API는 POE2 전용이라 건너뜀')
+  }
+
+  // Step 4: 기존 legacy 사전 로드
+  console.log('[Step 4] Legacy 사전 로드 중...')
   const legacy = loadLegacyDict(version)
-  console.log(`[Step 3] Legacy에서 ${Object.keys(legacy).length}개 항목 로드`)
+  console.log(`[Step 4] Legacy에서 ${Object.keys(legacy).length}개 항목 로드`)
 
-  // Step 4: overrides 로드
-  const overrides = loadOverrides(version)
-  console.log(`[Step 4] Overrides: ${Object.keys(overrides).length}개 항목`)
+  // Step 5: overrides 로드
+  const globalOverrides = loadOverrides(version)
+  const overridesByCategory = {}
+  const allOverrides = { ...globalOverrides }
 
-  // Step 5: 카테고리별 병합 및 출력
-  console.log('[Step 5] 카테고리별 병합 및 출력...')
+  for (const category of CONFIG.CATEGORIES) {
+    overridesByCategory[category] = loadOverrides(version, category)
+    Object.assign(allOverrides, overridesByCategory[category])
+  }
+
+  console.log(`[Step 5] Global overrides: ${Object.keys(globalOverrides).length}개 항목`)
+  console.log(`[Step 5] Category overrides 포함: ${Object.keys(allOverrides).length}개 항목`)
+
+  // Step 6: 카테고리별 병합 및 출력
+  console.log('[Step 6] 카테고리별 병합 및 출력...')
   const outputDir = CONFIG.OUTPUT[version]
   mkdirSync(outputDir, { recursive: true })
 
   for (const category of CONFIG.CATEGORIES) {
+    const overrides = overridesByCategory[category]
     const poedbCat = poedbData[category] ?? {}
-    // stats 카테고리는 Trade API 매칭 결과도 병합
+    // stats는 Trade API, passives는 Passive Tree API 매칭 결과도 병합
     const tradeCat = category === 'stats' ? tradeResult.matched : {}
+    const passiveCat = category === 'passives' ? passiveResult.matched : {}
     // legacy는 stats에 전체 폴백으로 사용
     const legacyCat = category === 'stats' ? legacy : {}
 
     const merged = mergeDictionaries({
       overrides,
       poedb: poedbCat,
-      tradeApi: tradeCat,
+      tradeApi: { ...tradeCat, ...passiveCat },
       legacy: legacyCat,
     })
 
     const outputPath = join(outputDir, `${category}.json`)
     writeFileSync(outputPath, sortedJsonStringify(merged), 'utf-8')
-    console.log(`  ${category}.json: ${Object.keys(merged).length}개 항목`)
+    console.log(`  ${category}.json: ${Object.keys(merged).length}개 항목 (overrides ${Object.keys(overrides).length}개)`)
   }
 
-  // Step 6: shared/common.json
+  if (version === 'poe2' && passiveResult.report) {
+    const displayDir = join(outputDir, 'display')
+    mkdirSync(displayDir, { recursive: true })
+    writeFileSync(
+      join(displayDir, 'passives.json'),
+      sortedJsonStringify(passiveResult.displayAliases),
+      'utf-8'
+    )
+    console.log(`  display/passives.json: ${Object.keys(passiveResult.displayAliases).length}개 표시 alias`)
+  }
+
+  // Step 7: shared/common.json
   mkdirSync(CONFIG.OUTPUT.shared, { recursive: true })
 
-  // Step 7: 빌드 리포트
+  // Step 8: 빌드 리포트
   const report = generateReport(version, {
     poedb: Object.fromEntries(
       Object.values(poedbData).flatMap((cat) => Object.entries(cat))
     ),
     tradeApi: tradeResult.matched,
-    overrides,
+    passiveTree: passiveResult.matched,
+    overrides: allOverrides,
     legacyFallback: legacy,
-  }, tradeResult.unmatched)
+  }, [...tradeResult.unmatched, ...passiveResult.unmatched])
 
   mkdirSync(CONFIG.REPORTS, { recursive: true })
   writeFileSync(
@@ -131,9 +185,22 @@ async function build(version) {
     JSON.stringify(report, null, 2),
     'utf-8'
   )
+
+  if (passiveResult.report) {
+    writeFileSync(
+      join(CONFIG.REPORTS, `passive-tree-report-${version}.json`),
+      JSON.stringify({
+        generatedAt: new Date().toISOString(),
+        ...passiveResult.report,
+      }, null, 2),
+      'utf-8'
+    )
+    console.log(`[리포트] reports/passive-tree-report-${version}.json 생성`)
+  }
+
   console.log(`\n[리포트] reports/build-report-${version}.json 생성`)
   console.log(`  총 항목: ${report.stats.total}`)
-  console.log(`  poedb: ${report.stats.fromPoedb} | Trade API: ${report.stats.fromTradeApi}`)
+  console.log(`  poedb: ${report.stats.fromPoedb} | Trade API: ${report.stats.fromTradeApi} | Passive Tree: ${report.stats.fromPassiveTree}`)
   console.log(`  Overrides: ${report.stats.fromOverrides} | Legacy 폴백: ${report.stats.fromLegacyFallback}`)
   console.log(`  미매칭: ${report.stats.unmatched}`)
   console.log(`\n=== ${version.toUpperCase()} 빌드 완료 ===\n`)
