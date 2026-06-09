@@ -15,6 +15,15 @@ export function mergeDictionaries({ overrides, poedb, tradeApi, legacy }) {
 }
 
 /**
+ * Trade API가 0매칭(일시 fetch 실패 추정)이면 stats.json을 덮어쓰지 않고 기존 파일을 보존할지 판단한다.
+ * 정상 빌드는 수천 건이 매칭되며, stats는 Trade API 의존도가 높아 빈 결과로 덮어쓰면 번역이 퇴화한다.
+ * 기존 파일이 없으면(최초 빌드) 보존할 대상이 없으므로 false.
+ */
+export function shouldPreserveExistingStats({ category, tradeApiMatchCount, fileExists }) {
+  return category === 'stats' && tradeApiMatchCount === 0 && fileExists === true
+}
+
+/**
  * 기존 dict/ legacy 파일들을 로드하여 하나로 병합한다.
  */
 export function loadLegacyDict(version) {
@@ -133,6 +142,9 @@ async function build(version) {
   const outputDir = CONFIG.OUTPUT[version]
   mkdirSync(outputDir, { recursive: true })
 
+  // Trade API 매칭 수(0이면 일시 실패 추정) — stats.json 퇴화 방지 가드에 사용.
+  const tradeApiMatchCount = Object.keys(tradeResult.matched).length
+
   for (const category of CONFIG.CATEGORIES) {
     const overrides = overridesByCategory[category]
     const poedbCat = poedbData[category] ?? {}
@@ -142,6 +154,17 @@ async function build(version) {
     // legacy는 stats에 전체 폴백으로 사용
     const legacyCat = category === 'stats' ? legacy : {}
 
+    const outputPath = join(outputDir, `${category}.json`)
+
+    // 가드: Trade API 일시 실패(0매칭) 시 기존 stats.json을 보존(덮어쓰기 건너뜀).
+    // 빈 Trade 결과로 덮어쓰면 스탯 번역이 대량 퇴화하므로, 복구 후 재빌드를 유도한다.
+    if (shouldPreserveExistingStats({ category, tradeApiMatchCount, fileExists: existsSync(outputPath) })) {
+      console.warn(
+        `  ⚠️  ${category}.json: Trade API 0매칭(일시 실패 추정) → 기존 파일 보존(덮어쓰기 건너뜀). Trade API 복구 후 재빌드 권장.`
+      )
+      continue
+    }
+
     const merged = mergeDictionaries({
       overrides,
       poedb: poedbCat,
@@ -149,7 +172,6 @@ async function build(version) {
       legacy: legacyCat,
     })
 
-    const outputPath = join(outputDir, `${category}.json`)
     writeFileSync(outputPath, sortedJsonStringify(merged), 'utf-8')
     console.log(`  ${category}.json: ${Object.keys(merged).length}개 항목 (overrides ${Object.keys(overrides).length}개)`)
   }

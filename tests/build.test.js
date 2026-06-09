@@ -1,5 +1,10 @@
 import { describe, it, expect } from 'vitest'
-import { mergeDictionaries, loadLegacyDict, loadOverrides } from '../scripts/build.js'
+import {
+  mergeDictionaries,
+  loadLegacyDict,
+  loadOverrides,
+  shouldPreserveExistingStats,
+} from '../scripts/build.js'
 
 describe('mergeDictionaries', () => {
   it('우선순위대로 병합한다 (overrides > poedb > tradeApi > legacy)', () => {
@@ -45,5 +50,34 @@ describe('loadOverrides', () => {
 
   it('카테고리가 없으면 global overrides만 반환한다', () => {
     expect(loadOverrides('poe2', 'not-a-category')).toEqual(loadOverrides('poe2'))
+  })
+})
+
+describe('shouldPreserveExistingStats', () => {
+  it('Trade API 0매칭 + 기존 stats.json 존재 시에만 보존(덮어쓰기 건너뜀)', () => {
+    expect(
+      shouldPreserveExistingStats({ category: 'stats', tradeApiMatchCount: 0, fileExists: true })
+    ).toBe(true)
+  })
+
+  it('Trade API 매칭이 있으면 정상 덮어쓰기(보존 안 함)', () => {
+    expect(
+      shouldPreserveExistingStats({ category: 'stats', tradeApiMatchCount: 3000, fileExists: true })
+    ).toBe(false)
+  })
+
+  it('최초 빌드(기존 파일 없음)면 보존 대상이 없어 false', () => {
+    expect(
+      shouldPreserveExistingStats({ category: 'stats', tradeApiMatchCount: 0, fileExists: false })
+    ).toBe(false)
+  })
+
+  it('stats 외 카테고리는 Trade API 실패와 무관하게 보존하지 않는다', () => {
+    expect(
+      shouldPreserveExistingStats({ category: 'items', tradeApiMatchCount: 0, fileExists: true })
+    ).toBe(false)
+    expect(
+      shouldPreserveExistingStats({ category: 'currency', tradeApiMatchCount: 0, fileExists: true })
+    ).toBe(false)
   })
 })
