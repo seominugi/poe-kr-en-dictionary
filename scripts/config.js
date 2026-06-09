@@ -37,6 +37,12 @@ export const CONFIG = {
     poe2: resolve(ROOT, 'dict/POE2/ko-en'),
   },
 
+  // 패시브 트리 노드 설명(en→ko) — display/passives.json 병합용.
+  // 확장이 로드하는 display alias에 합쳐 캐릭터 상세/툴팁의 노드 설명을 번역한다.
+  PASSIVE_TREE_DISPLAY_DESC: {
+    poe2: resolve(ROOT, 'dict/POE2/en-ko/poe2_passives_skill_tree.json'),
+  },
+
   // v2 출력 경로
   OUTPUT: {
     poe1: resolve(ROOT, 'v2/poe1'),

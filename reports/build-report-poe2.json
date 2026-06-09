@@ -1,10 +1,10 @@
 {
   "version": "poe2",
-  "buildDate": "2026-06-08T06:23:49.844Z",
+  "buildDate": "2026-06-09T03:24:31.046Z",
   "stats": {
-    "total": 19979,
+    "total": 19981,
     "fromPoedb": 6864,
-    "fromTradeApi": 3508,
+    "fromTradeApi": 3510,
     "fromPassiveTree": 2003,
     "fromOverrides": 59,
     "fromLegacyFallback": 7545,
@@ -12,8 +12,8 @@
   },
   "unmatched": [
     {
-      "kr": "할당 엔트로피의 화신",
-      "id": "crafted.stat_2954116742|30720",
+      "kr": "할당 강화하는 잔류물",
+      "id": "crafted.stat_2954116742|40985",
       "category": "제작된",
       "source": "trade-api"
     }

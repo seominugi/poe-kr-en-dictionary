@@ -157,12 +157,18 @@ async function build(version) {
   if (version === 'poe2' && passiveResult.report) {
     const displayDir = join(outputDir, 'display')
     mkdirSync(displayDir, { recursive: true })
+    // 패시브 트리 노드 설명(en→ko)을 display alias에 병합한다.
+    // 트리 API alias(노드명/표기변형)가 우선하고, 노드 설명(스탯 라인)을 추가로 채운다.
+    // 확장은 display/passives.json을 en→ko로 그대로 사용하므로, 캐릭터 상세/트리 툴팁의
+    // 노드 설명이 번역된다.
+    const treeDesc = readJsonObject(CONFIG.PASSIVE_TREE_DISPLAY_DESC?.[version])
+    const combinedDisplay = { ...treeDesc, ...passiveResult.displayAliases }
     writeFileSync(
       join(displayDir, 'passives.json'),
-      sortedJsonStringify(passiveResult.displayAliases),
+      sortedJsonStringify(combinedDisplay),
       'utf-8'
     )
-    console.log(`  display/passives.json: ${Object.keys(passiveResult.displayAliases).length}개 표시 alias`)
+    console.log(`  display/passives.json: ${Object.keys(combinedDisplay).length}개 (트리 alias ${Object.keys(passiveResult.displayAliases).length} + 노드 설명 ${Object.keys(treeDesc).length})`)
   }
 
   // Step 7: shared/common.json
