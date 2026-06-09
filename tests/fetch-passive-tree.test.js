@@ -60,6 +60,23 @@ const enTree = {
       skill: 102,
       name: 'Critical Chance',
     },
+    200: {
+      id: 'keystone_stonefist',
+      skill: 200,
+      name: 'Way of the Stonefist',
+      isKeystone: true,
+      stats: [
+        'Gloves you equip have their [BaseType|Base Type] transformed to [HandWraps|Fists of Stone] while equipped, and\ntheir Explicit Modifiers are transformed into more powerful related Modifiers',
+        'Ignore [Attributes|Attribute] Requirements to equip Gloves',
+      ],
+    },
+    201: {
+      id: 'notable_mismatch',
+      skill: 201,
+      name: 'Mismatch Node',
+      isNotable: true,
+      stats: ['Stat A', 'Stat B'],
+    },
   },
   skillOverrides: {
     183: {
@@ -125,6 +142,23 @@ const koTree = {
       id: 'critical2',
       skill: 102,
       name: '치명타 확률',
+    },
+    200: {
+      id: 'keystone_stonefist',
+      skill: 200,
+      name: '돌주먹의 도',
+      isKeystone: true,
+      stats: [
+        '장갑을 장착하면 장착하고 있는 동안 [BaseType|기본 유형]이 [HandWraps|돌 주먹]으로 변하고,\n비고정 속성이 더 강력한 관련 속성으로 변함',
+        '장갑 장착에 필요한 [Attributes|능력치] 무시',
+      ],
+    },
+    201: {
+      id: 'notable_mismatch',
+      skill: 201,
+      name: '불일치 노드',
+      isNotable: true,
+      stats: ['스탯 가'],
     },
   },
   skillOverrides: {
@@ -199,6 +233,34 @@ describe('matchPassiveTreeData', () => {
         recipe: ['LiquidParanoia', 'DilutedLiquidGreed', 'ConcentratedLiquidIsolation'],
       },
     ])
+  })
+
+  it('전직·키스톤·노터블 노드의 stat 설명을 마크업 정리 후 en->ko display alias로 캡처한다', () => {
+    const result = matchPassiveTreeData({ enTree, koTree })
+
+    // 키스톤(돌주먹의 도) — [Key|Display] 마크업이 Display로 정리되고 \n은 공백으로 합쳐진다.
+    expect(result.displayAliases).toMatchObject({
+      'Gloves you equip have their Base Type transformed to Fists of Stone while equipped, and their Explicit Modifiers are transformed into more powerful related Modifiers':
+        '장갑을 장착하면 장착하고 있는 동안 기본 유형이 돌 주먹으로 변하고, 비고정 속성이 더 강력한 관련 속성으로 변함',
+      'Ignore Attribute Requirements to equip Gloves': '장갑 장착에 필요한 능력치 무시',
+    })
+    expect(result.report.stats.nodeStatAliases).toBeGreaterThanOrEqual(2)
+  })
+
+  it('일반(비-전직/키스톤/노터블) 노드의 stat은 캡처하지 않는다 (Trade API 템플릿 중복 회피)', () => {
+    const result = matchPassiveTreeData({ enTree, koTree })
+
+    // node 4(Shock Chance)는 일반 노드 → stat 미캡처
+    expect(result.displayAliases).not.toHaveProperty('15% increased chance to Shock')
+  })
+
+  it('en/ko stat 배열 길이가 다르면 위치 매칭이 위험하므로 건너뛰고 보고한다', () => {
+    const result = matchPassiveTreeData({ enTree, koTree })
+
+    // node 201(Mismatch Node): en 2개 vs ko 1개 → 건너뜀
+    expect(result.report.stats.nodeStatLengthMismatch).toBe(1)
+    expect(result.displayAliases).not.toHaveProperty('Stat A')
+    expect(result.displayAliases).not.toHaveProperty('Stat B')
   })
 })
 

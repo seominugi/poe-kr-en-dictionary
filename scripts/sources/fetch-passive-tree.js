@@ -37,6 +37,8 @@ function createReport() {
       unmatched: 0,
       skippedIncompleteAscendancies: 0,
       skippedIncompleteNodes: 0,
+      nodeStatAliases: 0,
+      nodeStatLengthMismatch: 0,
     },
     skippedIncompleteAscendancies: [],
     skippedIncompleteNodes: [],
@@ -157,6 +159,41 @@ function matchClasses({ enTree, koTree, matched, displayAliases, unmatched, repo
   })
 }
 
+/**
+ * 고유 설명 문장을 가진 노드인지 판별한다.
+ * 전직(ascendancyId)·키스톤·노터블 노드는 Trade API 템플릿에 없는 고유 설명을 가진다.
+ * 일반 소형 노드의 stat은 대부분 Trade API 자리표시자 템플릿으로 이미 번역되므로 제외한다.
+ */
+function isDescribedNode(node) {
+  return node?.ascendancyId != null || node?.isKeystone === true || node?.isNotable === true
+}
+
+/**
+ * 노드의 stat 설명(en→ko)을 display alias로 캡처한다.
+ * en/ko stats 배열을 위치 기반으로 매칭하며, 길이가 다르면 안전하게 건너뛴다.
+ * stripGameMarkup이 [Key|Display] 마크업을 Display 텍스트로 정리하고 \n을 공백으로 합쳐,
+ * poe.ninja 렌더 텍스트(joined-first 매칭)와 일치하는 키를 만든다.
+ */
+function matchNodeStats({ enNode, koNode, displayAliases, report, nodeId }) {
+  const enStats = Array.isArray(enNode.stats) ? enNode.stats : []
+  const koStats = Array.isArray(koNode.stats) ? koNode.stats : []
+  if (!enStats.length) return
+
+  if (enStats.length !== koStats.length) {
+    report.stats.nodeStatLengthMismatch += 1
+    return
+  }
+
+  for (let i = 0; i < enStats.length; i += 1) {
+    const added = addDisplayAlias(displayAliases, report, enStats[i], koStats[i], {
+      type: 'node-stat',
+      nodeId,
+      index: i,
+    })
+    if (added) report.stats.nodeStatAliases += 1
+  }
+}
+
 function matchNodes({ enTree, koTree, matched, displayAliases, unmatched, report }) {
   const enNodes = enTree.nodes ?? {}
   const koNodes = koTree.nodes ?? {}
@@ -175,6 +212,11 @@ function matchNodes({ enTree, koTree, matched, displayAliases, unmatched, report
         reason: 'missing-ko-node',
       })
       continue
+    }
+
+    // 전직·키스톤·노터블 노드의 stat 설명을 캡처한다 (이름 완성도와 무관하게).
+    if (isDescribedNode(enNode)) {
+      matchNodeStats({ enNode, koNode, displayAliases, report, nodeId })
     }
 
     if (isIncompleteName(enNode.name) || isIncompleteName(koNode.name)) {
