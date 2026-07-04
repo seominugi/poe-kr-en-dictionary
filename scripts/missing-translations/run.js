@@ -20,6 +20,7 @@
  */
 
 import { classifyMissingLine } from './classify.js'
+import { detectUnsupported } from './detectUnsupported.js'
 import { buildModifierIndex, resolveFromModifiers } from './resolveFromModifiers.js'
 import { buildTradeApiIndex, resolveFromTradeApi } from './resolveFromTradeApi.js'
 
@@ -36,8 +37,8 @@ import { buildTradeApiIndex, resolveFromTradeApi } from './resolveFromTradeApi.j
  * @typedef {{
  *   generatedAt: string,
  *   version: string,
- *   summary: { total: number, causeA: number, causeB_resolved: number, causeB_unresolved: number },
- *   items: Array<{ko: string, koNorm: string, cause: 'A'|'B', en_tmpl?: string, source?: string, group?: string}>
+ *   summary: { total: number, unsupported: number, causeA: number, causeB_resolved: number, causeB_unresolved: number },
+ *   items: Array<{ko: string, koNorm?: string, cause: 'A'|'B'|'SKIP', reason?: string, en_tmpl?: string, source?: string, group?: string}>
  * }} MissingStatsReport
  */
 
@@ -70,8 +71,18 @@ export async function runMissingTranslations(options) {
   let causeA = 0
   let causeB_resolved = 0
   let causeB_unresolved = 0
+  let unsupported = 0
 
   for (const line of lines) {
+    // 게이트: 번역 지원 대상이 아닌 노이즈(마크업·영문원문·계산값·라벨중복·스토리)는
+    // classify 이전에 제외해 리포트·후보를 진짜 미번역에 집중시킨다. (백엔드 원본은 보존)
+    const support = detectUnsupported(line)
+    if (!support.supported) {
+      unsupported++
+      items.push({ ko: line, cause: 'SKIP', reason: support.reason })
+      continue
+    }
+
     const classified = classifyMissingLine(line, v2StatsNormalizedKeys)
 
     if (classified.cause === 'A') {
@@ -107,6 +118,7 @@ export async function runMissingTranslations(options) {
     version,
     summary: {
       total: lines.length,
+      unsupported,
       causeA,
       causeB_resolved,
       causeB_unresolved,

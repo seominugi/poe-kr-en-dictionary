@@ -131,4 +131,34 @@ describe('runMissingTranslations', () => {
     expect(result.report.summary.causeB_unresolved).toBe(0)
     expect(Object.keys(result.candidates).length).toBe(0)
   })
+
+  it('unsupported 라인은 걸러내 summary.unsupported로 집계하고 candidates에서 제외한다', async () => {
+    const result = await runMissingTranslations({
+      lines: [
+        '냉기 피해 15% 증가', // cause A (v2에 있음)
+        '화염 피해 20% 증가', // cause B resolved (modifiers)
+        '{enchant}Adds 2 to 60 [Fire|Fire] Damage', // unsupported: markup
+        'Physical Damage: 72-119 (augmented)', // unsupported: englishOnly
+        '물리피해: 388-698', // unsupported: calc
+      ],
+      v2StatsMap: fixtureV2Stats,
+      modifierEntries: fixtureModifierEntries,
+      version: 'poe2',
+      generatedAt: FIXED_DATE,
+    })
+
+    expect(result.report.summary.total).toBe(5)
+    expect(result.report.summary.unsupported).toBe(3)
+    expect(result.report.summary.causeA).toBe(1)
+    expect(result.report.summary.causeB_resolved).toBe(1)
+    expect(result.report.summary.causeB_unresolved).toBe(0)
+
+    // unsupported는 candidates에 포함되지 않는다 (B_resolved만)
+    expect(Object.keys(result.candidates)).toEqual(['화염 피해 #% 증가'])
+
+    // items에 cause 'SKIP' + reason이 기록된다 (투명성)
+    const skipped = result.report.items.filter((i) => i.cause === 'SKIP')
+    expect(skipped.length).toBe(3)
+    expect(skipped.map((i) => i.reason).sort()).toEqual(['calc', 'englishOnly', 'markup'])
+  })
 })
