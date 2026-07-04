@@ -110,6 +110,7 @@ async function runCli() {
   const s = report.summary
   console.log(`[missing-translations] v${version} 처리 완료`)
   console.log(`  total: ${s.total}`)
+  console.log(`  unsupported (지원 안 함·제외): ${s.unsupported}`)
   console.log(`  causeA (프론트 매칭 실패): ${s.causeA}`)
   console.log(`  causeB resolved: ${s.causeB_resolved}`)
   console.log(`  causeB unresolved: ${s.causeB_unresolved}`)
