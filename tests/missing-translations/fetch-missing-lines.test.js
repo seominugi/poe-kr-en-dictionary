@@ -29,6 +29,51 @@ describe('fetchMissingLines', () => {
     expect(result).toEqual(['화염 저항 +25%', '냉기 피해 15% 증가'])
   })
 
+  it('백엔드 구조화 응답(객체 배열)에서 normalized 문자열을 추출한다', async () => {
+    // Phase 3 백엔드 GET 실제 형식: lines가 {normalized, raw_samples, count, ...} 객체 배열
+    mockFetch({
+      lines: [
+        {
+          normalized: '냉기 피해 15% 증가',
+          raw_samples: ['냉기 피해 15% 증가'],
+          count: 3,
+          firstSeen: '2026-06-09T03:16:52+00:00',
+          lastSeen: '2026-06-14T15:03:26+00:00',
+          version: 'poe2',
+        },
+        {
+          normalized: '화염 저항 +25%',
+          raw_samples: ['화염 저항 +25%'],
+          count: 1,
+          firstSeen: '2026-06-09T03:16:52+00:00',
+          lastSeen: '2026-06-09T03:16:52+00:00',
+          version: 'poe2',
+        },
+      ],
+      count: 2,
+      generated_at: '2026-07-04T09:20:42+00:00',
+    })
+
+    const result = await fetchMissingLines('https://api.example.com', { version: 'poe2' })
+
+    expect(result).toEqual(['냉기 피해 15% 증가', '화염 저항 +25%'])
+  })
+
+  it('normalized가 없거나 문자열이 아닌 항목은 걸러낸다', async () => {
+    mockFetch({
+      lines: [
+        { normalized: '유효한 라인', raw_samples: [], count: 1 },
+        { raw_samples: ['normalized 없음'], count: 1 }, // normalized 누락
+        { normalized: null, count: 1 }, // null normalized
+        '레거시 문자열', // 하위호환: 순수 문자열도 허용
+      ],
+    })
+
+    const result = await fetchMissingLines('https://api.example.com', { version: 'poe2' })
+
+    expect(result).toEqual(['유효한 라인', '레거시 문자열'])
+  })
+
   it('since 쿼리 파라미터가 URL에 포함된다', async () => {
     mockFetch({ lines: [] })
 
