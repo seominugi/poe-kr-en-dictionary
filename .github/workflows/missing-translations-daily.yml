@@ -1,0 +1,141 @@
+# ============================================================
+# missing-translations-daily.yml
+# 미번역 스탯 라인을 권위 데이터로 매칭해 사전 개선 후보를 PR로 제안하는 일일 잡.
+#
+# 활성화 체크리스트:
+#   1. Secrets 등록 (Settings → Secrets → Actions):
+#      - MISSING_TRANSLATIONS_BACKEND_URL : https://seominugi.com
+#      - PAT_TOKEN : poe-i18n-json-data-generator-dev checkout 용 (build-dict.yml 동일 토큰)
+#   2. workflow_dispatch 로 수동 1회 실행 → 생성된 PR 검토
+#   3. 검증 후 아래 `schedule` 블록 주석 해제로 일일 cron 활성화 (현재: UTC 15:00 = KST 00:00)
+#
+# 백엔드(Phase 3, /api/missing-translations)는 배포·라이브 검증 완료(2026-07-04).
+# §4 보호: candidates 만 PR 제안, overrides 직접 수정 없음 (사람이 리뷰 후 승격).
+# ============================================================
+
+name: Missing Translations Daily Job
+
+on:
+  # ⚠️ cron 은 비활성 상태로 커밋됨 — secrets 미등록 시 매일 실패 알림 방지.
+  #    secrets 등록 + workflow_dispatch 수동 실행으로 첫 PR 검증 후,
+  #    아래 schedule 블록 주석을 해제해 일일 자동 실행을 활성화한다.
+  #    UTC 15:00 = KST 00:00 (자정 일 1회)
+  # schedule:
+  #   - cron: '0 15 * * *'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: '처리할 게임 버전'
+        required: true
+        default: 'both'
+        type: choice
+        options:
+          - poe1
+          - poe2
+          - both
+
+jobs:
+  run-missing-translations:
+    runs-on: ubuntu-latest
+
+    steps:
+      # ────────────────────────────────────────────────
+      # 1. 이 저장소 checkout
+      # ────────────────────────────────────────────────
+      - name: Checkout dictionary repo
+        uses: actions/checkout@v4
+
+      # ────────────────────────────────────────────────
+      # 2. 권위 데이터(poe-i18n) checkout — build-dict.yml 동일 패턴
+      # ────────────────────────────────────────────────
+      - name: Checkout poe-i18n data
+        uses: actions/checkout@v4
+        with:
+          repository: seominugi/poe-i18n-json-data-generator-dev
+          path: poe-i18n-data
+          token: ${{ secrets.PAT_TOKEN }}
+
+      # ────────────────────────────────────────────────
+      # 3. Node.js 설정 + 의존성 설치
+      # ────────────────────────────────────────────────
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      # ────────────────────────────────────────────────
+      # 4. 미번역 매칭 잡 실행 (poe2)
+      # ────────────────────────────────────────────────
+      - name: Run missing-translations job (poe2)
+        if: ${{ github.event_name == 'schedule' || inputs.version == 'poe2' || inputs.version == 'both' }}
+        env:
+          POEDB_DATA_ROOT: ${{ github.workspace }}/poe-i18n-data/assets/data
+        run: |
+          node scripts/missing-translations/run-cli.js \
+            --backend-url "${{ secrets.MISSING_TRANSLATIONS_BACKEND_URL }}" \
+            --version poe2
+
+      # ────────────────────────────────────────────────
+      # 5. 미번역 매칭 잡 실행 (poe1)
+      # ────────────────────────────────────────────────
+      - name: Run missing-translations job (poe1)
+        if: ${{ github.event_name == 'schedule' || inputs.version == 'poe1' || inputs.version == 'both' }}
+        env:
+          POEDB_DATA_ROOT: ${{ github.workspace }}/poe-i18n-data/assets/data
+        run: |
+          node scripts/missing-translations/run-cli.js \
+            --backend-url "${{ secrets.MISSING_TRANSLATIONS_BACKEND_URL }}" \
+            --version poe1
+
+      # ────────────────────────────────────────────────
+      # 6. 실행 요약을 Step Summary에 출력
+      # ────────────────────────────────────────────────
+      - name: Show run summary
+        run: |
+          echo "## Missing Translations Run Summary" >> $GITHUB_STEP_SUMMARY
+          for f in reports/missing-stats-report-*.json; do
+            if [ -f "$f" ]; then
+              echo "### $(basename $f)" >> $GITHUB_STEP_SUMMARY
+              echo '```json' >> $GITHUB_STEP_SUMMARY
+              cat "$f" >> $GITHUB_STEP_SUMMARY
+              echo '```' >> $GITHUB_STEP_SUMMARY
+            fi
+          done
+
+      # ────────────────────────────────────────────────
+      # 7. candidates 디렉토리에 변경이 있으면 PR 생성
+      #    §4 보호: main에 직접 push 금지.
+      #    overrides.json 자동 수정 없음 — 사람이 PR을 리뷰 후 수동 승격.
+      # ────────────────────────────────────────────────
+      - name: Create PR if candidates exist
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: |
+            chore: 미번역 매칭 후보 갱신
+          branch: translation-candidates
+          delete-branch: true
+          title: '[번역 후보] 미번역 스탯 매칭 결과 리뷰 요청'
+          body: |
+            ## 미번역 스탯 매칭 결과
+
+            이 PR은 `missing-translations-daily` 잡이 자동으로 생성했습니다.
+
+            ### 포함 파일
+            - `reports/missing-stats-report-{ver}.json` — 전체 분류 리포트
+            - `candidates/overrides-stats-candidates-{ver}.json` — overrides 승격 후보
+
+            ### 리뷰 방법
+            1. `candidates/` 파일의 후보 항목을 검토합니다.
+            2. 승인할 항목을 `v2/overrides/stats-overrides-{ver}.json`에 수동으로 추가합니다.
+            3. 이 PR을 머지하면 reports/ + candidates/ 파일이 최신 상태로 갱신됩니다.
+
+            > ⚠️ overrides 직접 수정은 이 PR에 포함되지 않습니다 (§4 PR 게이트).
+            > 사람이 리뷰·판단 후 별도 커밋 또는 이 PR에 추가 커밋으로 승격하세요.
+          labels: translation-candidates
+          add-paths: |
+            reports/
+            candidates/
