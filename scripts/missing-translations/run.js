@@ -21,6 +21,8 @@
 
 import { classifyMissingLine } from './classify.js'
 import { detectUnsupported } from './detectUnsupported.js'
+import { preprocessReportLine } from './preprocessReportLine.js'
+import { harvestMarkupPairs } from './harvestMarkupPairs.js'
 import { buildModifierIndex, resolveFromModifiers } from './resolveFromModifiers.js'
 import { buildTradeApiIndex, resolveFromTradeApi } from './resolveFromTradeApi.js'
 
@@ -73,7 +75,12 @@ export async function runMissingTranslations(options) {
   let causeB_unresolved = 0
   let unsupported = 0
 
-  for (const line of lines) {
+  for (const rawLine of lines) {
+    // 전처리: 프론트엔드와 동일하게 굴림 범위 주석을 떼어낸다.
+    // 이걸 빼면 사전에 이미 있는 라인이 정규화 불일치로 사전 공백으로 오판된다.
+    const line = preprocessReportLine(rawLine)
+    const preprocessed = line !== rawLine
+
     // 게이트: 번역 지원 대상이 아닌 노이즈(마크업·영문원문·계산값·라벨중복·스토리)는
     // classify 이전에 제외해 리포트·후보를 진짜 미번역에 집중시킨다. (백엔드 원본은 보존)
     const support = detectUnsupported(line)
@@ -84,10 +91,12 @@ export async function runMissingTranslations(options) {
     }
 
     const classified = classifyMissingLine(line, v2StatsNormalizedKeys)
+    // 전처리로 문자열이 바뀐 경우에만 원본을 함께 남긴다 (추적용)
+    const raw = preprocessed ? { koRaw: rawLine } : {}
 
     if (classified.cause === 'A') {
       causeA++
-      items.push({ ko: classified.ko, koNorm: classified.koNorm, cause: 'A' })
+      items.push({ ko: classified.ko, koNorm: classified.koNorm, cause: 'A', ...raw })
       continue
     }
 
@@ -106,12 +115,17 @@ export async function runMissingTranslations(options) {
         en_tmpl: resolved.enTmpl,
         source: resolved.source,
         group: resolved.group,
+        ...raw,
       })
     } else {
       causeB_unresolved++
-      items.push({ ko: classified.ko, koNorm: classified.koNorm, cause: 'B' })
+      items.push({ ko: classified.ko, koNorm: classified.koNorm, cause: 'B', ...raw })
     }
   }
+
+  // 게임이 `[Key|Display]` 로 직접 짝지어 준 용어는 detectUnsupported 가 markup 으로 걸러내지만,
+  // 버리기 전에 수확한다 — 어느 사전에도 없는 용어의 유일한 권위 근거일 수 있다.
+  const markupPairs = harvestMarkupPairs(lines)
 
   const report = {
     generatedAt,
@@ -122,8 +136,10 @@ export async function runMissingTranslations(options) {
       causeA,
       causeB_resolved,
       causeB_unresolved,
+      markupPairs: markupPairs.length,
     },
     items,
+    markupPairs,
   }
 
   return { report, candidates }

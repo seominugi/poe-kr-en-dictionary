@@ -6,6 +6,7 @@
     "ascendancy::Huntress": "헌트리스",
     "ascendancy::Ritualist": "리추얼리스트",
     "ascendancy::Amazon": "아마존",
+    "ascendancy::Spirit Walker": "스피릿 워커",
 
     "ascendancy::Warrior": "워리어",
     "ascendancy::Smith of Kitava": "스미스 오브 키타바",
@@ -31,6 +32,7 @@
     "ascendancy::Monk": "몽크",
     "ascendancy::Acolyte of Chayula": "애컬라이트 오브 차율라",
     "ascendancy::Invoker": "인보커",
+    "ascendancy::Martial Artist": "마셜 아티스트",
     
     "ascendancy::Druid": "드루이드",
     "ascendancy::Shaman": "샤먼",

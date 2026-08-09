@@ -6,6 +6,8 @@
  *
  * 옵션:
  *   --version poe1|poe2  (기본: poe2)
+ *   --dict-source frontend|v2  판정 기준 사전 (기본: frontend — 프론트가 실제 로드하는 구성)
+ *   --data-tag <tag>     poe-game-data CDN 태그 (기본: latest). 프론트와 정확히 맞추려면 핀 태그 지정
  *   --input <path>       미번역 라인 JSON 파일 (string[] 형식). 미지정 시 stdin.
  *   --out-report <path>  리포트 출력 경로 (기본: reports/missing-stats-report-{ver}.json)
  *   --out-candidates <path> 후보 출력 경로 (기본: candidates/overrides-stats-candidates-{ver}.json)
@@ -32,6 +34,7 @@ import { CONFIG } from '../config.js'
 import { runMissingTranslations } from './run.js'
 import { loadModifierEntries } from './loadModifierEntries.js'
 import { fetchMissingLines } from './fetchMissingLines.js'
+import { loadFrontendDict, DEFAULT_DATA_TAG } from './loadFrontendDict.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = resolve(__dirname, '../..')
@@ -87,8 +90,32 @@ async function runCli() {
     process.exit(0)
   }
 
-  // v2 stats 로드
-  const v2StatsMap = loadV2StatsMap(version)
+  // 판정 기준 사전 로드.
+  // 기본은 frontend — 프론트엔드가 실제로 로드하는 구성(poe-game-data + v2 common)을 재현한다.
+  // v2 는 이 저장소의 v2/{ver}/stats.json 만 보는 레거시 모드로, 프론트 실동작과 어긋난다.
+  const dictSource = readArg(args, '--dict-source', 'frontend')
+  const dataTag = readArg(args, '--data-tag', DEFAULT_DATA_TAG)
+
+  let v2StatsMap
+  if (dictSource === 'v2') {
+    v2StatsMap = loadV2StatsMap(version)
+    console.log('[missing-translations] 사전 기준: v2 (레거시 — 프론트 실동작과 다를 수 있음)')
+  } else {
+    const { map, sources, failed } = await loadFrontendDict(version, {
+      dataTag,
+      log: (msg) => console.warn(msg),
+    })
+    if (Object.keys(map).length === 0) {
+      v2StatsMap = loadV2StatsMap(version)
+      console.warn('[missing-translations] 프론트 사전 로드 실패 → v2 폴백')
+    } else {
+      v2StatsMap = map
+      console.log(
+        `[missing-translations] 사전 기준: frontend@${dataTag} (${sources.join('+')})` +
+          (failed.length ? ` — 누락: ${failed.join(',')}` : '')
+      )
+    }
+  }
 
   // modifiers 엔트리 로드
   const modifierEntries = loadModifierEntries(version)
@@ -114,6 +141,12 @@ async function runCli() {
   console.log(`  causeA (프론트 매칭 실패): ${s.causeA}`)
   console.log(`  causeB resolved: ${s.causeB_resolved}`)
   console.log(`  causeB unresolved: ${s.causeB_unresolved}`)
+  if (s.markupPairs > 0) {
+    console.log(`  게임 마크업에서 수확한 검토 후보: ${s.markupPairs}`)
+    for (const pair of report.markupPairs) {
+      console.log(`    [${pair.confidence}] ${pair.ko} => ${pair.en}`)
+    }
+  }
   console.log(`  report: ${outReport}`)
   console.log(`  candidates: ${outCandidates}`)
 }
