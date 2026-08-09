@@ -14,14 +14,17 @@ PoE 한국어 번역 사전에서 **미번역 스탯 라인을 일일 자동 매
 fetchMissingLines.js
   │  미번역 ko 라인 배열 (string[])
   ▼
+preprocessReportLine.js
+  │  프론트와 동일한 굴림 범위 제거 (95(84-107) → 95)
+  ▼
 classify.js
-  │  원인 분류
+  │  원인 분류 — 기준 사전은 loadFrontendDict.js (§1.1)
   ├─ 원인 A: 프론트 매칭 실패
-  │    (v2/stats.json에 키가 있음 → 프론트엔드 로직 문제)
+  │    (사전에 키가 있음 → 프론트엔드 로직 문제)
   │    → report에 기록, 후보 생략
   │
   └─ 원인 B: 사전 공백
-       (v2/stats.json에 키 없음 → 번역 누락)
+       (사전에 키 없음 → 번역 누락)
        │
        ▼
      resolveFromModifiers.js  ─── 1순위 해소
@@ -45,6 +48,31 @@ PR 생성 (peter-evans/create-pull-request)
 사람이 리뷰 → overrides 수동 승격
 ```
 
+### 1.1 판정 기준 사전 — 프론트엔드와 동일 구성 (중요)
+
+원인 A/B 판정은 **프론트엔드가 실제로 로드하는 사전**을 기준으로 해야 의미가 있다.
+
+프론트엔드(`seominugi-com/src/utils/getData.js`)는 2026-07 이후 `stats`·`items`·`uniques`·`gems`·
+`currency` 를 **poe-game-data**(GGPK 추출)에서 로드하고, 이 저장소에서는 `v2/{ver}/common.json`
+(+POE1 레거시 `basic`·`rareNames`)만 폴백으로 쓴다. 즉 **`v2/{ver}/stats.json` 은 프론트가 로드하지 않는다.**
+
+`v2/poe2/stats.json` 과 `poe-game-data/poe2/dict/stats.json` 은 상호 배타 키가 각각 9천~1만 개
+수준으로 사실상 다른 사전이다. v2 를 기준으로 판정하면 프론트가 이미 번역 가능한 라인을
+사전 공백으로 오판한다.
+
+```bash
+# 기본값 — 프론트 구성 재현 (권장)
+node scripts/missing-translations/run-cli.js --version poe2 --backend-url https://seominugi.com
+
+# 프론트가 핀한 태그와 정확히 맞추기
+node scripts/missing-translations/run-cli.js --version poe2 --data-tag v2026.08.04.2 ...
+
+# 레거시 v2 기준 (프론트 실동작과 다름 — 비교용)
+node scripts/missing-translations/run-cli.js --version poe2 --dict-source v2 ...
+```
+
+`common.json` 은 프론트 병합 순서상 **마지막**이라 최종 override 로 동작한다 (§5 참조).
+
 ---
 
 ## 2. 모듈 표
@@ -52,7 +80,10 @@ PR 생성 (peter-evans/create-pull-request)
 | 파일 | 역할 |
 |------|------|
 | `run-cli.js` | CLI 엔트리포인트. 인자 파싱, 입력 로드, 결과 파일 저장 |
-| `run.js` | 오케스트레이터. classify → resolve → report/candidates 생성 |
+| `run.js` | 오케스트레이터. preprocess → classify → resolve → report/candidates 생성 |
+| `loadFrontendDict.js` | 판정 기준 사전 구성 — 프론트엔드 로드 구성 재현 (§1.1) |
+| `preprocessReportLine.js` | 프론트와 동일한 굴림 범위 제거 — 정규화 불일치로 인한 오판 방지 |
+| `harvestMarkupPairs.js` | 게임 `[Key|Display]` 마크업에서 ko↔en 검토 후보 수확 (§5.1) |
 | `classify.js` | 미번역 라인을 원인 A(프론트 매칭 실패) / B(사전 공백)로 분류 |
 | `fetchMissingLines.js` | 백엔드 API에서 미번역 라인 가져오기 (best-effort, 실패 시 빈 배열) |
 | `loadModifierEntries.js` | modifiers 권위 데이터 JSON 로드 (v2/poe1 · poe2 별) |
@@ -110,9 +141,27 @@ MISSING_TRANSLATIONS_BACKEND_URL=https://api.example.com \
 ```
 candidates/ 파일 (자동 생성)
   └─ 사람이 리뷰
-       ├─ 승인 항목 → v2/overrides/stats-overrides-{ver}.json 에 수동 추가
+       ├─ 승인 항목 → v2/{ver}/common.json 에 수동 추가
        └─ 거부 항목 → 무시 또는 메모
 ```
+
+### 5.1 게임 마크업 수확 — `[Key|Display]`
+
+한국어 클라이언트는 일부 용어를 `[Intangibility|무형성]` 처럼 **게임이 직접 짝지어** 내보낸다.
+`detectUnsupported` 는 이런 라인을 `markup` 노이즈로 걸러내지만, 버리기 전에
+`harvestMarkupPairs.js` 가 ko↔en 쌍을 뽑아 리포트의 `markupPairs` 에 담는다.
+어느 사전에도 없는 용어의 **유일한 권위 근거**일 수 있기 때문이다
+(실제로 `무형성 → Intangibility` 는 이 경로로만 확인됐다).
+
+⚠️ Key 가 항상 영문 표시 문자열인 것은 아니다 — 내부 식별자(`[BuffMagnitude|증폭]`)이거나
+표시 문자열과 다른 경우(`[Critical|Critical Hit]`)가 있다. 그래서 `markupPairs` 는
+**자동 승격 대상이 아니라 검토 제안**이며, `confidence: low` 는 내부 식별자 의심 표시다.
+승격 전 실제 인게임 영문 표기를 반드시 확인한다.
+
+> **승격 대상은 `v2/{ver}/common.json` 이다.**
+> `v2/{ver}/overrides/stats.json` 은 프론트엔드가 로드하지 않으므로 여기에 넣으면 사용자에게
+> 반영되지 않는다 (§1.1). 프론트 병합 순서상 `common.json` 이 마지막이라 poe-game-data 의
+> 값도 덮어쓸 수 있는 유일한 override 채널이다.
 
 - `v2/**` 및 `overrides.json` 변경은 PR 리뷰 없이 main에 직접 push 금지.
 - GH Actions 워크플로는 `reports/` + `candidates/` 변경이 포함된 PR을 생성하는 것까지만 담당합니다.

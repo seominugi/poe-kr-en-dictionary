@@ -10,7 +10,7 @@
  * 리포트에 사유가 기록되므로, 오탐이 나면 규칙만 조정하면 된다.
  *
  * @param {string} line 제보된 ko(또는 원문) 스탯 라인
- * @returns {{ supported: true } | { supported: false, reason: 'markup'|'englishOnly'|'calc'|'brokenDup'|'flavor' }}
+ * @returns {{ supported: true } | { supported: false, reason: 'markup'|'englishOnly'|'calc'|'brokenDup'|'flavor'|'tradeNote'|'socket'|'requirement' }}
  */
 
 // PoE 내부 마크업: 중괄호 속성 주석 {enchant}{rune}, 대괄호 파이프 링크 [Fire|Fire]
@@ -31,8 +31,22 @@ const DPS = /\bDPS\s?\d/
 const STAT_KEYWORD =
   /(증가|감소|추가|저항|피해|레벨|획득|확률|속도|관통|효과|재생|회복|지속시간|보너스|생명력|마나|정신력|방어|공격|주문|치명타|축적|명중|처치|피격|이동|소환|반사|흡수|우세)/
 
-// 서술형 종결어미(마침표로 끝) — 스탯 라인은 대개 "증가/추가" 등 명사·부호로 끝난다
-const SENTENCE_END = /다\.\s*$/
+// 서술형 종결어미(마침표로 끝) 또는 문장이 끊긴 스토리 조각(쉼표·물음표·느낌표로 끝)
+// — 스탯 라인은 대개 "증가/추가" 등 명사·부호로 끝나며 이런 문장부호로 끝나지 않는다
+const SENTENCE_END = /(다\.|[,?!])\s*$/
+
+// 거래 사이트 메모 라인: "메모: ~b/o 50 divine"
+const TRADE_NOTE = /^메모\s*[:：]/
+
+// 소켓 홈 표기: "홈: S S" — 값이 알파벳/공백뿐이다
+const SOCKET = /^홈\s*[:：]\s*[A-Za-z\s]*$/
+
+// 착용 요구사항 라벨과 그 분해 조각("레벨: 52", "힘: 26")
+// 스탯이 아닌 아이템 헤더이므로 stats 파이프라인 대상이 아니다.
+const REQUIREMENT = [
+  /^(요구\s*사항|Requires)\s*[:：]/i,
+  /^(레벨|힘|민첩|지능|정신력)\s*[:：][\d.,\s]*$/,
+]
 
 export function detectUnsupported(line) {
   if (typeof line !== 'string') return { supported: true }
@@ -43,6 +57,9 @@ export function detectUnsupported(line) {
   if (!HANGUL.test(text)) return { supported: false, reason: 'englishOnly' }
   if (BROKEN_DUP.test(text)) return { supported: false, reason: 'brokenDup' }
   if (CALC_LABEL.test(text) || DPS.test(text)) return { supported: false, reason: 'calc' }
+  if (TRADE_NOTE.test(text)) return { supported: false, reason: 'tradeNote' }
+  if (SOCKET.test(text)) return { supported: false, reason: 'socket' }
+  if (REQUIREMENT.some((re) => re.test(text))) return { supported: false, reason: 'requirement' }
 
   // flavor: 보수적 — 스탯 키워드가 전혀 없고 서술형 종결문일 때만
   if (!STAT_KEYWORD.test(text) && SENTENCE_END.test(text)) {
