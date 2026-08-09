@@ -25,8 +25,12 @@ export const DEFAULT_DATA_TAG = 'latest'
 
 const cdnBase = (tag) => `https://cdn.jsdelivr.net/gh/seominugi/poe-game-data@${tag}`
 
-/** poe-game-data 에서 가져오는 사전 파일 (프론트와 동일 구성) */
-const CDN_DICTS = ['stats', 'items', 'uniques', 'gems', 'currency']
+/**
+ * poe-game-data 에서 가져오는 사전 파일 (프론트와 동일 구성·순서).
+ * client-strings 는 프론트에서 **가장 먼저** 병합돼 최하위 우선순위를 갖는다 —
+ * 아이템 설명문·팝업 라벨만 채우고 키가 겹치면 큐레이션 사전이 이긴다.
+ */
+const CDN_DICTS = ['client-strings', 'stats', 'items', 'uniques', 'gems', 'currency']
 
 function readLocalJson(path) {
   if (!existsSync(path)) return null
