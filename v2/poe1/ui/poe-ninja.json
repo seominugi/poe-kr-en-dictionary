@@ -25,5 +25,16 @@
   "숙련": "Masteries",
   "스킬": "Skills",
   "열기": "Open",
-  "확대": "Enlarge"
+  "확대": "Enlarge",
+  "아이템": "Items",
+  "주력 스킬": "Main Skills",
+  "주력 스킬 모드": "Main Skill Modes",
+  "성소 허리띠 버프": "Shrine Belt Buffs",
+  "흔적 속성": "Vestigial Modifiers",
+  "두 번째 전직": "Second Ascendancy",
+  "패시브": "Passives",
+  "성유 패시브": "Anointed Passives",
+  "아틀라스": "Atlas",
+  "전체 젬": "All Gems",
+  "무기 구성": "Weapon Configuration"
 }
