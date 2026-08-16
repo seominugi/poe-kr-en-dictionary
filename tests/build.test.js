@@ -4,6 +4,7 @@ import {
   loadLegacyDict,
   loadOverrides,
   shouldPreserveExistingStats,
+  indexGameDataPassives,
 } from '../scripts/build.js'
 
 describe('mergeDictionaries', () => {
@@ -79,5 +80,35 @@ describe('shouldPreserveExistingStats', () => {
     expect(
       shouldPreserveExistingStats({ category: 'currency', tradeApiMatchCount: 0, fileExists: true })
     ).toBe(false)
+  })
+})
+
+describe('indexGameDataPassives — GGPK 패시브 → v2(ko→en)', () => {
+  const row = (en, kr) => ({ name: { en, kr } })
+
+  it('한글명을 키로 하는 ko→en 맵을 만든다', () => {
+    const { map } = indexGameDataPassives([row('Supreme Ostentation', '허영의 정점'), row('Chaos Bloodline', '혼돈 혈맹')])
+    expect(map).toEqual({ '허영의 정점': 'Supreme Ostentation', '혼돈 혈맹': 'Chaos Bloodline' })
+  })
+
+  it('한글이 없는 행(미번역)은 사전에 넣지 않는다', () => {
+    const { map } = indexGameDataPassives([row('Untranslated Node', 'Untranslated Node'), row('Acrobatics', '곡예')])
+    expect(map).toEqual({ 곡예: 'Acrobatics' })
+  })
+
+  it('한글명이 겹치면 첫 항목을 남기고 나머지는 collisions 로 보고한다', () => {
+    // v2 는 ko→en 이라 한 한글명이 여러 영문명을 가질 수 없다. 임의로 고르지 않고 보고한다.
+    const { map, collisions } = indexGameDataPassives([row("Farrul's Will", '페룰의 의지'), row('Farric Will', '페룰의 의지')])
+    expect(map['페룰의 의지']).toBe("Farrul's Will")
+    expect(collisions).toEqual([{ kr: '페룰의 의지', kept: "Farrul's Will", dropped: 'Farric Will' }])
+  })
+
+  it('같은 한글·같은 영문 중복은 충돌이 아니다', () => {
+    const { collisions } = indexGameDataPassives([row('Acrobatics', '곡예'), row('Acrobatics', '곡예')])
+    expect(collisions).toEqual([])
+  })
+
+  it('입력이 없어도 빈 결과를 준다', () => {
+    expect(indexGameDataPassives(undefined)).toEqual({ map: {}, collisions: [] })
   })
 })

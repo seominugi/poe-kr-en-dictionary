@@ -1,5 +1,5 @@
 import { existsSync, readFileSync, writeFileSync, mkdirSync, readdirSync } from 'fs'
-import { join } from 'path'
+import { join, resolve } from 'path'
 import { CONFIG } from './config.js'
 import { extractPoedbData } from './sources/extract-poedb.js'
 import { fetchAndMatchTradeStats } from './sources/fetch-trade-api.js'
@@ -71,6 +71,33 @@ export function loadOverrides(version, category = null) {
 }
 
 /**
+ * poe-game-data 의 GGPK 파생 패시브 노드 배열 → v2 방향(ko→en) 맵.
+ *
+ * POE1 은 공식 Passive Tree API 가 없어(POE2 전용) 이 파일이 v2/poe1/passives.json 의
+ * 유일한 소스다. v1 `dict/POE1/en-ko/poe1_passive*.json` 은 어떤 빌드도 갱신하지 않는
+ * 방치 산출물이라 리그가 바뀌면 낡는다 — 그 축을 v2 로 옮기기 위한 입력이다.
+ *
+ * v2 는 ko→en 이라 한 한글명이 여러 영문명을 가질 수 없다. 겹치면 첫 항목을 남기고
+ * 나머지는 collisions 로 보고한다 — 임의로 고르지 않는다(출처 없이 번역을 바꾸지 않는 원칙).
+ * 실측 3.29.1.2.2: 3,151개 중 17개가 여기서 탈락한다(표기 변형·동음이의).
+ */
+export function indexGameDataPassives(rows) {
+  const map = {}
+  const collisions = []
+
+  for (const row of rows ?? []) {
+    const en = row?.name?.en
+    const kr = row?.name?.kr
+    if (!en || !kr) continue
+    if (!/[가-힣]/.test(kr)) continue // 미번역 행(영문 그대로)은 사전에 넣지 않는다
+    if (map[kr] === undefined) map[kr] = en
+    else if (map[kr] !== en) collisions.push({ kr, kept: map[kr], dropped: en })
+  }
+
+  return { map, collisions }
+}
+
+/**
  * 정렬된 JSON 문자열을 생성한다 (diff 가독성).
  */
 function sortedJsonStringify(obj) {
@@ -119,6 +146,20 @@ async function build(version) {
     console.log('[Step 3] Passive Tree API는 POE2 전용이라 건너뜀')
   }
 
+  // Step 3b: GGPK 파생 패시브 노드명 (POE1 전용 — Passive Tree API 대체 소스)
+  let gameDataPassives = {}
+  if (version === 'poe1') {
+    const passivesPath = resolve(CONFIG.GAME_DATA_ROOT, 'poe1/passives.json')
+    const doc = readJsonObject(passivesPath)
+    const { map, collisions } = indexGameDataPassives(doc.passives)
+    gameDataPassives = map
+    if (!Object.keys(map).length) {
+      console.warn(`[Step 3b] poe-game-data 패시브 없음(${passivesPath}) — poe-ggpk-extractor 의 build:passives:poe1 을 먼저 돌리세요`)
+    } else {
+      console.log(`[Step 3b] GGPK 패시브 ${Object.keys(map).length}개 로드 (한글명 중복 탈락 ${collisions.length}개)`)
+    }
+  }
+
   // Step 4: 기존 legacy 사전 로드
   console.log('[Step 4] Legacy 사전 로드 중...')
   const legacy = loadLegacyDict(version)
@@ -148,9 +189,9 @@ async function build(version) {
   for (const category of CONFIG.CATEGORIES) {
     const overrides = overridesByCategory[category]
     const poedbCat = poedbData[category] ?? {}
-    // stats는 Trade API, passives는 Passive Tree API 매칭 결과도 병합
+    // stats는 Trade API, passives는 Passive Tree API(poe2) 또는 GGPK(poe1) 결과도 병합
     const tradeCat = category === 'stats' ? tradeResult.matched : {}
-    const passiveCat = category === 'passives' ? passiveResult.matched : {}
+    const passiveCat = category === 'passives' ? { ...gameDataPassives, ...passiveResult.matched } : {}
     // legacy는 stats에 전체 폴백으로 사용
     const legacyCat = category === 'stats' ? legacy : {}
 
