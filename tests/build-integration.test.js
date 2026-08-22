@@ -1,21 +1,22 @@
 import { describe, it, expect } from 'vitest'
-import { extractPoedbData } from '../scripts/sources/extract-poedb.js'
+import { extractGameData } from '../scripts/sources/extract-game-data.js'
 import { loadLegacyDict, mergeDictionaries } from '../scripts/build.js'
 
-describe('poedb 데이터 추출 통합 테스트', () => {
+// 2026-08-23: 소스를 poe-i18n-json-data-generator-dev(은퇴) → poe-game-data 로 이관.
+describe('poe-game-data 사전 로드 통합 테스트', () => {
   it('poe1 데이터에서 아이템명을 추출할 수 있다', () => {
-    const data = extractPoedbData('poe1')
+    const data = extractGameData('poe1')
     expect(Object.keys(data.items).length).toBeGreaterThan(100)
     expect(data.items['판금 조끼']).toBe('Plate Vest')
   })
 
   it('poe1 데이터에서 고유 아이템명을 추출할 수 있다', () => {
-    const data = extractPoedbData('poe1')
+    const data = extractGameData('poe1')
     expect(Object.keys(data.uniques).length).toBeGreaterThan(50)
   })
 
   it('poe2 데이터에서 아이템명을 추출할 수 있다', () => {
-    const data = extractPoedbData('poe2')
+    const data = extractGameData('poe2')
     expect(Object.keys(data.items).length).toBeGreaterThan(50)
   })
 })

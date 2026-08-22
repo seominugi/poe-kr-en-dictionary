@@ -1,6 +1,6 @@
 // poe-game-data(GGPK 1차 추출)에서 kr↔en 사전을 읽는다.
 //
-// 종전 소스 `extract-poedb.js`(poe-i18n-json-data-generator-dev, poedb 기반)를 대체한다.
+// 종전 소스(poe-i18n-json-data-generator-dev, poedb 기반)를 대체한다.
 // 그 repo 는 2026-08-04 은퇴했고 prod 사본은 2026-06-08 에 멈춰 있었다.
 //
 // **왜 단순해졌나**: poe-game-data 는 이미 `{game}/dict/{category}.json` 을

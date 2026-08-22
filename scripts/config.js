@@ -6,11 +6,6 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = resolve(__dirname, '..')
 
 export const CONFIG = {
-  // poe-i18n-json-data-generator-dev 경로 (환경변수 오버라이드 가능)
-  POEDB_DATA_ROOT: process.env.POEDB_DATA_ROOT
-    ? resolve(process.env.POEDB_DATA_ROOT)
-    : resolve(ROOT, '../poe-i18n-json-data-generator-dev/assets/data'),
-
   // poe-game-data(GGPK 1차 추출) 경로 (환경변수 오버라이드 가능)
   GAME_DATA_ROOT: process.env.POE_GAME_DATA_ROOT
     ? resolve(process.env.POE_GAME_DATA_ROOT)
