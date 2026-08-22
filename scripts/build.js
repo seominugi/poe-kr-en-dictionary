@@ -1,7 +1,7 @@
 import { existsSync, readFileSync, writeFileSync, mkdirSync, readdirSync } from 'fs'
 import { join, resolve } from 'path'
 import { CONFIG } from './config.js'
-import { extractPoedbData } from './sources/extract-poedb.js'
+import { extractGameData } from './sources/extract-game-data.js'
 import { fetchAndMatchTradeStats } from './sources/fetch-trade-api.js'
 import { fetchAndMatchPassiveTree } from './sources/fetch-passive-tree.js'
 import { generateReport } from './utils/reporter.js'
@@ -113,13 +113,15 @@ function sortedJsonStringify(obj) {
 async function build(version) {
   console.log(`\n=== ${version.toUpperCase()} 사전 빌드 시작 ===\n`)
 
-  // Step 1: poedb 데이터 추출
-  console.log('[Step 1] poedb 데이터 추출 중...')
-  const poedbData = extractPoedbData(version)
+  // Step 1: poe-game-data(GGPK 1차 추출) 사전 로드
+  // 2026-08-23: 종전 소스 poe-i18n-json-data-generator-dev(poedb)에서 이관.
+  // 변수명은 하위 흐름과의 diff 를 줄이려 그대로 둔다.
+  console.log('[Step 1] poe-game-data 사전 로드 중...')
+  const poedbData = extractGameData(version)
   const poedbTotal = Object.values(poedbData).reduce(
     (sum, cat) => sum + Object.keys(cat).length, 0
   )
-  console.log(`[Step 1] poedb에서 ${poedbTotal}개 항목 추출 완료`)
+  console.log(`[Step 1] poe-game-data에서 ${poedbTotal}개 항목 로드 완료`)
 
   // Step 2: 공식 Trade API stats fetch + 매칭
   console.log('[Step 2] 공식 Trade API stats 매칭 중...')
