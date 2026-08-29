@@ -16,12 +16,13 @@
 import { existsSync, readFileSync } from 'fs'
 import { join } from 'path'
 import { CONFIG } from '../config.js'
+import { DATA_LOCK } from '../poe-game-data-lock.js'
 
 /**
  * poe-game-data CDN 태그.
- * 기본 `latest` — 프론트는 특정 태그를 핀하므로 정확한 대조가 필요하면 `--data-tag` 로 맞춘다.
+ * 기본값은 모든 소비자가 공유하는 불변 lock 태그다. 진단 시에만 `--data-tag`로 덮어쓴다.
  */
-export const DEFAULT_DATA_TAG = 'latest'
+export const DEFAULT_DATA_TAG = DATA_LOCK.tag
 
 const cdnBase = (tag) => `https://cdn.jsdelivr.net/gh/seominugi/poe-game-data@${tag}`
 

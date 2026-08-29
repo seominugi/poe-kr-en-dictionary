@@ -7,7 +7,7 @@
  * 옵션:
  *   --version poe1|poe2  (기본: poe2)
  *   --dict-source frontend|v2  판정 기준 사전 (기본: frontend — 프론트가 실제 로드하는 구성)
- *   --data-tag <tag>     poe-game-data CDN 태그 (기본: latest). 프론트와 정확히 맞추려면 핀 태그 지정
+ *   --data-tag <tag>     poe-game-data CDN 태그 (기본: 루트 lock의 불변 태그)
  *   --input <path>       미번역 라인 JSON 파일 (string[] 형식). 미지정 시 stdin.
  *   --out-report <path>  리포트 출력 경로 (기본: reports/missing-stats-report-{ver}.json)
  *   --out-candidates <path> 후보 출력 경로 (기본: candidates/overrides-stats-candidates-{ver}.json)

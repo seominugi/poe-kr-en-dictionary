@@ -17,6 +17,7 @@
 import { readFileSync, existsSync } from 'fs'
 import { join } from 'path'
 import { CONFIG } from '../config.js'
+import { assertGameDataSnapshot } from '../poe-game-data-lock.js'
 
 /**
  * poe-game-data 에서 특정 버전의 kr↔en 사전을 읽는다.
@@ -24,6 +25,7 @@ import { CONFIG } from '../config.js'
  * @returns {Record<string, Object>} 카테고리별 { 한글: English }
  */
 export function extractGameData(version) {
+  assertGameDataSnapshot(CONFIG.GAME_DATA_ROOT)
   const dictDir = join(CONFIG.GAME_DATA_ROOT, version, 'dict')
   const extracted = Object.fromEntries(CONFIG.CATEGORIES.map((category) => [category, {}]))
 

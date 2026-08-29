@@ -9,6 +9,7 @@
 import { existsSync, readdirSync, readFileSync } from 'fs'
 import { join } from 'path'
 import { CONFIG } from '../config.js'
+import { assertGameDataSnapshot } from '../poe-game-data-lock.js'
 
 /**
  * 수치를 `#` 로 치환해 패턴을 만든다.
@@ -44,6 +45,7 @@ export function loadModifierEntries(version, basePath) {
   // 구조가 다르다 — 종전은 {Class}/{Class}_modifiers.json 의 평면 affixes,
   // 지금은 {Class}.json 의 buckets[상태][접사] 중첩이다.
   const root = basePath ?? CONFIG.GAME_DATA_ROOT
+  assertGameDataSnapshot(root)
   const modifiersDir = join(root, version, 'modifiers', 'json')
 
   if (!existsSync(modifiersDir)) {
