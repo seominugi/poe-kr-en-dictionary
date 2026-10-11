@@ -47,7 +47,7 @@ npm run collect:passive-tree:poe2  # 공식 POE2 패시브 트리 데이터 수�
 npm run collect:poe-ninja:poe2  # poe.ninja 화면 텍스트 수집/분류 리포트
 ```
 
-**요구사항**: `poe-i18n-json-data-generator-dev` 레포가 같은 부모 디렉토리에 있어야 함.
+**요구사항**: `poe-game-data` 레포가 같은 부모 디렉토리에 `poe-game-data.lock.json` 의 snapshot 으로 있어야 함(다른 곳이면 `POE_GAME_DATA_ROOT`). 옆에 `seominugi-com` 이 있으면 프론트 사전 구성과도 대조한다(`SEOMINUGI_COM_ROOT`).
 
 ### poe.ninja UI 수집
 
@@ -77,6 +77,6 @@ Actions 탭에서 "Build Translation Dictionary" workflow를 수동 실행.
 ## 데이터 소스 우선순위
 
 1. **overrides.json** (최우선) — 수동 보정 항목
-2. **poedb** — poe-i18n-json-data-generator-dev에서 추출한 고품질 데이터
+2. **poe-game-data** — GGPK 에서 추출한 게임 데이터(lock 태그 고정). 2026-08-23 poe-i18n-json-data-generator-dev(poedb, 은퇴)에서 이관
 3. **공식 Trade API** — stats 한/영 ID 기반 매칭
 4. **Legacy dict/** (폴백) — 기존 수동 관리 사전

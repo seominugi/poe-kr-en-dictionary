@@ -5,9 +5,12 @@
 # 활성화 체크리스트:
 #   1. Secrets 등록 (Settings → Secrets → Actions):
 #      - MISSING_TRANSLATIONS_BACKEND_URL : https://seominugi.com
-#      - PAT_TOKEN : poe-i18n-json-data-generator-dev checkout 용 (build-dict.yml 동일 토큰)
-#   2. workflow_dispatch 로 수동 1회 실행 → 생성된 PR 검토
-#   3. 검증 후 아래 `schedule` 블록 주석 해제로 일일 cron 활성화 (현재: UTC 15:00 = KST 00:00)
+#   2. Settings → Actions → General → "Allow GitHub Actions to create and approve pull requests" 켜기
+#      (꺼져 있으면 마지막 PR 생성 단계가 GITHUB_TOKEN 으로 PR 을 만들지 못한다 — 2026-10-12 꺼짐 확인)
+#   3. workflow_dispatch 로 수동 1회 실행 → 생성된 PR 검토
+#   4. 검증 후 아래 `schedule` 블록 주석 해제로 일일 cron 활성화 (현재: UTC 15:00 = KST 00:00)
+#
+# 권위 데이터는 poe-game-data(공개)를 lock 태그로 받는다 — 옛 poe-i18n-json-data-generator-dev 는 은퇴했다(b631b73).
 #
 # 백엔드(Phase 3, /api/missing-translations)는 배포·라이브 검증 완료(2026-07-04).
 # §4 보호: candidates 만 PR 제안, overrides 직접 수정 없음 (사람이 리뷰 후 승격).
@@ -37,6 +40,14 @@ on:
 jobs:
   run-missing-translations:
     runs-on: ubuntu-latest
+    # 저장소 기본 토큰은 읽기 전용이다 — 마지막 단계가 브랜치를 push 하고 PR 을 만든다
+    permissions:
+      contents: write
+      pull-requests: write
+
+    # package-lock.json 은 .gitignore 대상이라 npm ci 를 쓸 수 없다
+    env:
+      POE_GAME_DATA_ROOT: ${{ github.workspace }}/poe-game-data
 
     steps:
       # ────────────────────────────────────────────────
@@ -46,33 +57,35 @@ jobs:
         uses: actions/checkout@v4
 
       # ────────────────────────────────────────────────
-      # 2. 권위 데이터(poe-i18n) checkout — build-dict.yml 동일 패턴
-      # ────────────────────────────────────────────────
-      - name: Checkout poe-i18n data
-        uses: actions/checkout@v4
-        with:
-          repository: seominugi/poe-i18n-json-data-generator-dev
-          path: poe-i18n-data
-          token: ${{ secrets.PAT_TOKEN }}
-
-      # ────────────────────────────────────────────────
-      # 3. Node.js 설정 + 의존성 설치
+      # 2. Node.js 설정
       # ────────────────────────────────────────────────
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
+
+      # ────────────────────────────────────────────────
+      # 3. 권위 데이터(poe-game-data) checkout — lock 태그. build-dict.yml 동일 패턴
+      # ────────────────────────────────────────────────
+      - name: Read poe-game-data lock
+        id: lock
+        run: echo "tag=$(node -p "require('./poe-game-data.lock.json').tag")" >> "$GITHUB_OUTPUT"
+
+      - name: Checkout poe-game-data (lock tag)
+        uses: actions/checkout@v4
+        with:
+          repository: seominugi/poe-game-data
+          ref: ${{ steps.lock.outputs.tag }}
+          path: poe-game-data
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install --no-audit --no-fund
 
       # ────────────────────────────────────────────────
       # 4. 미번역 매칭 잡 실행 (poe2)
       # ────────────────────────────────────────────────
       - name: Run missing-translations job (poe2)
         if: ${{ github.event_name == 'schedule' || inputs.version == 'poe2' || inputs.version == 'both' }}
-        env:
-          POEDB_DATA_ROOT: ${{ github.workspace }}/poe-i18n-data/assets/data
         run: |
           node scripts/missing-translations/run-cli.js \
             --backend-url "${{ secrets.MISSING_TRANSLATIONS_BACKEND_URL }}" \
@@ -83,8 +96,6 @@ jobs:
       # ────────────────────────────────────────────────
       - name: Run missing-translations job (poe1)
         if: ${{ github.event_name == 'schedule' || inputs.version == 'poe1' || inputs.version == 'both' }}
-        env:
-          POEDB_DATA_ROOT: ${{ github.workspace }}/poe-i18n-data/assets/data
         run: |
           node scripts/missing-translations/run-cli.js \
             --backend-url "${{ secrets.MISSING_TRANSLATIONS_BACKEND_URL }}" \
