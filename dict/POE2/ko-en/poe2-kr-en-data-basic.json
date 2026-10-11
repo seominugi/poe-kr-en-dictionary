@@ -1,5 +1,5 @@
 {
-    "쇠뇌": "Crossbows",
+    "쇠뇌": "Crossbow",
     "육척봉": "Quarterstaff",
     "창": "Spear",
     "치명타 명중 확률": "Critical Hit Chance",
@@ -148,6 +148,7 @@
     "아이템 종류: 방패": "Item Class: Shields",
     "아이템 종류: 부적": "Item Class: Talismans",
     "아이템 종류: 셉터": "Item Class: Sceptres",
+    "아이템 종류: 쇠뇌": "Item Class: Crossbows",
     "아이템 종류: 숨겨진 아이템": "Item Class: Hidden Items",
     "아이템 종류: 양손 검": "Item Class: Two Hand Swords",
     "아이템 종류: 양손 도끼": "Item Class: Two Hand Axes",

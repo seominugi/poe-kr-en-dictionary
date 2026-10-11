@@ -16,17 +16,12 @@ export function mergeDictionaries({ overrides, poedb, tradeApi, legacy }) {
 }
 
 /**
- * poe-game-data common(아이템 종류 이름, 복수형) 중 프론트의 앞 층과 값이 다른 것을 맨 키에서 뺀다.
+ * poe-game-data common(아이템 종류 이름, 복수형) 중 프론트의 앞 층과 값이 다른 것을 가른다.
  *
  * 프론트는 common 을 마지막에 병합하므로 common 의 맨 키가 이긴다. 그런데 같은 한글이
  * 아이템·고유·점술 카드 이름이나 무기 종류 표시(ClientStrings)로도 쓰인다.
  *   부적 = Charms(종류) / The Sigil(점술 카드),  단검 = Daggers(종류) / Dagger(무기 종류 줄)
- * 맨 키로 두면 이름 줄까지 종류 이름으로 바뀐다. 빼면 이름 줄은 앞 층 값을 쓰고,
- * "아이템 종류: X" 줄은 basic 의 줄 키가, 확장(나랏말서미누기)이 common 에서 얻던 항목은 확장 전용
- * 사전(영→한 큐레이션, POE2 는 v2 currency 도)이 맡는다 — scripts/sync-class-name-lines.js 가 맞추고
- * tests/class-name-collisions.test.js 가 빠짐을 잡는다.
- *
- * 손으로 넣은 overrides 는 대상이 아니다 — 이 함수는 game-data 쪽만 받는다.
+ * 맨 키를 종류 이름으로 두면 이름 줄까지 종류 이름으로 바뀐다. 처리는 applyClassNameRule.
  *
  * @param {Record<string, string>} classNames poe-game-data dict/common.json
  * @param {Record<string, string>} prior 프론트가 common 보다 먼저 병합한 결과
@@ -40,6 +35,46 @@ export function splitClassNameCollisions(classNames, prior) {
     else kept[ko] = en
   }
   return { kept, dropped }
+}
+
+/**
+ * 부딪히는 아이템 종류 이름을 소비처별로 나눠 싣는다. 손으로 넣은 overrides 는 대상이 아니다.
+ *
+ * - common(프론트·확장 공용): 맨 키는 남기되 값을 앞 층의 이름으로 맞춘다. 프론트 이름 줄은
+ *   앞 층과 같아지고, 확장 POE2 화폐 검색은 common 을 맨 앞에 병합하므로 이 키가 후보 맨 앞
+ *   자리를 지킨다(빼면 "창" 입력이 "낙원으로 열린 창" 으로 바뀐다).
+ * - currency(이 저장소 v2 currency 는 프론트가 읽지 않는 확장 전용): 종류 이름(복수형)을 싣는다.
+ *   확장이 common 에서 얻던 것 — 화폐 검색 값("단검"→Daggers, common 뒤라 값이 이김)과
+ *   페이지 번역 역방향("Daggers"→단검, stats 뒤라 "힘/지능 방패"→Shields 같은 것을 이김).
+ *   검색이 함께 읽는 고유·젬·화폐 사전에 이미 있는 이름("균열석"=Breachstone,
+ *   "계약"=The Covenant)은 덮지 않는다.
+ * - "아이템 종류: X" 줄은 프론트만 읽는 basic 의 줄 키가 맡는다(scripts/sync-class-name-lines.js).
+ *   common 에 두지 않는 것은 확장 검색이 포함 일치·첫 일치를 써서 "아이템 종류: 창" 이 "창" 을
+ *   가로채기 때문이다.
+ *
+ * @param {{ classNames: Record<string, string>, prior: Record<string, string>, searchNames: Record<string, string> }} input
+ * @returns {{ common: Record<string, string>, currencyExtra: Record<string, string>, dropped: ReturnType<typeof splitClassNameCollisions>['dropped'] }}
+ */
+export function applyClassNameRule({ classNames, prior, searchNames }) {
+  const { kept, dropped } = splitClassNameCollisions(classNames, prior)
+  const common = { ...kept }
+  const currencyExtra = {}
+  for (const [ko, { classValue, nameValue }] of Object.entries(dropped)) {
+    common[ko] = nameValue
+    if (!Object.hasOwn(searchNames, ko)) currencyExtra[ko] = classValue
+  }
+  return { common, currencyExtra, dropped }
+}
+
+/** 확장 화폐 검색이 common 과 함께 읽는 카테고리 — 이 이름들은 덮지 않는다 */
+export const SEARCH_NAME_CATEGORIES = ['uniques', 'gems', 'currency']
+
+/** 프론트 앞 층과 game-data 로 이 버전의 아이템 종류 규칙을 계산한다. 앞 층을 못 읽으면 멈춘다. */
+export function classNameRuleFor(version, poedbData) {
+  const { map: prior, missing } = loadPriorLayers(version)
+  if (missing.length) throw new Error(`프론트 앞 층을 읽지 못했습니다: ${missing.join(', ')} — 아이템 종류 규칙 계산 불가`)
+  const searchNames = Object.assign({}, ...SEARCH_NAME_CATEGORIES.map((c) => poedbData[c] ?? {}))
+  return applyClassNameRule({ classNames: poedbData.common ?? {}, prior, searchNames })
 }
 
 /**
@@ -208,6 +243,10 @@ async function build(version) {
   console.log(`[Step 5] Global overrides: ${Object.keys(globalOverrides).length}개 항목`)
   console.log(`[Step 5] Category overrides 포함: ${Object.keys(allOverrides).length}개 항목`)
 
+  // Step 5b: 아이템 종류 이름 규칙 (applyClassNameRule). 앞 층을 못 읽으면 아무것도 쓰기 전에 멈춘다.
+  const classRule = classNameRuleFor(version, poedbData)
+  console.log(`[Step 5b] 이름과 부딪히는 아이템 종류 이름 ${Object.keys(classRule.dropped).length}개 — common 은 이름 값, currency 에 종류 이름 ${Object.keys(classRule.currencyExtra).length}개`)
+
   // Step 6: 카테고리별 병합 및 출력
   console.log('[Step 6] 카테고리별 병합 및 출력...')
   const outputDir = CONFIG.OUTPUT[version]
@@ -219,13 +258,8 @@ async function build(version) {
   for (const category of CONFIG.CATEGORIES) {
     const overrides = overridesByCategory[category]
     let poedbCat = poedbData[category] ?? {}
-    if (category === 'common') {
-      const { map: prior, missing } = loadPriorLayers(version)
-      if (missing.length) throw new Error(`프론트 앞 층을 읽지 못했습니다: ${missing.join(', ')} — common 충돌 판정 불가`)
-      const { kept, dropped } = splitClassNameCollisions(poedbCat, prior)
-      poedbCat = kept
-      console.log(`  common: 이름과 부딪히는 아이템 종류 이름 ${Object.keys(dropped).length}개를 맨 키에서 뺌`)
-    }
+    if (category === 'common') poedbCat = classRule.common
+    if (category === 'currency') poedbCat = { ...poedbCat, ...classRule.currencyExtra }
     // stats는 Trade API, passives는 Passive Tree API(poe2) 또는 GGPK(poe1) 결과도 병합
     const tradeCat = category === 'stats' ? tradeResult.matched : {}
     const passiveCat = category === 'passives' ? { ...gameDataPassives, ...passiveResult.matched } : {}
