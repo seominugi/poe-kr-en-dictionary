@@ -1,13 +1,13 @@
 {
   "version": "poe1",
-  "buildDate": "2026-10-11T22:53:18.108Z",
+  "buildDate": "2026-08-22T19:27:59.750Z",
   "stats": {
-    "total": 55388,
+    "total": 55307,
     "fromPoedb": 20618,
-    "fromTradeApi": 11535,
+    "fromTradeApi": 11538,
     "fromPassiveTree": 0,
-    "fromOverrides": 73,
-    "fromLegacyFallback": 23162,
+    "fromOverrides": 0,
+    "fromLegacyFallback": 23151,
     "unmatched": 0
   },
   "unmatched": []
