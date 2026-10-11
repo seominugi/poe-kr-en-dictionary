@@ -1,10 +1,11 @@
 import { existsSync, readFileSync, writeFileSync, mkdirSync, readdirSync } from 'fs'
 import { join, resolve } from 'path'
 import { CONFIG } from './config.js'
-import { extractPoedbData } from './sources/extract-poedb.js'
+import { extractGameData } from './sources/extract-game-data.js'
 import { fetchAndMatchTradeStats } from './sources/fetch-trade-api.js'
 import { fetchAndMatchPassiveTree } from './sources/fetch-passive-tree.js'
 import { generateReport } from './utils/reporter.js'
+import { assertClassNameSync, classNameRuleFor } from './class-name-rule.js'
 
 /**
  * 4-tier 우선순위로 사전을 병합한다.
@@ -113,13 +114,15 @@ function sortedJsonStringify(obj) {
 async function build(version) {
   console.log(`\n=== ${version.toUpperCase()} 사전 빌드 시작 ===\n`)
 
-  // Step 1: poedb 데이터 추출
-  console.log('[Step 1] poedb 데이터 추출 중...')
-  const poedbData = extractPoedbData(version)
+  // Step 1: poe-game-data(GGPK 1차 추출) 사전 로드
+  // 2026-08-23: 종전 소스 poe-i18n-json-data-generator-dev(poedb)에서 이관.
+  // 변수명은 하위 흐름과의 diff 를 줄이려 그대로 둔다.
+  console.log('[Step 1] poe-game-data 사전 로드 중...')
+  const poedbData = extractGameData(version)
   const poedbTotal = Object.values(poedbData).reduce(
     (sum, cat) => sum + Object.keys(cat).length, 0
   )
-  console.log(`[Step 1] poedb에서 ${poedbTotal}개 항목 추출 완료`)
+  console.log(`[Step 1] poe-game-data에서 ${poedbTotal}개 항목 로드 완료`)
 
   // Step 2: 공식 Trade API stats fetch + 매칭
   console.log('[Step 2] 공식 Trade API stats 매칭 중...')
@@ -178,6 +181,12 @@ async function build(version) {
   console.log(`[Step 5] Global overrides: ${Object.keys(globalOverrides).length}개 항목`)
   console.log(`[Step 5] Category overrides 포함: ${Object.keys(allOverrides).length}개 항목`)
 
+  // Step 5b: 아이템 종류 이름 규칙 (scripts/class-name-rule.js). 앞 층을 못 읽거나 basic 줄 키·
+  // 공용 영→한이 빠졌으면 아무것도 쓰기 전에 멈춘다.
+  const classRule = classNameRuleFor(version, poedbData, (category) => overridesByCategory[category] ?? {})
+  assertClassNameSync(version, classRule)
+  console.log(`[Step 5b] 이름과 부딪히는 아이템 종류 이름 ${Object.keys(classRule.dropped).length}개 — common 은 이름 값, currency 에 종류 이름 ${Object.keys(classRule.currencyExtra).length}개`)
+
   // Step 6: 카테고리별 병합 및 출력
   console.log('[Step 6] 카테고리별 병합 및 출력...')
   const outputDir = CONFIG.OUTPUT[version]
@@ -188,7 +197,9 @@ async function build(version) {
 
   for (const category of CONFIG.CATEGORIES) {
     const overrides = overridesByCategory[category]
-    const poedbCat = poedbData[category] ?? {}
+    let poedbCat = poedbData[category] ?? {}
+    if (category === 'common') poedbCat = classRule.common
+    if (category === 'currency') poedbCat = { ...poedbCat, ...classRule.currencyExtra }
     // stats는 Trade API, passives는 Passive Tree API(poe2) 또는 GGPK(poe1) 결과도 병합
     const tradeCat = category === 'stats' ? tradeResult.matched : {}
     const passiveCat = category === 'passives' ? { ...gameDataPassives, ...passiveResult.matched } : {}

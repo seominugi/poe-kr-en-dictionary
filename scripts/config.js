@@ -1,20 +1,29 @@
 // scripts/config.js
-import { resolve, dirname } from 'path'
+import { existsSync } from 'fs'
+import { resolve, dirname, join } from 'path'
 import { fileURLToPath } from 'url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = resolve(__dirname, '..')
 
-export const CONFIG = {
-  // poe-i18n-json-data-generator-dev 경로 (환경변수 오버라이드 가능)
-  POEDB_DATA_ROOT: process.env.POEDB_DATA_ROOT
-    ? resolve(process.env.POEDB_DATA_ROOT)
-    : resolve(ROOT, '../poe-i18n-json-data-generator-dev/assets/data'),
+/**
+ * 이웃 저장소 폴더를 위로 올라가며 찾는다. 워크트리(.claude/worktrees/<이름>)에서는
+ * `ROOT/../poe-game-data` 가 워크트리 폴더 안을 가리켜 통합 테스트가 깨졌다.
+ * 못 찾으면 종전 경로를 돌려준다.
+ */
+function findSiblingRepo(name) {
+  for (let dir = dirname(ROOT); ; dir = dirname(dir)) {
+    const candidate = join(dir, name)
+    if (existsSync(join(candidate, '_index.json'))) return candidate
+    if (dirname(dir) === dir) return resolve(ROOT, '..', name)
+  }
+}
 
+export const CONFIG = {
   // poe-game-data(GGPK 1차 추출) 경로 (환경변수 오버라이드 가능)
   GAME_DATA_ROOT: process.env.POE_GAME_DATA_ROOT
     ? resolve(process.env.POE_GAME_DATA_ROOT)
-    : resolve(ROOT, '../poe-game-data'),
+    : findSiblingRepo('poe-game-data'),
 
   // 공식 Trade API
   TRADE_API: {

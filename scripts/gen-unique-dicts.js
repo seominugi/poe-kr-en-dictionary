@@ -16,6 +16,7 @@ import { readFileSync, writeFileSync } from 'fs'
 import { resolve } from 'path'
 import { pathToFileURL } from 'url'
 import { CONFIG } from './config.js'
+import { assertGameDataSnapshot } from './poe-game-data-lock.js'
 
 export const FOULBORN_EN_PREFIX = 'Foulborn '
 export const FOULBORN_KO_PREFIX = '삿된 '
@@ -143,6 +144,7 @@ function writeSet(files, { enKo, koEn, search }) {
 }
 
 function main() {
+  assertGameDataSnapshot(CONFIG.GAME_DATA_ROOT)
   const gameDataPath = resolve(CONFIG.GAME_DATA_ROOT, 'poe1/uniques/json/uniques.json')
   const { map: gameData, conflicts: dupConflicts } = indexGameDataUniques(readJson(gameDataPath))
   const legacy = readJson(resolve(ROOT, OUTPUT_FILES.unique.enKo.path))

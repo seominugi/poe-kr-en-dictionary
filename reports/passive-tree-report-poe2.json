@@ -1,19 +1,21 @@
 {
-  "generatedAt": "2026-06-09T03:24:31.051Z",
+  "generatedAt": "2026-08-22T19:27:09.739Z",
   "source": "passive-tree",
   "stats": {
     "classes": 12,
     "ascendancies": 25,
-    "nodes": 5151,
+    "nodes": 5153,
     "skillOverrides": 80,
     "anointedPassives": 875,
-    "matched": 2003,
-    "conflicts": 106,
-    "displayAliases": 2031,
-    "displayAliasConflicts": 25,
+    "matched": 2016,
+    "conflicts": 96,
+    "displayAliases": 3875,
+    "displayAliasConflicts": 30,
     "unmatched": 0,
     "skippedIncompleteAscendancies": 2,
-    "skippedIncompleteNodes": 239
+    "skippedIncompleteNodes": 241,
+    "nodeStatAliases": 2358,
+    "nodeStatLengthMismatch": 0
   },
   "skippedIncompleteAscendancies": [
     {
@@ -2306,7 +2308,7 @@
       "stableId": "cold58",
       "skill": 13693,
       "en": "Rhythm of Ice",
-      "ko": "얼음의 노래",
+      "ko": "얼음의 리듬",
       "recipe": [
         "DilutedLiquidGuilt",
         "DilutedLiquidIre",
@@ -2414,7 +2416,7 @@
       "stableId": "Puppetmaster9",
       "skill": 14258,
       "en": "Puppet Master chance",
-      "ko": "인형사 확률",
+      "ko": "숨겨진 손",
       "recipe": [
         "LiquidParanoia",
         "DilutedLiquidIre",
@@ -2425,8 +2427,8 @@
       "nodeId": "14265",
       "stableId": "fire85",
       "skill": 14265,
-      "en": "Arsonist",
-      "ko": "화염 피해",
+      "en": "Pyromancer",
+      "ko": "화염술사",
       "recipe": [
         "DilutedLiquidGuilt",
         "DilutedLiquidGuilt",
@@ -3782,7 +3784,7 @@
       "stableId": "cold68",
       "skill": 23907,
       "en": "Ice Storm",
-      "ko": "냉기 피해",
+      "ko": "얼음 폭풍",
       "recipe": [
         "LiquidParanoia",
         "ConcentratedLiquidIsolation",
@@ -3926,7 +3928,7 @@
       "stableId": "cold69_",
       "skill": 24721,
       "en": "Brain Freeze",
-      "ko": "냉기 피해",
+      "ko": "두뇌 동결",
       "recipe": [
         "DilutedLiquidGreed",
         "DilutedLiquidIre",
@@ -5306,7 +5308,7 @@
       "stableId": "cold59",
       "skill": 33852,
       "en": "Flurry",
-      "ko": "냉기 피해",
+      "ko": "질풍",
       "recipe": [
         "DilutedLiquidIre",
         "DilutedLiquidGreed",
@@ -5978,7 +5980,7 @@
       "stableId": "fire76",
       "skill": 37619,
       "en": "Rhythm of Fire",
-      "ko": "불의 노래",
+      "ko": "불의 리듬",
       "recipe": [
         "DilutedLiquidGuilt",
         "DilutedLiquidGuilt",
@@ -7622,7 +7624,7 @@
       "stableId": "lightning68",
       "skill": 47387,
       "en": "Stormkeeper",
-      "ko": "번개 피해",
+      "ko": "폭풍수호자",
       "recipe": [
         "DilutedLiquidIre",
         "DilutedLiquidGuilt",
@@ -8114,7 +8116,7 @@
       "stableId": "lightning70",
       "skill": 50498,
       "en": "Brain Storm",
-      "ko": "번개 피해",
+      "ko": "두뇌 폭풍",
       "recipe": [
         "ConcentratedLiquidSuffering",
         "DilutedLiquidGuilt",
@@ -8522,7 +8524,7 @@
       "stableId": "fire75",
       "skill": 52669,
       "en": "Flamekeeper",
-      "ko": "화염 피해",
+      "ko": "불길수호자",
       "recipe": [
         "DilutedLiquidGuilt",
         "DilutedLiquidIre",
@@ -9830,7 +9832,7 @@
       "stableId": "lightning69_",
       "skill": 60878,
       "en": "Lightning Storm",
-      "ko": "번개 피해",
+      "ko": "번개 폭풍",
       "recipe": [
         "DilutedLiquidGuilt",
         "LiquidDespair",
@@ -10022,7 +10024,7 @@
       "stableId": "Puppetmaster6",
       "skill": 62210,
       "en": "Puppet Master chance",
-      "ko": "인형사 확률",
+      "ko": "끝없는 춤",
       "recipe": [
         "DilutedLiquidGreed",
         "LiquidDespair",
@@ -10671,15 +10673,6 @@
       "skill": 12183
     },
     {
-      "ko": "화염 피해",
-      "existingEn": "Fire Damage",
-      "incomingEn": "Arsonist",
-      "type": "node",
-      "nodeId": "14265",
-      "stableId": "fire85",
-      "skill": 14265
-    },
-    {
       "ko": "치명타 확률",
       "existingEn": "Critical Hit Chance",
       "incomingEn": "Critical Chance",
@@ -10696,15 +10689,6 @@
       "nodeId": "16861",
       "stableId": "criticals70",
       "skill": 16861
-    },
-    {
-      "ko": "원소 피해",
-      "existingEn": "Elemental Damage",
-      "incomingEn": "Cold and Lightning Damage",
-      "type": "node",
-      "nodeId": "17044",
-      "stableId": "elemental47",
-      "skill": 17044
     },
     {
       "ko": "복수",
@@ -10779,15 +10763,6 @@
       "skill": 22368
     },
     {
-      "ko": "냉기 피해",
-      "existingEn": "Cold Damage",
-      "incomingEn": "Ice Storm",
-      "type": "node",
-      "nodeId": "23907",
-      "stableId": "cold68",
-      "skill": 23907
-    },
-    {
       "ko": "치명타 확률",
       "existingEn": "Critical Hit Chance",
       "incomingEn": "Critical Chance",
@@ -10804,15 +10779,6 @@
       "nodeId": "24420",
       "stableId": "criticals93_",
       "skill": 24420
-    },
-    {
-      "ko": "냉기 피해",
-      "existingEn": "Cold Damage",
-      "incomingEn": "Brain Freeze",
-      "type": "node",
-      "nodeId": "24721",
-      "stableId": "cold69_",
-      "skill": 24721
     },
     {
       "ko": "내열 처리",
@@ -10930,24 +10896,6 @@
       "nodeId": "33829",
       "stableId": "criticals94",
       "skill": 33829
-    },
-    {
-      "ko": "냉기 피해",
-      "existingEn": "Cold Damage",
-      "incomingEn": "Flurry",
-      "type": "node",
-      "nodeId": "33852",
-      "stableId": "cold59",
-      "skill": 33852
-    },
-    {
-      "ko": "원소 피해",
-      "existingEn": "Elemental Damage",
-      "incomingEn": "Fire and Cold Damage",
-      "type": "node",
-      "nodeId": "34331",
-      "stableId": "elemental19",
-      "skill": 34331
     },
     {
       "ko": "명중 시 격노",
@@ -11139,15 +11087,6 @@
       "skill": 47375
     },
     {
-      "ko": "번개 피해",
-      "existingEn": "Lightning Damage",
-      "incomingEn": "Stormkeeper",
-      "type": "node",
-      "nodeId": "47387",
-      "stableId": "lightning68",
-      "skill": 47387
-    },
-    {
       "ko": "출혈 확률",
       "existingEn": "Bleed Chance",
       "incomingEn": "Bleeding Chance",
@@ -11191,15 +11130,6 @@
       "nodeId": "50459",
       "stableId": "ranger596",
       "skill": 50459
-    },
-    {
-      "ko": "번개 피해",
-      "existingEn": "Lightning Damage",
-      "incomingEn": "Brain Storm",
-      "type": "node",
-      "nodeId": "50498",
-      "stableId": "lightning70",
-      "skill": 50498
     },
     {
       "ko": "집정관 효과",
@@ -11254,15 +11184,6 @@
       "nodeId": "51807",
       "stableId": "companions39",
       "skill": 51807
-    },
-    {
-      "ko": "화염 피해",
-      "existingEn": "Fire Damage",
-      "incomingEn": "Flamekeeper",
-      "type": "node",
-      "nodeId": "52669",
-      "stableId": "fire75",
-      "skill": 52669
     },
     {
       "ko": "위치",
@@ -11391,15 +11312,6 @@
       "skill": 60107
     },
     {
-      "ko": "번개 피해",
-      "existingEn": "Lightning Damage",
-      "incomingEn": "Lightning Storm",
-      "type": "node",
-      "nodeId": "60878",
-      "stableId": "lightning69_",
-      "skill": 60878
-    },
-    {
       "ko": "정확도",
       "existingEn": "Accuracy",
       "incomingEn": "Accuracy Rating",
@@ -11492,6 +11404,15 @@
   ],
   "displayAliasConflicts": [
     {
+      "en": "Puppet Master chance",
+      "existingKo": "인형사 효과",
+      "incomingKo": "인형사 확률",
+      "type": "node",
+      "nodeId": "13123",
+      "stableId": "Puppetmaster7__",
+      "skill": 13123
+    },
+    {
       "en": "Stun Buildup",
       "existingKo": "기절 누적",
       "incomingKo": "기절 축적",
@@ -11501,13 +11422,22 @@
       "skill": 13715
     },
     {
-      "en": "Arsonist",
-      "existingKo": "방화범",
-      "incomingKo": "화염 피해",
+      "en": "Puppet Master chance",
+      "existingKo": "인형사 효과",
+      "incomingKo": "숨겨진 손",
       "type": "node",
-      "nodeId": "14265",
-      "stableId": "fire85",
-      "skill": 14265
+      "nodeId": "14258",
+      "stableId": "Puppetmaster9",
+      "skill": 14258
+    },
+    {
+      "en": "Puppet Master chance",
+      "existingKo": "인형사 효과",
+      "incomingKo": "인형사 확률",
+      "type": "node",
+      "nodeId": "14686",
+      "stableId": "Puppetmaster1",
+      "skill": 14686
     },
     {
       "en": "Stun Buildup",
@@ -11535,15 +11465,6 @@
       "nodeId": "22538",
       "stableId": "slowed_enemies17",
       "skill": 22538
-    },
-    {
-      "en": "Cold and Lightning Damage",
-      "existingKo": "원소 피해",
-      "incomingKo": "냉기 및 번개 피해",
-      "type": "node",
-      "nodeId": "22851",
-      "stableId": "monkchakra21",
-      "skill": 22851
     },
     {
       "en": "Shapeshifted Damage",
@@ -11654,13 +11575,22 @@
       "skill": 45301
     },
     {
-      "en": "Cold and Lightning Damage",
-      "existingKo": "원소 피해",
-      "incomingKo": "냉기 및 번개 피해",
+      "en": "Puppet Master chance",
+      "existingKo": "인형사 효과",
+      "incomingKo": "인형사 확률",
       "type": "node",
-      "nodeId": "50268",
-      "stableId": "monkchakra20_",
-      "skill": 50268
+      "nodeId": "53324",
+      "stableId": "Puppetmaster4",
+      "skill": 53324
+    },
+    {
+      "en": "Puppet Master chance",
+      "existingKo": "인형사 효과",
+      "incomingKo": "인형사 확률",
+      "type": "node",
+      "nodeId": "53795",
+      "stableId": "Puppetmaster2_",
+      "skill": 53795
     },
     {
       "en": "Slow Effect on You",
@@ -11708,6 +11638,24 @@
       "skill": 61393
     },
     {
+      "en": "Puppet Master chance",
+      "existingKo": "인형사 효과",
+      "incomingKo": "끝없는 춤",
+      "type": "node",
+      "nodeId": "62210",
+      "stableId": "Puppetmaster6",
+      "skill": 62210
+    },
+    {
+      "en": "Puppet Master chance",
+      "existingKo": "인형사 효과",
+      "incomingKo": "인형사 확률",
+      "type": "node",
+      "nodeId": "62723",
+      "stableId": "Puppetmaster8",
+      "skill": 62723
+    },
+    {
       "en": "Shapeshifted Damage",
       "existingKo": "형태 변환 시 피해",
       "incomingKo": "형태 변환 피해",
@@ -11715,6 +11663,15 @@
       "nodeId": "63085",
       "stableId": "bear6",
       "skill": 63085
+    },
+    {
+      "en": "Puppet Master chance",
+      "existingKo": "인형사 효과",
+      "incomingKo": "인형사 지속시간",
+      "type": "node",
+      "nodeId": "64804",
+      "stableId": "Puppetmaster3",
+      "skill": 64804
     }
   ],
   "version": "poe2",
