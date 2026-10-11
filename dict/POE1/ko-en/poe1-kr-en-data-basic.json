@@ -80,5 +80,16 @@
     "1 역사적인 순간": "1 Historic",
     "분할됨": "Split",
     "복제": "Mirrored",
-    "부적 등급": "Talisman Tier"
+    "부적 등급": "Talisman Tier",
+    "아이템 종류: 강적 속성": "Item Class: Archnemesis Mods",
+    "아이템 종류: 계약": "Item Class: Contracts",
+    "아이템 종류: 낚싯대": "Item Class: Fishing Rods",
+    "아이템 종류: 도면": "Item Class: Blueprints",
+    "아이템 종류: 반지": "Item Class: Rings",
+    "아이템 종류: 부적": "Item Class: Charms",
+    "아이템 종류: 숨겨진 아이템": "Item Class: Hidden Items",
+    "아이템 종류: 점술 카드": "Item Class: Divination Cards",
+    "아이템 종류: 지도": "Item Class: Maps",
+    "아이템 종류: 축성된 유물": "Item Class: Sanctified Relics",
+    "아이템 종류: 탐험 일지": "Item Class: Expedition Logbooks"
 }
