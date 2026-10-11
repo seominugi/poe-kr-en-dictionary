@@ -16,32 +16,47 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # 저장소 기본 토큰은 읽기 전용이다 — 마지막 단계가 빌드 결과를 push 한다
+    permissions:
+      contents: write
+
+    # 사전 소스는 poe-game-data(공개) — lock 태그 그대로 받는다. 이 태그가 아니면 build 가 snapshot 검사에서 멈춘다.
+    # package-lock.json 은 .gitignore 대상이라 npm ci 를 쓸 수 없다.
+    env:
+      POE_GAME_DATA_ROOT: ${{ github.workspace }}/poe-game-data
 
     steps:
       - name: Checkout dictionary repo
         uses: actions/checkout@v4
 
-      - name: Checkout poe-i18n data
-        uses: actions/checkout@v4
-        with:
-          repository: seominugi/poe-i18n-json-data-generator-dev
-          path: poe-i18n-data
-          token: ${{ secrets.PAT_TOKEN }}
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
+
+      - name: Read poe-game-data lock
+        id: lock
+        run: echo "tag=$(node -p "require('./poe-game-data.lock.json').tag")" >> "$GITHUB_OUTPUT"
+
+      - name: Checkout poe-game-data (lock tag)
+        uses: actions/checkout@v4
+        with:
+          repository: seominugi/poe-game-data
+          ref: ${{ steps.lock.outputs.tag }}
+          path: poe-game-data
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install --no-audit --no-fund
+
+      - name: Test
+        run: npx vitest run
 
       - name: Build dictionary
         run: |
           if [ "${{ inputs.version }}" = "both" ]; then
-            POEDB_DATA_ROOT="${{ github.workspace }}/poe-i18n-data/assets/data" node scripts/build.js
+            node scripts/build.js
           else
-            POEDB_DATA_ROOT="${{ github.workspace }}/poe-i18n-data/assets/data" node scripts/build.js --version ${{ inputs.version }}
+            node scripts/build.js --version ${{ inputs.version }}
           fi
 
       - name: Show build report

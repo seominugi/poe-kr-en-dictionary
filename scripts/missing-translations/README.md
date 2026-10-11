@@ -175,7 +175,7 @@ candidates/ 파일 (자동 생성)
 - [ ] **Phase 3 백엔드 배포**: `/api/missing-translations?version=&since=` 엔드포인트 가동 확인
 - [ ] **GitHub Secrets 등록** (Settings → Secrets → Actions):
   - `MISSING_TRANSLATIONS_BACKEND_URL` — 백엔드 베이스 URL
-  - `PAT_TOKEN` — `poe-i18n-json-data-generator-dev` checkout 용 PAT (build-dict.yml 과 동일)
+- [ ] **PR 생성 허용**: Settings → Actions → General → "Allow GitHub Actions to create and approve pull requests" (2026-10-12 꺼짐)
 - [ ] **cron 시각 확정**: `.github/workflows/missing-translations-daily.yml` 의 `schedule.cron` 수정 (현재 UTC 15:00 = KST 00:00)
 - [ ] **워크플로 활성화**: 초안 상태 주석 제거 또는 확인 후 운영 브랜치 반영
 - [ ] **첫 수동 실행** (`workflow_dispatch`) 으로 전체 플로 확인
@@ -200,4 +200,4 @@ candidates/ 파일 (자동 생성)
 
 - [`docs/guide/배포-태그-버전-규칙.md`](../../docs/guide/배포-태그-버전-규칙.md) — 태그/브랜치 전략
 - [`.github/workflows/missing-translations-daily.yml`](../../.github/workflows/missing-translations-daily.yml) — cron 워크플로 초안
-- [`scripts/config.js`](../config.js) — OUTPUT 경로, POEDB_DATA_ROOT 설정
+- [`scripts/config.js`](../config.js) — OUTPUT 경로, POE_GAME_DATA_ROOT 설정
