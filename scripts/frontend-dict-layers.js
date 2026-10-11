@@ -1,6 +1,7 @@
 // 프론트(seominugi.com 아이템 번역기)가 사전을 병합하는 구성·순서 — 이 저장소의 단일 정의.
 //
 // 정본은 seominugi-com `src/utils/translation/dictionarySources.js` 다. 그쪽을 바꾸면 여기도 고친다.
+// 어긋나면 frontend-layers-contract.js 가 아이템 종류 규칙 계산(build·sync·test) 전에 멈춘다(옆 체크아웃이 있을 때).
 // 뒤에 오는 층이 이긴다. common(이 저장소 v2 산출물)이 맨 끝이라 최종 override 로 동작한다.
 //
 // 쓰는 곳:
