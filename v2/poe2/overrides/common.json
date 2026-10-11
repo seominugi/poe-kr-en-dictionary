@@ -70,6 +70,11 @@
   "퀄리티 (소환수 속성)": "Quality (Minion Modifiers)",
   "적용 반경: 작게": "Radius: Small",
   "적용 반경: 중간": "Radius: Medium",
+  "적용 반경: 변수": "Radius: Variable",
+  "적용 반경: 매우 좁은 반경": "Radius: Very Small",
+  "적용 반경: 중간 반경-좁은 반경": "Radius: Medium-Small",
+  "적용 반경: 중간 반경-넓은 반경": "Radius: Medium-Large",
+  "적용 반경: 거대한 반경": "Radius: Massive",
   "적용 반경: 대형": "Radius: Large",
   "적용 반경: 매우 넓은 반경": "Radius: Very Large"
 }
