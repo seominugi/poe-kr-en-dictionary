@@ -23,6 +23,7 @@ import { readFileSync } from 'fs'
 import { join, resolve } from 'path'
 import { CONFIG } from './config.js'
 import { loadPriorLayers } from './frontend-dict-layers.js'
+import { assertFrontendContract } from './frontend-layers-contract.js'
 
 export const CLASS_LABEL = { ko: '아이템 종류', en: 'Item Class' }
 
@@ -69,6 +70,7 @@ export function applyClassNameRule({ classNames, prior, searchNames }) {
  *   overrides 가 섞인 v2 uniques·gems·currency 를 읽으므로 검색 이름에 넣는다
  */
 export function classNameRuleFor(version, poedbData, overridesFor) {
+  assertFrontendContract() // 앞 층 정의가 프론트와 어긋나면 규칙이 틀린 층으로 판정한다
   const { map: prior, missing } = loadPriorLayers(version)
   if (missing.length) throw new Error(`프론트 앞 층을 읽지 못했습니다: ${missing.join(', ')} — 아이템 종류 규칙 계산 불가`)
   const searchNames = Object.assign({}, ...SEARCH_NAME_CATEGORIES.flatMap((c) => [poedbData[c] ?? {}, overridesFor(c)]))
