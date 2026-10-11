@@ -5,6 +5,7 @@ import { extractGameData } from './sources/extract-game-data.js'
 import { fetchAndMatchTradeStats } from './sources/fetch-trade-api.js'
 import { fetchAndMatchPassiveTree } from './sources/fetch-passive-tree.js'
 import { generateReport } from './utils/reporter.js'
+import { loadPriorLayers } from './frontend-dict-layers.js'
 
 /**
  * 4-tier 우선순위로 사전을 병합한다.
@@ -12,6 +13,33 @@ import { generateReport } from './utils/reporter.js'
  */
 export function mergeDictionaries({ overrides, poedb, tradeApi, legacy }) {
   return { ...legacy, ...tradeApi, ...poedb, ...overrides }
+}
+
+/**
+ * poe-game-data common(아이템 종류 이름, 복수형) 중 프론트의 앞 층과 값이 다른 것을 맨 키에서 뺀다.
+ *
+ * 프론트는 common 을 마지막에 병합하므로 common 의 맨 키가 이긴다. 그런데 같은 한글이
+ * 아이템·고유·점술 카드 이름이나 무기 종류 표시(ClientStrings)로도 쓰인다.
+ *   부적 = Charms(종류) / The Sigil(점술 카드),  단검 = Daggers(종류) / Dagger(무기 종류 줄)
+ * 맨 키로 두면 이름 줄까지 종류 이름으로 바뀐다. 빼면 이름 줄은 앞 층 값을 쓰고,
+ * "아이템 종류: X" 줄은 basic 의 줄 키가, 확장(나랏말서미누기)이 common 에서 얻던 항목은 확장 전용
+ * 사전(영→한 큐레이션, POE2 는 v2 currency 도)이 맡는다 — scripts/sync-class-name-lines.js 가 맞추고
+ * tests/class-name-collisions.test.js 가 빠짐을 잡는다.
+ *
+ * 손으로 넣은 overrides 는 대상이 아니다 — 이 함수는 game-data 쪽만 받는다.
+ *
+ * @param {Record<string, string>} classNames poe-game-data dict/common.json
+ * @param {Record<string, string>} prior 프론트가 common 보다 먼저 병합한 결과
+ * @returns {{ kept: Record<string, string>, dropped: Record<string, { classValue: string, nameValue: string }> }}
+ */
+export function splitClassNameCollisions(classNames, prior) {
+  const kept = {}
+  const dropped = {}
+  for (const [ko, en] of Object.entries(classNames ?? {})) {
+    if (Object.hasOwn(prior, ko) && prior[ko] !== en) dropped[ko] = { classValue: en, nameValue: prior[ko] }
+    else kept[ko] = en
+  }
+  return { kept, dropped }
 }
 
 /**
@@ -190,7 +218,14 @@ async function build(version) {
 
   for (const category of CONFIG.CATEGORIES) {
     const overrides = overridesByCategory[category]
-    const poedbCat = poedbData[category] ?? {}
+    let poedbCat = poedbData[category] ?? {}
+    if (category === 'common') {
+      const { map: prior, missing } = loadPriorLayers(version)
+      if (missing.length) throw new Error(`프론트 앞 층을 읽지 못했습니다: ${missing.join(', ')} — common 충돌 판정 불가`)
+      const { kept, dropped } = splitClassNameCollisions(poedbCat, prior)
+      poedbCat = kept
+      console.log(`  common: 이름과 부딪히는 아이템 종류 이름 ${Object.keys(dropped).length}개를 맨 키에서 뺌`)
+    }
     // stats는 Trade API, passives는 Passive Tree API(poe2) 또는 GGPK(poe1) 결과도 병합
     const tradeCat = category === 'stats' ? tradeResult.matched : {}
     const passiveCat = category === 'passives' ? { ...gameDataPassives, ...passiveResult.matched } : {}
