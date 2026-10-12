@@ -116,5 +116,11 @@
     "#% chance to gain Adrenaline for # Seconds when Leech is removed by Filling Unreserved Life": "점유되지 않은 생명력이 차서 흡수가 제거되면 #%의 확률로 #초 동안 아드레날린 획득",
     "Maps found in your Maps are Corrupted with # Modifiers": "지도에서 발견하는 지도 아이템이 타락한 지도로 떨어지며 속성 #개 보유",
     "Attacks fire # additional Projectile when in Off Hand": "보조 장비로 장착하면 공격 시 투사체 #개 추가 발사",
-    "Rerolling Favours at Ritual Altars has no Cost the first time": "의식 제단에서 헌정품을 무작위 변경할 때 첫 1회는 비용 없음"
+    "Rerolling Favours at Ritual Altars has no Cost the first time": "의식 제단에서 헌정품을 무작위 변경할 때 첫 1회는 비용 없음",
+    "#% increased maximum Life and reduced Fire Resistance": "최대 생명력 {0}% 증가, 화염 저항 {0}% 감소",
+    "#% reduced maximum Life and increased Fire Resistance": "최대 생명력 {0}% 감소, 화염 저항 {0}% 증가",
+    "#% increased maximum Mana and reduced Cold Resistance": "최대 마나 {0}% 증가, 냉기 저항 {0}% 감소",
+    "#% reduced maximum Mana and increased Cold Resistance": "최대 마나 {0}% 감소, 냉기 저항 {0}% 증가",
+    "#% increased Global maximum Energy Shield and reduced Lightning Resistance": "일반 에너지 보호막 최대치 {0}% 증가, 번개 저항 {0}% 감소",
+    "#% reduced Global maximum Energy Shield and increased Lightning Resistance": "일반 에너지 보호막 최대치 {0}% 감소, 번개 저항 {0}% 증가"
 }
