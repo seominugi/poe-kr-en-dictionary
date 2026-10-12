@@ -6,6 +6,7 @@ import { fetchAndMatchTradeStats } from './sources/fetch-trade-api.js'
 import { fetchAndMatchPassiveTree } from './sources/fetch-passive-tree.js'
 import { generateReport } from './utils/reporter.js'
 import { assertClassNameSync, classNameRuleFor } from './class-name-rule.js'
+import { assertNoExtensionLosses } from './extension-dict-layers.js'
 
 /**
  * 4-tier 우선순위로 사전을 병합한다.
@@ -110,8 +111,9 @@ function sortedJsonStringify(obj) {
 
 /**
  * 메인 빌드 함수.
+ * @param {{ allowExtensionLosses?: boolean }} options 확장 영→한 소실을 알고 진행할지(게임에서 빠진 문구 등)
  */
-async function build(version) {
+async function build(version, { allowExtensionLosses = false } = {}) {
   console.log(`\n=== ${version.toUpperCase()} 사전 빌드 시작 ===\n`)
 
   // Step 1: poe-game-data(GGPK 1차 추출) 사전 로드
@@ -245,6 +247,11 @@ async function build(version) {
     console.log(`  display/passives.json: ${Object.keys(combinedDisplay).length}개 (트리 alias ${Object.keys(passiveResult.displayAliases).length} + 노드 설명 ${Object.keys(treeDesc).length})`)
   }
 
+  // Step 6b: 확장(나랏말서미누기)이 보는 영→한 방향으로, 직전 커밋 대비 사라진 영문 키가 있으면 멈춘다.
+  // v2 는 ko→en 이라 같은 한글이 다른 영문을 가리키면 옛 영문이 확장에서 조용히 빠진다(#14).
+  // 파일은 이미 썼다 — 작업 트리에서 diff 를 보고 되살리거나 --allow-extension-losses 로 다시 빌드한다.
+  assertNoExtensionLosses(version, { base: 'HEAD', allow: allowExtensionLosses })
+
   // Step 7: shared/common.json
   mkdirSync(CONFIG.OUTPUT.shared, { recursive: true })
 
@@ -295,14 +302,15 @@ if (isMain) {
   const args = process.argv.slice(2)
   const versionIdx = args.indexOf('--version')
   const version = versionIdx !== -1 ? args[versionIdx + 1] : null
+  const options = { allowExtensionLosses: args.includes('--allow-extension-losses') }
 
   if (version && ['poe1', 'poe2'].includes(version)) {
-    build(version)
+    build(version, options)
   } else if (!version) {
-    await build('poe1')
-    await build('poe2')
+    await build('poe1', options)
+    await build('poe2', options)
   } else {
-    console.error('사용법: node scripts/build.js [--version poe1|poe2]')
+    console.error('사용법: node scripts/build.js [--version poe1|poe2] [--allow-extension-losses]')
     process.exit(1)
   }
 }

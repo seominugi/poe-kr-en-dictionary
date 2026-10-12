@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-22T19:27:09.739Z",
+  "generatedAt": "2026-10-12T12:20:12.547Z",
   "source": "passive-tree",
   "stats": {
     "classes": 12,
@@ -7,10 +7,10 @@
     "nodes": 5153,
     "skillOverrides": 80,
     "anointedPassives": 875,
-    "matched": 2016,
-    "conflicts": 96,
-    "displayAliases": 3875,
-    "displayAliasConflicts": 30,
+    "matched": 2012,
+    "conflicts": 88,
+    "displayAliases": 3874,
+    "displayAliasConflicts": 22,
     "unmatched": 0,
     "skippedIncompleteAscendancies": 2,
     "skippedIncompleteNodes": 241,
@@ -2416,7 +2416,7 @@
       "stableId": "Puppetmaster9",
       "skill": 14258,
       "en": "Puppet Master chance",
-      "ko": "숨겨진 손",
+      "ko": "인형사 확률",
       "recipe": [
         "LiquidParanoia",
         "DilutedLiquidIre",
@@ -10024,7 +10024,7 @@
       "stableId": "Puppetmaster6",
       "skill": 62210,
       "en": "Puppet Master chance",
-      "ko": "끝없는 춤",
+      "ko": "인형사 확률",
       "recipe": [
         "DilutedLiquidGreed",
         "LiquidDespair",
@@ -10754,15 +10754,6 @@
       "skill": 21721
     },
     {
-      "ko": "방어력 및 반려수 생명력",
-      "existingEn": "Defenses and Companion Life",
-      "incomingEn": "Defences and Companion Life",
-      "type": "node",
-      "nodeId": "22368",
-      "stableId": "companions20",
-      "skill": 22368
-    },
-    {
       "ko": "치명타 확률",
       "existingEn": "Critical Hit Chance",
       "incomingEn": "Critical Chance",
@@ -10806,15 +10797,6 @@
       "nodeId": "26969",
       "stableId": "criticals69",
       "skill": 26969
-    },
-    {
-      "ko": "방어력 및 반려수 생명력",
-      "existingEn": "Defenses and Companion Life",
-      "incomingEn": "Defences and Companion Life",
-      "type": "node",
-      "nodeId": "27048",
-      "stableId": "companions14",
-      "skill": 27048
     },
     {
       "ko": "명중 시 격노",
@@ -11078,15 +11060,6 @@
       "skill": 47175
     },
     {
-      "ko": "방어력 및 반려수 생명력",
-      "existingEn": "Defenses and Companion Life",
-      "incomingEn": "Defences and Companion Life",
-      "type": "node",
-      "nodeId": "47375",
-      "stableId": "companions16",
-      "skill": 47375
-    },
-    {
       "ko": "출혈 확률",
       "existingEn": "Bleed Chance",
       "incomingEn": "Bleeding Chance",
@@ -11177,15 +11150,6 @@
       "skill": 51534
     },
     {
-      "ko": "방어력 및 반려수 생명력",
-      "existingEn": "Defenses and Companion Life",
-      "incomingEn": "Defences and Companion Life",
-      "type": "node",
-      "nodeId": "51807",
-      "stableId": "companions39",
-      "skill": 51807
-    },
-    {
       "ko": "위치",
       "existingEn": "Witch",
       "incomingEn": "WITCH",
@@ -11258,15 +11222,6 @@
       "skill": 56342
     },
     {
-      "ko": "방어력 및 반려수 생명력",
-      "existingEn": "Defenses and Companion Life",
-      "incomingEn": "Defences and Companion Life",
-      "type": "node",
-      "nodeId": "57089",
-      "stableId": "companions23",
-      "skill": 57089
-    },
-    {
       "ko": "치명타 확률",
       "existingEn": "Critical Hit Chance",
       "incomingEn": "Critical Chance",
@@ -11292,15 +11247,6 @@
       "nodeId": "59256",
       "stableId": "criticals6",
       "skill": 59256
-    },
-    {
-      "ko": "방어력 및 반려수 생명력",
-      "existingEn": "Defenses and Companion Life",
-      "incomingEn": "Defences and Companion Life",
-      "type": "node",
-      "nodeId": "59647",
-      "stableId": "duelist_minions8",
-      "skill": 59647
     },
     {
       "ko": "치명타 확률",
@@ -11366,24 +11312,6 @@
       "skill": 62424
     },
     {
-      "ko": "방어력 및 반려수 생명력",
-      "existingEn": "Defenses and Companion Life",
-      "incomingEn": "Defences and Companion Life",
-      "type": "node",
-      "nodeId": "63182",
-      "stableId": "duelist_minions7",
-      "skill": 63182
-    },
-    {
-      "ko": "방어력 및 반려수 생명력",
-      "existingEn": "Defenses and Companion Life",
-      "incomingEn": "Defences and Companion Life",
-      "type": "node",
-      "nodeId": "63618",
-      "stableId": "companions17",
-      "skill": 63618
-    },
-    {
       "ko": "출혈 확률",
       "existingEn": "Bleed Chance",
       "incomingEn": "Bleeding Chance",
@@ -11404,15 +11332,6 @@
   ],
   "displayAliasConflicts": [
     {
-      "en": "Puppet Master chance",
-      "existingKo": "인형사 효과",
-      "incomingKo": "인형사 확률",
-      "type": "node",
-      "nodeId": "13123",
-      "stableId": "Puppetmaster7__",
-      "skill": 13123
-    },
-    {
       "en": "Stun Buildup",
       "existingKo": "기절 누적",
       "incomingKo": "기절 축적",
@@ -11420,24 +11339,6 @@
       "nodeId": "13715",
       "stableId": "AscendancyWarrior1Small3",
       "skill": 13715
-    },
-    {
-      "en": "Puppet Master chance",
-      "existingKo": "인형사 효과",
-      "incomingKo": "숨겨진 손",
-      "type": "node",
-      "nodeId": "14258",
-      "stableId": "Puppetmaster9",
-      "skill": 14258
-    },
-    {
-      "en": "Puppet Master chance",
-      "existingKo": "인형사 효과",
-      "incomingKo": "인형사 확률",
-      "type": "node",
-      "nodeId": "14686",
-      "stableId": "Puppetmaster1",
-      "skill": 14686
     },
     {
       "en": "Stun Buildup",
@@ -11575,24 +11476,6 @@
       "skill": 45301
     },
     {
-      "en": "Puppet Master chance",
-      "existingKo": "인형사 효과",
-      "incomingKo": "인형사 확률",
-      "type": "node",
-      "nodeId": "53324",
-      "stableId": "Puppetmaster4",
-      "skill": 53324
-    },
-    {
-      "en": "Puppet Master chance",
-      "existingKo": "인형사 효과",
-      "incomingKo": "인형사 확률",
-      "type": "node",
-      "nodeId": "53795",
-      "stableId": "Puppetmaster2_",
-      "skill": 53795
-    },
-    {
       "en": "Slow Effect on You",
       "existingKo": "플레이어에게 적용되는 감속",
       "incomingKo": "플레이어에게 적용되는 감속 효과",
@@ -11638,24 +11521,6 @@
       "skill": 61393
     },
     {
-      "en": "Puppet Master chance",
-      "existingKo": "인형사 효과",
-      "incomingKo": "끝없는 춤",
-      "type": "node",
-      "nodeId": "62210",
-      "stableId": "Puppetmaster6",
-      "skill": 62210
-    },
-    {
-      "en": "Puppet Master chance",
-      "existingKo": "인형사 효과",
-      "incomingKo": "인형사 확률",
-      "type": "node",
-      "nodeId": "62723",
-      "stableId": "Puppetmaster8",
-      "skill": 62723
-    },
-    {
       "en": "Shapeshifted Damage",
       "existingKo": "형태 변환 시 피해",
       "incomingKo": "형태 변환 피해",
@@ -11663,15 +11528,6 @@
       "nodeId": "63085",
       "stableId": "bear6",
       "skill": 63085
-    },
-    {
-      "en": "Puppet Master chance",
-      "existingKo": "인형사 효과",
-      "incomingKo": "인형사 지속시간",
-      "type": "node",
-      "nodeId": "64804",
-      "stableId": "Puppetmaster3",
-      "skill": 64804
     }
   ],
   "version": "poe2",
