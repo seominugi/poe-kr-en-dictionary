@@ -1,9 +1,9 @@
 {
   "version": "poe2",
-  "buildDate": "2026-10-12T13:13:16.248Z",
+  "buildDate": "2026-10-12T14:06:34.388Z",
   "stats": {
-    "total": 36075,
-    "fromPoedb": 20017,
+    "total": 36078,
+    "fromPoedb": 20020,
     "fromTradeApi": 3583,
     "fromPassiveTree": 2012,
     "fromOverrides": 151,

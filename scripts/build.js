@@ -247,6 +247,19 @@ async function build(version, { allowExtensionLosses = false } = {}) {
     console.log(`  display/passives.json: ${Object.keys(combinedDisplay).length}개 (트리 alias ${Object.keys(passiveResult.displayAliases).length} + 노드 설명 ${Object.keys(treeDesc).length})`)
   }
 
+  // Step 6a: 같은 한글 스탯 키의 다른 영문(단·복수 변형 등). stats.json 은 한글 하나에 영문 하나라 이 영문들을
+  // 싣지 못해 확장에서 미번역으로 남았다("Gain # Power Charges on use"). poe-game-data 가 GGPK 에서 뽑은
+  // { 한글: [영문, …] } 을 그대로 옮기고, 확장이 각 쌍을 v2 와 같은 규칙으로 뒤집는다(invertVariantMap).
+  // 아이템 번역기(ko→en)는 쓰지 않아 dict/ 가 아니라 v2 에 둔다.
+  const variantsPath = resolve(CONFIG.GAME_DATA_ROOT, version, 'stat-variants.json')
+  if (existsSync(variantsPath)) {
+    const variants = readJsonObject(variantsPath)
+    writeFileSync(join(outputDir, 'stats-variants.json'), sortedJsonStringify(variants), 'utf-8')
+    console.log(`  stats-variants.json: ${Object.keys(variants).length}개 한글 키`)
+  } else {
+    console.warn(`  ⚠️  ${variantsPath} 없음 — stats-variants.json 을 갱신하지 않는다(poe-game-data v2026.10.12.2 이상 필요)`)
+  }
+
   // Step 6b: 확장(나랏말서미누기)이 보는 영→한 방향으로, 직전 커밋 대비 사라진 영문 키가 있으면 멈춘다.
   // v2 는 ko→en 이라 같은 한글이 다른 영문을 가리키면 옛 영문이 확장에서 조용히 빠진다(#14).
   // 파일은 이미 썼다 — 작업 트리에서 diff 를 보고 되살리거나 --allow-extension-losses 로 다시 빌드한다.
