@@ -27,25 +27,30 @@ const LEGACY_POE1 = ['gem_skill', 'gem_support', 'item', 'passive_keystone', 'pa
 const SHARED = 'dict/naratmalssami-poe.json'
 
 /**
- * source 는 background.js 의 URL 상수 이름, invert 는 ko→en 파일을 뒤집어 읽는 층.
+ * source 는 background.js 의 URL 상수 이름. invert: false = 영→한 파일 그대로 / true = ko→en 파일을 뒤집어 읽는 층
+ * / 'variants' = { 한글: [영문, …] } 파일의 각 쌍을 뒤집어 읽는 층(fetchAndMergeVariantTranslations).
  * combine: preferHangul = mergeTranslationLayers(한글 우선) / lastWins = 객체 펼치기(뒤가 이김)
+ * 변형 층(stats-variants)은 두 게임 모두 v2 앞이다 — 영문이 겹치면 v2 의 주 값이 이긴다.
  */
 const LAYERS = {
   poe1: {
     combine: 'preferHangul',
     groups: [
       { source: 'POE1_LEGACY_FALLBACK_URLS', invert: false, files: LEGACY_POE1.map((f) => `dict/POE1/en-ko/poe1_${f}.json`) },
+      { source: 'POE1_V2_VARIANT_URLS', invert: 'variants', files: ['v2/poe1/stats-variants.json'] },
       { source: 'POE1_V2_TRANSLATION_URLS', invert: true, files: V2_FILES.map((f) => `v2/poe1/${f}.json`) },
       { source: 'POE1_CURATED_URLS', invert: false, files: [SHARED, 'dict/POE1/en-ko/poe1_custom.json', 'dict/POE1/en-ko/poe1_stats_custom.json'] },
     ],
   },
-  // 공용 파일이 v2 앞이다 — v2 에 있는 영문 키는 공용 파일 값이 덮인다
+  // 공용 파일이 v2 앞이다 — v2 에 있는 영문 키는 공용 파일 값이 덮인다. v2 를 고치는 값은 맨 뒤 POE2_CURATED_URLS 에 둔다.
   poe2: {
     combine: 'lastWins',
     groups: [
+      { source: 'POE2_V2_VARIANT_URLS', invert: 'variants', files: ['v2/poe2/stats-variants.json'] },
       { source: 'POE2_SHARED_URLS', invert: false, files: [SHARED] },
       { source: 'POE2_V2_TRANSLATION_URLS', invert: true, files: V2_FILES.map((f) => `v2/poe2/${f}.json`) },
       { source: 'POE2_V2_DISPLAY_ALIAS_URLS', invert: false, files: ['v2/poe2/display/passives.json'] },
+      { source: 'POE2_CURATED_URLS', invert: false, files: ['dict/POE2/en-ko/poe2_stats_custom.json'] },
     ],
   },
 }
@@ -75,14 +80,18 @@ export function extensionMap(version, readJson) {
     const part = new Map()
     for (const file of group.files) {
       for (const [key, value] of Object.entries(readJson(file) ?? {})) {
-        if (typeof value !== 'string') continue
-        if (!group.invert) {
-          part.set(key, value)
-          continue
+        // 변형 층은 값이 영문 배열이다 — 각 영문을 v2 처럼 뒤집는다
+        const values = group.invert === 'variants' ? (Array.isArray(value) ? value : []) : [value]
+        for (const v of values) {
+          if (typeof v !== 'string') continue
+          if (!group.invert) {
+            part.set(key, v)
+            continue
+          }
+          const ko = key.replace(NBSP, ' ').trim()
+          const en = v.replace(NBSP, ' ').trim().replace(/\{\d+\}/g, '#')
+          if (ko && en) assignPreferHangul(part, en, ko)
         }
-        const ko = key.replace(NBSP, ' ').trim()
-        const en = value.replace(NBSP, ' ').trim().replace(/\{\d+\}/g, '#')
-        if (ko && en) assignPreferHangul(part, en, ko)
       }
     }
     for (const [en, ko] of part) {

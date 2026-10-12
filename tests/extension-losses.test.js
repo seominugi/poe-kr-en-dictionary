@@ -69,6 +69,28 @@ describe('extensionMap — 병합 모델', () => {
     expect(Object.fromEntries(result)).toEqual({ 'Spined Bracers': '가시 팔보호구', 'Has # Abyssal Sockets': '심연 홈 #개' })
   })
 
+  it('변형 층은 같은 한글 키의 다른 영문을 더하고, 영문이 겹치면 v2 의 주 값이 이긴다(두 게임 모두 v2 앞)', () => {
+    for (const version of ['poe1', 'poe2']) {
+      const result = extensionMap(version, reader({
+        [`v2/${version}/stats-variants.json`]: {
+          '사용 시 권능 충전 #개 획득': ['Gain {0} Power Charges on use'],
+          '다른 한글': ['Gain {0} Power Charge on use'],
+        },
+        [`v2/${version}/stats.json`]: { '사용 시 권능 충전 #개 획득': 'Gain {0} Power Charge on use' },
+      }))
+      expect(result.get('Gain # Power Charges on use')).toBe('사용 시 권능 충전 #개 획득')
+      expect(result.get('Gain # Power Charge on use')).toBe('사용 시 권능 충전 #개 획득')
+    }
+  })
+
+  it('POE2 수작업 층은 v2 뒤라 v2 값을 고친다 — 한글만 같은 값을 두 번 쓰는 스탯', () => {
+    const result = extensionMap('poe2', reader({
+      'v2/poe2/stats.json': { '최대 생명력 #% 증가, 화염 저항 #% 감소': '{0}% increased maximum Life and reduced Fire Resistance' },
+      'dict/POE2/en-ko/poe2_stats_custom.json': { '#% increased maximum Life and reduced Fire Resistance': '최대 생명력 {0}% 증가, 화염 저항 {0}% 감소' },
+    }))
+    expect(result.get('#% increased maximum Life and reduced Fire Resistance')).toBe('최대 생명력 {0}% 증가, 화염 저항 {0}% 감소')
+  })
+
   it('POE2 공용 영→한 층은 v2 에 없는 키로 산다(#14 의 복구 방식)', () => {
     const result = extensionMap('poe2', reader({
       'dict/naratmalssami-poe.json': { 'Spiked Bracers': '가시 팔보호구' },
@@ -95,6 +117,19 @@ const POE2_V2_TRANSLATION_URLS = {
 
 const POE2_V2_DISPLAY_ALIAS_URLS = {
     passives: \`\${POE_DICTIONARY_RAW_BASE}/v2/poe2/display/passives.json\`
+};
+
+// 같은 한글 스탯 키에 붙는 다른 영문(단·복수 변형 등)
+const POE1_V2_VARIANT_URLS = {
+    stats: \`\${POE_DICTIONARY_RAW_BASE}/v2/poe1/stats-variants.json\`
+};
+
+const POE2_V2_VARIANT_URLS = {
+    stats: \`\${POE_DICTIONARY_RAW_BASE}/v2/poe2/stats-variants.json\`
+};
+
+const POE2_CURATED_URLS = {
+    stats_custom: \`\${POE_DICTIONARY_RAW_BASE}/dict/POE2/en-ko/poe2_stats_custom.json\`
 };
 
 const POE1_LEGACY_FALLBACK_URLS = {
@@ -129,15 +164,16 @@ const POE1_CURATED_URLS = {
 };
 
 async function fetchPoe1TranslationData() {
-    const [legacy, v2, curated] = await Promise.all([
+    const [legacy, variants, v2, curated] = await Promise.all([
         fetchAndMergeTranslations(POE1_LEGACY_FALLBACK_URLS, 'POE1-legacy', { logCollisions: false }),
+        fetchAndMergeVariantTranslations(POE1_V2_VARIANT_URLS, 'POE1-v2-variants', { optionalKeys: ['stats'] }),
         fetchAndMergeInvertedTranslations(POE1_V2_TRANSLATION_URLS, 'POE1-v2', {
             optionalKeys: ['poeNinjaUi', 'passives']
         }),
         fetchAndMergeTranslations(POE1_CURATED_URLS, 'POE1-curated', { logCollisions: false })
     ]);
 
-    return mergeTranslationLayers([legacy, v2, curated]);
+    return mergeTranslationLayers([legacy, variants, v2, curated]);
 }
 const POE2_SHARED_URLS = {
     shared: \`\${POE_DICTIONARY_RAW_BASE}/dict/naratmalssami-poe.json\`
@@ -146,7 +182,8 @@ const POE2_SHARED_URLS = {
 async function fetchPoe2TranslationData() {
     const sharedUrls = POE2_SHARED_URLS;
 
-    const [shared, v2Translations, displayAliases] = await Promise.all([
+    const [variants, shared, v2Translations, displayAliases, curated] = await Promise.all([
+        fetchAndMergeVariantTranslations(POE2_V2_VARIANT_URLS, 'POE2-v2-variants', { optionalKeys: ['stats'] }),
         fetchAndMergeTranslations(sharedUrls, 'POE2-Shared'),
         fetchAndMergeInvertedTranslations(POE2_V2_TRANSLATION_URLS, 'POE2-v2', {
             optionalKeys: ['passives', 'poeNinjaUi']
@@ -154,10 +191,11 @@ async function fetchPoe2TranslationData() {
         fetchAndMergeTranslations(POE2_V2_DISPLAY_ALIAS_URLS, 'POE2-v2-DisplayAliases', {
             logCollisions: false,
             optionalKeys: ['passives']
-        })
+        }),
+        fetchAndMergeTranslations(POE2_CURATED_URLS, 'POE2-curated', { logCollisions: false, optionalKeys: ['stats_custom'] })
     ]);
 
-    return { ...shared, ...v2Translations, ...displayAliases };
+    return { ...variants, ...shared, ...v2Translations, ...displayAliases, ...curated };
 }
 `.replace(/\n/g, '\r\n') // 실제 파일은 CRLF
 
@@ -170,8 +208,8 @@ describe('parseExtensionSources', () => {
 
   it('층 순서·병합식이 바뀌면 다른 구성으로 읽는다 — 공용 층을 v2 뒤로 옮기면 POE2 키 판정이 달라진다', () => {
     const text = BACKGROUND
-      .replace('return { ...shared, ...v2Translations, ...displayAliases };', 'return { ...v2Translations, ...shared, ...displayAliases };')
-      .replace('return mergeTranslationLayers([legacy, v2, curated]);', 'return mergeTranslationLayers([legacy, curated, v2]);')
+      .replace('return { ...variants, ...shared, ...v2Translations, ...displayAliases, ...curated };', 'return { ...variants, ...v2Translations, ...shared, ...displayAliases, ...curated };')
+      .replace('return mergeTranslationLayers([legacy, variants, v2, curated]);', 'return mergeTranslationLayers([legacy, variants, curated, v2]);')
     const { problems } = parseExtensionSources(text)
     expect(problems).toEqual([
       expect.stringMatching(/^poe1: fetchPoe1TranslationData 의 병합식을 읽지 못했습니다/),
