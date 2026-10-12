@@ -19796,7 +19796,7 @@
   "의미의 빛": "The Light of Meaning",
   "의사": "The Doctor",
   "의사봉": "Gavel",
-  "의식 제단에서 헌정품을 무작위 변경할 때 첫 #회는 비용 없음": "Rerolling Favours at Ritual Altars has no Cost the first time",
+  "의식 제단에서 헌정품을 무작위 변경할 때 첫 #회는 비용 없음": "Rerolling Favours at Ritual Altars has no Cost the first {0} times",
   "의식 제단이 등장하는 지도에 항상 의식 제단 4개 등장": "Your Maps with Ritual Altars always have four Ritual Altars",
   "의식 제단이 있는 아틀라스의 사분면에 형성된 지역을 추가합니다.": "Adds a Shaped Region containing Ritual Altars to a quadrant of the Atlas",
   "의식용 도끼": "Ceremonial Axe",
