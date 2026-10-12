@@ -6,7 +6,7 @@
 //
 // background.js 는 실행하지 않고 글자로 읽는다(서비스 워커라 chrome API·최상위 초기화가 있다). 보는 것:
 //   1. URL 상수 블록의 파일 경로·순서 — 이 저장소 main 을 읽는지도 본다
-//   2. 함수 안 fetch 호출 순서와 방식(그대로 읽기 / 뒤집어 읽기)
+//   2. 함수 안 fetch 호출 순서와 방식(그대로 읽기 / 뒤집어 읽기 / 변형 파일 뒤집어 읽기)
 //   3. 마지막 병합식 — mergeTranslationLayers([...]) 면 한글 우선, { ...a, ...b } 면 뒤가 이김
 // 못 읽는 모양이면 넘기지 않고 문제로 낸다. 병합 함수 내부(assignPreferHangul 등)의 변경은 여기서 못 본다.
 import { existsSync, readFileSync } from 'fs'
@@ -58,9 +58,10 @@ export function parseExtensionSources(rawText) {
     }
     // const sharedUrls = POE2_SHARED_URLS; 같은 별칭
     const aliases = Object.fromEntries([...body.matchAll(/const (\w+) = (\w+_URLS);/g)].map((m) => [m[1], m[2]]))
-    const groups = [...body.matchAll(/\b(fetchAndMergeTranslations|fetchAndMergeInvertedTranslations)\((\w+)/g)].map((m) => {
+    const INVERT = { fetchAndMergeTranslations: false, fetchAndMergeInvertedTranslations: true, fetchAndMergeVariantTranslations: 'variants' }
+    const groups = [...body.matchAll(/\b(fetchAndMergeTranslations|fetchAndMergeInvertedTranslations|fetchAndMergeVariantTranslations)\((\w+)/g)].map((m) => {
       const source = aliases[m[2]] ?? m[2]
-      return { source, invert: m[1] === 'fetchAndMergeInvertedTranslations', files: readUrlBlock(text, source, problems) }
+      return { source, invert: INVERT[m[1]], files: readUrlBlock(text, source, problems) }
     })
     const names = body.match(/const \[([^\]]+)\] = await Promise\.all\(\[/)?.[1].split(',').map((s) => s.trim())
     let combine = null

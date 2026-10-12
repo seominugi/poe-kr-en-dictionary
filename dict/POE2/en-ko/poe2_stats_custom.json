@@ -1,0 +1,8 @@
+{
+    "#% increased maximum Life and reduced Fire Resistance": "최대 생명력 {0}% 증가, 화염 저항 {0}% 감소",
+    "#% reduced maximum Life and increased Fire Resistance": "최대 생명력 {0}% 감소, 화염 저항 {0}% 증가",
+    "#% increased maximum Mana and reduced Cold Resistance": "최대 마나 {0}% 증가, 냉기 저항 {0}% 감소",
+    "#% reduced maximum Mana and increased Cold Resistance": "최대 마나 {0}% 감소, 냉기 저항 {0}% 증가",
+    "#% increased Global maximum Energy Shield and reduced Lightning Resistance": "일반 에너지 보호막 최대치 {0}% 증가, 번개 저항 {0}% 감소",
+    "#% reduced Global maximum Energy Shield and increased Lightning Resistance": "일반 에너지 보호막 최대치 {0}% 감소, 번개 저항 {0}% 증가"
+}
