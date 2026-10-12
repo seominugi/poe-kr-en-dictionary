@@ -9,12 +9,12 @@ const ROOT = resolve(__dirname, '..')
 /**
  * 이웃 저장소 폴더를 위로 올라가며 찾는다. 워크트리(.claude/worktrees/<이름>)에서는
  * `ROOT/../poe-game-data` 가 워크트리 폴더 안을 가리켜 통합 테스트가 깨졌다.
- * 못 찾으면 종전 경로를 돌려준다.
+ * 못 찾으면 종전 경로를 돌려준다. marker 는 그 저장소임을 알아보는 파일.
  */
-function findSiblingRepo(name) {
+function findSiblingRepo(name, marker = '_index.json') {
   for (let dir = dirname(ROOT); ; dir = dirname(dir)) {
     const candidate = join(dir, name)
-    if (existsSync(join(candidate, '_index.json'))) return candidate
+    if (existsSync(join(candidate, marker))) return candidate
     if (dirname(dir) === dir) return resolve(ROOT, '..', name)
   }
 }
@@ -24,6 +24,12 @@ export const CONFIG = {
   GAME_DATA_ROOT: process.env.POE_GAME_DATA_ROOT
     ? resolve(process.env.POE_GAME_DATA_ROOT)
     : findSiblingRepo('poe-game-data'),
+
+  // seominugi-com(프론트) 체크아웃 — 사전 구성 대조용(frontend-layers-contract.js). 비공개라 raw 로 못 읽는다.
+  // 표식은 package.json — 구성 파일로 찾으면 그 파일이 옮겨졌을 때 "체크아웃 없음" 으로 보여 대조가 꺼진다
+  FRONTEND_ROOT: process.env.SEOMINUGI_COM_ROOT
+    ? resolve(process.env.SEOMINUGI_COM_ROOT)
+    : findSiblingRepo('seominugi-com', 'package.json'),
 
   // 공식 Trade API
   TRADE_API: {
