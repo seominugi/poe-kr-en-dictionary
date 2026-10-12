@@ -223,6 +223,20 @@ describe('normalizeStatPair', () => {
     expect(pair.en).toBe('Adds {0}~{1} Physical Damage')
   })
 
+  // 거래소 문구는 변수를 #, 상수를 숫자로 쓴다. {N} 은 kr 의 N번째 # 자리라 영문 # 도 번호를 받아야
+  // 확장이 화면 숫자를 한글 자리에 바로 넣는다 (종전 "+#% … {0}" → "게의 방어막을 6개 … +5%")
+  it('거래소 상수+변수 — 영문 # 도 한글 자리 번호로 (실제 거래소 문구)', () => {
+    expect(normalizeStatPair(
+      '게의 방어막을 5개 이상 보유하는 동안 공격 피해 막기 확률 +#%',
+      '+#% Chance to Block Attack Damage while you have at least 5 Crab Barriers'
+    )).toEqual({
+      kr: '게의 방어막을 #개 이상 보유하는 동안 공격 피해 막기 확률 +#%',
+      en: '+{1}% Chance to Block Attack Damage while you have at least {0} Crab Barriers',
+    })
+    expect(normalizeStatPair('주문 시전 시 1초 동안 생명력 # 재생', 'Regenerate # Life over 1 second when you Cast a Spell'))
+      .toEqual({ kr: '주문 시전 시 #초 동안 생명력 # 재생', en: 'Regenerate {1} Life over {0} second when you Cast a Spell' })
+  })
+
   it('부호 포함 매핑', () => {
     const pair = normalizeStatPair(
       '저항 -5%',
