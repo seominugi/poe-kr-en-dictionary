@@ -31,6 +31,12 @@ export const CONFIG = {
     ? resolve(process.env.SEOMINUGI_COM_ROOT)
     : findSiblingRepo('seominugi-com', 'package.json'),
 
+  // 나랏말서미누기 확장 체크아웃 — 확장 병합 구성 대조용(extension-layers-contract.js). 없으면 대조만 건너뛴다.
+  // 표식은 manifest.json — background.js 로 찾으면 그 파일이 옮겨졌을 때 "체크아웃 없음" 으로 보여 대조가 꺼진다
+  EXTENSION_ROOT: process.env.NARATMALSSAMI_POE_ROOT
+    ? resolve(process.env.NARATMALSSAMI_POE_ROOT)
+    : findSiblingRepo('Naratmalssami-POE', 'manifest.json'),
+
   // 공식 Trade API
   TRADE_API: {
     poe1: {

@@ -49,6 +49,20 @@ npm run collect:poe-ninja:poe2  # poe.ninja 화면 텍스트 수집/분류 리�
 
 **요구사항**: `poe-game-data` 레포가 같은 부모 디렉토리에 `poe-game-data.lock.json` 의 snapshot 으로 있어야 함(다른 곳이면 `POE_GAME_DATA_ROOT`). 옆에 `seominugi-com` 이 있으면 프론트 사전 구성과도 대조한다(`SEOMINUGI_COM_ROOT`).
 
+### 확장 영→한 소실 점검
+
+나랏말서미누기 확장은 v2(ko→en)를 뒤집어 영→한으로 쓴다. 같은 한글이 다른 영문 변형을 가리키게 되면 옛 영문이 확장에서 조용히 빠진다(#14). 빌드는 버전마다 v2 를 쓴 뒤 **직전 커밋(HEAD) 대비 확장이 더 이상 번역하지 못하는 영문**이 있으면 목록과 함께 멈춘다. 대소문자·`{n}`/`#`·`+/-`·공백만 다른 대체는 소실로 치지 않는다.
+
+```bash
+npm run check:extension-losses                        # HEAD → 작업 트리
+npm run check:extension-losses -- --base origin/main  # main 반영 전: 확장이 지금 읽는 main → 작업 트리
+npm run check:extension-losses -- --base <ref> --head <ref> --version poe1
+```
+
+- 같은 한글의 다른 영문 변형이면 확장 전용 영→한 층에 되살린다 — POE1 `dict/POE1/en-ko/poe1_stats_custom.json`(최우선), POE2 `dict/naratmalssami-poe.json`(v2 **앞** 층이라 v2 에 없는 키만 살고, POE1 최상위 층이기도 하다).
+- 게임에서 빠진 문구라 소실이 맞으면 로컬에서 `node scripts/build.js --allow-extension-losses` 로 빌드해 커밋한다(GitHub Action 은 플래그 없이 돌아 멈춘다).
+- 병합 구성 정의는 `scripts/extension-dict-layers.js`. 옆에 `Naratmalssami-POE` 체크아웃이 있으면 `background.js` 와 대조한다(`NARATMALSSAMI_POE_ROOT`).
+
 ### poe.ninja UI 수집
 
 `collect:poe-ninja:poe2`는 Playwright로 poe.ninja 페이지를 열어 화면 텍스트와 `placeholder`/`aria-label` 같은 속성 텍스트를 수집한 뒤 다음으로 분류한다.
