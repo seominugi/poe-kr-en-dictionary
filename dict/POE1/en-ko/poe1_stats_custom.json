@@ -107,5 +107,7 @@
     "You gain Onslaught for # seconds per Endurance Charge when Hit": "피격 시 인내 충전 하나당 #초 동안 맹공 획득",
     "+# metres to Melee Strike Range per White Socket": "하얀 홈 하나당 근접 타격 범위 +#미터",
     "Always Freezes enemies": "항상 동결 유발",
-    "Arrows Pierce # additional Target": "화살이 대상 #개를 추가 관통"
+    "Arrows Pierce # additional Target": "화살이 대상 #개를 추가 관통",
+    "Allocates Path of the Warrior": "할당 전사의 길",
+    "Allocates Way of the Warrior": "할당 전사의 길"
 }
