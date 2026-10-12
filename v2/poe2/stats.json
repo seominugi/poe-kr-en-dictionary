@@ -15478,7 +15478,7 @@
   "적에게 유발된 동결, 감전 또는 점화 하나당 명중 피해 #% 감소": "{0}% reduced Damage with Hits per Freeze, Shock or Ignite on Enemy",
   "적에게 유발된 동결, 감전 또는 점화 하나당 명중 피해 #% 증가": "{0}% increased Damage with Hits per Freeze, Shock or Ignite on Enemy",
   "적에게 이동 불가 유발 불가": "Cannot Immobilise enemies",
-  "적에게 이동 불가 유발 시 적의 위세 1당 #%의 초과 확률로 산의 가르침 획득, 최대 #\n명중당하거나, 산의 가르침의 효과를 받는 공격을 사용하거나 지속하면 산의 가르침 1 상실": "{0}% Surpassing chance per enemy Power to gain\nMountain's Teachings on Immobilising an enemy if\nyou have the Way of the Mountain Ascendancy Passive Skill",
+  "적에게 이동 불가 유발 시 적의 위세 1당 #%의 초과 확률로 산의 가르침 획득, 최대 #\n명중당하거나, 산의 가르침의 효과를 받는 공격을 사용하거나 지속하면 산의 가르침 1 상실": "{0}% Surpassing chance per enemy Power to gain Mountain's Teachings on Immobilising an enemy, up to a maximum of {1}\nLose a Mountain's Teaching when you are Hit, or when you use or Sustain an Attack that benefits from Mountain's Teachings",
   "적에게 적용되는 기절 지속시간 #% 감소": "{0}% reduced Stun Duration on Enemies",
   "적에게 적용되는 기절 지속시간 #% 증가": "{0}% increased Stun Duration on Enemies",
   "적에게 적용되는 냉각 및 동결 지속시간 #% 감소": "{0}% reduced Chill and Freeze Duration on Enemies",
