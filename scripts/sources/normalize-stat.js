@@ -170,8 +170,10 @@ function koSlots(text) {
  * 거래소 문구는 변수를 '#' 로, 상수를 숫자로 쓴다("+#% … at least 5 Crab Barriers" / "게의 방어막을 5개
  * 이상 … +#%"). 상수만 {N} 으로 바꾸고 변수 '#' 를 남기면 영문이 "+#% … {0}" 처럼 섞이고, 확장은 이를
  * '#' 로 펴서 화면 숫자를 한글 자리에 거꾸로 넣는다("6% … 5개" → "게의 방어막을 6개 … +5%").
- * 그래서 숫자가 있는 쌍은 영문의 '#' 도 kr 의 변수 자리 번호로 바꾼다. 변수가 여럿이면 영·한 순서가
- * 같다고 본다(거래소 문구에는 그 정보가 없다). 개수가 안 맞으면 종전처럼 '#' 를 남긴다.
+ * 그래서 숫자가 있는 쌍은 영문의 '#' 도 kr 의 변수 자리 번호로 바꾼다. 개수가 안 맞으면 종전처럼 '#' 를 남긴다.
+ * 변수가 여럿이면 영·한 순서가 같다고 본다 — 거래소 문구에는 그 정보가 없어 틀릴 수 있다(예: "#% chance …
+ * at least # Mana" / "마나 # 이상 … #%의 확률로"). 그래도 종전보다 나빠지지 않는다: 순서가 같으면 번호가
+ * 오름차순이라 확장이 종전처럼 펴고, 다르면 종전에도 펴서 틀렸다.
  *
  * @param {string|null|undefined} krText 한국어 원본
  * @param {string|null|undefined} enText 영어 원본
@@ -329,7 +331,9 @@ export function normalizeStatPair(krText, enText) {
     if (slot.variable) variableSlots.push(position)
     else slotOfNum.set(slot.num, position)
   })
-  const bySlot = numsKr.length > 0 &&
+  // 괄호 범위 "(5-10)" 는 kr 에서 한 자리라 둘째 값에 자리가 없다 — 영문이 두 값을 따로 쓰면 종전대로 둔다
+  const everyNumHasSlot = [...en.matchAll(idxMarker)].every((m) => slotOfNum.has(Number(m[1])))
+  const bySlot = numsKr.length > 0 && everyNumHasSlot &&
     slots.length === (kr.match(/#/g) || []).length &&
     (en.match(/#/g) || []).length === variableSlots.length
   if (bySlot) {
