@@ -1,10 +1,10 @@
 import { execFileSync } from 'node:child_process'
-import { mkdtempSync, rmSync, writeFileSync } from 'node:fs'
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import { afterEach, describe, expect, it, vi } from 'vitest'
+import { afterEach, describe, expect, it } from 'vitest'
 import { DEFAULT_DATA_TAG } from '../scripts/missing-translations/loadFrontendDict.js'
-import { DATA_LOCK, assertGameDataSnapshot } from '../scripts/poe-game-data-lock.js'
+import { DATA_LOCK, assertGameDataSnapshot, gameDataContentDrift } from '../scripts/poe-game-data-lock.js'
 
 const roots = []
 afterEach(() => {
@@ -31,21 +31,27 @@ describe('poe-game-data 공통 lock', () => {
     expect(() => assertGameDataSnapshot(snapshotRoot('v2000.01.01'))).toThrow(/snapshot 불일치/)
   })
 
-  // v2026.09.03 처럼 snapshot 표기만 맞고 커밋이 다른 체크아웃은 통과시키되 경고한다(경로당 한 번).
-  it('snapshot 이 같아도 커밋이 lock 과 다르면 경고만 한다', () => {
+  // v2026.09.03 처럼 snapshot 표기만 맞고 데이터가 lock 커밋과 다른 체크아웃은 통과시키되 경고한다.
+  // 문서만 바뀐 커밋은 드리프트가 아니고, 판정할 수 없으면(커밋 개체 없음·형식 오류) 조용히 넘긴다.
+  it('데이터가 lock 커밋과 다를 때만 드리프트로 본다', () => {
     const root = snapshotRoot(DATA_LOCK.snapshot)
-    const git = (...args) => execFileSync('git', ['-C', root, '-c', 'user.name=t', '-c', 'user.email=t@t', ...args], { stdio: 'ignore' })
+    mkdirSync(join(root, 'poe1'))
+    writeFileSync(join(root, 'poe1', 'skills.json'), '{"1":"a"}', 'utf8')
+    const git = (...args) =>
+      execFileSync('git', ['-C', root, '-c', 'user.name=t', '-c', 'user.email=t@t', ...args], { encoding: 'utf8' }).trim()
     git('init', '-q')
-    git('add', '_index.json')
+    git('add', '.')
     git('commit', '-q', '-m', 'snapshot')
-    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {})
-    try {
-      expect(() => assertGameDataSnapshot(root)).not.toThrow()
-      assertGameDataSnapshot(root)
-      expect(warn).toHaveBeenCalledTimes(1)
-      expect(warn.mock.calls[0][0]).toMatch(/커밋 불일치/)
-    } finally {
-      warn.mockRestore()
-    }
+    const locked = git('rev-parse', 'HEAD')
+
+    writeFileSync(join(root, 'README.md'), '문서만', 'utf8')
+    git('add', 'README.md')
+    git('commit', '-q', '-m', 'docs')
+    expect(gameDataContentDrift(root, locked)).toBe(false)
+
+    writeFileSync(join(root, 'poe1', 'skills.json'), '{"1":"b"}', 'utf8')
+    expect(gameDataContentDrift(root, locked)).toBe(true)
+    expect(gameDataContentDrift(root, '0'.repeat(40))).toBe(false)
+    expect(gameDataContentDrift(root, null)).toBe(false)
   })
 })
