@@ -131,9 +131,47 @@ export function extractNumbers(text) {
 }
 
 /**
+ * normalizeStatText 결과의 '#' 자리를 앞에서부터 하나씩, 그 자리가 extractNumbers 의 몇 번째 숫자에서
+ * 왔는지({ num }) 원래 '#'(변수, { variable })인지 돌려준다. 범위(~)는 두 자리, 괄호 범위는 한 자리다.
+ * extractNumbers 와 같은 순서로 지우므로 num 은 그 함수의 인덱스와 같다.
+ */
+function koSlots(text) {
+  const PRESERVE_MARKER = '\u0001PRESERVE\u0001'
+  // 숫자가 없는 표식 — 뒤 단계의 숫자 정규식이 다시 잡지 않게 사설 영역 글자로 번호를 싣는다
+  const mark = (i) => `\u0004${String.fromCharCode(0xe000 + i)}\u0004`
+  let n = 0
+  const next = () => mark(n++)
+  const pair = () => `${next()}~${next()}`
+
+  let work = text.replace(/(\d+(?:\.\d+)?)당/g, `${PRESERVE_MARKER}$1${PRESERVE_MARKER}당`)
+  work = work.replace(/(\d+(?:\.\d+)?)\s+(초|분|시간|미터)/g, '$1$2')
+  work = work.replace(/([+-]?)\((\d+(?:\.\d+)?)\s*[—~-]\s*(\d+(?:\.\d+)?)\)/g, () => {
+    const slot = mark(n)
+    n += 2
+    return slot
+  })
+  work = work.replace(/(\d+(?:\.\d+)?)\s*~\s*(\d+(?:\.\d+)?)/g, pair)
+  work = work.replace(/(\d+(?:\.\d+)?)\s*—\s*(\d+(?:\.\d+)?)/g, pair)
+  work = work.replace(/(\d+(?:\.\d+)?)-(\d+(?:\.\d+)?)/g, pair)
+  work = work.replace(/([+-]?)(\d+(?:\.\d+)?)/g, (match, sign, num, offset, str) =>
+    str.substring(offset - PRESERVE_MARKER.length, offset) === PRESERVE_MARKER ? match : `${sign}${next()}`
+  )
+  return [...work.matchAll(/\u0004([-])\u0004|#/g)].map((m) =>
+    m[1] ? { num: m[1].charCodeAt(0) - 0xe000 } : { variable: true }
+  )
+}
+
+/**
  * kr/en 쌍을 정규화하고 인덱스 매핑을 적용한다.
  * kr은 # 플레이스홀더, en은 {N} 인덱스 플레이스홀더로 변환.
  * 값 매핑 실패 시 null 반환.
+ *
+ * {N} 은 kr 의 N번째 '#' 자리다(v2 계약 — 나랏말서미누기 확장이 {N} 순서로 한글 자리를 다시 짠다).
+ * 거래소 문구는 변수를 '#' 로, 상수를 숫자로 쓴다("+#% … at least 5 Crab Barriers" / "게의 방어막을 5개
+ * 이상 … +#%"). 상수만 {N} 으로 바꾸고 변수 '#' 를 남기면 영문이 "+#% … {0}" 처럼 섞이고, 확장은 이를
+ * '#' 로 펴서 화면 숫자를 한글 자리에 거꾸로 넣는다("6% … 5개" → "게의 방어막을 6개 … +5%").
+ * 그래서 숫자가 있는 쌍은 영문의 '#' 도 kr 의 변수 자리 번호로 바꾼다. 변수가 여럿이면 영·한 순서가
+ * 같다고 본다(거래소 문구에는 그 정보가 없다). 개수가 안 맞으면 종전처럼 '#' 를 남긴다.
  *
  * @param {string|null|undefined} krText 한국어 원본
  * @param {string|null|undefined} enText 영어 원본
@@ -277,15 +315,30 @@ export function normalizeStatPair(krText, enText) {
   // 보호 마커 제거
   en = en.replace(new RegExp(PRESERVE_MARKER, 'g'), '')
 
-  // IDX 임시 마커를 실제 {N} 플레이스홀더로 복원
-  en = en.replace(
-    new RegExp(`${IDX_PLACEHOLDER_OPEN}(\\d+)${IDX_PLACEHOLDER_CLOSE}`, 'g'),
-    (_, n) => `{${n}}`
-  )
-
   // 모든 kr 인덱스가 사용됐는지 검증 (개수 불일치 감지)
   if (mappingFailed || usedIndices.size !== numsKr.length) {
     return null
+  }
+
+  // IDX 임시 마커를 실제 {N} 플레이스홀더로 복원 — N 은 kr 의 '#' 자리 번호 (위 설명)
+  const idxMarker = new RegExp(`${IDX_PLACEHOLDER_OPEN}(\\d+)${IDX_PLACEHOLDER_CLOSE}`, 'g')
+  const slots = koSlots(krText)
+  const slotOfNum = new Map()
+  const variableSlots = []
+  slots.forEach((slot, position) => {
+    if (slot.variable) variableSlots.push(position)
+    else slotOfNum.set(slot.num, position)
+  })
+  const bySlot = numsKr.length > 0 &&
+    slots.length === (kr.match(/#/g) || []).length &&
+    (en.match(/#/g) || []).length === variableSlots.length
+  if (bySlot) {
+    let k = 0
+    en = en.replace(new RegExp(`${idxMarker.source}|#`, 'g'), (_, n) =>
+      n !== undefined ? `{${slotOfNum.get(Number(n))}}` : `{${variableSlots[k++]}}`
+    )
+  } else {
+    en = en.replace(idxMarker, (_, n) => `{${n}}`)
   }
 
   return { kr, en }

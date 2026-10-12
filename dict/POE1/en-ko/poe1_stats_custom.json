@@ -109,5 +109,11 @@
     "Always Freezes enemies": "항상 동결 유발",
     "Arrows Pierce # additional Target": "화살이 대상 #개를 추가 관통",
     "Allocates Path of the Warrior": "할당 전사의 길",
-    "Allocates Way of the Warrior": "할당 전사의 길"
+    "Allocates Way of the Warrior": "할당 전사의 길",
+    "#% chance to create Profane Ground on Critical Strike if Intelligence is your highest Attribute": "능력치 중 지능이 가장 높을 경우 치명타 명중 시 #%의 확률로 부정 지대 생성",
+    "You have Consecrated Ground around you while stationary if Strength is your highest Attribute": "능력치 중 힘이 가장 높을 경우 정지 상태일 때 주변에 신성화 지대 생성",
+    "#% chance to gain Onslaught for # Seconds when Leech is removed by Filling Unreserved Life": "점유되지 않은 생명력이 차서 흡수가 제거되면 #%의 확률로 #초 동안 맹공 획득",
+    "#% chance to gain Adrenaline for # Seconds when Leech is removed by Filling Unreserved Life": "점유되지 않은 생명력이 차서 흡수가 제거되면 #%의 확률로 #초 동안 아드레날린 획득",
+    "Maps found in your Maps are Corrupted with # Modifiers": "지도에서 발견하는 지도 아이템이 타락한 지도로 떨어지며 속성 #개 보유",
+    "Attacks fire # additional Projectile when in Off Hand": "보조 장비로 장착하면 공격 시 투사체 #개 추가 발사"
 }
