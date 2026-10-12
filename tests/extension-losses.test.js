@@ -25,7 +25,7 @@ describe('findLostKeys — #14 실제 줄', () => {
     expect(findLostKeys(base, head).map((r) => r.en)).toEqual(['Has # Abyssal Socket'])
   })
 
-  it('대소문자·부호·{n}·공백만 다른 대체는 소실이 아니다', () => {
+  it('대소문자·부호·{n} 만 다른 대체는 소실이 아니다', () => {
     const base = map([
       ['Inherent Rage Loss starts # second later', '기본 격노 상실이 #초 늦게 시작'],
       ['+# to Level of Socketed Gems', '장착된 젬 레벨 +#'],
@@ -33,11 +33,19 @@ describe('findLostKeys — #14 실제 줄', () => {
     ])
     const head = map([
       ['Inherent Rage loss starts # second later', '기본 격노 상실이 #초 늦게 시작'],
-      ['# to Level of  Socketed Gems', '장착된 젬 레벨 +#'],
+      ['# to Level of Socketed Gems', '장착된 젬 레벨 +#'],
       ['Has # Abyssal Sockets', '심연 홈 #개'],
     ])
     expect(findLostKeys(base, head)).toEqual([])
-    expect(keyForm('+{0}% to Fire Resistance')).toBe(keyForm('#% to fire  resistance'))
+    expect(keyForm('+{0}% to Fire Resistance')).toBe(keyForm('#% to fire resistance'))
+  })
+
+  it('공백이 줄바꿈으로 바뀐 키는 소실이다 — 확장은 화면 줄의 줄바꿈을 공백으로 접고 찾는다(b631b73)', () => {
+    const en = 'You have Consecrated Ground around you while stationary if Strength is your highest Attribute'
+    const ko = '능력치 중 힘이 가장 높을 경우 정지 상태일 때 주변에 신성화 지대 생성'
+    const base = map([[en, ko]])
+    const head = map([['You have Consecrated Ground around you while\nstationary if Strength is your highest Attribute', ko]])
+    expect(findLostKeys(base, head)).toEqual([{ en, ko }])
   })
 
   it('한글이 없던 줄(영문 그대로)은 세지 않고, 한글이 영문 그대로로 바뀌면 소실이다', () => {
@@ -216,8 +224,8 @@ const hasCommits = (...refs) => refs.every((ref) => {
 })
 
 describe.skipIf(!hasCommits('1951774', 'fdd9414', '94701eb'))('실제 이력 — b631b73 이 확장에서 지운 줄', () => {
-  it('1951774 → fdd9414 는 POE1 43·POE2 39 줄을 잃었다(#14 가 확장 원본 모의 실행으로 센 수)', () => {
-    expect(checkExtensionLosses('poe1', { base: '1951774', head: 'fdd9414' }).lost).toHaveLength(43)
+  it('1951774 → fdd9414 는 POE1 47·POE2 39 줄을 잃었다 — #14 가 센 43·39 + 키가 줄바꿈으로 바뀐 POE1 4', () => {
+    expect(checkExtensionLosses('poe1', { base: '1951774', head: 'fdd9414' }).lost).toHaveLength(47)
     expect(checkExtensionLosses('poe2', { base: '1951774', head: 'fdd9414' }).lost).toHaveLength(39)
   }, 60_000)
 

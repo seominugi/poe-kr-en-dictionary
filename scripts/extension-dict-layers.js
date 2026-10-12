@@ -94,11 +94,14 @@ export function extensionMap(version, readJson) {
 }
 
 /**
- * 표기만 다른 영문을 같은 키로 본다 — 대소문자, {n}·#, +/- 부호, 공백.
- * 확장은 화면 줄을 이 변형들로도 찾으므로(부호 되살림·{n} 키) 이런 대체는 소실이 아니다.
+ * 표기만 다른 영문을 같은 키로 본다 — 대소문자, {n}·#, +/- 부호 (2026-10-12 사용자 정의 기준).
+ * 확장이 실제로 메우는 것은 {n}·# 와 앞에 붙는 '+' 뿐이다 — 조회는 대소문자를 구분하고 부호 되살림은 '+' 만
+ * 붙인다(statTranslator.js). 대소문자·'-' 만 다른 대체는 새 표기가 대개 GGG 공식 영문이라 소실로 치지 않는다.
+ * 공백은 접지 않는다: 확장은 화면 줄의 줄바꿈·연속 공백을 한 칸으로 접은 뒤 정확히 찾으므로, 키가 공백에서
+ * "\n" 으로 바뀌면 그 줄은 더는 번역되지 않는다(b631b73 의 Profane Ground 줄).
  */
 export function keyForm(en) {
-  return en.replace(NBSP, ' ').toLowerCase().replace(/\{\d+\}/g, '#').replace(/[+-]/g, '').replace(/\s+/g, ' ').trim()
+  return en.replace(NBSP, ' ').toLowerCase().replace(/\{\d+\}/g, '#').replace(/[+-]/g, '').trim()
 }
 
 /**
