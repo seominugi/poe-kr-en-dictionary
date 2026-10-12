@@ -108,5 +108,6 @@
     "+# metres to Melee Strike Range per White Socket": "하얀 홈 하나당 근접 타격 범위 +#미터",
     "Always Freezes enemies": "항상 동결 유발",
     "Arrows Pierce # additional Target": "화살이 대상 #개를 추가 관통",
-    "Allocates Path of the Warrior": "할당 전사의 길"
+    "Allocates Path of the Warrior": "할당 전사의 길",
+    "Allocates Way of the Warrior": "할당 전사의 길"
 }
