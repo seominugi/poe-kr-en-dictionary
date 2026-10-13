@@ -14,7 +14,7 @@
  */
 
 import { DATA_LOCK } from '../poe-game-data-lock.js'
-import { frontendLayers, readLocalLayer } from '../frontend-dict-layers.js'
+import { frontendLayers, layerEntries, readLocalLayer } from '../frontend-dict-layers.js'
 
 /**
  * poe-game-data CDN 태그.
@@ -45,19 +45,19 @@ export async function loadFrontendDict(version, options = {}) {
 
   const loaded = await Promise.all(
     frontendLayers(version).map(async (layer) => {
-      if (layer.from !== 'gameData') return [layer.name, readLocalLayer(version, layer)]
+      if (layer.from !== 'gameData') return [layer, readLocalLayer(version, layer)]
       try {
-        return [layer.name, await fetchJson(`${base}/${version}/dict/${layer.file}.json`)]
+        return [layer, await fetchJson(`${base}/${version}/dict/${layer.file}.json`)]
       } catch (error) {
         log(`[loadFrontendDict] ${version}/${layer.file} 로드 실패: ${error.message}`)
-        return [layer.name, null]
+        return [layer, null]
       }
     })
   )
 
-  /** @type {Array<[string, Record<string, string>]>} 프론트 병합 순서대로 */
+  /** @type {Array<[object, Record<string, string>]>} 프론트 병합 순서대로 */
   const ordered = loaded.filter(([, data]) => data)
-  const failed = loaded.filter(([, data]) => !data).map(([name]) => name)
-  const map = Object.fromEntries(ordered.flatMap(([, data]) => Object.entries(data)))
-  return { map, sources: ordered.map(([name]) => name), failed }
+  const failed = loaded.filter(([, data]) => !data).map(([layer]) => layer.name)
+  const map = Object.fromEntries(ordered.flatMap(([layer, data]) => layerEntries(layer, data)))
+  return { map, sources: ordered.map(([layer]) => layer.name), failed }
 }

@@ -46,6 +46,17 @@ describe('guardExtraStats', () => {
 })
 
 describe('guardExtraVariants', () => {
+  it('보조 층 자신의 한글(HEAD 에 실린 지난 빌드 출력)은 다른 주인으로 보지 않는다 — 빌드마다 결과가 왕복하지 않게', () => {
+    // poe-game-data v2026.10.13.3 skill-stats·skill-stat-variants 의 실제 줄 — 한 영문 계열에 정본 한글이 둘
+    const head = new Map([
+      ['Lifetap lasts # seconds', '생명력 전환 #초간 지속'],
+      ['Lifetap lasts +# seconds', '생명력 전환 지속시간 +#초'],
+    ])
+    const variants = { '생명력 전환 #초간 지속': ['Lifetap lasts {0} seconds'] }
+    expect(guardExtraVariants(variants, translatedForms(head))).toEqual({})
+    expect(guardExtraVariants(variants, translatedForms(head, ['생명력 전환 #초간 지속', '생명력 전환 지속시간 +#초']))).toEqual(variants)
+  })
+
   it('확장이 다른 한글로 번역하는 영문은 변형에서 뺀다', () => {
     const translated = translatedForms(new Map([['Always Poisons on Hit', '투사체 명중 시 농포 부착']]))
     expect(guardExtraVariants({ '명중 시 항상 중독 유발': ['Always Poisons on Hit', 'Always Poison on Hit'] }, translated))

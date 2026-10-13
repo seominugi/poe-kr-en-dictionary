@@ -30,8 +30,22 @@ export function frontendLayers(version) {
     { name: 'uniques', from: 'gameData', file: 'uniques' },
     { name: 'gems', from: 'gameData', file: 'gems' },
     { name: 'currency', from: 'gameData', file: 'currency' },
+    // 증강물 효과 줄의 범주 표(POE2 만 있다 — POE1 은 파일이 없어 빈 층). 콜론 라벨 키로 싣는다(COLON_LABEL_LAYERS)
+    ...(version === 'poe2' ? [{ name: 'augmentCategories', from: 'gameData', file: 'augment-categories' }] : []),
     { name: 'common', from: 'output', file: 'common' },
   ]
+}
+
+/**
+ * 콜론 줄의 라벨로만 쓰는 층 — 프론트 mergeDictionaries.js COLON_LABEL_LAYERS 와 같다. 키·값에 콜론을 붙여 싣는다
+ * (「창」 → 「창:」: 「Spears:」). 같은 한글의 맨 키(이름 줄용 「창」: 「Spear」)를 바꾸지 않는다.
+ */
+export const COLON_LABEL_LAYERS = ['augmentCategories']
+
+/** 한 층의 사전을 프론트가 싣는 키 모양으로 바꾼다 */
+export function layerEntries(layer, data) {
+  const entries = Object.entries(data ?? {})
+  return COLON_LABEL_LAYERS.includes(layer.name) ? entries.map(([ko, en]) => [`${ko}:`, `${en}:`]) : entries
 }
 
 function readJson(path) {
@@ -62,7 +76,7 @@ export function loadPriorLayers(version, options = {}) {
   for (const layer of frontendLayers(version)) {
     if (layer.name === 'common') continue
     const data = readLocalLayer(version, layer, options)
-    if (data) Object.assign(map, data)
+    if (data) Object.assign(map, Object.fromEntries(layerEntries(layer, data)))
     else missing.push(layer.name)
   }
   return { map, missing }

@@ -7,6 +7,7 @@ import { fetchAndMatchPassiveTree } from './sources/fetch-passive-tree.js'
 import { generateReport } from './utils/reporter.js'
 import { assertClassNameSync, classNameRuleFor } from './class-name-rule.js'
 import { assertNoExtensionLosses, extensionMap, keyForm, readFromGit } from './extension-dict-layers.js'
+import { buildAugmentStatLayer, indexStatBodies } from './augment-stats.js'
 
 /**
  * 4-tier 우선순위로 사전을 병합한다.
@@ -74,9 +75,19 @@ export function guardExtraVariants(variants, translated) {
   return out
 }
 
-/** 확장 영→한 맵에서 한글로 번역되는 영문의 keyForm → 한글들 */
-export function translatedForms(extensionMapEntries) {
-  return formsOf([...extensionMapEntries].map(([en, ko]) => [ko, en]).filter(([ko]) => /[가-힣]/.test(ko)))
+/**
+ * 확장 영→한 맵에서 한글로 번역되는 영문의 keyForm → 한글들.
+ * own 은 보조 층 자신의 한글 키다 — HEAD 에는 지난 빌드의 보조 층 출력이 실려 있으므로, 그것까지 '다른 주인' 으로 보면
+ * 한 영문 계열에 정본 한글이 둘인 줄(「생명력 전환 #초간 지속」·「생명력 전환 지속시간 +#초」)이 서로를 막아 둘 다 빠지고,
+ * 다음 빌드에 돌아오기를 되풀이했다(2026-10-14, lock v2026.10.13.3 상향 때 발견). 자기 한글을 빼면 결과가 입력만으로 정해진다.
+ * @param {Iterable<[string, string]>} extensionMapEntries
+ * @param {Iterable<string>} own
+ */
+export function translatedForms(extensionMapEntries, own = []) {
+  const ownKo = new Set([...own].map(normKo))
+  return formsOf(
+    [...extensionMapEntries].map(([en, ko]) => [ko, en]).filter(([ko]) => /[가-힣]/.test(ko) && !ownKo.has(normKo(ko)))
+  )
 }
 
 const normKo = (ko) => ko.replace(/\u00a0/g, ' ').trim()
@@ -284,7 +295,48 @@ async function build(version, { allowExtensionLosses = false } = {}) {
   )
   // 확장이 지금(HEAD) 보여 주는 영→한 — 보조 층이 그 한글을 바꾸지 않게 한다(guardExtraStats·guardExtraVariants)
   const readHead = hasStatSource ? readFromGit('HEAD') : null
-  const translated = readHead ? translatedForms(extensionMap(version, readHead)) : new Map()
+  // 보조 층의 변형(skill-stat-variants·stats-extra-variants) — 출처 기록이 있을 때만(보조 층과 같은 조건)
+  const extraVariants = hasStatSource
+    ? ['skill-stat-variants.json', 'stats-extra-variants.json'].map((file) => readJsonObject(join(gameDataVersionRoot, file)))
+    : []
+  const ownExtraKo = [extraStats, ...extraVariants].flatMap((map) => Object.keys(map))
+  const translated = readHead ? translatedForms(extensionMap(version, readHead), ownExtraKo) : new Map()
+
+  // Step 4c: 증강물 효과 줄 「<범주>: <본문>」(POE2, scripts/augment-stats.js). 범주(augment-categories)와 정본 스탯 본문으로
+  // 만든 줄이 legacy 의 같은 줄을 대신한다 — legacy 는 범주·띄어쓰기 오기를 실었다. 정본으로 만들 수 없는 줄은 legacy 그대로
+  // 두고 reports/augment-stats-<version>.json 에 남긴다. legacy 파일은 고치지 않는다(빌드가 덮인 줄만 뺀다).
+  const augmentCategories = readJsonObject(join(gameDataVersionRoot, 'dict', 'augment-categories.json'))
+  let statsLegacy = legacy
+  let augmentAliases = {}
+  if (Object.keys(augmentCategories).length) {
+    const bodies = indexStatBodies(
+      poedbData.stats,
+      extraStats,
+      readJsonObject(join(gameDataVersionRoot, 'stat-variants.json')),
+      ...extraVariants,
+    )
+    const augment = buildAugmentStatLayer({ categories: augmentCategories, bodies, legacy })
+    statsLegacy = {
+      ...Object.fromEntries(Object.entries(legacy).filter(([ko]) => !augment.covered.has(ko))),
+      ...augment.layer,
+    }
+    augmentAliases = augment.aliases
+    mkdirSync(CONFIG.REPORTS, { recursive: true })
+    writeFileSync(
+      join(CONFIG.REPORTS, `augment-stats-${version}.json`),
+      JSON.stringify({
+        generated: Object.keys(augment.layer).length,
+        replacedLegacy: augment.covered.size,
+        aliases: Object.keys(augment.aliases).length,
+        unresolved: [...augment.unresolved].sort((a, b) => a.en.localeCompare(b.en)),
+      }, null, 2),
+      'utf-8'
+    )
+    console.log(
+      `[Step 4c] 증강물 범주 줄 ${Object.keys(augment.layer).length}개 생성 (legacy ${augment.covered.size}줄 대신 · ` +
+        `옛 영문 표기 별칭 ${Object.keys(augment.aliases).length}개 · 정본으로 못 만듦 ${augment.unresolved.length}줄 → reports/augment-stats-${version}.json)`
+    )
+  }
 
   // Step 5: overrides 로드
   const globalOverrides = loadOverrides(version)
@@ -321,12 +373,12 @@ async function build(version, { allowExtensionLosses = false } = {}) {
     // stats는 Trade API, passives는 Passive Tree API(poe2) 또는 GGPK(poe1) 결과도 병합
     const tradeCat = category === 'stats' ? tradeResult.matched : {}
     const passiveCat = category === 'passives' ? { ...gameDataPassives, ...passiveResult.matched } : {}
-    // legacy는 stats에 전체 폴백으로 사용. 보조 스탯 층은 그 바로 위(Step 4b)
-    let legacyCat = category === 'stats' ? legacy : {}
+    // legacy는 stats에 전체 폴백으로 사용(증강물 범주 줄은 Step 4c 로 바꾼 것). 보조 스탯 층은 그 바로 위(Step 4b)
+    let legacyCat = category === 'stats' ? statsLegacy : {}
     if (category === 'stats' && Object.keys(extraStats).length) {
-      const withoutExtra = mergeDictionaries({ overrides, poedb: poedbCat, tradeApi: { ...tradeCat, ...passiveCat }, legacy })
+      const withoutExtra = mergeDictionaries({ overrides, poedb: poedbCat, tradeApi: { ...tradeCat, ...passiveCat }, legacy: statsLegacy })
       const { layer, guarded, ambiguous } = guardExtraStats(extraStats, withoutExtra, translated)
-      legacyCat = { ...legacy, ...layer }
+      legacyCat = { ...statsLegacy, ...layer }
       console.log(`  stats 보조 층: ${Object.keys(layer).length}개 (다른 한글이 차지한 영문이라 뺌 ${guarded} · 한 영문에 한글이 여럿이라 뺌 ${ambiguous})`)
     }
 
@@ -381,12 +433,9 @@ async function build(version, { allowExtensionLosses = false } = {}) {
   } else if (existsSync(variantsPath)) {
     const variants = unionVariants(
       readJsonObject(variantsPath),
-      ...(hasStatSource
-        ? [
-            guardExtraVariants(readJsonObject(join(gameDataVersionRoot, 'skill-stat-variants.json')), translated),
-            guardExtraVariants(readJsonObject(join(gameDataVersionRoot, 'stats-extra-variants.json')), translated),
-          ]
-        : []),
+      ...extraVariants.map((variants) => guardExtraVariants(variants, translated)),
+      // Step 4c 가 대신한 legacy 범주 줄의 옛 영문 표기 — 확장이 그 키를 지금 옛 한글로 번역하므로 guard 를 거치지 않는다
+      augmentAliases,
     )
     writeFileSync(join(outputDir, 'stats-variants.json'), sortedJsonStringify(variants), 'utf-8')
     console.log(`  stats-variants.json: ${Object.keys(variants).length}개 한글 키`)
