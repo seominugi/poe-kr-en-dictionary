@@ -92,9 +92,6 @@
   "#초마다 광선 발사": [
     "Fires a beam every {0} seconds"
   ],
-  "#초마다 광선이 적 적중": [
-    "Beams Hit Enemies every {0} seconds"
-  ],
   "#초마다 단계 1만큼 획득": [
     "Gain a stage every {0} seconds"
   ],
@@ -216,6 +213,18 @@
   ],
   "감전의 균열이 끌어당기는 반경 #미터": [
     "Shocking Rift pull radius is {0} metres"
+  ],
+  "갑옷: 모든 스킬의 퀄리티 +#%": [
+    "Body Armours: #% to Quality of all Skills"
+  ],
+  "갑옷: 정신력 1당 방어도 +#": [
+    "Body Armours: # to Armour per 1 Spirit"
+  ],
+  "갑옷: 튕겨낸 명중의 피해 중 방지하는 피해 +#%": [
+    "Body Armours: Prevent #% of Damage from Deflected Hits"
+  ],
+  "갑옷: 호신부 슬롯 +#개": [
+    "Body Armours: # Charm Slot"
   ],
   "강타 반경 #미터": [
     "Slam radius is {0} metres"
@@ -357,9 +366,6 @@
   ],
   "광선의 대상 지정 반경 #미터": [
     "Beam targeting radius is {0} metres"
-  ],
-  "광선이 #초마다 적 적중": [
-    "Beams Hit Enemies every {0} seconds"
   ],
   "광선이 적 #명에게 연쇄": [
     "Beam Chains to {0} enemies"
@@ -503,12 +509,6 @@
   "녹슨 갑충석 #개 추가 등장": [
     "Contains {0} additional Rusted Scarabs"
   ],
-  "농포 #개 발사": [
-    "Fires {0} Pustules"
-  ],
-  "농포 +#개 발사": [
-    "Fires +{0} Pustules"
-  ],
   "농포 기폭 반경 #미터": [
     "Pustule Detonation radius is {0} metres"
   ],
@@ -529,9 +529,6 @@
   ],
   "단계 지속시간 #초": [
     "Stage duration is {0} seconds"
-  ],
-  "단계 하나당 반경 +#": [
-    "+{0} to radius per additional stage"
   ],
   "단계 하나당 피해 #% 증폭": [
     "{0}% more damage per stage"
@@ -689,6 +686,15 @@
   ],
   "마법 아이템 #개 추가": [
     "Contains {0} additional Magic Items"
+  ],
+  "마법봉 또는 지팡이: 마나 최대치 +#": [
+    "Wand or Staff: # to maximum Mana"
+  ],
+  "마법봉 또는 지팡이: 모든 주문 스킬 레벨 +#": [
+    "Wand or Staff: # to Level of all Spell Skills"
+  ],
+  "마법봉 또는 지팡이: 에너지 보호막 최대치 +#": [
+    "Wand or Staff: # to maximum Energy Shield"
   ],
   "마지막 보스가 각성한 육분의 #개를 추가로 떨어뜨림": [
     "Final Boss drops {0} additional Awakened Sextants"
@@ -1034,6 +1040,15 @@
     "Gain {0} Life per Enemy Hit",
     "Gain {0} Life for each Enemy Hit"
   ],
+  "모든 장비: 민첩 +#": [
+    "All Equipment: # to Dexterity"
+  ],
+  "모든 장비: 지능 +#": [
+    "All Equipment: # to Intelligence"
+  ],
+  "모든 장비: 힘 +#": [
+    "All Equipment: # to Strength"
+  ],
   "모든 피해가 탐욕스러운 덩굴이 #개 이상인 적에게 중독 유발": [
     "All Damage inflicts Poison against Enemies affected by at least {0} Grasping Vines"
   ],
@@ -1103,6 +1118,24 @@
   "무기 기동으로 원거리 무기 최대 #개 움직이기 가능": [
     "Animate Weapon can Animate up to {0} Ranged Weapons"
   ],
+  "무도 무기: 정신력 +#": [
+    "Martial Weapon: # to Spirit"
+  ],
+  "무도 무기: 정확도 +#": [
+    "Martial Weapon: # to Accuracy Rating"
+  ],
+  "무도 무기: 처치한 적 하나당 마나 # 획득": [
+    "Martial Weapon: Gain # Mana per Enemy Killed"
+  ],
+  "무도 무기: 처치한 적 하나당 생명력 # 획득": [
+    "Martial Weapon: Gain # Life per Enemy Killed"
+  ],
+  "무도 무기: 치명타 피해 보너스 +#%": [
+    "Martial Weapon: #% to Critical Damage Bonus"
+  ],
+  "무도 무기: 카오스 피해 #~# 추가": [
+    "Martial Weapon: Adds # to # Chaos damage"
+  ],
   "무리 규모 #% 감소": [
     "{0}% reduced Pack Size"
   ],
@@ -1169,6 +1202,39 @@
   ],
   "발사한 투사체 #개당 지면에 지속되는 칼날 1개 남김": [
     "Leaves a Lingering Blades in the ground for every {0} Projectiles fired"
+  ],
+  "방어구: 기절 한계치 +#": [
+    "Armour: # to Stun Threshold"
+  ],
+  "방어구: 냉기 저항 +#%": [
+    "Armour: #% to Cold Resistance"
+  ],
+  "방어구: 냉기 저항 최대치 +#%": [
+    "Armour: #% to Maximum Cold Resistance"
+  ],
+  "방어구: 마나 최대치 +#": [
+    "Armour: # to maximum Mana"
+  ],
+  "방어구: 모든 원소 저항 +#%": [
+    "Armour: #% to all Elemental Resistances"
+  ],
+  "방어구: 번개 저항 +#%": [
+    "Armour: #% to Lightning Resistance"
+  ],
+  "방어구: 번개 저항 최대치 +#%": [
+    "Armour: #% to Maximum Lightning Resistance"
+  ],
+  "방어구: 생명력 최대치 +#": [
+    "Armour: # to maximum Life"
+  ],
+  "방어구: 카오스 저항 +#%": [
+    "Armour: #% to Chaos Resistance"
+  ],
+  "방어구: 화염 저항 +#%": [
+    "Armour: #% to Fire Resistance"
+  ],
+  "방어구: 화염 저항 최대치 +#%": [
+    "Armour: #% to Maximum Fire Resistance"
   ],
   "방어도 및 회피 #% 감소": [
     "{0}% reduced Armour and Evasion Rating"
@@ -1541,9 +1607,6 @@
   "새겨진 결전 #개 추가 등장": [
     "Contains {0} additional Inscribed Ultimatums"
   ],
-  "생명력 전환 #초간 지속": [
-    "Lifetap lasts {0} seconds"
-  ],
   "생명력 플라스크 충전이 최대일 때 적 명중 시 충전의 #% 소모\n이렇게 소모한 충전 하나당 #초 동안 피해의 #%를 물리 피해로 획득": [
     "On Hitting an Enemy while a Life Flask is at full Charges, {0}% of its Charges are consumed\nGain {2}% of damage as Physical damage for {1} seconds per Charge consumed this way"
   ],
@@ -1567,6 +1630,21 @@
   ],
   "섬광 반경 #미터": [
     "Flare radius is {0} metres"
+  ],
+  "셉터: 민첩 +#": [
+    "Sceptres: # to Dexterity"
+  ],
+  "셉터: 접근해 있는 동료들의 모든 원소 저항 +#%": [
+    "Sceptres: Allies in your Presence have #% to all Elemental Resistances"
+  ],
+  "셉터: 접근해 있는 동료들의 정확도 +#": [
+    "Sceptres: Allies in your Presence have # to Accuracy Rating"
+  ],
+  "셉터: 지능 +#": [
+    "Sceptres: # to Intelligence"
+  ],
+  "셉터: 힘 +#": [
+    "Sceptres: # to Strength"
   ],
   "소모한 냉각 하나당 볼트 #개 강화": [
     "Improves {0} Bolts per Chill Consumed"
@@ -2054,12 +2132,6 @@
   ],
   "저주 지대가 폭발하기 전의 지연시간 #% 증가": [
     "Curse zone erupts after {0}% increased delay"
-  ],
-  "저주 지속시간 #% 감소": [
-    "{0}% reduced duration of socketed Curses"
-  ],
-  "저주 지속시간 #% 증가": [
-    "{0}% increased duration of socketed Curses"
   ],
   "저주 지속시간 #초": [
     "Curse duration is {0} second"
@@ -2711,11 +2783,6 @@
   "최근 4초 이내 회피 구르기를 사용한 경우 회피 구르기 거리 +#미터": [
     "+{0} metres to Dodge Roll distance if you've Dodge Rolled Recently"
   ],
-  "최대 #단계": [
-    "Maximum {0} stages",
-    "Maximum {0} Stage",
-    "Maximum {0} Stages"
-  ],
   "최대 #번 튕김": [
     "Bounces up to {0} times"
   ],
@@ -2866,12 +2933,6 @@
   "타락한 피 지속시간 #초": [
     "Corrupted Blood duration is {0} seconds"
   ],
-  "탄창 1개당 볼트 #개 장전": [
-    "{0} Bolts loaded per clip"
-  ],
-  "탄창 1개당 장전되는 볼트 +#개": [
-    "+{0} Bolts loaded per clip"
-  ],
   "태세 변경 시 #초 동안 아드레날린 획득": [
     "Gain Adrenaline for {0} seconds when you change Stance"
   ],
@@ -2904,6 +2965,15 @@
   ],
   "토템이 추가 투사체 #개 발사": [
     "Totems fire {0} additional Projectiles"
+  ],
+  "투구: 격노 최대치 +#": [
+    "Helmets: # to Maximum Rage"
+  ],
+  "투구: 장착한 투구의 아이템 회피 1당 정확도 +#": [
+    "Helmets: # to Accuracy Rating per 1 Item Evasion Rating on Equipped Helmet"
+  ],
+  "투구: 저주를 건 적의 카오스 저항 +#%": [
+    "Helmets: Enemies you Curse have #% to Chaos Resistance"
   ],
   "투사체 #개 발사": [
     "Fires {0} Projectile"

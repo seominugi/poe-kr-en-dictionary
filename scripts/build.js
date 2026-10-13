@@ -7,6 +7,7 @@ import { fetchAndMatchPassiveTree } from './sources/fetch-passive-tree.js'
 import { generateReport } from './utils/reporter.js'
 import { assertClassNameSync, classNameRuleFor } from './class-name-rule.js'
 import { assertNoExtensionLosses, extensionMap, keyForm, readFromGit } from './extension-dict-layers.js'
+import { buildAugmentStatLayer, indexStatBodies } from './augment-stats.js'
 
 /**
  * 4-tier 우선순위로 사전을 병합한다.
@@ -286,6 +287,47 @@ async function build(version, { allowExtensionLosses = false } = {}) {
   const readHead = hasStatSource ? readFromGit('HEAD') : null
   const translated = readHead ? translatedForms(extensionMap(version, readHead)) : new Map()
 
+  // Step 4c: 증강물 효과 줄 「<범주>: <본문>」(POE2, scripts/augment-stats.js). 범주(augment-categories)와 정본 스탯 본문으로
+  // 만든 줄이 legacy 의 같은 줄을 대신한다 — legacy 는 범주·띄어쓰기 오기를 실었다. 정본으로 만들 수 없는 줄은 legacy 그대로
+  // 두고 reports/augment-stats-<version>.json 에 남긴다. legacy 파일은 고치지 않는다(빌드가 덮인 줄만 뺀다).
+  const augmentCategories = readJsonObject(join(gameDataVersionRoot, 'dict', 'augment-categories.json'))
+  let statsLegacy = legacy
+  let augmentAliases = {}
+  if (Object.keys(augmentCategories).length) {
+    const bodies = indexStatBodies(
+      poedbData.stats,
+      extraStats,
+      readJsonObject(join(gameDataVersionRoot, 'stat-variants.json')),
+      ...(hasStatSource
+        ? [
+            readJsonObject(join(gameDataVersionRoot, 'skill-stat-variants.json')),
+            readJsonObject(join(gameDataVersionRoot, 'stats-extra-variants.json')),
+          ]
+        : []),
+    )
+    const augment = buildAugmentStatLayer({ categories: augmentCategories, bodies, legacy })
+    statsLegacy = {
+      ...Object.fromEntries(Object.entries(legacy).filter(([ko]) => !augment.covered.has(ko))),
+      ...augment.layer,
+    }
+    augmentAliases = augment.aliases
+    mkdirSync(CONFIG.REPORTS, { recursive: true })
+    writeFileSync(
+      join(CONFIG.REPORTS, `augment-stats-${version}.json`),
+      JSON.stringify({
+        generated: Object.keys(augment.layer).length,
+        replacedLegacy: augment.covered.size,
+        aliases: Object.keys(augment.aliases).length,
+        unresolved: [...augment.unresolved].sort((a, b) => a.en.localeCompare(b.en)),
+      }, null, 2),
+      'utf-8'
+    )
+    console.log(
+      `[Step 4c] 증강물 범주 줄 ${Object.keys(augment.layer).length}개 생성 (legacy ${augment.covered.size}줄 대신 · ` +
+        `옛 영문 표기 별칭 ${Object.keys(augment.aliases).length}개 · 정본으로 못 만듦 ${augment.unresolved.length}줄 → reports/augment-stats-${version}.json)`
+    )
+  }
+
   // Step 5: overrides 로드
   const globalOverrides = loadOverrides(version)
   const overridesByCategory = {}
@@ -321,12 +363,12 @@ async function build(version, { allowExtensionLosses = false } = {}) {
     // stats는 Trade API, passives는 Passive Tree API(poe2) 또는 GGPK(poe1) 결과도 병합
     const tradeCat = category === 'stats' ? tradeResult.matched : {}
     const passiveCat = category === 'passives' ? { ...gameDataPassives, ...passiveResult.matched } : {}
-    // legacy는 stats에 전체 폴백으로 사용. 보조 스탯 층은 그 바로 위(Step 4b)
-    let legacyCat = category === 'stats' ? legacy : {}
+    // legacy는 stats에 전체 폴백으로 사용(증강물 범주 줄은 Step 4c 로 바꾼 것). 보조 스탯 층은 그 바로 위(Step 4b)
+    let legacyCat = category === 'stats' ? statsLegacy : {}
     if (category === 'stats' && Object.keys(extraStats).length) {
-      const withoutExtra = mergeDictionaries({ overrides, poedb: poedbCat, tradeApi: { ...tradeCat, ...passiveCat }, legacy })
+      const withoutExtra = mergeDictionaries({ overrides, poedb: poedbCat, tradeApi: { ...tradeCat, ...passiveCat }, legacy: statsLegacy })
       const { layer, guarded, ambiguous } = guardExtraStats(extraStats, withoutExtra, translated)
-      legacyCat = { ...legacy, ...layer }
+      legacyCat = { ...statsLegacy, ...layer }
       console.log(`  stats 보조 층: ${Object.keys(layer).length}개 (다른 한글이 차지한 영문이라 뺌 ${guarded} · 한 영문에 한글이 여럿이라 뺌 ${ambiguous})`)
     }
 
@@ -387,6 +429,8 @@ async function build(version, { allowExtensionLosses = false } = {}) {
             guardExtraVariants(readJsonObject(join(gameDataVersionRoot, 'stats-extra-variants.json')), translated),
           ]
         : []),
+      // Step 4c 가 대신한 legacy 범주 줄의 옛 영문 표기 — 확장이 그 키를 지금 옛 한글로 번역하므로 guard 를 거치지 않는다
+      augmentAliases,
     )
     writeFileSync(join(outputDir, 'stats-variants.json'), sortedJsonStringify(variants), 'utf-8')
     console.log(`  stats-variants.json: ${Object.keys(variants).length}개 한글 키`)
