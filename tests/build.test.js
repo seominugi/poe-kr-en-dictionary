@@ -9,6 +9,8 @@ import {
   guardExtraVariants,
   translatedForms,
   unionVariants,
+  refutedLegacy,
+  ggpkForms,
 } from '../scripts/build.js'
 
 describe('guardExtraStats', () => {
@@ -42,6 +44,57 @@ describe('guardExtraStats', () => {
   it('보조 층 안에서 한 영문을 새 한글 둘이 가리키면 둘 다 뺀다', () => {
     const extra = { '1초 동안 생명력 # 재생': 'Regenerate {0} Life over 1 second', '1초 동안 생명력 #% 재생': 'Regenerate {0} Life over 1 second' }
     expect(guardExtraStats(extra, merged)).toEqual({ layer: {}, guarded: 0, ambiguous: 2 })
+  })
+})
+
+describe('refutedLegacy', () => {
+  // poe-game-data v2026.10.13.3 poe2 의 실제 줄 — legacy(poedb 스냅샷)의 어긋난 짝과 GGPK 짝
+  const ggpk = ggpkForms(
+    { '명중 시 항상 중독 유발': 'Always Poison on Hit', '#의 최대 단계': '{0} maximum stages' },
+    { '투사체 명중 시 농포 부착': 'Projectile Hits attach a Pustule', '최대 # 단계': 'Maximum {0} Stages' },
+    { '명중 시 항상 중독 유발': ['Always Poisons on Hit'] },
+  )
+  const legacy = { '투사체 명중 시 농포 부착': 'Always Poisons on Hit', '최대 # 단계': '{0} maximum stages' }
+  const extra = { '투사체 명중 시 농포 부착': 'Projectile Hits attach a Pustule', '최대 # 단계': 'Maximum {0} Stages' }
+
+  it('legacy 영문을 GGPK 가 다른 한글에만 두면 부정으로 본다', () => {
+    expect(refutedLegacy(extra, legacy, ggpk)).toEqual(new Set(['투사체 명중 시 농포 부착', '최대 # 단계']))
+  })
+
+  it('GGPK 가 그 영문을 같은 한글(띄어쓰기만 다른 것 포함)에도 두거나 어디에도 두지 않으면 부정하지 않는다', () => {
+    expect(refutedLegacy(extra, legacy, ggpkForms({ '최대 #단계': '{0} maximum stages' })).has('최대 # 단계')).toBe(false)
+    expect(refutedLegacy(extra, legacy, new Map()).size).toBe(0)
+  })
+
+  it('부정된 짝은 바꾸고, 풀려난 옛 영문은 GGPK 가 정한 새 한글 키가 싣는다', () => {
+    const merged = { '보조 대상 스킬이 인내 충전 소모 시 요철 지대 생성': 'Supported Skills consume an Endurance Charge on Use' }
+    const extraLayer = {
+      '보조 대상 스킬이 인내 충전 소모 시 요철 지대 생성': 'Supported Skills create Jagged Ground when consuming an Endurance Charge',
+      '보조 대상 스킬 사용 시 인내 충전 1 소모': 'Supported Skills consume an Endurance Charge on Use',
+    }
+    // 빌드의 translated 는 보조 층 자신의 한글을 뺀다(translatedForms own)
+    const head = new Map([['Supported Skills consume an Endurance Charge on Use', '보조 대상 스킬이 인내 충전 소모 시 요철 지대 생성']])
+    const translated = translatedForms(head, Object.keys(extraLayer))
+    // 부정 없이는 둘 다 막힌다(종전 동작)
+    expect(guardExtraStats(extraLayer, merged, translated)).toEqual({ layer: {}, guarded: 2, ambiguous: 0 })
+    const refuted = refutedLegacy(extraLayer, merged, ggpkForms(extraLayer))
+    expect(guardExtraStats(extraLayer, merged, translated, refuted)).toEqual({ layer: extraLayer, guarded: 0, ambiguous: 0 })
+  })
+
+  it('부정된 짝의 새 영문도 다른 한글이 쥐었으면 바꾸지 않고, 그때 옛 영문은 legacy 짝이 계속 쥔다(독립 검토 재현)', () => {
+    const merged = { R: 'Old Text', K: 'New Text' }
+    const extraLayer = { R: 'New Text', N: 'Old Text' }
+    const refuted = new Set(['R'])
+    // R 은 K 가 쥔 "New Text" 로 못 바뀌고, N 은 R 이 계속 쥔 "Old Text" 를 못 싣는다
+    expect(guardExtraStats(extraLayer, merged, new Map(), refuted)).toEqual({ layer: {}, guarded: 2, ambiguous: 0 })
+    // 부정된 짝과 새 키가 같은 새 영문을 원하면 새 키가 막힌다
+    expect(guardExtraStats({ R: 'Fresh', N: 'Fresh' }, { R: 'Old Text' }, new Map(), refuted)).toEqual({ layer: { R: 'Fresh' }, guarded: 1, ambiguous: 0 })
+  })
+
+  it('띄어쓰기만 다른 한글은 같은 주인이라 대소문자만 다른 GGPK 영문을 막지 않는다', () => {
+    // v2 「# 의 최대 단계」: "{0} maximum Stages" · GGPK skill-stats 「#의 최대 단계」: "{0} maximum stages"
+    const merged = { '# 의 최대 단계': '{0} maximum Stages' }
+    expect(guardExtraStats({ '#의 최대 단계': '{0} maximum stages' }, merged).layer).toEqual({ '#의 최대 단계': '{0} maximum stages' })
   })
 })
 

@@ -23,6 +23,9 @@
   "#미터 내 적의 피해를 막을 수 있음": [
     "Can Block Damage from enemies within {0} metres"
   ],
+  "#미터 내 적이 가하는 투사체 피해를 막을 수 있음": [
+    "Can Block Projectile Damage from enemies within {0} metres"
+  ],
   "#미터 내의 얼음 지대 전환": [
     "Converts Chilled Ground within {0} metres"
   ],
@@ -31,6 +34,9 @@
   ],
   "#미터 내의 적에게 덩굴 부착": [
     "Attaches Vines to enemies within {0} metres"
+  ],
+  "#미터 내의 적에게 장착된 징표를 찍음": [
+    "Applies socketed Marks to Enemies within {0} metres"
   ],
   "#미터 내의 적에게 피해를 주고 끌어당김": [
     "Damages and draws in Enemies within {0} metres"
@@ -53,6 +59,9 @@
   "#의 완성된 세트가 포함된 점술 카드 #장이 들어 있음": [
     "Contains {1} Divination Cards that have a Full Stack number of {0}"
   ],
+  "#의 최대 단계": [
+    "{0} maximum Stages"
+  ],
   "#초 동안 보조 대상 스킬을 집중 유지한 후 주입 획득": [
     "Gain Infusion after Channelling a Supported Skill for {0} seconds"
   ],
@@ -67,6 +76,9 @@
   ],
   "#초 후 룬 무장": [
     "Runes arm after {0} seconds"
+  ],
+  "#초 후 방패를 완전히 부여": [
+    "Fully imbues Shield in {0} seconds"
   ],
   "#초 후 최후 타격": [
     "Final strike occurs after {0} seconds"
@@ -134,6 +146,9 @@
   "#회 메아리": [
     "Echoes {0} times"
   ],
+  "#회 연쇄": [
+    "Chains {0} times"
+  ],
   "#회 추가 연쇄": [
     "Chain {0} additional Times"
   ],
@@ -184,6 +199,9 @@
   "5초마다 적 #명에게 장착된 징표를 찍음": [
     "Applies a socketed Mark to {0} Enemies every five seconds"
   ],
+  "가시 #개로 제한": [
+    "Limit {0} Spikes"
+  ],
   "가시 지대 반경 #미터": [
     "Thorny Ground radius is {0} metres"
   ],
@@ -205,11 +223,17 @@
   "감전 유발 불가": [
     "Cannot inflict Shock"
   ],
+  "감전 지대 반경 #미터": [
+    "Shocked Ground radius is {0} metres"
+  ],
   "감전 지대 지속시간 #초": [
     "Shocked Ground duration is {0} seconds"
   ],
   "감전된 후 #초 동안 감전 면역": [
     "You cannot be Shocked for {0} seconds after being Shocked"
+  ],
+  "감전의 균열 #개로 제한": [
+    "Limit {0} Shocking Rifts"
   ],
   "감전의 균열 반경 #미터": [
     "Shocking Rift radius is {0} metres"
@@ -355,6 +379,9 @@
   "공허석에 적용하는 육분의 #회 추가 사용": [
     "Sextants you apply to your Voidstones have {0} additional uses"
   ],
+  "과성장한 균열이 추가 덩굴 최대 #개 부착 가능": [
+    "Overgrown fissures can attach up to {0} additional Vines"
+  ],
   "광란 시 #초 동안 물리 피해 면역 획득": [
     "Gain Immunity to Physical Damage for {0} seconds on Rampage"
   ],
@@ -391,8 +418,17 @@
   "굴절의 거울 #개로 제한": [
     "Limit {0} Mirrors of Refraction"
   ],
+  "권능 충전을 소모하여 추가 상 #개 생성": [
+    "Consumes a Power Charge to create {0} additional Images"
+  ],
   "권능 충전을 소모한 경우\n폭발 반경 +#미터": [
     "+{0} metres to explosion radius if a\nPower Charge was Consumed"
+  ],
+  "균열 #개 생성": [
+    "Creates {0} fissures"
+  ],
+  "균열 #개로 제한": [
+    "Limit {0} Fissures"
   ],
   "균열 길이 #미터": [
     "Fissure length is {0} metres"
@@ -435,6 +471,15 @@
     "Oil duration is {0} second",
     "Oil duration is {0} seconds"
   ],
+  "기본 냉기 피해 #~#": [
+    "{0} to {1} base Cold Damage"
+  ],
+  "기본 물리 피해 #~#": [
+    "{0} to {1} Base Physical Damage"
+  ],
+  "기본 번개 피해 #~#": [
+    "{0} to {1} base Lightning Damage"
+  ],
   "기본 에너지 보호막 재충전 지연 -#초": [
     "-{0} seconds to base Energy Shield Recharge delay"
   ],
@@ -452,6 +497,9 @@
   ],
   "깃발 오라 반경 #미터": [
     "Banner Aura radius is {0} metres"
+  ],
+  "깃발 지속시간 #초": [
+    "Banner duration is {0} seconds"
   ],
   "꽂힌 창 #개로 제한": [
     "Limit {0} lodged Spears",
@@ -515,6 +563,9 @@
   "농포 #개 발사": [
     "Fires {0} Pustules"
   ],
+  "농포 #개로 제한": [
+    "Limit {0} pustules"
+  ],
   "농포 +#개 발사": [
     "Fires +{0} Pustules"
   ],
@@ -526,6 +577,9 @@
   ],
   "뇌우 #개로 제한": [
     "Limit {0} Thunderstorms"
+  ],
+  "늑대 #마리 소환": [
+    "Summons {0} Wolves"
   ],
   "다음 지역에 침략 보스 #마리 추가 등장": [
     "Next Area will be inhabited by {0} additional Invasion Bosses"
@@ -554,14 +608,26 @@
   "단계마다 명중 피해 #% 증폭": [
     "{0}% more damage with Hits for each stage"
   ],
+  "달리는 돌 #개 생성": [
+    "Creates {0} Skittering Stones"
+  ],
+  "달리는 돌 #개 제한": [
+    "Limit {0} Skittering Stones"
+  ],
   "대상 #개 관통": [
     "Pierces {0} targets"
+  ],
+  "대상 근처의 시신 최대 #구 추가 소모": [
+    "Consumes up to {0} additional Corpses near the target"
   ],
   "대상 지역 내에 감전 상태의 적이 있는 경우 추가 볼트 #개": [
     "{0} additional bolts if a Shocked enemy is in the target area"
   ],
   "대상 지정 반경 #미터": [
     "Targeting radius is {0} metres"
+  ],
+  "대상에 근접한 적 최대 #마리에게 추가로 광선 발사": [
+    "Fires beams at up to {0} additional Enemies near the target"
   ],
   "덩굴 길이 #미터": [
     "Vine length is {0} metres"
@@ -589,6 +655,9 @@
   ],
   "도금된 갑충석 #개 추가 등장": [
     "Contains {0} additional Gilded Scarabs"
+  ],
+  "도깨비불 지속시간 #초": [
+    "Wisp duration is {0} seconds"
   ],
   "도깨비불 지속시간 +#초": [
     "+{0} seconds to Wisp duration"
@@ -651,8 +720,14 @@
   "또한 자신의 양옆 최대 #개 지점에서 투사체 발사": [
     "Also fires Projectiles from up to {0} points on each side of you"
   ],
+  "룬 #개 생성": [
+    "Creates {0} Runes"
+  ],
   "룬 #개 추가 등장": [
     "Contains {0} additional Runes"
+  ],
+  "룬 #개로 제한": [
+    "Limit {0} Runes"
   ],
   "룬 반경 #미터": [
     "Rune radius is {0} metres"
@@ -680,6 +755,9 @@
   ],
   "마나 폭풍의 효과가 폭풍을 떠난 후 #초 동안 지속": [
     "Effects of Mana Tempest linger for {0} seconds after leaving the Tempest"
+  ],
+  "마나 플라스크의 충전 # 소모": [
+    "Consumes {0} Charges from your Mana Flask"
   ],
   "마나 흡수 속도 #% 가속": [
     "Leeches Mana {0}% faster"
@@ -1311,6 +1389,7 @@
   ],
   "벽 길이 #미터": [
     "Wall is {0} metre long",
+    "Wall is {0} metres long",
     "Wall length is {0} metre"
   ],
   "벽 부분의 최대 생명력 #": [
@@ -1337,15 +1416,31 @@
   "보조 대상 스킬 치명타 명중 시 #초 동안 공격이 피해의 #%를 화염 피해로 획득": [
     "Attacks Gain {1}% of Damage as Fire Damage for {0} seconds on Critically Hitting with Supported Skills"
   ],
+  "보조 대상 스킬로 고유 적을 강력 기절시키면 인내 충전 #개 획득": [
+    "Gain {0} Endurance Charges on Heavily Stunning a Unique Enemy with Supported Skill"
+  ],
   "보조 대상 스킬로 대상을 동결시키면, 보유한 격노 2당 플레이어와 플레이어에게 접근해 있는 동료가 #초 동안 피해의 1%를 냉기 피해로 획득": [
     "When you Freeze a target with Supported Skills, for each 2 Rage you have, you and Allies in your Presence gain 1% of Damage as Cold Damage for {0} seconds"
   ],
+  "보조 대상 스킬로 생성된 물체를 명중할 수 있는 횟수 +#번": [
+    "Objects created by Supported Skills can be Hit +{0} times"
+  ],
   "보조 대상 스킬로 생성된 물체의 #미터 내에서 적이 #마리 처치되면 물체가 산산이 조각나며 달리는 돌 발동": [
     "After {1} Enemies are killed within {0} metre of objects created by Supported Skills, they will shatter and Trigger Skittering Stones",
-    "After {1} Enemy is killed within {0} metres of objects created by Supported Skills, they will shatter and Trigger Skittering Stones"
+    "After {1} Enemy is killed within {0} metres of objects created by Supported Skills, they will shatter and Trigger Skittering Stones",
+    "After {1} Enemies are killed within {0} metres of objects created by Supported Skills, they will shatter and Trigger Skittering Stones"
+  ],
+  "보조 대상 스킬로 생성된 잔류물의 효과가 획득 #초 후 발생": [
+    "Effects of Remnants generated by Supported Skills occur {0} seconds after being collected"
+  ],
+  "보조 대상 스킬로 생성된 잔류물이 #초 동안 지속": [
+    "Remnants created by Supported Skills last for {0} seconds"
   ],
   "보조 대상 스킬로 생성된 잔류물이 #초 후 소멸": [
     "Remnants created by Supported Skills vanish after {0} seconds"
+  ],
+  "보조 대상 스킬로 생성된 저주받은 지대가 각각 #초마다 마녀두꺼비 생성, 최대 #마리로 제한": [
+    "Each Cursed Ground area from Supported Skills spawns a Witchtoad every {0} seconds, up to a Limit of {1}"
   ],
   "보조 대상 스킬로 생성된 토템이\n#회 작동 후 분열": [
     "Totems created by Supported Skills splinter after\nperforming {0} actions"
@@ -1355,6 +1450,12 @@
   ],
   "보조 대상 스킬로 소환된 소환수가 생명력이 0이 되고 #초 후에 사망": [
     "Minions from Supported Skills die {0} seconds after their Life is reduced to 0"
+  ],
+  "보조 대상 스킬로 소환된 소환수에게 명령을 내리면 #초 동안 불경한 힘 획득": [
+    "Gain Unholy Might for {0} seconds on Commanding Minions from Supported Skills"
+  ],
+  "보조 대상 스킬로 소환된 소환수에게 명령을 내리면 소환수가 #초 동안 불경한 힘 획득": [
+    "Minions from Supported Skills gain Unholy Might for {0} seconds when Commanded"
   ],
   "보조 대상 스킬로 소환된 소환수의 최대 생명력 #% 감폭": [
     "Minions from Supported Skills have {0}% less maximum Life"
@@ -1383,6 +1484,9 @@
   "보조 대상 스킬로 최대 마나의 총 #%에 해당하는 마나 소모 후 #초 동안 비전 쇄도 획득": [
     "Gain Arcane Surge for {1} seconds after Spending a total of {0}% of your Maximum Mana on Supported Skills"
   ],
+  "보조 대상 스킬로 치명타 시 플레이어가 #초 동안 혼미해짐": [
+    "You are Dazed for {0} seconds on Critically Striking with Supported Skill"
+  ],
   "보조 대상 스킬로 한 번에 덫 최대 #개 추가 설치": [
     "Supported Skills can have up to {0} additional Traps placed at a time"
   ],
@@ -1410,6 +1514,9 @@
   "보조 대상 스킬의 마나 소모가 생명력 소모로 전환": [
     "Supported Skills have Mana Costs Converted to Life Costs"
   ],
+  "보조 대상 스킬의 봉인 최대치 #개": [
+    "Supported Skills have a maximum of {0} Seals"
+  ],
   "보조 대상 스킬의 여진 효과 범위 #% 감폭": [
     "Supported Skills have {0}% less Aftershock Area of Effect"
   ],
@@ -1432,6 +1539,9 @@
   "보조 대상 스킬의 재장전 속도 #% 증폭": [
     "Supported Skills have {0}% more reload speed",
     "Supported Skills have {0}% more Reload Speed"
+  ],
+  "보조 대상 스킬의 저주받은 지대가 #초 동안 유지되면 절멸 발동": [
+    "Trigger Annihilation when Cursed Ground from Supported Skills have persisted for {0} seconds"
   ],
   "보조 대상 스킬의 치명타 명중 확률 #% 감폭": [
     "Supported Skills have {0}% less chance to Critically Hit",
@@ -1468,11 +1578,17 @@
   "보조 대상 스킬이 #초에 1번씩\n선대의 힘으로 증폭": [
     "Supported Skills are Ancestrally Boosted\nonce every {0} seconds"
   ],
+  "보조 대상 스킬이 #회 메아리침, 지연 시간 #초": [
+    "Supported Skills Echo {0} times, with a {1} second delay"
+  ],
   "보조 대상 스킬이 #회 메아리침, 지연 시간 0.5초": [
     "Supported Skills Echo {0} times, with a 0.5 second delay"
   ],
   "보조 대상 스킬이 가중된 점화 소모 시 화염 기둥 #개 추가 생성": [
     "Supported Skills create {0} additional Flame Pillars when Consuming Aggravated Ignite"
+  ],
+  "보조 대상 스킬이 가중된 출혈 소모 시 혈액수정 #개 추가 생성": [
+    "Supported Skills create {0} additional Haemocrystals when Consuming Aggravated Bleeding"
   ],
   "보조 대상 스킬이 냉기 피해 치명타 명중 시 #초 동안 노출 유발": [
     "Supported Skills inflict Exposure for {0} seconds on Critical Hit with Cold Damage"
@@ -1495,6 +1611,9 @@
   "보조 대상 스킬이 적을 강력 기절시킬 때 여진이 발생하여 #미터 내의 다른 적들에게 피해를 줌\n이 방식으로 발생한 여진이 적을 기절시킬 수 없음": [
     "Supported Skills cause an Aftershock when they Heavy Stun an enemy, Damaging other enemies within {0} metres\nAftershocks caused this way cannot Stun"
   ],
+  "보조 대상 스킬이 착지 시 균열 #개 생성": [
+    "Supported Skills create {0} Fissures on landing"
+  ],
   "보조 대상 스킬이 최초 범위의 앞쪽 및 양쪽으로 추가 여진 #개 유발": [
     "Supported Skills cause {0} additional Aftershocks ahead and to each side of the initial area"
   ],
@@ -1505,6 +1624,9 @@
   ],
   "보조 대상 스킬이 파괴된 봉인 하나당 투사체 #개 추가 발사": [
     "Supported Skills fire {0} additional Projectiles per Seal broken"
+  ],
+  "보조 대상 스킬이 활성화된 동안 플레이어의 접근 범위에 진입하는 적들이 #초 동안 위협당함": [
+    "Enemies entering your Presence while a Supported Skill is active are Intimidated for {0} seconds"
   ],
   "보조 대상 조건부 스킬의 요구사항 충족 시 사용 후 #초 내에 추가 #회 사용 가능": [
     "Supported Conditional Skills can be used {1} additional times within {0} seconds of using them after meeting their requirements"
@@ -1533,8 +1655,21 @@
   "보주 지속시간 #초": [
     "Orb duration is {0} seconds"
   ],
+  "볼트 #개 발사": [
+    "Fires {0} bolts",
+    "Fires {0} Bolts"
+  ],
+  "볼트 +#개 발사": [
+    "Fires +{0} bolts"
+  ],
   "볼트 충격 반경 #미터": [
     "Bolt impact radius is {0} metres"
+  ],
+  "볼트가 대상 #개를 관통": [
+    "Bolts Pierce {0} Targets"
+  ],
+  "봉인 최대치 #개": [
+    "Maximum {0} Seals"
   ],
   "부가 투사체 #개 발사": [
     "Fires {0} secondary Projectiles"
@@ -1563,6 +1698,9 @@
   "부패 지속시간 #초": [
     "Decay duration is {0} seconds"
   ],
+  "분열된 모방물 #개로 제한": [
+    "Limit {0} Fractured Mimics"
+  ],
   "분열된 모방물 지속시간 #초": [
     "Fractured Mimic duration is {0} seconds"
   ],
@@ -1571,6 +1709,9 @@
   ],
   "분출 반경 #미터": [
     "Eruption radius is {0} metres"
+  ],
+  "분출하는 칼날 #개 생성": [
+    "Creates {0} erupting blades"
   ],
   "불씨 폭발 반경 #미터": [
     "Ember Explosion Radius is {0} metres"
@@ -1584,6 +1725,9 @@
   "비-바알 타격 스킬이 주변 적 #명을 추가 대상으로 삼음": [
     "Non-Vaal Strike Skills target {0} additional nearby Enemies"
   ],
+  "비-즉시 시전 보조 대상 스킬의 재사용 횟수 +#회": [
+    "Supported Non-Instant Skills have +{0} Cooldown Uses"
+  ],
   "비무장 근접 공격으로 명중 시 번개 줄기 생성, #초에 #번씩만 생성": [
     "Creates a bolt of lightning when you Hit with Unarmed Melee damage, no more than {1} times every {0} seconds"
   ],
@@ -1592,6 +1736,9 @@
   ],
   "뼈 공물 가시 #개로 제한": [
     "Limit {0} Bone Offering Spikes"
+  ],
+  "뼈 구조물 #개로 제한": [
+    "Limit {0} Bone Constructs"
   ],
   "뼈 구조물 지속시간 #초": [
     "Bone Construct duration is {0} seconds"
@@ -1635,6 +1782,9 @@
   "서 있는 경우 기본 공격 시간 +#초": [
     "+{0} seconds to base attack time if standing"
   ],
+  "서 있지 않은 경우 기본 공격 시간 +#초": [
+    "+{0} seconds to base attack time if not standing"
+  ],
   "서리 구체 폭발 반경 #미터": [
     "Frostbolt explosion radius is {0} metres"
   ],
@@ -1662,14 +1812,23 @@
   "셉터: 힘 #": [
     "Sceptres: # to Strength"
   ],
+  "소모한 권능 충전 하나당 투사체 #개 발사": [
+    "Fires {0} Projectiles per Power Charge Consumed"
+  ],
   "소모한 냉각 하나당 볼트 #개 강화": [
     "Improves {0} Bolts per Chill Consumed"
   ],
   "소모한 생명력 2%당 생명력 플라스크 충전 # 획득": [
     "Gain {0} Life Flask Charges per 2% Life spent"
   ],
+  "소모한 시신 하나당 #초에 걸쳐 생명력 # 및 마나 # 회복": [
+    "Recover {1} Life and {2} Mana over {0} seconds per Corpse Consumed"
+  ],
   "소모한 시신 하나당 딱정벌레 #마리 소환": [
     "Summons {0} Beetles per Corpse consumed"
+  ],
+  "소모한 출혈의 #미터 내에 혈액수정이 무작위로 생성됨": [
+    "Haemocrystals are randomly created within {0} metres of the Consumed Bleeding"
   ],
   "소용돌이 반경 #미터": [
     "Vortex radius is {0} metres",
@@ -1678,6 +1837,12 @@
   ],
   "소용돌이가 #초 동안 지속": [
     "Vortexes last for {0} seconds"
+  ],
+  "소환되는 베리시움 현신 #개로 제한": [
+    "Limit {0} Summoned Verisium Manifestations"
+  ],
+  "소환되는 수호결속 소환수 #마리로 제한": [
+    "Limit {0} Summoned Wardbound Minions"
   ],
   "소환되는 신기루 구원자 최대치 #": [
     "Maximum {0} Summoned Mirage Saviours"
@@ -1700,6 +1865,9 @@
   "소환된 굴 파는 독사 최대 #": [
     "Maximum {0} summoned Burrowing Vipers"
   ],
+  "소환된 늑대 #마리로 제한": [
+    "Limit {0} Summoned Wolves"
+  ],
   "소환된 복제물 최대 #개": [
     "Maximum {0} Summoned Doubles"
   ],
@@ -1708,6 +1876,9 @@
   ],
   "소환된 해골 최대 #마리": [
     "Maximum {0} Summoned Skeletons"
+  ],
+  "소환수 #마리 제한": [
+    "Limit {0} Minions"
   ],
   "소환수 오라 반경 #미터": [
     "Minion Aura radius is {0} metres"
@@ -1726,6 +1897,9 @@
   ],
   "소환수가 #%의 확률로 2배의 피해를 줌": [
     "Minions gain {0}% chance to deal Double Damage"
+  ],
+  "소환수가 #회 공격 후 살포": [
+    "Minions disperse after {0} Attacks"
   ],
   "소환수가 물리 피해의 #%를 번개 피해로 전환": [
     "Minions convert {0}% of Physical damage to Lightning damage"
@@ -1769,6 +1943,9 @@
   "속성 부여 효과를 투사체 수 대신\n투사체가 분할되는 대상 수에 적용": [
     "Modifiers to number of Projectiles instead apply to\nthe number of targets Projectile Splits towards"
   ],
+  "속성 지속시간 #초": [
+    "Modifier duration is {0} seconds"
+  ],
   "속성 지속시간 +#초": [
     "+{0} seconds to Modifier duration"
   ],
@@ -1806,7 +1983,8 @@
     "Transforms up to {0} Corpses"
   ],
   "시신 최대 #구 소모": [
-    "Consumes up to {0} Corpses"
+    "Consumes up to {0} Corpses",
+    "Consumes up to {0} Corpse"
   ],
   "시신 최대 1구 소모": [
     "Consumes up to 1 Corpse"
@@ -1834,6 +2012,9 @@
   ],
   "식물 지속시간 #초": [
     "Plant duration is {0} seconds"
+  ],
+  "신기루 지속시간 #초": [
+    "Mirage duration is {0} seconds"
   ],
   "신성한 유물 최대 #개 소환": [
     "Maximum {0} Summoned Holy Relics"
@@ -1901,6 +2082,9 @@
   "얼음 결정 지속시간 #초": [
     "Ice Crystal duration is {0} seconds"
   ],
+  "얼음 결정의 최대 생명력 #": [
+    "Ice Crystal has {0} maximum Life"
+  ],
   "얼음 지대 반경 #미터": [
     "Chilled Ground radius is {0} metres"
   ],
@@ -1946,8 +2130,14 @@
   "오아시스 지속시간 #초": [
     "Oasis duration is {0} seconds"
   ],
+  "와류 #개로 제한": [
+    "Limit {0} Whirlwinds"
+  ],
   "와류 지속시간 #초": [
     "Whirlwind duration is {0} seconds"
+  ],
+  "요철 지대 #개로 제한": [
+    "Limit {0} Jagged Ground patches"
   ],
   "요철 지대 반경 #미터": [
     "Jagged Ground radius is {0} metres"
@@ -1958,6 +2148,9 @@
   "용암 타격의 투사체 연쇄 +#회": [
     "Molten Strike Projectiles Chain +{0} times"
   ],
+  "용암 투사체 #개 발사": [
+    "Fires {0} Molten Projectiles"
+  ],
   "우물정령 발사 사이의 간격 #초": [
     "Duration between launching Wellsprites is {0} seconds"
   ],
@@ -1966,6 +2159,9 @@
   ],
   "우박폭풍 반경 #미터": [
     "Hailstorm radius is {0} metres"
+  ],
+  "우박폭풍이 얼음덩어리 #개 생성": [
+    "Hailstorm creates {0} chunks of ice"
   ],
   "원거리에서 보조 대상 스킬에 적용되는 정확도 페널티 없음": [
     "Supported Skills have no penalty to Accuracy Rating at range"
@@ -2020,6 +2216,9 @@
   "이 스킬의 효과에 마나 대신 생명력을 소모": [
     "Spend Life instead of Mana for effects of this Skill"
   ],
+  "이 스킬이 #초 동안 연계를 생성하지 않으면 연계 상실": [
+    "This Skill loses Combo if it generates no Combo for {0} seconds"
+  ],
   "이 스킬이 유발하는 점화가 1초 동안\n#미터 내에 머무르는 다른 적에게 확산": [
     "Ignites inflicted by this Skill Spread to other\nenemies that stay within {0} metres for 1 second"
   ],
@@ -2059,6 +2258,9 @@
   "이동한 거리에 따라\n총 공격 시간 최대 +#초": [
     "Up to +{0} seconds to Total\nAttack Time based on distance travelled"
   ],
+  "이렇게 진정된 적이 #초 동안 다시 진정되지 않음": [
+    "Enemies Pacified this way cannot be Pacified again for {0} seconds"
+  ],
   "이름 없는 자의 의례가 추가 지도 #개까지 지속": [
     "The Rite of the Nameless lasts {0} additional maps"
   ],
@@ -2083,6 +2285,12 @@
     "Normal and Magic monsters grant {0} Power Charges\nRare monsters grant {1} Power Charges\nUnique monsters grant {2} Power Charge",
     "Normal and Magic monsters grant {0} Power Charge\nRare monsters grant {1} Power Charges\nUnique monsters grant {2} Power Charges",
     "Normal and Magic monsters grant {0} Power Charges\nRare monsters grant {1} Power Charges\nUnique monsters grant {2} Power Charges"
+  ],
+  "일시적 소환수 #마리 생성": [
+    "Creates {0} Temporary Minions"
+  ],
+  "일시적 소환수 #마리로 제한": [
+    "Limit {0} Temporary Minions"
   ],
   "자신 및 주변 동료들의 이동 속도 #% 감소": [
     "You and nearby Allies have {0}% reduced Movement Speed"
@@ -2143,6 +2351,9 @@
   "저장된 중독이 기본 폭발 반경에 최대 #미터 추가": [
     "Stored Poison adds up to {0} metres to base explosion radius"
   ],
+  "저주 반경 #미터": [
+    "Curse radius is {0} metres"
+  ],
   "저주 지대가 폭발하기 전의 지연시간 #% 감소": [
     "Curse zone erupts after {0}% reduced delay"
   ],
@@ -2150,7 +2361,11 @@
     "Curse zone erupts after {0}% increased delay"
   ],
   "저주 지속시간 #초": [
-    "Curse duration is {0} second"
+    "Curse duration is {0} second",
+    "Curse duration is {0} seconds"
+  ],
+  "저주받은 지대 범위 #개로 제한": [
+    "Limit {0} areas of Cursed Ground"
   ],
   "저항 제거 지속시간 #초": [
     "Resistance removal duration is {0} seconds"
@@ -2274,6 +2489,9 @@
   ],
   "정전기 감전이 영향을 받은 대상으로부터 #미터 내의 적을 대상으로 지정": [
     "Static Shocks target enemies within {0} metres of affected target"
+  ],
+  "정전기 감전이 적 최대 #마리를 향해 파동": [
+    "Static Shocks pulses towards up to {0} enemies"
   ],
   "정지 상태일 때 받는 원소 피해 #% 감소": [
     "{0}% reduced Elemental Damage taken while stationary"
@@ -2703,6 +2921,12 @@
   "차율라의 보라색 화염 지속시간 #초": [
     "Purple Flames of Chayula Duration is {0} seconds"
   ],
+  "차율라의 화염을 획득하지 않으면 #초 후 사라짐": [
+    "Flames of Chayula fade after {0} seconds if not picked up"
+  ],
+  "창 지속시간 #초": [
+    "Spear duration is {0} seconds"
+  ],
   "창날 지속시간 #초": [
     "Spearhead duration is {0} seconds"
   ],
@@ -2843,6 +3067,12 @@
   "최종 지도 보스가 세계 포식자 고정 속성이 붙은 아이템 #개를 추가로 떨어뜨림": [
     "Final Boss drops {0} additional Items with an Eater of Worlds Implicit Modifier"
   ],
+  "최초 시전 반경 #미터": [
+    "Initial cast radius is {0} metres"
+  ],
+  "최후 타격 전에 파동 #회": [
+    "Pulses {0} times before final strike"
+  ],
   "최후 타격이 주변 적 #명을 추가 대상으로 삼음": [
     "Final Strike targets {0} additional nearby enemies"
   ],
@@ -2853,7 +3083,9 @@
     "Impact and Jagged Ground radius are {0} metres"
   ],
   "충격 반경 #미터": [
-    "Impact radius is {0} metre"
+    "Impact Radius is {0} metres",
+    "Impact radius is {0} metre",
+    "Impact radius is {0} metres"
   ],
   "충격 번개 반경 #미터": [
     "Crash Lightning radius is {0} metres"
@@ -3021,6 +3253,9 @@
   "파괴된 봉인 하나당 보조 대상 주문이 #회 메아리": [
     "Supported Spells Echo {0} times per Seal broken"
   ],
+  "파동 및 폭발 반경 #미터": [
+    "Pulse and explosion radius are {0} metres"
+  ],
   "파동 반경 #미터": [
     "Pulse radius is {0} metres"
   ],
@@ -3178,6 +3413,9 @@
   "피해 #% 증폭": [
     "{0}% more damage"
   ],
+  "피해 및 기름 뿌리기 반경 #미터": [
+    "Damage and Oil spray radius is {0} metres"
+  ],
   "피해 반경 #미터": [
     "Damage radius is {0} metres"
   ],
@@ -3226,6 +3464,9 @@
   "핵심 지속시간 #초": [
     "Core duration is {0} seconds"
   ],
+  "허용되는 균열 #개로 제한": [
+    "Limit {0} Fissures allowed"
+  ],
   "험악한 주얼 홈 #개 할당": [
     "Allocates {0} Sinister Jewel socket"
   ],
@@ -3265,6 +3506,9 @@
   "화산 최대 #개": [
     "Maximum {0} Volcanos"
   ],
+  "화산이 강타 #회 후 파괴됨": [
+    "Volcano is destroyed after {0} Slams"
+  ],
   "화살 지속시간 #초": [
     "Arrow duration is {0} seconds",
     "Maximum Arrow duration is {0} second",
@@ -3287,6 +3531,9 @@
   ],
   "화염 주입 폭발 반경 #미터": [
     "Fire-Infused explosion radius is {0} metres"
+  ],
+  "화염 주입이 폭풍 반경 +# 효과 부여": [
+    "Fire Infusion grants +{0} metres to storm radius"
   ],
   "화염 폭풍 #개로 제한": [
     "Limit {0} Firestorms"
@@ -3318,14 +3565,23 @@
   "활성화되는 파편 최대 #개": [
     "Maximum {0} active shards"
   ],
+  "활성화되는 화살 최대 #개": [
+    "Maximum {0} active Arrows"
+  ],
   "활성화된 무리 #개로 제한": [
     "Limit {0} active Swarms"
+  ],
+  "활성화된 방패의 벽 #개로 제한": [
+    "Limit {0} active Shield Walls"
   ],
   "활성화된 선대의 토템이 부여한 버프가 #초 더 유지됨": [
     "Buffs from Active Ancestor Totems Linger for {0} seconds"
   ],
   "활성화된 씨앗 #개로 제한": [
     "Limit {0} active Seeds"
+  ],
+  "활성화된 종 #개로 제한": [
+    "Limit {0} active Bells"
   ],
   "회오리 #개로 제한": [
     "Limit {0} Tornadoes"
@@ -3340,6 +3596,9 @@
   ],
   "회피 구르기 거리 +#미터": [
     "+{0} metres to Dodge Roll distance"
+  ],
+  "회피 시 보조 대상 스킬이 볼트 #개 장전": [
+    "Supported Skills load {0} bolts when you Dodge"
   ],
   "획득한 배상이 잃은 시간부식 1당 #초 지속됨": [
     "Reparation gained lasts {0} seconds per Timerot lost"
