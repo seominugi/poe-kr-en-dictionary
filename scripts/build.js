@@ -80,7 +80,9 @@ export function translatedForms(extensionMapEntries) {
   return formsOf([...extensionMapEntries].map(([en, ko]) => [ko, en]).filter(([ko]) => /[가-힣]/.test(ko)))
 }
 
-const normKo = (ko) => ko.replace(/\u00a0/g, ' ').trim()
+// \ud55c\uae00 \uc8fc\uc778\ub3c4 \uc601\ubb38 keyForm \ucc98\ub7fc \u300c#\u300d \uc55e \ubd80\ud638\ub97c \uc811\ub294\ub2e4 \u2014 \u300c#\ud68c \ud68c\uc804\u300d\u00b7\u300c+#\ud68c \ud68c\uc804\u300d \uc740 \ud55c \ubb38\uc7a5\uc758 \ubd80\ud638 \ubcc0\ud615\uc778\ub370, \ub2e4\ub978 \uc8fc\uc778\uc73c\ub85c \ubcf4\uba74
+// HEAD \uc5d0 \ub458 \ub2e4 \uc788\uc744 \ub54c \uc11c\ub85c\ub97c \ub9c9\uc544 \ub458 \ub2e4 \ube60\uc9c0\uace0 \ub2e4\uc74c \ube4c\ub4dc\uc5d0 \ub3cc\uc544\uc624\uae30\ub97c \ub418\ud480\uc774\ud588\ub2e4(2026-10-14, lock v2026.10.13.3 \uc0c1\ud5a5 \ub54c \ubc1c\uacac)
+const normKo = (ko) => ko.replace(/\u00a0/g, ' ').trim().replace(/[+-](?=#)/g, '')
 
 /** [한글, 영문] 목록 → keyForm → Set(한글) */
 function formsOf(pairs) {

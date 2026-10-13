@@ -92,7 +92,11 @@ function resolveLine(bodies, body) {
     return found
   }
   const parts = split(0)
-  if (!parts) return whole
+  if (!parts) {
+    // 조각 쪽 사유(부호 불일치·한글 갈림)가 있으면 그것을 알린다 — no-body 로 뭉개면 정본 누락으로 읽힌다
+    const reason = segments.map((segment) => resolveBody(bodies, segment).status).find((s) => s !== 'ok' && s !== 'no-body')
+    return reason ? { status: `${reason}-in-part` } : whole
+  }
   // 조각마다 {0} 부터 시작하므로 이어 붙일 때 번호를 밀어 준다(한글이 {n} 으로 어순을 담은 조각도 같이)
   let offset = 0
   const shifted = parts.map(({ ko, en }) => {
@@ -107,12 +111,27 @@ function resolveLine(bodies, body) {
 const flatten = (en) => en.replace(/\{\d+\}/g, '#')
 
 /**
+ * 별칭 영문이 가리킬 한글. 부호 없는 legacy 영문(「…have #% to Chaos Resistance」)은 화면 값의 부호를 숫자가 들고 오므로
+ * 「+#」 한글을 주면 확장이 음수 값을 「+5%」 로 바꿔 쓴다(확장 restoreNumbers 는 템플릿에 부호가 있으면 숫자의 부호를 뗀다).
+ * 그래서 생성 한글에서 legacy 가 뗀 자리의 부호만 똑같이 떼어 화면 부호를 그대로 받게 한다. 일부 자리만 부호가 있으면
+ * 한글의 어느 「#」 인지 알 수 없으므로 별칭을 만들지 않는다.
+ */
+function aliasKoFor({ tidy, ko, en }) {
+  const legacy = signsOf(tidy)
+  const generated = signsOf(en)
+  if (!legacy.some((sign, i) => sign === '' && generated[i] !== '')) return ko
+  if (legacy.some(Boolean)) return null
+  const signedKo = (ko.match(/[+-]#/g) ?? []).length
+  return signedKo === generated.filter(Boolean).length ? ko.replace(/[+-](?=#)/g, '') : null
+}
+
+/**
  * @param {{ categories: Record<string, string>, bodies: Map<string, Map<string, string>>, legacy: Record<string, string> }} input
  *   categories 범주 { 한글: 영문 } · bodies indexStatBodies 결과 · legacy 범주 줄을 찾을 ko→en 사전
  * @returns {{
  *   layer: Record<string, string>,      // 생성한 줄 { 한글: 영문 }
  *   covered: Set<string>,               // 생성 층이 대신하는 legacy 한글 키 — 병합에서 뺀다
- *   aliases: Record<string, string[]>,  // 생성 한글 → legacy 의 다른 영문 표기(부호 없음 등). 확장이 그 화면 문장도 찾게 stats-variants 에 싣는다
+ *   aliases: Record<string, string[]>,  // 생성 한글(부호를 뗀 꼴일 수 있다, aliasKoFor) → legacy 의 다른 영문 표기. 확장이 그 화면 문장도 찾게 stats-variants 에 싣는다
  *   unresolved: Array<{ ko: string, en: string, status: string, candidates?: string[] }>,
  * }}
  */
@@ -157,7 +176,9 @@ export function buildAugmentStatLayer({ categories, bodies, legacy }) {
     covered.add(row.legacyKo)
     // 토큰화 흔적이 없는 legacy 영문(화면 문장과 맞을 수 있는 키)이 생성 영문과 표기가 다르면 별칭으로 남긴다
     if (row.tidy === row.legacyEn.trim() && flatten(row.tidy) !== flatten(row.en)) {
-      const list = aliases[row.ko] ?? (aliases[row.ko] = [])
+      const aliasKo = aliasKoFor(row)
+      if (aliasKo === null) continue
+      const list = aliases[aliasKo] ?? (aliases[aliasKo] = [])
       if (!list.includes(row.tidy)) list.push(row.tidy)
     }
   }

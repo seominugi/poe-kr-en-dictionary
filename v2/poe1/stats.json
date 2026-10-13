@@ -13972,6 +13972,7 @@
   "비-오라 사술의 효과 1초당 20% 증가": "Non-Aura Hexes gain 20% increased Effect per second",
   "비-오라 사술이 기본 효과의 #%에 도달 시 만료": "Non-Aura Hexes expire upon reaching {0}% of base Effect",
   "비-오라 사술이 기본 효과의 %에 도달 시 만료": "Non-Aura Hexes expire upon reaching % of base Effect",
+  "비-오라 사술이 기본 효과의 +#%에 도달 시 만료": "Non-Aura Hexes expire upon reaching +{0}% of base Effect",
   "비-오라 사술이 기본 효과의 200%에 도달 시 만료": "Non-Aura Hexes expire upon reaching 200% of base Effect",
   "비-이동 전용 공격 스킬이 #회 추가 반복": "Non-Travel Attack Skills Repeat {0} additional Times",
   "비-이동 전용 공격 스킬이 1회 추가 반복": "Non-Travel Attack Skills Repeat an additional Time",
