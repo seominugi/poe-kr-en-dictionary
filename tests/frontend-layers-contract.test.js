@@ -8,7 +8,7 @@ import { CONFIG } from '../scripts/config.js'
 import { frontendLayers } from '../scripts/frontend-dict-layers.js'
 import { compareFrontendContract, dictDiffBetween, parseDictionarySources } from '../scripts/frontend-layers-contract.js'
 
-// seominugi-com dictionarySources.js 의 실제 모양 (2026-10-12, 주석 일부 생략)
+// seominugi-com dictionarySources.js 의 실제 모양 (2026-10-14 · seominugi-com#750 의 augmentCategories 포함, 주석 일부 생략)
 const SOURCES = `import { DATA_BASE } from '../../services/poeGameData/client.js'
 
 const V2_BASE = 'https://raw.githubusercontent.com/seominugi/poe-kr-en-dictionary/main/v2'
@@ -39,6 +39,7 @@ export const DICTIONARY_SOURCES = {
     uniques: \`\${DATA_BASE}/poe2/dict/uniques.json\`,
     gems: \`\${DATA_BASE}/poe2/dict/gems.json\`,
     currency: \`\${DATA_BASE}/poe2/dict/currency.json\`,
+    augmentCategories: \`\${DATA_BASE}/poe2/dict/augment-categories.json\`,
     common: \`\${V2_BASE}/poe2/common.json\`,
   },
 }

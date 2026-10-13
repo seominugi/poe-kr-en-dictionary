@@ -26,12 +26,6 @@
   "#초마다 피해 줌": [
     "Deals Damage every {0} seconds"
   ],
-  "#회 회전": [
-    "Rotates {0} times"
-  ],
-  "+#회 회전": [
-    "Rotates +{0} times"
-  ],
   "10초마다 #초 동안 무작위로 불을 뿜는 룬 쇄도, 얼어붙은 룬 쇄도 또는 치직대는 룬 쇄도 획득": [
     "Gain Flaming, Icy or Crackling Runesurge at random for {0} seconds every 10 seconds"
   ],
