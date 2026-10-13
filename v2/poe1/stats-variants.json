@@ -1601,6 +1601,9 @@
   "피해와 냉각이 기본 지속시간 #초 동안 더 유지됨": [
     "Damage and Chill Linger for a Base Duration of {0} seconds"
   ],
+  "피해와 냉각이 더 유지되는 기본 지속시간 +#초": [
+    "Damage and Chill Linger for a Base Duration of +{0} seconds"
+  ],
   "하얀 홈 하나당 근접 타격 범위 +#미터": [
     "+{0} metres to Melee Strike Range per White Socket"
   ],

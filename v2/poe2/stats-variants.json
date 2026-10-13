@@ -1023,6 +1023,7 @@
     "Inflict {0} Grasping Vines on Hit"
   ],
   "명중 시 항상 중독 유발": [
+    "Always Poisons on Hit",
     "Hits always Poison"
   ],
   "명중 시 항상 출혈 유발": [
@@ -1057,9 +1058,6 @@
   ],
   "모든 장비: 힘 #": [
     "All Equipment: # to Strength"
-  ],
-  "모든 저항 최대치 +#%": [
-    "+{0}% to all Maximum Resistances"
   ],
   "모든 피해가 탐욕스러운 덩굴이 #개 이상인 적에게 중독 유발": [
     "All Damage inflicts Poison against Enemies affected by at least {0} Grasping Vines"
@@ -1621,6 +1619,9 @@
   ],
   "새겨진 결전 #개 추가 등장": [
     "Contains {0} additional Inscribed Ultimatums"
+  ],
+  "생명력 전환 #초간 지속": [
+    "Lifetap lasts {0} seconds"
   ],
   "생명력 플라스크 충전이 최대일 때 적 명중 시 충전의 #% 소모\n이렇게 소모한 충전 하나당 #초 동안 피해의 #%를 물리 피해로 획득": [
     "On Hitting an Enemy while a Life Flask is at full Charges, {0}% of its Charges are consumed\nGain {2}% of damage as Physical damage for {1} seconds per Charge consumed this way"
@@ -2947,6 +2948,12 @@
   ],
   "타락한 피 지속시간 #초": [
     "Corrupted Blood duration is {0} seconds"
+  ],
+  "탄창 1개당 볼트 #개 장전": [
+    "{0} Bolts loaded per clip"
+  ],
+  "탄창 1개당 장전되는 볼트 +#개": [
+    "+{0} Bolts loaded per clip"
   ],
   "태세 변경 시 #초 동안 아드레날린 획득": [
     "Gain Adrenaline for {0} seconds when you change Stance"

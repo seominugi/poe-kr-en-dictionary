@@ -75,14 +75,22 @@ export function guardExtraVariants(variants, translated) {
   return out
 }
 
-/** 확장 영→한 맵에서 한글로 번역되는 영문의 keyForm → 한글들 */
-export function translatedForms(extensionMapEntries) {
-  return formsOf([...extensionMapEntries].map(([en, ko]) => [ko, en]).filter(([ko]) => /[가-힣]/.test(ko)))
+/**
+ * 확장 영→한 맵에서 한글로 번역되는 영문의 keyForm → 한글들.
+ * own 은 보조 층 자신의 한글 키다 — HEAD 에는 지난 빌드의 보조 층 출력이 실려 있으므로, 그것까지 '다른 주인' 으로 보면
+ * 한 영문 계열에 정본 한글이 둘인 줄(「생명력 전환 #초간 지속」·「생명력 전환 지속시간 +#초」)이 서로를 막아 둘 다 빠지고,
+ * 다음 빌드에 돌아오기를 되풀이했다(2026-10-14, lock v2026.10.13.3 상향 때 발견). 자기 한글을 빼면 결과가 입력만으로 정해진다.
+ * @param {Iterable<[string, string]>} extensionMapEntries
+ * @param {Iterable<string>} own
+ */
+export function translatedForms(extensionMapEntries, own = []) {
+  const ownKo = new Set([...own].map(normKo))
+  return formsOf(
+    [...extensionMapEntries].map(([en, ko]) => [ko, en]).filter(([ko]) => /[가-힣]/.test(ko) && !ownKo.has(normKo(ko)))
+  )
 }
 
-// \ud55c\uae00 \uc8fc\uc778\ub3c4 \uc601\ubb38 keyForm \ucc98\ub7fc \u300c#\u300d \uc55e \ubd80\ud638\ub97c \uc811\ub294\ub2e4 \u2014 \u300c#\ud68c \ud68c\uc804\u300d\u00b7\u300c+#\ud68c \ud68c\uc804\u300d \uc740 \ud55c \ubb38\uc7a5\uc758 \ubd80\ud638 \ubcc0\ud615\uc778\ub370, \ub2e4\ub978 \uc8fc\uc778\uc73c\ub85c \ubcf4\uba74
-// HEAD \uc5d0 \ub458 \ub2e4 \uc788\uc744 \ub54c \uc11c\ub85c\ub97c \ub9c9\uc544 \ub458 \ub2e4 \ube60\uc9c0\uace0 \ub2e4\uc74c \ube4c\ub4dc\uc5d0 \ub3cc\uc544\uc624\uae30\ub97c \ub418\ud480\uc774\ud588\ub2e4(2026-10-14, lock v2026.10.13.3 \uc0c1\ud5a5 \ub54c \ubc1c\uacac)
-const normKo = (ko) => ko.replace(/\u00a0/g, ' ').trim().replace(/[+-](?=#)/g, '')
+const normKo = (ko) => ko.replace(/\u00a0/g, ' ').trim()
 
 /** [한글, 영문] 목록 → keyForm → Set(한글) */
 function formsOf(pairs) {
@@ -287,7 +295,12 @@ async function build(version, { allowExtensionLosses = false } = {}) {
   )
   // 확장이 지금(HEAD) 보여 주는 영→한 — 보조 층이 그 한글을 바꾸지 않게 한다(guardExtraStats·guardExtraVariants)
   const readHead = hasStatSource ? readFromGit('HEAD') : null
-  const translated = readHead ? translatedForms(extensionMap(version, readHead)) : new Map()
+  // 보조 층의 변형(skill-stat-variants·stats-extra-variants) — 출처 기록이 있을 때만(보조 층과 같은 조건)
+  const extraVariants = hasStatSource
+    ? ['skill-stat-variants.json', 'stats-extra-variants.json'].map((file) => readJsonObject(join(gameDataVersionRoot, file)))
+    : []
+  const ownExtraKo = [extraStats, ...extraVariants].flatMap((map) => Object.keys(map))
+  const translated = readHead ? translatedForms(extensionMap(version, readHead), ownExtraKo) : new Map()
 
   // Step 4c: 증강물 효과 줄 「<범주>: <본문>」(POE2, scripts/augment-stats.js). 범주(augment-categories)와 정본 스탯 본문으로
   // 만든 줄이 legacy 의 같은 줄을 대신한다 — legacy 는 범주·띄어쓰기 오기를 실었다. 정본으로 만들 수 없는 줄은 legacy 그대로
@@ -300,12 +313,7 @@ async function build(version, { allowExtensionLosses = false } = {}) {
       poedbData.stats,
       extraStats,
       readJsonObject(join(gameDataVersionRoot, 'stat-variants.json')),
-      ...(hasStatSource
-        ? [
-            readJsonObject(join(gameDataVersionRoot, 'skill-stat-variants.json')),
-            readJsonObject(join(gameDataVersionRoot, 'stats-extra-variants.json')),
-          ]
-        : []),
+      ...extraVariants,
     )
     const augment = buildAugmentStatLayer({ categories: augmentCategories, bodies, legacy })
     statsLegacy = {
@@ -425,12 +433,7 @@ async function build(version, { allowExtensionLosses = false } = {}) {
   } else if (existsSync(variantsPath)) {
     const variants = unionVariants(
       readJsonObject(variantsPath),
-      ...(hasStatSource
-        ? [
-            guardExtraVariants(readJsonObject(join(gameDataVersionRoot, 'skill-stat-variants.json')), translated),
-            guardExtraVariants(readJsonObject(join(gameDataVersionRoot, 'stats-extra-variants.json')), translated),
-          ]
-        : []),
+      ...extraVariants.map((variants) => guardExtraVariants(variants, translated)),
       // Step 4c 가 대신한 legacy 범주 줄의 옛 영문 표기 — 확장이 그 키를 지금 옛 한글로 번역하므로 guard 를 거치지 않는다
       augmentAliases,
     )
