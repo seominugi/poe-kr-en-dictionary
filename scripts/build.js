@@ -6,7 +6,7 @@ import { fetchAndMatchTradeStats } from './sources/fetch-trade-api.js'
 import { fetchAndMatchPassiveTree } from './sources/fetch-passive-tree.js'
 import { generateReport } from './utils/reporter.js'
 import { assertClassNameSync, classNameRuleFor } from './class-name-rule.js'
-import { assertNoExtensionLosses } from './extension-dict-layers.js'
+import { assertNoExtensionLosses, extensionMap, keyForm, readFromGit } from './extension-dict-layers.js'
 
 /**
  * 4-tier 우선순위로 사전을 병합한다.
@@ -14,6 +14,99 @@ import { assertNoExtensionLosses } from './extension-dict-layers.js'
  */
 export function mergeDictionaries({ overrides, poedb, tradeApi, legacy }) {
   return { ...legacy, ...tradeApi, ...poedb, ...overrides }
+}
+
+/**
+ * stats 보조 층에서 legacy 위·거래소 아래에 끼울 몫(2026-10-13). 확장은 v2(ko→en)를 뒤집어 다른 층과 함께 영→한으로 쓰므로,
+ * 한 영문을 두 한글이 가리키게 되면 그 영문의 한글이 소리 없이 바뀐다(소실 점검은 영문이 사라진 것만 본다). 그래서
+ *   - 이미 있는 한글 키는 영문이 표기(번호·대소문자·부호)만 다를 때 바꾼다. 문구가 다르면 legacy 값을 그대로 둔다 — 바꾸면 옛
+ *     영문이 다른 층의 한글로 넘어가거나 사라진다("Always Poisons on Hit" 가 변형 층의 다른 한글로 넘어갔다)
+ *   - 새 한글 키는 그 영문을 나머지 stats 병합 결과의 다른 한글이 가리키거나, 확장이 지금 다른 한글로 번역하고 있으면
+ *     (공용 파일·변형 층 등 — translated) 싣지 않는다
+ *   - 보조 층 안에서 같은 영문을 가리키는 새 한글이 둘 이상이면 모두 뺀다 — GGG 한글 원문이 한 영문에 두 문장을 둔 경우
+ *     ("Regenerate # Life over 1 second" ← 「…# 재생」·「…#% 재생」), 어느 쪽이 맞는지 여기서 알 수 없다. 미번역이 오역보다 낫다
+ * @param {Record<string, string>} extra 보조 층 { 한글: 영문 }
+ * @param {Record<string, string>} merged 보조 층 없이 병합한 stats
+ * @param {Map<string, Set<string>>} translated keyForm → 확장이 지금 보여 주는 한글들(translatedForms)
+ */
+export function guardExtraStats(extra, merged, translated = new Map()) {
+  const owners = formsOf(Object.entries(merged))
+  const candidates = []
+  let guarded = 0
+  for (const [ko, en] of Object.entries(extra)) {
+    if (typeof en !== 'string') continue
+    const form = keyForm(en)
+    const old = typeof merged[ko] === 'string' ? merged[ko] : null
+    const blocked = old !== null
+      ? keyForm(old) !== form
+      : hasOtherOwner(owners, form, ko) || hasOtherOwner(translated, form, ko)
+    if (blocked) {
+      guarded++
+      continue
+    }
+    candidates.push([ko, en, old === null])
+  }
+  const claims = new Map()
+  for (const [, en, isNew] of candidates) if (isNew) claims.set(keyForm(en), (claims.get(keyForm(en)) ?? 0) + 1)
+  const layer = {}
+  let ambiguous = 0
+  for (const [ko, en, isNew] of candidates) {
+    if (isNew && claims.get(keyForm(en)) > 1) {
+      ambiguous++
+      continue
+    }
+    layer[ko] = en
+  }
+  return { layer, guarded, ambiguous }
+}
+
+/**
+ * 보조 층 변형({ 한글: [영문, …] }) 중 확장이 지금 다른 한글로 번역하는 영문은 뺀다(guardExtraStats 와 같은 이유 — POE1 은
+ * 변형 층이 legacy 층 위라 legacy 번역을 바꿀 수 있다).
+ */
+export function guardExtraVariants(variants, translated) {
+  const out = {}
+  for (const [ko, list] of Object.entries(variants)) {
+    if (!Array.isArray(list)) continue
+    const kept = list.filter((en) => typeof en === 'string' && !hasOtherOwner(translated, keyForm(en), ko))
+    if (kept.length) out[ko] = kept
+  }
+  return out
+}
+
+/** 확장 영→한 맵에서 한글로 번역되는 영문의 keyForm → 한글들 */
+export function translatedForms(extensionMapEntries) {
+  return formsOf([...extensionMapEntries].map(([en, ko]) => [ko, en]).filter(([ko]) => /[가-힣]/.test(ko)))
+}
+
+const normKo = (ko) => ko.replace(/\u00a0/g, ' ').trim()
+
+/** [한글, 영문] 목록 → keyForm → Set(한글) */
+function formsOf(pairs) {
+  const forms = new Map()
+  for (const [ko, en] of pairs) {
+    if (typeof en !== 'string') continue
+    const form = keyForm(en)
+    if (!forms.has(form)) forms.set(form, new Set())
+    forms.get(form).add(normKo(ko))
+  }
+  return forms
+}
+
+const hasOtherOwner = (forms, form, ko) => [...(forms.get(form) ?? [])].some((owner) => owner !== normKo(ko))
+
+/** 같은 한글 키의 영문 변형 파일 여럿을 합친다(순서대로, 같은 영문은 한 번). */
+export function unionVariants(...maps) {
+  const out = {}
+  for (const map of maps) {
+    for (const [ko, list] of Object.entries(map)) {
+      if (!Array.isArray(list)) continue
+      const merged = out[ko] ?? []
+      for (const en of list) if (typeof en === 'string' && !merged.includes(en)) merged.push(en)
+      if (merged.length) out[ko] = merged
+    }
+  }
+  return out
 }
 
 /**
@@ -170,6 +263,29 @@ async function build(version, { allowExtensionLosses = false } = {}) {
   const legacy = loadLegacyDict(version)
   console.log(`[Step 4] Legacy에서 ${Object.keys(legacy).length}개 항목 로드`)
 
+  // Step 4b: poe-game-data 의 보조 스탯 층 — 젬·스킬 효과 줄(dict/skill-stats.json, poe2)과 나머지 스탯 설명
+  // (stats-extra.json: 아틀라스·리그석·탐험 유물·상자·패시브·몬스터 등). stats.json 의 한글 키는 싣지 않는다.
+  // 하나의 기준 데이터: poe-ggpk-extractor build-stat-dict 는 입력 스탯 설명이 모두 한 추출(출처 표식)일 때만 이 층을 만들고
+  // 그 기록을 stat-source.json 으로 남긴다. 그 기록이 없는 스냅샷(표식 이전 — v2026.10.13 의 skill-stats 등)은 판을
+  // 확인할 수 없으므로 보조 층과 그 변형을 쓰지 않는다.
+  const gameDataVersionRoot = resolve(CONFIG.GAME_DATA_ROOT, version)
+  const statSource = readJsonObject(join(gameDataVersionRoot, 'stat-source.json'))
+  const hasStatSource = typeof statSource.ggpkIndexSha256 === 'string'
+  const extraStats = hasStatSource
+    ? {
+        ...readJsonObject(join(gameDataVersionRoot, 'stats-extra.json')),
+        ...readJsonObject(join(gameDataVersionRoot, 'dict', 'skill-stats.json')),
+      }
+    : {}
+  console.log(
+    hasStatSource
+      ? `[Step 4b] game-data 보조 스탯 ${Object.keys(extraStats).length}개 로드 (GGPK 색인 ${statSource.ggpkIndexSha256.slice(0, 12)})`
+      : '[Step 4b] game-data 출처 기록(stat-source.json) 없음 — 보조 스탯 층을 쓰지 않는다'
+  )
+  // 확장이 지금(HEAD) 보여 주는 영→한 — 보조 층이 그 한글을 바꾸지 않게 한다(guardExtraStats·guardExtraVariants)
+  const readHead = hasStatSource ? readFromGit('HEAD') : null
+  const translated = readHead ? translatedForms(extensionMap(version, readHead)) : new Map()
+
   // Step 5: overrides 로드
   const globalOverrides = loadOverrides(version)
   const overridesByCategory = {}
@@ -205,8 +321,14 @@ async function build(version, { allowExtensionLosses = false } = {}) {
     // stats는 Trade API, passives는 Passive Tree API(poe2) 또는 GGPK(poe1) 결과도 병합
     const tradeCat = category === 'stats' ? tradeResult.matched : {}
     const passiveCat = category === 'passives' ? { ...gameDataPassives, ...passiveResult.matched } : {}
-    // legacy는 stats에 전체 폴백으로 사용
-    const legacyCat = category === 'stats' ? legacy : {}
+    // legacy는 stats에 전체 폴백으로 사용. 보조 스탯 층은 그 바로 위(Step 4b)
+    let legacyCat = category === 'stats' ? legacy : {}
+    if (category === 'stats' && Object.keys(extraStats).length) {
+      const withoutExtra = mergeDictionaries({ overrides, poedb: poedbCat, tradeApi: { ...tradeCat, ...passiveCat }, legacy })
+      const { layer, guarded, ambiguous } = guardExtraStats(extraStats, withoutExtra, translated)
+      legacyCat = { ...legacy, ...layer }
+      console.log(`  stats 보조 층: ${Object.keys(layer).length}개 (다른 한글이 차지한 영문이라 뺌 ${guarded} · 한 영문에 한글이 여럿이라 뺌 ${ambiguous})`)
+    }
 
     const outputPath = join(outputDir, `${category}.json`)
 
@@ -251,9 +373,21 @@ async function build(version, { allowExtensionLosses = false } = {}) {
   // 싣지 못해 확장에서 미번역으로 남았다("Gain # Power Charges on use"). poe-game-data 가 GGPK 에서 뽑은
   // { 한글: [영문, …] } 을 그대로 옮기고, 확장이 각 쌍을 v2 와 같은 규칙으로 뒤집는다(invertVariantMap).
   // 아이템 번역기(ko→en)는 쓰지 않아 dict/ 가 아니라 v2 에 둔다.
+  // 보조 스탯 층의 변형(skill-stat-variants·stats-extra-variants)도 같은 형식이라 합친다 — 출처 기록이 있을 때만(Step 4b).
+  // stats.json 을 보존한 빌드(Trade API 0매칭)는 변형도 그대로 둔다 — 두 파일이 다른 빌드에서 나오지 않게.
   const variantsPath = resolve(CONFIG.GAME_DATA_ROOT, version, 'stat-variants.json')
-  if (existsSync(variantsPath)) {
-    const variants = readJsonObject(variantsPath)
+  if (shouldPreserveExistingStats({ category: 'stats', tradeApiMatchCount, fileExists: existsSync(join(outputDir, 'stats.json')) })) {
+    console.warn('  ⚠️  stats-variants.json: stats.json 을 보존했으므로 함께 보존')
+  } else if (existsSync(variantsPath)) {
+    const variants = unionVariants(
+      readJsonObject(variantsPath),
+      ...(hasStatSource
+        ? [
+            guardExtraVariants(readJsonObject(join(gameDataVersionRoot, 'skill-stat-variants.json')), translated),
+            guardExtraVariants(readJsonObject(join(gameDataVersionRoot, 'stats-extra-variants.json')), translated),
+          ]
+        : []),
+    )
     writeFileSync(join(outputDir, 'stats-variants.json'), sortedJsonStringify(variants), 'utf-8')
     console.log(`  stats-variants.json: ${Object.keys(variants).length}개 한글 키`)
   } else {

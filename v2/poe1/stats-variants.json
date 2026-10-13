@@ -1,6 +1,36 @@
 {
+  "#초간 비전 쇄도 지속": [
+    "Arcane Surge lasts {0} seconds"
+  ],
+  "#초간 신경 자극 지속": [
+    "Innervation lasts {0} seconds"
+  ],
+  "#초간 위축 지속": [
+    "Withered lasts {0} seconds"
+  ],
+  "#초마다 광선 발사": [
+    "Fires a beam every {0} seconds"
+  ],
   "#초마다 무작위 성소 버프 1개 획득": [
     "Gain a random Shrine buff every {0} seconds"
+  ],
+  "#초마다 적 타격": [
+    "Strikes an Enemy every {0} seconds"
+  ],
+  "#초마다 칼날비가 떨어져 내림": [
+    "A Volley of blades falls every {0} seconds"
+  ],
+  "#초마다 파동": [
+    "Pulses every {0} seconds"
+  ],
+  "#초마다 피해 줌": [
+    "Deals Damage every {0} seconds"
+  ],
+  "#회 회전": [
+    "Rotates {0} times"
+  ],
+  "+#회 회전": [
+    "Rotates +{0} times"
   ],
   "10초마다 #초 동안 무작위로 불을 뿜는 룬 쇄도, 얼어붙은 룬 쇄도 또는 치직대는 룬 쇄도 획득": [
     "Gain Flaming, Icy or Crackling Runesurge at random for {0} seconds every 10 seconds"
@@ -38,8 +68,20 @@
   "가장 왼쪽에 있는 마법 특수 플라스크 #개가 지속적으로 플라스크 효과를 자신에게 적용함": [
     "Leftmost {0} Magic Utility Flasks constantly apply their Flask Effects to you"
   ],
+  "간헐천 #개 생성": [
+    "Creates {0} geysers"
+  ],
+  "간헐천 최대 #개": [
+    "Maximum {0} geysers"
+  ],
   "감전된 후 #초 동안 감전 면역": [
     "You cannot be Shocked for {0} seconds after being Shocked"
+  ],
+  "강탈이 폐쇄 중이 아닐 때 최대 #미터 내에 있는 적 순찰대 감지 가능": [
+    "Can detect enemy Patrols up to {0} metres away when Heist is not in Lockdown"
+  ],
+  "거대한 갑충석 #개 추가 등장": [
+    "Contains {0} additional Titanic Scarabs"
   ],
   "검 사용 시 근접 타격 범위 +#미터": [
     "+{0} metres to Melee Strike Range with Swords"
@@ -50,11 +92,29 @@
   "격분 주입의 기본 지속시간 #초": [
     "Feeding Frenzy base Duration is {0} seconds"
   ],
+  "결전 갑충석 #개 추가 등장": [
+    "Contains {0} additional Ultimatum Scarabs"
+  ],
+  "경작지 #개": [
+    "{0} Farming Plots"
+  ],
+  "경작지당 농부 최대 #명": [
+    "{0} Maximum Farmers per Plot"
+  ],
   "고드름 지뢰 투척 속도 #% 감소": [
     "Icicle Mine has {0}% reduced Throwing Speed"
   ],
   "고드름 지뢰 투척 속도 #% 증가": [
     "Icicle Mine has {0}% increased Throwing Speed"
+  ],
+  "고유 몬스터 처치 시 이계 포탈 #개가 추가로 생성됨": [
+    "Unique Monsters spawn {0} additional Beyond Portals when Slain"
+  ],
+  "고유 몬스터 처치 시 이계 포탈 1개가 추가로 생성됨": [
+    "Unique Monsters spawn an additional Beyond Portal when Slain"
+  ],
+  "고유 몬스터가 몬스터 속성 #개 추가 보유": [
+    "Unique Monsters have {0} additional Monster Modifiers"
   ],
   "고유 몬스터가 타락한 아이템을 떨어뜨림": [
     "Items dropped by Unique Monsters are Corrupted"
@@ -62,11 +122,17 @@
   "고유 보스가 고유 아이템 #개를 추가로 떨어뜨림": [
     "Unique Boss drops {0} additional Unique Items"
   ],
+  "고통 갑충석 #개 추가 등장": [
+    "Contains {0} additional Torment Scarabs"
+  ],
   "공격 명중 시 대상의 유발된 지 #초가 넘은 출혈 가중": [
     "Attack Hits Aggravate any Bleeding on targets which is older than {0} seconds"
   ],
   "공격으로 발사된 투사체가 #회 추가로 갈라질 수 있음": [
     "Projectiles from Attacks can Fork {0} additional times"
+  ],
+  "공허석에 적용하는 육분의 #회 추가 사용": [
+    "Sextants you apply to your Voidstones have {0} additional uses"
   ],
   "광란 시 #초 동안 물리 피해 면역 획득": [
     "Gain Immunity to Physical Damage for {0} seconds on Rampage"
@@ -77,8 +143,17 @@
   "광란 시 #초 동안 적이 플레이어의 이동을 막지 않음": [
     "Enemies do not block your movement for {0} seconds on Rampage"
   ],
+  "광부 최대 #명": [
+    "{0} Maximum Miners"
+  ],
   "광선 #회 연쇄": [
     "Beams Chain {0} Times"
+  ],
+  "구슬 근처에서 번개 스킬을 집중 유지하는 동안 #초마다 타격": [
+    "Strikes every {0} seconds while Channelling a Lightning Skill near the Orb"
+  ],
+  "군단 갑충석 #개 추가 등장": [
+    "Contains {0} additional Legion Scarabs"
   ],
   "군단 인카운터에 병장 #마리 추가 등장": [
     "Legion Encounters contain {0} additional Sergeants"
@@ -86,11 +161,32 @@
   "권능 착취가 최대 #명의 추가 대상에게 발사": [
     "Power Siphon fires at up to {0} additional targets"
   ],
+  "균열 갑충석 #개 추가 등장": [
+    "Contains {0} additional Breach Scarabs"
+  ],
   "근접 명중 시 #초 동안 적 제명": [
     "Excommunicate Enemies on Melee Hit for {0} seconds"
   ],
   "근접 치명타 시 출혈 유발": [
     "Causes Bleeding on Melee Critical Strike"
+  ],
+  "근접 타격 범위 +#미터": [
+    "+{0} metre to Melee Strike Range"
+  ],
+  "근접 타격이 주변 적 #명을 추가 대상으로 삼음": [
+    "Melee Strikes target {0} additional nearby Enemies"
+  ],
+  "기본 지속시간 #초": [
+    "Base duration is {0} seconds"
+  ],
+  "기세 하나당 보조 대상 스킬의 공격 속도 #% 감소": [
+    "Supported Skills have {0}% reduced Attack Speed per Trauma"
+  ],
+  "기습 갑충석 #개 추가 등장": [
+    "Contains {0} additional Incursion Scarabs"
+  ],
+  "기타 갑충석 #개 추가 등장": [
+    "Contains {0} additional Miscellaneous Scarabs"
   ],
   "꿈 용광로 슬롯 +#": [
     "+{0} Dream Furnace slots"
@@ -101,11 +197,29 @@
   "냉각된 후 #초 동안 냉각 면역": [
     "You cannot be Chilled for {0} seconds after being Chilled"
   ],
+  "냉기 피해 #~# 추가": [
+    "{0} to {1} Added Cold Damage"
+  ],
   "네 번째 발사 지점에서 발사한 화살은 +#회 연쇄": [
     "Arrows fired from the fourth firing points Chain +{0} times"
   ],
+  "다음 지역에 침략 보스 #마리 추가 등장": [
+    "Next Area will be inhabited by {0} additional Invasion Bosses"
+  ],
+  "다음 지역에 침략 보스 1마리 추가 등장": [
+    "Next Area will be inhabited by an additional Invasion Boss"
+  ],
+  "다음 지역에서 플레이어의 이동 속도 #% 증가": [
+    "Players in the next Area will have {0}% increased Movement Speed"
+  ],
   "단검 사용 시 근접 타격 범위 +#미터": [
     "+{0} metres to Melee Strike Range with Daggers"
+  ],
+  "덫 지속시간 #% 감소": [
+    "{0}% reduced Trap duration"
+  ],
+  "덫 지속시간 #% 증가": [
+    "{0}% increased Trap duration"
   ],
   "덫 투척 스킬의 재사용 횟수 +#회": [
     "Skills which Throw Traps have +{0} Cooldown Uses"
@@ -122,8 +236,342 @@
   "룬 제작 인챈트 추가 #개 보유 가능": [
     "Can have {0} additional Runesmithing Enchantments"
   ],
+  "마법 아이템 #개 추가": [
+    "Contains {0} additional Magic Items"
+  ],
+  "마지막 보스가 각성한 육분의 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Awakened Sextants"
+  ],
+  "마지막 보스가 갑충석 #개를 추가로  떨어뜨림": [
+    "Final Boss drops {0} additional Scarabs"
+  ],
+  "마지막 보스가 거대한 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Titanic Scarabs"
+  ],
+  "마지막 보스가 결전 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Ultimatum Scarabs"
+  ],
+  "마지막 보스가 고유 아이템 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Unique Item"
+  ],
+  "마지막 보스가 고통 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Torment Scarabs"
+  ],
+  "마지막 보스가 광택 나는 결전 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Polished Ultimatum Scarabs"
+  ],
+  "마지막 보스가 광택 나는 고통 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Polished Torment Scarabs"
+  ],
+  "마지막 보스가 광택 나는 군단 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Polished Legion Scarabs"
+  ],
+  "마지막 보스가 광택 나는 균열 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Polished Breach Scarabs"
+  ],
+  "마지막 보스가 광택 나는 매복 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Polished Ambush Scarabs"
+  ],
+  "마지막 보스가 광택 나는 성유물 보관실 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Polished Reliquary Scarabs"
+  ],
+  "마지막 보스가 광택 나는 쉐이퍼 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Polished Shaper Scarabs"
+  ],
+  "마지막 보스가 광택 나는 심연 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Polished Abyss Scarabs"
+  ],
+  "마지막 보스가 광택 나는 아황산염 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Polished Sulphite Scarabs"
+  ],
+  "마지막 보스가 광택 나는 야수 도감 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Polished Bestiary Scarabs"
+  ],
+  "마지막 보스가 광택 나는 엘더 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Polished Elder Scarabs"
+  ],
+  "마지막 보스가 광택 나는 역병 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Polished Blight Scarabs"
+  ],
+  "마지막 보스가 광택 나는 점술 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Polished Divination Scarabs"
+  ],
+  "마지막 보스가 광택 나는 지도 제작 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Polished Cartography Scarabs"
+  ],
+  "마지막 보스가 광택 나는 탐험 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Polished Expedition Scarabs"
+  ],
+  "마지막 보스가 군단 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Legion Scarabs"
+  ],
+  "마지막 보스가 균열 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Breach Scarabs"
+  ],
+  "마지막 보스가 기습 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Incursion Scarabs"
+  ],
+  "마지막 보스가 기타 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Miscellaneous Scarabs"
+  ],
+  "마지막 보스가 녹슨 결전 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Rusted Ultimatum Scarabs"
+  ],
+  "마지막 보스가 녹슨 고통 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Rusted Torment Scarabs"
+  ],
+  "마지막 보스가 녹슨 군단 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Rusted Legion Scarabs"
+  ],
+  "마지막 보스가 녹슨 균열 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Rusted Breach Scarabs"
+  ],
+  "마지막 보스가 녹슨 매복 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Rusted Ambush Scarabs"
+  ],
+  "마지막 보스가 녹슨 성유물 보관실 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Rusted Reliquary Scarabs"
+  ],
+  "마지막 보스가 녹슨 쉐이퍼 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Rusted Shaper Scarabs"
+  ],
+  "마지막 보스가 녹슨 심연 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Rusted Abyss Scarabs"
+  ],
+  "마지막 보스가 녹슨 아황산염 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Rusted Sulphite Scarabs"
+  ],
+  "마지막 보스가 녹슨 야수 도감 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Rusted Bestiary Scarabs"
+  ],
+  "마지막 보스가 녹슨 엘더 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Rusted Elder Scarabs"
+  ],
+  "마지막 보스가 녹슨 역병 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Rusted Blight Scarabs"
+  ],
+  "마지막 보스가 녹슨 점술 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Rusted Divination Scarabs"
+  ],
+  "마지막 보스가 녹슨 지도 제작 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Rusted Cartography Scarabs"
+  ],
+  "마지막 보스가 녹슨 탐험 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Rusted Expedition Scarabs"
+  ],
+  "마지막 보스가 도금된 결전 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Gilded Ultimatum Scarabs"
+  ],
+  "마지막 보스가 도금된 고통 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Gilded Torment Scarabs"
+  ],
+  "마지막 보스가 도금된 군단 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Gilded Legion Scarabs"
+  ],
+  "마지막 보스가 도금된 균열 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Gilded Breach Scarabs"
+  ],
+  "마지막 보스가 도금된 매복 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Gilded Ambush Scarabs"
+  ],
+  "마지막 보스가 도금된 성유물 보관실 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Gilded Reliquary Scarabs"
+  ],
+  "마지막 보스가 도금된 쉐이퍼 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Gilded Shaper Scarabs"
+  ],
+  "마지막 보스가 도금된 심연 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Gilded Abyss Scarabs"
+  ],
+  "마지막 보스가 도금된 아황산염 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Gilded Sulphite Scarabs"
+  ],
+  "마지막 보스가 도금된 야수 도감 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Gilded Bestiary Scarabs"
+  ],
+  "마지막 보스가 도금된 엘더 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Gilded Elder Scarabs"
+  ],
+  "마지막 보스가 도금된 역병 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Gilded Blight Scarabs"
+  ],
+  "마지막 보스가 도금된 점술 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Gilded Divination Scarabs"
+  ],
+  "마지막 보스가 도금된 지도 제작 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Gilded Cartography Scarabs"
+  ],
+  "마지막 보스가 도금된 탐험 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Gilded Expedition Scarabs"
+  ],
+  "마지막 보스가 매복 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Ambush Scarabs"
+  ],
+  "마지막 보스가 바알 오브 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Vaal Orbs"
+  ],
+  "마지막 보스가 배신 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Betrayal Scarabs"
+  ],
+  "마지막 보스가 변화의 오브 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Orbs of Alteration"
+  ],
+  "마지막 보스가 상급 섬뜩한 불씨 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Greater Eldritch Embers"
+  ],
+  "마지막 보스가 상급 섬뜩한 영액 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Greater Eldritch Ichors"
+  ],
+  "마지막 보스가 색채의 오브 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Chromatic Orbs"
+  ],
+  "마지막 보스가 섬뜩한 소멸의 오브 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Eldritch Orbs of Annulment"
+  ],
+  "마지막 보스가 섬뜩한 엑잘티드 오브 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Eldritch Exalted Orbs"
+  ],
+  "마지막 보스가 섬뜩한 영액 화폐 아이템 #개를 추가로  떨어뜨림": [
+    "Final Boss drops {0} additional Eldritch Ichor Currency Items"
+  ],
+  "마지막 보스가 섬뜩한 카오스 오브 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Eldritch Chaos Orbs"
+  ],
+  "마지막 보스가 세계 포식자 고정 속성이 붙은 아이템 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Items with an Eater of Worlds Implicit Modifier"
+  ],
+  "마지막 보스가 세공사의 프리즘 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Gemcutter's Prisms"
+  ],
+  "마지막 보스가 소멸의 오브 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Orbs of Annulment"
+  ],
+  "마지막 보스가 속박의 오브 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Orbs of Binding"
+  ],
+  "마지막 보스가 수확 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Harvest Scarabs"
+  ],
+  "마지막 보스가 신성한 오브 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Divine Orbs"
+  ],
+  "마지막 보스가 심연 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Abyss Scarabs"
+  ],
+  "마지막 보스가 아황산염 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Sulphite Scarabs"
+  ],
+  "마지막 보스가 야수 도감 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Bestiary Scarabs"
+  ],
+  "마지막 보스가 에센스 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Essence Scarabs"
+  ],
+  "마지막 보스가 엑잘티드 오브 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Exalted Orbs"
+  ],
+  "마지막 보스가 역병 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Blight Scarabs"
+  ],
+  "마지막 보스가 연결의 오브 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Orbs of Fusing"
+  ],
+  "마지막 보스가 영향력 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Influence Scarabs"
+  ],
+  "마지막 보스가 우수한 섬뜩한 불씨 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Grand Eldritch Embers"
+  ],
+  "마지막 보스가 우수한 섬뜩한 영액 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Grand Eldritch Ichors"
+  ],
+  "마지막 보스가 유리직공의 방울 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Glassblower's Baubles"
+  ],
+  "마지막 보스가 의식 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Ritual Scarabs"
+  ],
+  "마지막 보스가 이계 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Beyond Scarabs"
+  ],
+  "마지막 보스가 자극의 오브 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Enkindling Orbs"
+  ],
+  "마지막 보스가 장막의 카오스 오브 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Veiled Chaos Orbs"
+  ],
+  "마지막 보스가 점술 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Divination Scarabs"
+  ],
+  "마지막 보스가 정제의 오브 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Orbs of Scouring"
+  ],
+  "마지막 보스가 제왕의 오브 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Regal Orbs"
+  ],
+  "마지막 보스가 젬 #개를 추가로  떨어뜨림": [
+    "Final Boss drops {0} additional Gems"
+  ],
+  "마지막 보스가 주입의 오브 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Instilling Orbs"
+  ],
+  "마지막 보스가 쥬얼러 오브 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Jeweller's Orbs"
+  ],
+  "마지막 보스가 지도 제작 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Cartography Scarabs"
+  ],
+  "마지막 보스가 지도제작자의 끌 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Cartographer's Chisels"
+  ],
+  "마지막 보스가 지배 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Domination Scarabs"
+  ],
+  "마지막 보스가 축복의 오브 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Blessed Orbs"
+  ],
+  "마지막 보스가 취소의 오브 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Orbs of Unmaking"
+  ],
+  "마지막 보스가 카오스 오브 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Chaos Orbs"
+  ],
+  "마지막 보스가 칼구르 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Kalguuran Scarabs"
+  ],
+  "마지막 보스가 탐험 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Expedition Scarabs"
+  ],
+  "마지막 보스가 트라투스 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Trarthan Scarabs"
+  ],
+  "마지막 보스가 하급 섬뜩한 불씨 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Lesser Eldritch Embers"
+  ],
+  "마지막 보스가 하급 섬뜩한 영액 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Lesser Eldritch Ichors"
+  ],
+  "마지막 보스가 혼란 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Anarchy Scarabs"
+  ],
+  "마지막 보스가 환영 갑충석 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Delirium Scarabs"
+  ],
+  "마지막 보스가 후회의 오브 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Orbs of Regret"
+  ],
+  "망령 최대치 +#": [
+    "+{0} to Maximum number of Spectres"
+  ],
+  "매복 갑충석 #개 추가 등장": [
+    "Contains {0} additional Ambush Scarabs"
+  ],
   "맹독성 비가 화살 #개 추가 발사": [
     "Toxic Rain fires {0} additional Arrows"
+  ],
+  "명중 시 #%의 확률로 적 실명 유발": [
+    "{0}% chance to Blind enemies on hit",
+    "{0}% chance to Blind Enemies on Hit"
   ],
   "명중 시 적을 밀어냄": [
     "Knock Enemies back on Hit"
@@ -131,17 +579,35 @@
   "명중 시 탐욕스러운 덩굴 #개 유발": [
     "Inflict {0} Grasping Vines on Hit"
   ],
+  "명중한 적 하나당 마나 # 획득": [
+    "Gain {0} Mana per Enemy Hit"
+  ],
+  "명중한 적 하나당 생명력 # 획득": [
+    "Gain {0} Life per Enemy Hit"
+  ],
   "모든 명중 피해가 플레이어에게 유발된 원소 상태 이상을 유발": [
     "All Damage from Hits will cause Elemental Ailments you are suffering"
   ],
+  "모든 물리 피해를 화염 피해로 전환": [
+    "Converts all Physical Damage to Fire Damage"
+  ],
   "모든 피해가 탐욕스러운 덩굴이 #개 이상인 적에게 중독 유발": [
     "All Damage inflicts Poison against Enemies affected by at least {0} Grasping Vines"
+  ],
+  "모집 중개소가 최대 #명의 신입 소개": [
+    "Recruitment Agency lists up to {0} Recruits"
+  ],
+  "몬스터 무리 1개가 방어": [
+    "Guarded by a stream of Monsters"
   ],
   "몬스터 무리가 #%의 확률로 마법 등급으로 업그레이드됨": [
     "{0}% chance for Pack to be upgraded to Magic"
   ],
   "몬스터 무리가 #%의 확률로 희귀 등급으로 업그레이드됨": [
     "{0}% chance for Pack to be upgraded to Rare"
+  ],
+  "몬스터 이름이 같은 다른 시신 #개 이상 필요": [
+    "Requires at least {0} other Corpses of the same Monster Name"
   ],
   "몬스터가 #레벨 이상의 아이템을 떨어뜨림": [
     "Monsters drop items {0} Levels higher"
@@ -155,8 +621,17 @@
   "몬스터가 20초마다 인내 충전 #개 획득": [
     "Monsters gain {0} Endurance Charges every 20 seconds"
   ],
+  "몬스터가 떨어뜨리는 유물의 수량 #% 감소": [
+    "{0}% reduced Quantity of Relics Dropped by Monsters"
+  ],
+  "몬스터가 떨어뜨리는 유물의 수량 #% 증가": [
+    "{0}% increased Quantity of Relics Dropped by Monsters"
+  ],
   "몬스터가 명중 시 탐욕스러운 덩굴 #개 유발": [
     "Monsters inflict {0} Grasping Vines on Hit"
+  ],
+  "몬스터가 물리 피해의 #%를 추가 카오스 피해로 획득": [
+    "Monsters gain {0}% of Physical Damage as Extra Chaos Damage"
   ],
   "몬스터에게 걸리는 저주 효과 #% 감소": [
     "{0}% reduced Effect of Curses on Monsters"
@@ -164,14 +639,32 @@
   "몬스터에게 걸리는 저주 효과 #% 증가": [
     "{0}% increased Effect of Curses on Monsters"
   ],
+  "몬스터의 공격 속도 #% 증가": [
+    "Monsters have {0}% increased Attack Speed"
+  ],
   "몬스터의 생명력 #% 감폭": [
     "Monsters have {0}% less Life"
   ],
   "몬스터의 생명력 #% 증폭": [
     "Monsters have {0}% more Life"
   ],
+  "몬스터의 시전 속도 #% 증가": [
+    "Monsters have {0}% increased Cast Speed"
+  ],
+  "몬스터의 이동 속도 #% 감소": [
+    "Monsters have {0}% reduced Movement Speed"
+  ],
+  "몬스터의 이동 속도 #% 증가": [
+    "Monsters have {0}% increased Movement Speed"
+  ],
   "무기 기동으로 원거리 무기 최대 #개 움직이기 가능": [
     "Animate Weapon can Animate up to {0} Ranged Weapons"
+  ],
+  "무리 규모 #% 감소": [
+    "{0}% reduced Pack size"
+  ],
+  "무리 규모 #% 증가": [
+    "{0}% increased Pack size"
   ],
   "무리의 살아있는 몬스터 하나당 공격 및 시전 속도 #% 증가": [
     "{0}% increased Attack and Cast Speed  for each alive Monster in Pack"
@@ -194,6 +687,9 @@
   "반경 내 힘이 40 이상이면 용암 타격의 투사체 연쇄 +#회": [
     "With at least 40 Strength in Radius, Molten Strike Projectiles Chain +{0} times"
   ],
+  "발견하는 1~15등급 지도가 #%의 확률로 1등급 높게 떨어짐": [
+    "Tier 1-15 Maps found have {0}% chance to be 1 tier higher"
+  ],
   "방어 상승 사용 시 근접 타격 범위 +#미터": [
     "+{0} metres to Melee Strike Range while Fortified"
   ],
@@ -206,11 +702,98 @@
   "방패를 들고 있는 동안 주문 피해 막기 확률 +#%": [
     "+{0}% chance to Block Spell Damage while holding a Shield"
   ],
+  "배신 갑충석 #개 추가 등장": [
+    "Contains {0} additional Betrayal Scarabs"
+  ],
+  "버프 시 추가 꿰뚫기 # 부여": [
+    "Buff grants {0} additional Impales"
+  ],
+  "버프 획득 시 인내 충전 # 부여": [
+    "Buff grants {0} Endurance Charges when gained"
+  ],
+  "번개 피해 #~# 추가": [
+    "{0} to {1} Added Lightning Damage"
+  ],
   "번개 화살이 적 #명 추가 적중": [
     "Lightning Arrow hits {0} additional Enemies"
   ],
+  "번개가 주입된 분신 #개 생성": [
+    "Creates {0} Lightning-Imbued Clones"
+  ],
+  "번갯불 타격 #회": [
+    "{0} lightning bolts strike"
+  ],
+  "범위 내 냉각 또는 동결된 추가 대상 최대 #명에게 박격포 발사": [
+    "Fires mortars at up to {0} additional Chilled or Frozen targets in range"
+  ],
   "보복 스킬이 명중 시 1초 동안 적에게 쇠잔 유발": [
     "Retaliation Skills Debilitate Enemies for a second on Hit"
+  ],
+  "보조 대상 공격이 적을 최초 명중할 때 외상 1 획득\n보조 대상 스킬로 인해 외상을 획득하면 외상 하나당 #의 물리 피해를 받음\n외상 #초 지속": [
+    "Gain 1 Trauma the first time a Supported Attack Hits an Enemy\nTake {0} Physical Damage per Trauma when you gain Trauma from Supported Skills\nTrauma lasts {1} seconds"
+  ],
+  "보조 대상 번개 화살이 적 #명 추가 명중": [
+    "Supported Lightning Arrow hits {0} additional Enemies"
+  ],
+  "보조 대상 스킬 #회 추가 반복": [
+    "Supported Skills Repeat an additional {0} times"
+  ],
+  "보조 대상 스킬 명중 시 전투 돌격 획득\n전투 돌격은 #초 혹은 이동 전용 스킬을 쓰기 전까지 지속": [
+    "Supported Skills grant Combat Rush on Hit\nCombat Rush lasts {0} seconds or until you use a Travel Skill"
+  ],
+  "보조 대상 스킬 명중 시 탐욕스러운 덩굴 #개 유발": [
+    "Supported Skills inflict {0} Grasping Vines on Hit"
+  ],
+  "보조 대상 스킬로 근접 명중 시 #초 동안 적 제명": [
+    "Supported Skills Excommunicate Enemies on Melee Hit for {0} seconds"
+  ],
+  "보조 대상 스킬로 생성된 저주받은 지대가 #초마다 터지는 두꺼비 발동": [
+    "Cursed Ground from Supported Skills Triggers Bursting Toad every {0} seconds"
+  ],
+  "보조 대상 스킬로 적에게 꽂히는 폭발 화살 최대치 +#개": [
+    "Supported Skills have +{0} Maximum Explosive Arrows stuck in an Enemy"
+  ],
+  "보조 대상 스킬로 주는 주문 피해 #% 감소": [
+    "Supported Skills deal {0}% reduced Spell Damage"
+  ],
+  "보조 대상 스킬로 주는 주문 피해 #% 증가": [
+    "Supported Skills deal {0}% increased Spell Damage"
+  ],
+  "보조 대상 스킬로 투척한 지뢰가 플레이어의 #미터 이내에 있는 동안 폭발 불가": [
+    "Mines from Supported Skills can't be Detonated while within {0} metres of you"
+  ],
+  "보조 대상 스킬의 5번째 공격마다 추가 투사체 #개 발사": [
+    "Every fifth attack with Supported Skill fires {0} additional Projectiles"
+  ],
+  "보조 대상 스킬의 균열이 +#회 추가로 폭발": [
+    "Fissures from Supported Skills erupt +{0} additional times"
+  ],
+  "보조 대상 스킬의 방어 상승이 #초 동안 주변 동료들에게 적용": [
+    "Fortification from Supported Skills applies to nearby Allies for {0} seconds"
+  ],
+  "보조 대상 스킬의 오라 내에 #초 이상 머무르는 적에게 불길한 광기 적용": [
+    "Enemies have Malignant Madness if they have been in Auras from Supported Skills for more than {0} seconds"
+  ],
+  "보조 대상 스킬의 투사체가 #미터 내의 모든 대상 관통": [
+    "Projectiles from Supported Skills Pierce all Targets within {0} metres"
+  ],
+  "보조 대상 스킬의 투사체의 최대 직접 비행 #미터": [
+    "Projectiles from Supported Skills have {0} metres maximum Direct Flight"
+  ],
+  "보조 대상 스킬이 격발 +#회 유발": [
+    "Supported Skills cause +{0} Bursts"
+  ],
+  "보조 대상 스킬이 기본 지속시간이 #초인 저주받은 지대 생성\n보조 대상 스킬로 건 사술의 지속시간 없음\n보조 대상 스킬로 생성된 저주받은 지대에 있는 적이 해당 사술에 걸림\n저주받은 지대는 최대 1개로 제한": [
+    "Supported Skills create Cursed Ground with a base Duration of {0} seconds\nHexes from Supported Skills have no Duration\nEnemies on the Cursed Ground from a Supported Skill are Cursed with that Hex\nMaximum 1 area of Cursed Ground"
+  ],
+  "보조 대상 신성한 타격의 신성한 병기 최대치 +#": [
+    "Supported Holy Strike has +{0} maximum Holy Armaments"
+  ],
+  "보조 대상 천공이 가시 +#개 생성": [
+    "Supported Perforate creates +{0} Spikes"
+  ],
+  "보조 대상 폭풍우가 화살 하나당 광선 +#개 발사": [
+    "Each Arrow from Supported Storm Rain can fire +{0} Beams"
   ],
   "보조 장비로 장착하고 이 무기로 명중 시 #초 동안 적 냉각": [
     "Chill Enemies for {0} seconds on Hit with this Weapon when in Off Hand"
@@ -233,6 +816,15 @@
   "비-바알 타격 스킬이 주변 적 #명을 추가 대상으로 삼음": [
     "Non-Vaal Strike Skills target {0} additional nearby Enemies"
   ],
+  "비-즉시 시전 보조 대상 스킬의 재사용 횟수 +#회": [
+    "Supported Non-Instant Skills have +{0} Cooldown Uses"
+  ],
+  "비고정 속성 +#개": [
+    "+{0} Explicit Modifiers"
+  ],
+  "비고정 속성 부여 규모 #% 증가": [
+    "{0}% increased explicit modifier magnitudes"
+  ],
   "비무장 공격 시 근접 타격 범위 +#미터": [
     "+{0} metres to Melee Strike Range with Unarmed Attacks"
   ],
@@ -251,8 +843,14 @@
   "사용 시 인내 충전 #개 획득": [
     "Gain {0} Endurance Charges on use"
   ],
+  "사용 횟수 #회 남음": [
+    "{0} uses remaining"
+  ],
   "산출된 장비가 투구일 확률 #% 감소": [
     "{0}% reduced chance for Birthed Equipment to be Jewels"
+  ],
+  "생명력 전환 #초간 지속": [
+    "Lifetap lasts {0} seconds"
   ],
   "생명력 흡수로 인한 초당 총 회복량 2배": [
     "Total Recovery per second from Life Leech is Doubled"
@@ -266,14 +864,30 @@
   "선대의 함성 사용 시 전력 공격 #회 추가": [
     "Ancestral Cry Exerts {0} additional Attacks"
   ],
+  "선박 #척": [
+    "{0} Ships"
+  ],
+  "소환 가능한 좀비 최대치 +#": [
+    "+{0} to Maximum Raised Zombies",
+    "+{0} to Maximum number of Raised Zombies"
+  ],
+  "소환된 격노의 유령 최대치 #": [
+    "Maximum {0} Summoned Raging Spirits"
+  ],
   "소환된 고통의 벌레 최대 #마리": [
     "Maximum {0} Summoned Agony Crawlers"
   ],
   "소환된 고통의 벌레가 투사체 #개 추가 발사": [
     "Summoned Agony Crawler fires {0} additional Projectiles"
   ],
+  "소환된 골렘 최대 #마리": [
+    "Maximum {0} Summoned Golems"
+  ],
   "소환된 골렘이 죽으면 #초 뒤 재소환됨": [
     "Summoned Golems are Resummoned {0} seconds after being Killed"
+  ],
+  "소환된 공허 유충 최대 #마리": [
+    "Maximum {0} Summoned Void Spawns"
   ],
   "소환된 굴 파는 독사 최대 #": [
     "Maximum {0} summoned Burrowing Vipers"
@@ -290,6 +904,12 @@
   "소환수의 최대 생명력 #% 증폭": [
     "Minions have {0}% more Maximum Life"
   ],
+  "손 #개 생성": [
+    "Creates {0} Hands"
+  ],
+  "손 #개 추가 생성": [
+    "Creates {0} additional Hands"
+  ],
   "수호 파괴 시 #초 동안 아드레날린 획득": [
     "Gain Adrenaline for {0} seconds when Ward Breaks"
   ],
@@ -305,11 +925,26 @@
   "수호가 부서질 때 철 플라스크 # 충전": [
     "Iron Flasks gain {0} charges when your Ward Breaks"
   ],
+  "수확 갑충석 #개 추가 등장": [
+    "Contains {0} additional Harvest Scarabs"
+  ],
   "시체 불덩이가 시신 최대 #구 추가 소모": [
     "Volatile Dead Consumes up to {0} additional corpses"
   ],
   "시체 소각이 1회에 유지할 수 있는 간헐천 최대 #개 추가": [
     "Cremation can have up to {0} additional Geysers at a time"
+  ],
+  "실명 지속시간 #% 감소": [
+    "{0}% reduced Blinding duration"
+  ],
+  "실명 지속시간 #% 증가": [
+    "{0}% increased Blinding duration"
+  ],
+  "실버 코인 #개 추가": [
+    "Contains {0} additional Silver Coins"
+  ],
+  "심연 갑충석 #개 추가 등장": [
+    "Contains {0} additional Abyss Scarabs"
   ],
   "쌍수 사용 시 덫 최대 #개 추가 투척": [
     "Throw up to {0} additional Traps if dual wielding"
@@ -317,14 +952,35 @@
   "쌍수 장착 시 근접 타격 범위 +#미터": [
     "+{0} metres to Melee Strike Range while Dual Wielding"
   ],
+  "아이템 #개 추가": [
+    "Contains {0} additional Items"
+  ],
+  "아황산염 갑충석 #개 추가 등장": [
+    "Contains {0} additional Sulphite Scarabs"
+  ],
   "악마 처치 시 충전 #개 재충전": [
     "Recharges {0} Charges when you Kill a Demon"
+  ],
+  "야수 도감 갑충석 #개 추가 등장": [
+    "Contains {0} additional Bestiary Scarabs"
+  ],
+  "야수가 등장하는 지도에 노란 야수 #마리 추가 등장": [
+    "Your Maps that contain capturable Beasts contain {0} additional Yellow Beasts"
   ],
   "양손 무기 사용 시 근접 타격 범위 +#미터": [
     "+{0} metres to Melee Strike Range with Two Handed Weapons"
   ],
+  "어부 최대 #명": [
+    "{0} Maximum Fishermen"
+  ],
   "얼어붙은 군단의 재사용 횟수 +#회": [
     "Frozen Legion has +{0} Cooldown Uses"
+  ],
+  "에센스 갑충석 #개 추가 등장": [
+    "Contains {0} additional Essence Scarabs"
+  ],
+  "역병 갑충석 #개 추가 등장": [
+    "Contains {0} additional Blight Scarabs"
   ],
   "역병 상자에서 보상 1개 추가 등장": [
     "Blight Chests drop an additional Reward"
@@ -344,6 +1000,12 @@
   "영체 나선이 튕기는 횟수 +#": [
     "Spectral Helix can Bounce up to +{0} times"
   ],
+  "영향력 갑충석 #개 추가 등장": [
+    "Contains {0} additional Influence Scarabs"
+  ],
+  "완성하는 데 #장이 필요한 점술 카드 #장이 들어 있음": [
+    "Contains {1} Divination Cards that have a Full Stack number of {0}"
+  ],
   "용암 타격의 투사체 연쇄 +#회": [
     "Molten Strike Projectiles Chain +{0} times"
   ],
@@ -353,8 +1015,38 @@
   "원소 피해 #% 증가": [
     "Has {0}% increased Elemental Damage"
   ],
+  "의식 갑충석 #개 추가 등장": [
+    "Contains {0} additional Ritual Scarabs"
+  ],
+  "의식 제단에서 헌정품을 무작위 변경할 때 첫 #회는 비용 없음": [
+    "Rerolling Favours at Ritual Altars has no Cost the first {0} time"
+  ],
+  "이 기생체가 사용하는 낙하하는 수정이 추가 박격포 최대 #회 발사": [
+    "Falling Crystals used by this Graft fires up to {0} additional mortars"
+  ],
+  "이 기생체가 사용하는 난폭한 갈망이 추가 꿰뚫기 +# 부여": [
+    "Violent Desire used by this Graft grants +{0} additional Impales"
+  ],
+  "이 기생체가 사용하는 다정한 포옹이 부여하는 버프 획득 시 인내 충전 +# 부여": [
+    "Buff granted by Tender Embrace used by this Graft grants +{0} Endurance Charges when gained"
+  ],
+  "이 기생체가 사용하는 살점 붙잡기가 첨탑 +#개 생성": [
+    "Seize the Flesh used by this Graft creates +{0} Spires"
+  ],
+  "이 기생체가 사용하는 장작 부르기가 잿빛 기둥 +#개 생성": [
+    "Call the Pyre used by this Graft creates +{0} Ashen Pillars"
+  ],
+  "이 기생체가 사용하는 피폐의 장악이 추가 손 #개 생성": [
+    "Enervating Grasp used by this Graft creates {0} additional Hands"
+  ],
+  "이 기생체로 생성된 간헐천이 플레이어가 함성을 사용할 때 추가 투사체 #개 발사": [
+    "Geysers created by this Graft fire {0} additional Projectiles when you Warcry"
+  ],
   "이 무기로 중독이 #중첩 이상인 적 명중 시 위축 유발": [
     "Wither on Hit with this weapon against Enemies with at least {0} Poisons on them"
+  ],
+  "이계 갑충석 #개 추가 등장": [
+    "Contains {0} additional Beyond Scarabs"
   ],
   "이동 방해 면역": [
     "You cannot be Hindered"
@@ -365,11 +1057,35 @@
   "인내의 함성이 플레이어와 동료 플레이어들에게 인내 충전 #개 추가": [
     "Enduring Cry grants {0} additional Endurance Charges to you and Allied Players"
   ],
+  "인접 지역들에 문어 무리 #개 추가 등장": [
+    "Adjacent Areas contains {0} additional packs of Octopi"
+  ],
+  "인접 지역에 게 무리 #개 추가 등장": [
+    "Adjacent Areas contain {0} additional packs of Crabs"
+  ],
+  "인접 지역에 물에 빠진 자 무리 #개 추가 등장": [
+    "Adjacent Areas contain {0} additional packs of the Drowned"
+  ],
+  "인접 지역에 바다 야수 무리 #개 추가 등장": [
+    "Adjacent Areas contain {0} additional packs of Sea Beasts"
+  ],
+  "인챈트 해제사 최대 #명": [
+    "{0} Maximum Disenchanters"
+  ],
+  "자신 및 주변 동료들의 이동 속도 #% 감소": [
+    "You and nearby Allies have {0}% reduced Movement Speed"
+  ],
+  "자신 및 주변 동료들의 이동 속도 #% 증가": [
+    "You and nearby Allies have {0}% increased Movement Speed"
+  ],
   "자신에게 적용되는 첫 #개의 마나 연소의 효과가 적용되지 않음": [
     "The first {0} Mana Burn applied to you have no effect"
   ],
   "자신의 중독 수치가 # 이상일 경우 중독될 수 없음": [
     "You cannot be Poisoned while there are at least {0} Poisons on you"
+  ],
+  "잔혹의 기본 지속시간 #초": [
+    "Cruelty has a Base Duration of {0} seconds"
   ],
   "장착된 젬에 #레벨 관통 보조 효과 적용": [
     "Socketed Gems are Supported by Level {0} Pierce"
@@ -382,6 +1098,9 @@
   ],
   "장착된 함성 스킬의 재사용 횟수 +#회": [
     "Socketed Warcry Skills have +{0} Cooldown Uses"
+  ],
+  "재사용 횟수 +#회": [
+    "+{0} Cooldown Uses"
   ],
   "재앙의 화살이 생성하는 포자 주머니 +#개": [
     "Scourge Arrow creates +{0} Spore Pods"
@@ -400,6 +1119,9 @@
   ],
   "전투마법사의 함성 사용 시 전력 공격 #회 추가": [
     "Battlemage's Cry Exerts {0} additional Attacks"
+  ],
+  "점술 갑충석 #개 추가 등장": [
+    "Contains {0} additional Divination Scarabs"
   ],
   "점화 상태일 때 #초 동안 맹공 획득": [
     "You gain Onslaught for {0} seconds on being Ignited"
@@ -428,8 +1150,26 @@
   "정지된 허상 최대치 #": [
     "Maximum {0} Suspended Mirages"
   ],
+  "제련가 최대 #명": [
+    "{0} Maximum Smelters"
+  ],
   "제작 속성 부여 추가 #개 보유 가능": [
     "Can have {0} additional Crafted Modifiers"
+  ],
+  "주는 피해 #% 감폭": [
+    "Deals {0}% less Damage"
+  ],
+  "주는 피해 #% 증폭": [
+    "Deals {0}% more Damage"
+  ],
+  "주변 동료들이 주는 피해 #% 증가": [
+    "Nearby Allies deal {0}% increased Damage"
+  ],
+  "주변의 적의 생명력 재생 속도 #% 감소": [
+    "Nearby Enemies have {0}% reduced Life Regeneration Rate"
+  ],
+  "주변의 적의 생명력 재생 속도 #% 증가": [
+    "Nearby Enemies have {0}% increased Life Regeneration Rate"
   ],
   "주변의 적이 5명 이상인 경우 근접 타격 범위 +#미터": [
     "+{0} metres to Melee Strike Range while at least 5 Enemies are Nearby"
@@ -452,8 +1192,56 @@
   "지난 1초 동안 공격한 경우 1초마다 광신 충전 # 획득": [
     "Gain {0} Fanatic Charges every second if you've Attacked the past second"
   ],
+  "지도 내 군단 인카운터에 병장 #마리 추가 등장": [
+    "Legion Encounters in your Maps contain {0} additional Sergeants"
+  ],
+  "지도 내 균열에 균열 보스의 움켜잡는 손 #개 추가 등장": [
+    "Breaches in your Maps contain {0} additional Breach Boss' Clasped Hands"
+  ],
+  "지도 내 균열에 균열 보스의 움켜잡는 손이 등장할 확률 #% 증가": [
+    "Breaches in your Maps have {0}% increased chance to contain a Breach Boss' Clasped Hand"
+  ],
+  "지도 내 균열에 움켜잡는 손 #개 추가 등장": [
+    "Breaches in your Maps contain {0} additional Clasped Hands"
+  ],
+  "지도 내 기습 건축가가 희귀 기습 아이템 #개를 추가로 떨어뜨림": [
+    "Incursion Architects in your Maps drop {0} additional Rare Incursion Items"
+  ],
+  "지도 내 역병 인카운터에 역병 보스 최대 #마리 추가 등장": [
+    "Blight Encounters in your Maps contain up to {0} additional Blight Bosses"
+  ],
+  "지도 내 역병 인카운터의 덩굴 #개를 역병 보스만 방어": [
+    "{0} Lanes of Blight Encounters in your Maps are guarded only by Blight Bosses"
+  ],
+  "지도 내 의식 제단에서 헌정품을 무작위 변경할 때 첫 #회는 비용 없음": [
+    "Rerolling Favours at Ritual Altars in your Maps has no Cost the first {0} times"
+  ],
+  "지도 내 자나 임무에 지도 옵션 #개 추가 등장": [
+    "Zana Missions in your Maps have {0} additional Map options"
+  ],
+  "지도 내 침략 보스가 값진 아이템 #개를 추가로 떨어뜨림": [
+    "Invasion Bosses in your Maps drop {0} additional valuable Items"
+  ],
+  "지도 내 희귀 몬스터가 속성 부여 #개 추가 보유": [
+    "Rare Monsters in your Maps have {0} additional Modifiers"
+  ],
   "지도 보스가 고통받는 혼백에 둘러싸임": [
     "Map Boss is surrounded by Tormented Spirits"
+  ],
+  "지도 장치 #개": [
+    "{0} Map Devices"
+  ],
+  "지도 장치로 열리는 포탈 #개": [
+    "Map Devices have {0} Portals"
+  ],
+  "지도 제작 갑충석 #개 추가 등장": [
+    "Contains {0} additional Cartography Scarabs"
+  ],
+  "지도 조각 #개 추가 등장": [
+    "Contains {0} additional Map Fragments"
+  ],
+  "지도 퀄리티 #%": [
+    "Your Maps have {0}% Quality"
   ],
   "지도에 무작위 결합 일반 속성 부여 #개 추가": [
     "Map has {0} additional Synthesis Global Modifiers"
@@ -467,8 +1255,35 @@
   "지도에 무작위 접미어 #개 추가": [
     "Map has {0} additional random Suffixes"
   ],
+  "지도에 적용되는 비고정 속성의 효과 #% 감소": [
+    "{0}% reduced effect of Explicit Modifiers on Maps"
+  ],
+  "지도에 적용되는 비고정 속성의 효과 #% 증가": [
+    "{0}% increased effect of Explicit Modifiers on Maps"
+  ],
+  "지도에 타락한 바알 몬스터 무리 #개 추가 등장": [
+    "Your Maps contain {0} additional packs of Corrupted Vaal Monsters"
+  ],
+  "지도에서 강력한 이계 악마를 소환하는 데 필요한 포탈 #개 감소": [
+    "Powerful Beyond Demons require {0} fewer Portals to summon in your Maps"
+  ],
+  "지도에서 강력한 이계 악마를 소환하는 데 필요한 포탈 #개 증가": [
+    "Powerful Beyond Demons require {0} additional Portals to summon in your Maps"
+  ],
   "지뢰 설치 시 주변의 적들을 #초 동안 이동 방해": [
     "Mines Hinder Enemies near them for {0} seconds when they Land"
+  ],
+  "지뢰 지속시간 #% 감소": [
+    "{0}% reduced Mine duration"
+  ],
+  "지뢰 지속시간 #% 증가": [
+    "{0}% increased Mine duration"
+  ],
+  "지배 갑충석 #개 추가 등장": [
+    "Contains {0} additional Domination Scarabs"
+  ],
+  "지속시간 +#초": [
+    "+{0} seconds to Duration"
   ],
   "지역 내 균열에 움켜잡는 손 #개 추가 등장": [
     "Breaches in Area contain {0} additional Clasped Hands"
@@ -480,7 +1295,11 @@
     "Rare and Unique Monsters in Area are Possessed by up to {0} Tormented Spirits and if Possessed their Minions are Touched"
   ],
   "지역에 개구리 무리 #개 추가 등장": [
-    "Area contains {0} additional packs of Frogs"
+    "Area contains {0} additional packs of Frogs",
+    "Area contains {0} additional pack of Frogs"
+  ],
+  "지역에 게 무리 #개 추가 등장": [
+    "Area contains {0} additional packs of Crabs"
   ],
   "지역에 결전 인카운터 1개 등장": [
     "Area contains an Ultimatum Encounter"
@@ -494,11 +1313,23 @@
   "지역에 군벌 #개 추가 서식": [
     "Area is inhabited by {0} additional Warbands"
   ],
+  "지역에 난이도와 보상이 높은 몬스터로 이루어진 무리 #개 추가 등장": [
+    "Area contains {0} additional packs of Difficult and Rewarding Monsters"
+  ],
   "지역에 마법 몬스터를 포함하는 결합물 상자 #개 추가 등장": [
     "Area contains {0} additional Synthesised Chests which contain Magic Monsters"
   ],
   "지역에 무작위 속성 #개 추가": [
     "Area has {0} additional random Modifiers"
+  ],
+  "지역에 문어 무리 #개 추가 등장": [
+    "Area contains {0} additional packs of Octopi"
+  ],
+  "지역에 바다 야수 무리 #개 추가 등장": [
+    "Area contains {0} additional packs of Sea Beasts"
+  ],
+  "지역에 살가운 해파리 등장": [
+    "All Voyage Areas contain Friendly Jellyfish"
   ],
   "지역에 상자 표시물 #개 추가 등장": [
     "Area contains {0} additional Chest Markers"
@@ -509,8 +1340,14 @@
   "지역에 의식 제단 등장": [
     "Area contains Ritual Altars"
   ],
+  "지역에 익사자 무리 #개 추가 등장": [
+    "Area contains {0} additional packs of Drowned"
+  ],
   "지역에 일반 몬스터를 포함하는 결합물 상자 #개 추가 등장": [
     "Area contains {0} additional Synthesised Chests which contain Normal Monsters"
+  ],
+  "지역에 자로크 몬스터 무리 #개 추가 등장": [
+    "Area contains {0} additional packs of Zarokh monsters"
   ],
   "지역에 지도 보스 #마리 추가 등장": [
     "Area contains {0} additional Map Bosses"
@@ -593,6 +1430,15 @@
   "최근 4초 이내 함성을 사용한 경우 1초마다 인내 충전 #개 획득": [
     "Gain {0} Endurance Charges every second if you've used a Warcry Recently"
   ],
+  "최대 #개의 대상에게 투사체 발사\n투사체 개수 속성이 투사체 개수가 아닌 발사되는 대상 수에 적용": [
+    "Fires a Projectile at up to {0} targets\nModifiers to number of Projectiles instead apply to number of targets fired at"
+  ],
+  "최대 #번 튕김\n속성 부여를 투사체 개수 대신 튕기는 횟수에 적용": [
+    "Bounces up to {0} times\nModifiers to number of Projectiles instead apply to the number of Bounces"
+  ],
+  "최대 광선 대상 #개": [
+    "{0} maximum Beam Targets"
+  ],
   "최대 기백을 소모하여 깃발 설치 시 격분 충전 #개 획득": [
     "Gain {0} Frenzy Charges when you consume maximum Valour to place a Banner"
   ],
@@ -607,6 +1453,18 @@
   ],
   "최대 생명력 #% 증폭": [
     "{0}% more Maximum Life"
+  ],
+  "최종 보스가 고대의 오브 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Ancient Orbs"
+  ],
+  "최종 보스가 기본 화폐 아이템 #개를 추가로  떨어뜨림": [
+    "Final Boss drops {0} additional Basic Currency Items"
+  ],
+  "최종 보스가 섬뜩한 불씨 화폐 아이템 #개를 추가로  떨어뜨림": [
+    "Final Boss drops {0} additional Eldritch Ember Currency Items"
+  ],
+  "최종 보스가 작열의 총주교 고정 속성이 붙은 아이템 #개를 추가로 떨어뜨림": [
+    "Final Boss drops {0} additional Items with a Searing Exarch Implicit Modifier"
   ],
   "추가 대상 #개": [
     "{0} additional targets"
@@ -629,11 +1487,17 @@
   "치명타에 피격되고 #초 이내에 사용하는 다음 비-집중 유지 공격의 모든 명중이 치명타": [
     "All Hits with your next Non-Channelling Attack within {0} seconds of taking a Critical Strike will be Critical Strikes"
   ],
+  "카오스 피해 #~# 추가": [
+    "{0} to {1} Added Chaos Damage"
+  ],
   "퀄리티 10%당 무기 범위 +#미터": [
     "+{0} metres to Weapon Range per 10% Quality"
   ],
   "클로 사용 시 근접 타격 범위 +#미터": [
     "+{0} metres to Melee Strike Range with Claws"
+  ],
+  "탐험 갑충석 #개 추가 등장": [
+    "Contains {0} additional Expedition Scarabs"
   ],
   "태세 변경 시 #초 동안 아드레날린 획득": [
     "Gain Adrenaline for {0} seconds when you change Stance"
@@ -644,11 +1508,26 @@
   "토템이 추가 투사체 #개 발사": [
     "Totems fire {0} additional Projectiles"
   ],
+  "투사체 개수 속성이 투사체 개수가 아닌\n투사체가 분할되는 대상 수에 적용": [
+    "Modifiers to number of Projectiles instead apply to\nthe number of targets Projectile Splits towards"
+  ],
   "투사체 발사 공격이 강철 조각 최대 #개 추가 소모": [
     "Attacks that Fire Projectiles Consume up to {0} additional Steel Shards"
   ],
+  "투사체가 #회 방향 전환\n투사체가 방향을 바꿀 때마다 대상 명중 가능": [
+    "Projectiles change direction {0} times\nProjectiles can Hit targets each time they change direction"
+  ],
+  "투사체가 #회 추가로 갈라질 수 있음": [
+    "Projectiles can Fork {0} additional Times"
+  ],
   "포식한 영혼 최대 #개": [
     "Maximum {0} Eaten Souls"
+  ],
+  "포탈이 지도 하나당 #개만 열림": [
+    "Only {0} Portals are opened to each of your Maps"
+  ],
+  "폭식 # 도달 시 모든 폭식을 상실하고 #초 동안 구토 획득": [
+    "On reaching {0} Gluttony, lose all Gluttony and gain Disgorge for {1} seconds"
   ],
   "플라스크 효과를 받는 동안 1초마다 # 바알 영혼 획득": [
     "Gain {0} Vaal Souls Per Second during effect"
@@ -704,11 +1583,20 @@
   "플레이어의 스킬로 유발된 원소 상태 이상이 #미터 내의 다른 적에게 확산": [
     "Elemental Ailments inflicted by your Skills spread to other Enemies within {0} metres"
   ],
+  "플레이어의 플라스크 충전량 #% 감소": [
+    "Players have {0}% reduced Flask Charges gained"
+  ],
+  "플레이어의 플라스크 충전량 #% 증가": [
+    "Players have {0}% increased Flask Charges gained"
+  ],
   "피격 시 인내 충전 하나당 #초 동안 맹공 획득": [
     "You gain Onslaught for {0} seconds per Endurance Charge when Hit"
   ],
   "피격 시 적을 #초 동안 냉각시켜 적의 동작 속도를 30%만큼 감소": [
     "Chill Enemy for {0} seconds when Hit, reducing their Action Speed by 30%"
+  ],
+  "피해와 냉각이 기본 지속시간 #초 동안 더 유지됨": [
+    "Damage and Chill Linger for a Base Duration of {0} seconds"
   ],
   "하얀 홈 하나당 근접 타격 범위 +#미터": [
     "+{0} metres to Melee Strike Range per White Socket"
@@ -746,6 +1634,21 @@
   "해골 소환 재사용 대기시간 +#초": [
     "+{0} seconds to Summon Skeleton Cooldown"
   ],
+  "해골 최대치 +#": [
+    "+{0} to Maximum number of Skeletons"
+  ],
+  "혼란 갑충석 #개 추가 등장": [
+    "Contains {0} additional Anarchy Scarabs"
+  ],
+  "화살 최대 +#개 발사": [
+    "Fires up to +{0} Arrows"
+  ],
+  "화살이 #초마다 광선 발사": [
+    "Arrows fire Beams every {0} seconds"
+  ],
+  "화염 피해 #~# 추가": [
+    "{0} to {1} Added Fire Damage"
+  ],
   "화염구 탑이 투사체 #개 추가 발사": [
     "Your Fireball Towers fire {0} additional Projectiles"
   ],
@@ -760,6 +1663,9 @@
   ],
   "화염파와 소각 재사용 대기시간 +#초": [
     "+{0} seconds to Flameblast and Incinerate Cooldown"
+  ],
+  "환영 갑충석 #개 추가 등장": [
+    "Contains {0} additional Delirium Scarabs"
   ],
   "활 공격이 피해를 받는 무작위 소환수를 희생하여 추가 화살 #개 발사": [
     "Bow Attacks Sacrifice a random Damageable Minion to fire {0} additional Arrows"
@@ -847,6 +1753,12 @@
   ],
   "희귀 스컬지 몬스터가 화석 #개를 추가로 떨어뜨림": [
     "Rare Scourge Monsters drop {0} additional Fossils"
+  ],
+  "희귀 아이템 #개 추가": [
+    "Contains {0} additional Rare Items"
+  ],
+  "희귀 지배의 파수꾼 최대 #명 소환": [
+    "Maximum {0} Summoned Rare Sentinels of Dominance"
   ],
   "힘줄 절단 면역": [
     "Immune to Maim"

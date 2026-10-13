@@ -5,7 +5,59 @@ import {
   loadOverrides,
   shouldPreserveExistingStats,
   indexGameDataPassives,
+  guardExtraStats,
+  guardExtraVariants,
+  translatedForms,
+  unionVariants,
 } from '../scripts/build.js'
+
+describe('guardExtraStats', () => {
+  const merged = {
+    '무리 규모 #% 증가': '{0}% increased Pack size',
+    '부족한 저항 원소 피해 #%': '{0}% of Elemental Damage taken from lacking Resistance',
+  }
+
+  it('새 한글 키가 이미 다른 한글이 차지한 영문(표기만 다른 것 포함)이면 싣지 않는다', () => {
+    const { layer, guarded } = guardExtraStats({ '지도 내 무리 규모 #% 증가': '{0}% increased Pack Size' }, merged)
+    expect(layer).toEqual({})
+    expect(guarded).toBe(1)
+  })
+
+  it('확장이 다른 층(공용 파일·변형)에서 다른 한글로 번역하는 영문이면 새 키를 싣지 않는다', () => {
+    const translated = translatedForms(new Map([['Map contains an additional Shrine', '지역에 추가 성소 존재']]))
+    const extra = { '지도에 성소 1개 추가 등장': 'Map contains an additional Shrine' }
+    expect(guardExtraStats(extra, merged, translated)).toEqual({ layer: {}, guarded: 1, ambiguous: 0 })
+    // 같은 한글이면(다시 빌드) 그대로 싣는다
+    const same = translatedForms(new Map([['Map contains an additional Shrine', '지도에 성소 1개 추가 등장']]))
+    expect(guardExtraStats(extra, merged, same).layer).toEqual(extra)
+  })
+
+  it('이미 있는 한글 키는 영문이 표기만 다를 때 바꾸고, 문구가 다르면 legacy 값을 그대로 둔다', () => {
+    const renumbered = { '부족한 저항 원소 피해 #%': '{0}% of Elemental Damage Taken from Lacking Resistance' }
+    expect(guardExtraStats(renumbered, merged).layer).toEqual(renumbered)
+    const reworded = { '부족한 저항 원소 피해 #%': '{0}% of Elemental Damage from lacking Resistances' }
+    expect(guardExtraStats(reworded, merged)).toEqual({ layer: {}, guarded: 1, ambiguous: 0 })
+  })
+
+  it('보조 층 안에서 한 영문을 새 한글 둘이 가리키면 둘 다 뺀다', () => {
+    const extra = { '1초 동안 생명력 # 재생': 'Regenerate {0} Life over 1 second', '1초 동안 생명력 #% 재생': 'Regenerate {0} Life over 1 second' }
+    expect(guardExtraStats(extra, merged)).toEqual({ layer: {}, guarded: 0, ambiguous: 2 })
+  })
+})
+
+describe('guardExtraVariants', () => {
+  it('확장이 다른 한글로 번역하는 영문은 변형에서 뺀다', () => {
+    const translated = translatedForms(new Map([['Always Poisons on Hit', '투사체 명중 시 농포 부착']]))
+    expect(guardExtraVariants({ '명중 시 항상 중독 유발': ['Always Poisons on Hit', 'Always Poison on Hit'] }, translated))
+      .toEqual({ '명중 시 항상 중독 유발': ['Always Poison on Hit'] })
+  })
+})
+
+describe('unionVariants', () => {
+  it('같은 한글 키의 영문을 순서대로 합치고 겹치는 영문은 한 번만 둔다', () => {
+    expect(unionVariants({ 가: ['a', 'b'] }, { 가: ['b', 'c'], 나: ['d'] }, {})).toEqual({ 가: ['a', 'b', 'c'], 나: ['d'] })
+  })
+})
 
 describe('mergeDictionaries', () => {
   it('우선순위대로 병합한다 (overrides > poedb > tradeApi > legacy)', () => {
