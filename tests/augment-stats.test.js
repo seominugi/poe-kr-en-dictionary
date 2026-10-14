@@ -68,3 +68,32 @@ describe('tidyStatEn', () => {
     )
   })
 })
+
+describe('buildAugmentStatLayer — GGPK 증강물 줄(poe-game-data v2026.10.14 dict/augment-stats.json)', () => {
+  // 실제 줄
+  const ggpk = {
+    '방어구: 화염 저항 +#%': 'Armour: +{0}% to Fire Resistance',
+    '갑옷: 정신력 1당 방어도 +#': 'Body Armours: +{0} to Armour per 1 Spirit',
+    '마법봉 또는 지팡이: 주문 스킬이 #%의 확률로 투사체 2개 추가 발사': 'Wand or Staff: {0}% chance for Spell Skills to fire 2 additional Projectiles',
+    '육척봉: 이동 불가 축적 #% 증가': 'Quarterstaves: {0}% increased Immobilisation buildup',
+  }
+  const cats = { ...categories, '마법봉 또는 지팡이': 'Wand or Staff', 육척봉: 'Quarterstaves' }
+
+  it('legacy 줄은 숫자까지 접은 꼴이 같은 GGPK 줄로 대신하고, legacy 단서가 없는 GGPK 줄도 싣는다', () => {
+    const legacy = { '방어도 : 화염 저항 # %': 'Armour : {0} % to Fire Resistance' }
+    const { layer, covered, unresolved } = buildAugmentStatLayer({ categories: cats, bodies, legacy, ggpk })
+    expect(layer).toEqual(ggpk)
+    expect([...covered]).toEqual(Object.keys(legacy))
+    expect(unresolved).toEqual([])
+  })
+
+  it('부호 없는 legacy 영문은 별칭으로 남기되, 틀 자체의 숫자(「per 1 Spirit」)는 값으로 보지 않고 값을 박은 자리만 거른다', () => {
+    const legacy = {
+      '갑옷: 정신력 1당 방어도 #': 'Body Armours: # to Armour per 1 Spirit',
+      '마법봉 또는 지팡이: 주문 스킬이 #%의 확률로 투사체 #개 추가 발사': 'Wand or Staff: #% chance for Spell Skills to fire # additional Projectiles',
+    }
+    const { aliases, covered } = buildAugmentStatLayer({ categories: cats, bodies, legacy, ggpk })
+    expect(covered.size).toBe(2)
+    expect(aliases).toEqual({ '갑옷: 정신력 1당 방어도 #': ['Body Armours: # to Armour per 1 Spirit'] })
+  })
+})

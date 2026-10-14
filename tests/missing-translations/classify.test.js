@@ -52,4 +52,23 @@ describe('classifyMissingLine', () => {
       expect(result.koNorm).toBe('화염 피해 #% 증가')
     })
   })
+
+  describe('콜론 줄 — 프론트가 라벨과 본문을 나눠 번역한다(translateColonLine)', () => {
+    // poe-game-data augment-categories(콜론 라벨 층 「방어구:」)와 dict/stats 의 실제 키
+    const keys = new Set(['방어구:', '화염 저항 +#%', '모든 원소 저항 최대치 -#%', '모든 원소 저항 +#%', '현재 충전량 #'])
+
+    it('라벨 키와 본문 키가 있으면 줄 전체 키가 없어도 A', () => {
+      expect(classifyMissingLine('방어구: 화염 저항 +14%', keys).cause).toBe('A')
+    })
+
+    it('본문이 통째로 없으면 「,」 조각이 모두 있을 때만 A', () => {
+      expect(classifyMissingLine('방어구: 모든 원소 저항 최대치 -1%, 모든 원소 저항 +20%', keys).cause).toBe('A')
+      expect(classifyMissingLine('방어구: 모든 원소 저항 최대치 -1%, 냉기 저항 +20%', keys).cause).toBe('B')
+    })
+
+    it('라벨이 사전에 없거나 줄 전체로만 번역하는 머리면 B', () => {
+      expect(classifyMissingLine('갑옷: 화염 저항 +14%', keys).cause).toBe('B')
+      expect(classifyMissingLine('현재 충전량: 현재 충전량 3', keys).cause).toBe('B')
+    })
+  })
 })
