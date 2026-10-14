@@ -26,6 +26,9 @@
   "#초마다 피해 줌": [
     "Deals Damage every {0} seconds"
   ],
+  "#초마다, 그리고 플레이어가 구슬 근처에서 번개 스킬을 사용할 때 타격": [
+    "Strikes every {0} seconds, and when you use a Lightning Skill near the Orb"
+  ],
   "#회 회전": [
     "Rotates {0} times"
   ],
@@ -64,6 +67,9 @@
   ],
   "3초마다 특수 플라스크 # 충전": [
     "Utility Flasks gain {0} Charges every 3 seconds"
+  ],
+  "가시 +#개 생성": [
+    "Creates +{0} Spikes"
   ],
   "가장 오른쪽에 있는 마법 특수 플라스크 #개가 지속적으로 플라스크 효과를 자신에게 적용함": [
     "Rightmost {0} Magic Utility Flasks constantly apply their Flask Effects to you"
@@ -152,6 +158,9 @@
   "광선 #회 연쇄": [
     "Beams Chain {0} Times"
   ],
+  "광선이 #초마다 적 적중": [
+    "Beams Hit Enemies every {0} seconds"
+  ],
   "구슬 근처에서 번개 스킬을 집중 유지하는 동안 #초마다 타격": [
     "Strikes every {0} seconds while Channelling a Lightning Skill near the Orb"
   ],
@@ -178,6 +187,9 @@
   ],
   "근접 타격이 주변 적 #명을 추가 대상으로 삼음": [
     "Melee Strikes target {0} additional nearby Enemies"
+  ],
+  "기동된 무기 최대 #개": [
+    "Maximum {0} Animated Weapons"
   ],
   "기본 지속시간 #초": [
     "Base duration is {0} seconds"
@@ -241,6 +253,9 @@
   ],
   "마법 아이템 #개 추가": [
     "Contains {0} additional Magic Items"
+  ],
+  "마법 지배의 파수꾼 최대 #명 소환": [
+    "Maximum {0} Summoned Magic Sentinels of Dominance"
   ],
   "마지막 보스가 각성한 육분의 #개를 추가로 떨어뜨림": [
     "Final Boss drops {0} additional Awakened Sextants"
@@ -741,6 +756,9 @@
   "보조 대상 스킬 #회 추가 반복": [
     "Supported Skills Repeat an additional {0} times"
   ],
+  "보조 대상 스킬 또한 자신의 양옆 최대 #개 지점에서 투사체 발사": [
+    "Supported Skills also fire Projectiles from up to {0} points on each side of you"
+  ],
   "보조 대상 스킬 명중 시 전투 돌격 획득\n전투 돌격은 #초 혹은 이동 전용 스킬을 쓰기 전까지 지속": [
     "Supported Skills grant Combat Rush on Hit\nCombat Rush lasts {0} seconds or until you use a Travel Skill"
   ],
@@ -752,6 +770,15 @@
   ],
   "보조 대상 스킬로 생성된 저주받은 지대가 #초마다 터지는 두꺼비 발동": [
     "Cursed Ground from Supported Skills Triggers Bursting Toad every {0} seconds"
+  ],
+  "보조 대상 스킬로 소환된 소환수의 화상 효과 범위 +#미터": [
+    "Minions from Supported Skills have +{0} metres to Radius of their Burning Effect"
+  ],
+  "보조 대상 스킬로 유발된 원소 상태 이상이 #미터 내의 다른 적에게 확산": [
+    "Elemental Ailments inflicted by Supported Skills spread to other enemies within {0} metres"
+  ],
+  "보조 대상 스킬로 유발된 점화가 #미터 내의 다른 적에게 확산": [
+    "Ignites caused by Supported Skills spread to other Enemies within {0} metres"
   ],
   "보조 대상 스킬로 적에게 꽂히는 폭발 화살 최대치 +#개": [
     "Supported Skills have +{0} Maximum Explosive Arrows stuck in an Enemy"
@@ -765,11 +792,20 @@
   "보조 대상 스킬로 투척한 지뢰가 플레이어의 #미터 이내에 있는 동안 폭발 불가": [
     "Mines from Supported Skills can't be Detonated while within {0} metres of you"
   ],
+  "보조 대상 스킬로 한 번에 덫 최대 #개 추가 설치": [
+    "Supported Skills can have up to {0} additional Traps placed at a time"
+  ],
+  "보조 대상 스킬로 한 번에 원격 지뢰 최대 #개 추가 설치": [
+    "Supported Skills can have up to {0} additional Remote Mines placed at a time"
+  ],
   "보조 대상 스킬의 5번째 공격마다 추가 투사체 #개 발사": [
     "Every fifth attack with Supported Skill fires {0} additional Projectiles"
   ],
   "보조 대상 스킬의 균열이 +#회 추가로 폭발": [
     "Fissures from Supported Skills erupt +{0} additional times"
+  ],
+  "보조 대상 스킬의 근접 타격 범위 +#미터": [
+    "Supported Skills have +{0} metres to Melee Strike Range"
   ],
   "보조 대상 스킬의 방어 상승이 #초 동안 주변 동료들에게 적용": [
     "Fortification from Supported Skills applies to nearby Allies for {0} seconds"
@@ -779,6 +815,9 @@
   ],
   "보조 대상 스킬의 투사체가 #미터 내의 모든 대상 관통": [
     "Projectiles from Supported Skills Pierce all Targets within {0} metres"
+  ],
+  "보조 대상 스킬의 투사체가 대상 #개를 추가로 관통": [
+    "Projectiles from Supported Skills Pierce {0} additional Targets"
   ],
   "보조 대상 스킬의 투사체의 최대 직접 비행 #미터": [
     "Projectiles from Supported Skills have {0} metres maximum Direct Flight"
@@ -795,14 +834,23 @@
   "보조 대상 천공이 가시 +#개 생성": [
     "Supported Perforate creates +{0} Spikes"
   ],
+  "보조 대상 타격 스킬이 주변 적 #명을 추가 대상으로 삼음": [
+    "Supported Strike Skills target {0} additional nearby Enemies"
+  ],
   "보조 대상 폭풍우가 화살 하나당 광선 +#개 발사": [
     "Each Arrow from Supported Storm Rain can fire +{0} Beams"
+  ],
+  "보조 대상 함성이 #초 동안 지속되는 신성화 지대 생성": [
+    "Supported Warcries create Consecrated Ground lasting {0} seconds"
   ],
   "보조 장비로 장착하고 이 무기로 명중 시 #초 동안 적 냉각": [
     "Chill Enemies for {0} seconds on Hit with this Weapon when in Off Hand"
   ],
   "보조 장비로 장착하면 공격 시 투사체 #개 추가 발사": [
     "Attacks fire {0} additional Projectile when in Off Hand"
+  ],
+  "부가 투사체 #개 발사": [
+    "Fires {0} secondary Projectiles"
   ],
   "부속 건물 하나당 폐쇄 후 기계식 상자 #개 개봉 가능": [
     "Can unlock {0} Mechanical Chests after Lockdown per Wing"
@@ -830,6 +878,12 @@
   ],
   "비무장 공격 시 근접 타격 범위 +#미터": [
     "+{0} metres to Melee Strike Range with Unarmed Attacks"
+  ],
+  "뼈 첨탑 #개 생성": [
+    "Creates {0} Bone Spires"
+  ],
+  "뼈 첨탑 최대 #개": [
+    "Maximum {0} Bone Spires"
   ],
   "사냥꾼 아이템을 2개 장착한 경우 투사체가 대상 #개를 추가 관통": [
     "Projectiles Pierce {0} additional Targets if 2 Hunter Items are Equipped"
@@ -898,6 +952,12 @@
   "소환된 망령이 죽으면 #초 뒤 재소환됨": [
     "Summoned Spectre is Resummoned {0} seconds after being Killed"
   ],
+  "소환된 수확자 최대 #마리": [
+    "Maximum {0} Summoned Reapers"
+  ],
+  "소환된 해골 최대 #마리": [
+    "Maximum {0} Summoned Skeletons"
+  ],
   "소환수가 소환된 후 #초 동안 피해 면역": [
     "Minions can't be Damaged for {0} seconds after being Summoned"
   ],
@@ -907,11 +967,20 @@
   "소환수의 최대 생명력 #% 증폭": [
     "Minions have {0}% more Maximum Life"
   ],
+  "소환한 망령 최대 #마리": [
+    "Maximum {0} Raised Spectres"
+  ],
+  "소환한 좀비 최대 #마리": [
+    "Maximum {0} Raised Zombies"
+  ],
   "손 #개 생성": [
     "Creates {0} Hands"
   ],
   "손 #개 추가 생성": [
     "Creates {0} additional Hands"
+  ],
+  "손 최대 #개": [
+    "Maximum {0} Hands"
   ],
   "수호 파괴 시 #초 동안 아드레날린 획득": [
     "Gain Adrenaline for {0} seconds when Ward Breaks"
@@ -931,11 +1000,17 @@
   "수확 갑충석 #개 추가 등장": [
     "Contains {0} additional Harvest Scarabs"
   ],
+  "스컬지의 전령 처치 시 제안 보상 최대 #개 무작위로 복제": [
+    "Duplicates up to {0} random Offer Rewards upon defeating the Herald of the Scourge"
+  ],
   "시체 불덩이가 시신 최대 #구 추가 소모": [
     "Volatile Dead Consumes up to {0} additional corpses"
   ],
   "시체 소각이 1회에 유지할 수 있는 간헐천 최대 #개 추가": [
     "Cremation can have up to {0} additional Geysers at a time"
+  ],
+  "신성한 유물 최대 #개 소환": [
+    "Maximum {0} Summoned Holy Relics"
   ],
   "실명 지속시간 #% 감소": [
     "{0}% reduced Blinding duration"
@@ -1018,11 +1093,20 @@
   "원소 피해 #% 증가": [
     "Has {0}% increased Elemental Damage"
   ],
+  "원소 화살을 발사하는 분신 최대 #개": [
+    "Maximum of {0} Clones that fire Elemental Arrows"
+  ],
+  "위로 화살을 발사하는 분신 최대 #개": [
+    "Maximum of {0} Clones that fire Arrows upwards"
+  ],
   "의식 갑충석 #개 추가 등장": [
     "Contains {0} additional Ritual Scarabs"
   ],
   "의식 제단에서 헌정품을 무작위 변경할 때 첫 #회는 비용 없음": [
     "Rerolling Favours at Ritual Altars has no Cost the first {0} time"
+  ],
+  "이 공격이 #회 추가 반복": [
+    "This Attack Repeats {0} additional times"
   ],
   "이 기생체가 사용하는 낙하하는 수정이 추가 박격포 최대 #회 발사": [
     "Falling Crystals used by this Graft fires up to {0} additional mortars"
@@ -1074,6 +1158,9 @@
   ],
   "인챈트 해제사 최대 #명": [
     "{0} Maximum Disenchanters"
+  ],
+  "일반 지배의 파수꾼 최대 #명 소환": [
+    "Maximum {0} Summoned Normal Sentinels of Dominance"
   ],
   "자신 및 주변 동료들의 이동 속도 #% 감소": [
     "You and nearby Allies have {0}% reduced Movement Speed"
@@ -1153,11 +1240,17 @@
   "정지된 허상 최대치 #": [
     "Maximum {0} Suspended Mirages"
   ],
+  "정화의 파수꾼 최대 #명 소환": [
+    "Maximum {0} Summoned Sentinels of Purity"
+  ],
   "제련가 최대 #명": [
     "{0} Maximum Smelters"
   ],
   "제작 속성 부여 추가 #개 보유 가능": [
     "Can have {0} additional Crafted Modifiers"
+  ],
+  "주 투사체 연쇄 +#회": [
+    "Primary Projectile Chains +{0} Times"
   ],
   "주는 피해 #% 감폭": [
     "Deals {0}% less Damage"
@@ -1493,6 +1586,9 @@
   "카오스 피해 #~# 추가": [
     "{0} to {1} Added Chaos Damage"
   ],
+  "칼날 +#개 추가": [
+    "+{0} Volleys"
+  ],
   "퀄리티 10%당 무기 범위 +#미터": [
     "+{0} metres to Weapon Range per 10% Quality"
   ],
@@ -1645,6 +1741,9 @@
   ],
   "혼란 갑충석 #개 추가 등장": [
     "Contains {0} additional Anarchy Scarabs"
+  ],
+  "화살 #개 발사": [
+    "Fires {0} Arrows"
   ],
   "화살 최대 +#개 발사": [
     "Fires up to +{0} Arrows"

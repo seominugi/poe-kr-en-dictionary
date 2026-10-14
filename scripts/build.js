@@ -21,44 +21,125 @@ export function mergeDictionaries({ overrides, poedb, tradeApi, legacy }) {
  * stats 보조 층에서 legacy 위·거래소 아래에 끼울 몫(2026-10-13). 확장은 v2(ko→en)를 뒤집어 다른 층과 함께 영→한으로 쓰므로,
  * 한 영문을 두 한글이 가리키게 되면 그 영문의 한글이 소리 없이 바뀐다(소실 점검은 영문이 사라진 것만 본다). 그래서
  *   - 이미 있는 한글 키는 영문이 표기(번호·대소문자·부호)만 다를 때 바꾼다. 문구가 다르면 legacy 값을 그대로 둔다 — 바꾸면 옛
- *     영문이 다른 층의 한글로 넘어가거나 사라진다("Always Poisons on Hit" 가 변형 층의 다른 한글로 넘어갔다)
+ *     영문이 다른 층의 한글로 넘어가거나 사라진다. 다만 GGPK 가 그 legacy 짝을 부정하면(refutedLegacy — legacy 영문이 GGPK 에서는
+ *     다른 한글의 것) 바꾼다. poedb 스냅샷의 어긋난 짝이 확장에 오역을 냈다("Always Poisons on Hit" → 「투사체 명중 시 농포 부착」,
+ *     GGPK 는 「명중 시 항상 중독 유발」). 그 옛 영문은 GGPK 가 정한 한글로 넘어가는 것이 맞다
  *   - 새 한글 키는 그 영문을 나머지 stats 병합 결과의 다른 한글이 가리키거나, 확장이 지금 다른 한글로 번역하고 있으면
  *     (공용 파일·변형 층 등 — translated) 싣지 않는다
  *   - 보조 층 안에서 같은 영문을 가리키는 새 한글이 둘 이상이면 모두 뺀다 — GGG 한글 원문이 한 영문에 두 문장을 둔 경우
  *     ("Regenerate # Life over 1 second" ← 「…# 재생」·「…#% 재생」), 어느 쪽이 맞는지 여기서 알 수 없다. 미번역이 오역보다 낫다
  * @param {Record<string, string>} extra 보조 층 { 한글: 영문 }
  * @param {Record<string, string>} merged 보조 층 없이 병합한 stats
+ * 부정된 짝의 새 영문은 새 키와 같은 검사를 거친다. 부정된 짝부터 정한다 — 바꾸지 못한 짝은 옛 영문을 계속 쥐고, 바꾼 짝은
+ * 새 영문을 쥔다. 새 키는 그 결과를 주인으로 보고 정한다(한 영문이 두 한글로 가지 않게).
+ * @param {Record<string, string>} extra 보조 층 { 한글: 영문 }
+ * @param {Record<string, string>} merged 보조 층 없이 병합한 stats
  * @param {Map<string, Set<string>>} translated keyForm → 확장이 지금 보여 주는 한글들(translatedForms)
+ * @param {Set<string>} refuted GGPK 가 부정한 legacy 짝의 한글(refutedLegacy)
  */
-export function guardExtraStats(extra, merged, translated = new Map()) {
-  const owners = formsOf(Object.entries(merged))
-  const candidates = []
+export function guardExtraStats(extra, merged, translated = new Map(), refuted = new Set()) {
+  const isRefuted = (ko) => refuted.has(ko)
+  const layer = {}
+  const replacing = []
+  const adding = []
   let guarded = 0
   for (const [ko, en] of Object.entries(extra)) {
     if (typeof en !== 'string') continue
-    const form = keyForm(en)
     const old = typeof merged[ko] === 'string' ? merged[ko] : null
-    const blocked = old !== null
-      ? keyForm(old) !== form
-      : hasOtherOwner(owners, form, ko) || hasOtherOwner(translated, form, ko)
-    if (blocked) {
-      guarded++
-      continue
-    }
-    candidates.push([ko, en, old === null])
+    if (old === null) adding.push([ko, en])
+    else if (keyForm(old) === keyForm(en)) layer[ko] = en
+    else if (isRefuted(ko)) replacing.push([ko, en])
+    else guarded++
   }
-  const claims = new Map()
-  for (const [, en, isNew] of candidates) if (isNew) claims.set(keyForm(en), (claims.get(keyForm(en)) ?? 0) + 1)
-  const layer = {}
-  let ambiguous = 0
-  for (const [ko, en, isNew] of candidates) {
-    if (isNew && claims.get(keyForm(en)) > 1) {
-      ambiguous++
-      continue
-    }
-    layer[ko] = en
+  // 한 영문을 원하는 문장들 — 부정 짝과 새 키를 함께 센다(GGPK 가 한 영문을 두 문장에 두면 어느 쪽도 고르지 않는다). 부호·띄어쓰기만
+  // 다른 한글(「#의 최대 단계」·「+#의 최대 단계」)은 한 문장이다 — refutedLegacy 가 주인을 세는 기준과 같다(독립 검토)
+  const sentences = new Map()
+  for (const [ko, en] of [...replacing, ...adding]) {
+    if (!sentences.has(keyForm(en))) sentences.set(keyForm(en), new Set())
+    sentences.get(keyForm(en)).add(unsigned(normKo(ko)))
   }
-  return { layer, guarded, ambiguous }
+  const reason = new Map() // 못 실은 키 → 'blocked' | 'ambiguous'
+  // 이 영문들을 owners·translated 의 다른 한글이 쥐고 있으면 빼고(blocked), 다른 문장도 그 영문을 원하면 뺀다(ambiguous)
+  const claim = (pairs, owners) => pairs.filter(([ko, en]) => {
+    const form = keyForm(en)
+    if (hasOtherOwner(owners, form, ko) || hasOtherOwner(translated, form, ko)) reason.set(ko, 'blocked')
+    else if (sentences.get(form).size > 1) reason.set(ko, 'ambiguous')
+    else return true
+    return false
+  })
+  // 바꾸지 못한 부정 짝은 옛 영문을 계속 쥐므로, 그 영문을 다른 부정 짝이 새로 가져가면 한 영문이 두 한글로 간다(맞바꿈·사슬 —
+  // 독립 검토). 못 바꾼 짝을 주인으로 되돌려 더 바뀌지 않을 때까지 다시 정한다 — 못 바꾼 짝은 늘기만 하므로 끝난다.
+  let stuck = new Set()
+  let replaced
+  for (;;) {
+    const owners = formsOf(Object.entries(merged).filter(([ko]) => !isRefuted(ko) || stuck.has(ko)))
+    replaced = claim(replacing.filter(([ko]) => !stuck.has(ko)), owners)
+    const won = new Set(replaced.map(([ko]) => ko))
+    const next = new Set(replacing.map(([ko]) => ko).filter((ko) => !won.has(ko)))
+    if (next.size === stuck.size) break
+    stuck = next
+  }
+  const replacedKo = new Set(replaced.map(([ko]) => ko))
+  const added = claim(adding, formsOf([...Object.entries(merged).filter(([ko]) => !replacedKo.has(ko)), ...replaced]))
+  for (const [ko, en] of [...replaced, ...added]) layer[ko] = en
+  const failed = [...reason].filter(([ko]) => !(ko in layer)).map(([, why]) => why)
+  return {
+    layer,
+    guarded: guarded + failed.filter((why) => why === 'blocked').length,
+    ambiguous: failed.filter((why) => why === 'ambiguous').length,
+  }
+}
+
+/**
+ * 보조 층이 값을 바꾸려는 이미 있는 한글 키 중, legacy 영문을 GGPK 가 다른 한글에만 두는 것 — legacy 짝이 틀렸다는 GGPK 의 증거다.
+ * GGPK 가 그 영문을 어디에도 두지 않거나 둘 이상의 한글에 두면 부정으로 보지 않는다 — 앞은 판단할 근거가 없고(패치로 빠진 문구 등),
+ * 뒤는 바꾸면 그 영문을 받을 새 한글들이 모호해 모두 빠져 영문이 통째로 사라질 수 있다(독립 검토). 부호만 다른 한글(「#의 최대 단계」·
+ * 「+#의 최대 단계」)은 한 문장으로 센다.
+ * 예(poe2, v2026.10.13.3): 「최대 # 단계」 legacy "{0} maximum stages" — GGPK 는 그 영문을 「#의 최대 단계」에 두고 「최대 # 단계」는
+ * "Maximum {0} Stages" 로만 쓴다.
+ * @param {Record<string, string>} extra 보조 층 { 한글: 영문 }
+ * @param {Record<string, string>} merged 보조 층 없이 병합한 stats — legacy 에서만 온 키만 넘긴다(위층 값은 보조 층이 못 바꾼다)
+ * @param {Map<string, Set<string>>} ggpk keyForm → GGPK 스탯 사전(주 사전·보조 층·변형)의 한글들(ggpkForms)
+ * @returns {Set<string>} 부정된 한글 키
+ */
+export function refutedLegacy(extra, merged, ggpk) {
+  const refuted = new Set()
+  for (const [ko, en] of Object.entries(extra)) {
+    const old = merged[ko]
+    if (typeof en !== 'string' || typeof old !== 'string' || keyForm(old) === keyForm(en)) continue
+    const owners = new Set([...(ggpk.get(keyForm(old)) ?? [])].map(unsigned))
+    if (owners.size === 1 && !owners.has(unsigned(normKo(ko)))) refuted.add(ko)
+  }
+  return refuted
+}
+
+/**
+ * refutedLegacy 의 다른 사본 — 보조 층 키와 띄어쓰기만 다른 legacy 키(poedb 토큰 흔적 「농포 # 개 발사」 ↔ GGPK 「농포 +#개 발사」)가
+ * 다른 문구의 영문을 쥐고, 그 영문을 GGPK 가 다른 한글 하나에 두는 것. 글자가 달라 보조 층이 그 키를 바꾸지 못하므로 병합에서 뺀다
+ * — 같은 문장은 GGPK 표기 키가 싣는다. 예(poe2): 「이 스킬이 유발하는 힘줄 절단 이 추가 # % 감속」 legacy "Spear duration is {0}
+ * seconds" (GGPK 는 「창 지속시간 #초」).
+ * @returns {Map<string, string>} 뺄 legacy 한글 키 → 그 영문
+ */
+export function spacedRefutedLegacy(extra, merged, ggpk) {
+  const extraByNorm = new Map(Object.keys(extra).map((ko) => [normKo(ko), ko]))
+  const out = new Map()
+  for (const [ko, old] of Object.entries(merged)) {
+    if (typeof old !== 'string' || ko in extra) continue
+    const twin = extraByNorm.get(normKo(ko))
+    if (twin === undefined || typeof extra[twin] !== 'string' || keyForm(old) === keyForm(extra[twin])) continue
+    const owners = new Set([...(ggpk.get(keyForm(old)) ?? [])].map(unsigned))
+    if (owners.size === 1 && !owners.has(unsigned(normKo(ko)))) out.set(ko, old)
+  }
+  return out
+}
+
+/** GGPK 스탯 사전들({ 한글: 영문 } 또는 변형 { 한글: [영문, …] }) → keyForm → Set(한글) */
+export function ggpkForms(...maps) {
+  return formsOf(
+    maps.flatMap((map) =>
+      Object.entries(map ?? {}).flatMap(([ko, value]) => (Array.isArray(value) ? value : [value]).map((en) => [ko, en]))
+    )
+  )
 }
 
 /**
@@ -84,13 +165,18 @@ export function guardExtraVariants(variants, translated) {
  * @param {Iterable<string>} own
  */
 export function translatedForms(extensionMapEntries, own = []) {
-  const ownKo = new Set([...own].map(normKo))
+  // 자기 한글은 글자 그대로 맞을 때만 — 띄어쓰기만 같은 legacy 한글(다른 영문을 쥔 줄)까지 빼면 그 영문의 보호가 풀린다(독립 검토)
+  const exact = (ko) => ko.replace(/ /g, ' ').trim()
+  const ownKo = new Set([...own].map(exact))
   return formsOf(
-    [...extensionMapEntries].map(([en, ko]) => [ko, en]).filter(([ko]) => /[가-힣]/.test(ko) && !ownKo.has(normKo(ko)))
+    [...extensionMapEntries].map(([en, ko]) => [ko, en]).filter(([ko]) => /[가-힣]/.test(ko) && !ownKo.has(exact(ko)))
   )
 }
 
-const normKo = (ko) => ko.replace(/\u00a0/g, ' ').trim()
+// 띄어쓰기만 다른 한글은 같은 주인이다 — GGG 한글 원문이 같은 문장을 「# 의 최대 단계」·「#의 최대 단계」 처럼 띄어 쓰기만 달리 적는다.
+// 다른 주인으로 보면 대소문자만 다른 GGPK 영문("{0} maximum Stages"·"{0} maximum stages")의 한쪽이 막혀, 대소문자를 가려 찾는 확장에서 빠진다
+const normKo = (ko) => ko.replace(/\s+/g, '')
+const unsigned = (ko) => ko.replace(/[+-]/g, '')
 
 /** [한글, 영문] 목록 → keyForm → Set(한글) */
 function formsOf(pairs) {
@@ -301,6 +387,11 @@ async function build(version, { allowExtensionLosses = false } = {}) {
     : []
   const ownExtraKo = [extraStats, ...extraVariants].flatMap((map) => Object.keys(map))
   const translated = readHead ? translatedForms(extensionMap(version, readHead), ownExtraKo) : new Map()
+  // GGPK 스탯 사전 전부(주 사전·보조 층·변형) — legacy 짝이 GGPK 와 어긋나는지 볼 때 쓴다(refutedLegacy)
+  const statVariants = readJsonObject(join(gameDataVersionRoot, 'stat-variants.json'))
+  const ggpkStats = hasStatSource ? ggpkForms(poedbData.stats, extraStats, statVariants, ...extraVariants) : new Map()
+  // 확장이 지금 보여 주는 영→한에서 이 빌드가 legacy 에서 빼는 짝을 덜어 낸 것 — stats 를 쓸 때 정하고 변형 guard(Step 6a)도 본다
+  let live = translated
 
   // Step 4c: 증강물 효과 줄 「<범주>: <본문>」(POE2, scripts/augment-stats.js). 범주(augment-categories)와 정본 스탯 본문으로
   // 만든 줄이 legacy 의 같은 줄을 대신한다 — legacy 는 범주·띄어쓰기 오기를 실었다. 정본으로 만들 수 없는 줄은 legacy 그대로
@@ -312,7 +403,7 @@ async function build(version, { allowExtensionLosses = false } = {}) {
     const bodies = indexStatBodies(
       poedbData.stats,
       extraStats,
-      readJsonObject(join(gameDataVersionRoot, 'stat-variants.json')),
+      statVariants,
       ...extraVariants,
     )
     const augment = buildAugmentStatLayer({ categories: augmentCategories, bodies, legacy })
@@ -377,9 +468,20 @@ async function build(version, { allowExtensionLosses = false } = {}) {
     let legacyCat = category === 'stats' ? statsLegacy : {}
     if (category === 'stats' && Object.keys(extraStats).length) {
       const withoutExtra = mergeDictionaries({ overrides, poedb: poedbCat, tradeApi: { ...tradeCat, ...passiveCat }, legacy: statsLegacy })
-      const { layer, guarded, ambiguous } = guardExtraStats(extraStats, withoutExtra, translated)
-      legacyCat = { ...statsLegacy, ...layer }
-      console.log(`  stats 보조 층: ${Object.keys(layer).length}개 (다른 한글이 차지한 영문이라 뺌 ${guarded} · 한 영문에 한글이 여럿이라 뺌 ${ambiguous})`)
+      // 보조 층 값은 legacy 바로 위라 legacy 에서만 온 키만 실제로 바뀐다 — 부정 판단도 그 키만 본다
+      const upper = mergeDictionaries({ overrides, poedb: poedbCat, tradeApi: { ...tradeCat, ...passiveCat }, legacy: {} })
+      const legacyOnly = Object.fromEntries(Object.entries(withoutExtra).filter(([ko]) => !(ko in upper)))
+      const refuted = refutedLegacy(extraStats, legacyOnly, ggpkStats)
+      // 띄어쓰기만 다른 legacy 키의 부정된 짝은 병합에서 뺀다 — 그 영문을 확장이 지금 그 키로 번역하는 것도 주인으로 보지 않는다
+      const dropped = spacedRefutedLegacy(extraStats, legacyOnly, ggpkStats)
+      const kept = (dict) => Object.fromEntries(Object.entries(dict).filter(([ko]) => !dropped.has(ko)))
+      live = new Map([...translated].map(([form, owners]) => [form, new Set(owners)]))
+      for (const [ko, en] of dropped) live.get(keyForm(en))?.delete(normKo(ko))
+      const { layer, guarded, ambiguous } = guardExtraStats(extraStats, kept(withoutExtra), live, refuted)
+      legacyCat = { ...kept(statsLegacy), ...layer }
+      console.log(`  stats 보조 층: ${Object.keys(layer).length}개 (다른 한글이 차지한 영문이라 뺌 ${guarded} · 한 영문에 한글이 여럿이라 뺌 ${ambiguous} · GGPK 가 부정한 legacy 짝 ${refuted.size} · 띄어쓰기만 다른 legacy 키에서 뺌 ${dropped.size})`)
+      for (const ko of refuted) console.log(`    GGPK 가 부정한 legacy 짝: 「${ko}」 "${legacyOnly[ko]}" → ${layer[ko] === extraStats[ko] ? `"${layer[ko]}"` : "(바꾸지 못해 legacy 유지 — 새 영문을 다른 한글이 쥐었거나 다른 문장도 원한다)"}`)
+      for (const [ko, en] of dropped) console.log(`    띄어쓰기만 다른 legacy 키의 부정된 짝을 뺌: 「${ko}」 "${en}"`)
     }
 
     const outputPath = join(outputDir, `${category}.json`)
@@ -433,7 +535,7 @@ async function build(version, { allowExtensionLosses = false } = {}) {
   } else if (existsSync(variantsPath)) {
     const variants = unionVariants(
       readJsonObject(variantsPath),
-      ...extraVariants.map((variants) => guardExtraVariants(variants, translated)),
+      ...extraVariants.map((variants) => guardExtraVariants(variants, live)),
       // Step 4c 가 대신한 legacy 범주 줄의 옛 영문 표기 — 확장이 그 키를 지금 옛 한글로 번역하므로 guard 를 거치지 않는다
       augmentAliases,
     )
