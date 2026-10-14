@@ -1659,9 +1659,6 @@
     "Fires {0} bolts",
     "Fires {0} Bolts"
   ],
-  "볼트 +#개 발사": [
-    "Fires +{0} bolts"
-  ],
   "볼트 충격 반경 #미터": [
     "Bolt impact radius is {0} metres"
   ],

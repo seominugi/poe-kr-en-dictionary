@@ -852,9 +852,6 @@
   "부가 투사체 #개 발사": [
     "Fires {0} secondary Projectiles"
   ],
-  "부가 투사체 +#개 발사": [
-    "Fires +{0} secondary Projectiles"
-  ],
   "부속 건물 하나당 폐쇄 후 기계식 상자 #개 개봉 가능": [
     "Can unlock {0} Mechanical Chests after Lockdown per Wing"
   ],
@@ -1747,9 +1744,6 @@
   ],
   "화살 #개 발사": [
     "Fires {0} Arrows"
-  ],
-  "화살 +#개 발사": [
-    "Fires +{0} Arrows"
   ],
   "화살 최대 +#개 발사": [
     "Fires up to +{0} Arrows"

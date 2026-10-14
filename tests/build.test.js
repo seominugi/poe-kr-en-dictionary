@@ -10,6 +10,7 @@ import {
   translatedForms,
   unionVariants,
   refutedLegacy,
+  spacedRefutedLegacy,
   ggpkForms,
 } from '../scripts/build.js'
 
@@ -89,6 +90,34 @@ describe('refutedLegacy', () => {
     expect(guardExtraStats(extraLayer, merged, new Map(), refuted)).toEqual({ layer: {}, guarded: 2, ambiguous: 0 })
     // 부정된 짝과 새 키가 같은 새 영문을 원하면 새 키가 막힌다
     expect(guardExtraStats({ R: 'Fresh', N: 'Fresh' }, { R: 'Old Text' }, new Map(), refuted)).toEqual({ layer: { R: 'Fresh' }, guarded: 1, ambiguous: 0 })
+  })
+
+  it('부정된 짝끼리 맞바꾸거나 사슬로 옛 영문을 넘겨받을 때, 하나라도 못 바꾸면 그 옛 영문을 가져가지 않는다(독립 검토 재현)', () => {
+    // 맞바꿈: B 의 새 영문 "Swap X" 를 확장이 다른 한글로 번역 중 → B 는 못 바꾸고 "Swap Y" 를 계속 쥔다 → A 도 못 가져간다
+    const translated = translatedForms(new Map([['Swap X', '다른 한글']]))
+    expect(guardExtraStats({ A: 'Swap Y', B: 'Swap X' }, { A: 'Swap X', B: 'Swap Y' }, translated, new Set(['A', 'B'])))
+      .toEqual({ layer: {}, guarded: 2, ambiguous: 0 })
+    // 사슬: A X→Y, B Y→Z, Z 는 위층 D 가 쥠 → B 가 막히고, 그래서 A 도 막힌다
+    expect(guardExtraStats({ A: 'Chain Y', B: 'Chain Z' }, { A: 'Chain X', B: 'Chain Y', D: 'Chain Z' }, new Map(), new Set(['A', 'B'])))
+      .toEqual({ layer: {}, guarded: 2, ambiguous: 0 })
+    // 둘 다 바꿀 수 있으면 맞바꾼다
+    expect(guardExtraStats({ A: 'Swap Y', B: 'Swap X' }, { A: 'Swap X', B: 'Swap Y' }, new Map(), new Set(['A', 'B'])).layer)
+      .toEqual({ A: 'Swap Y', B: 'Swap X' })
+  })
+
+  it('보조 층 키와 띄어쓰기만 다른 legacy 키가 GGPK 가 부정한 영문을 쥐면 뺄 키로 낸다', () => {
+    // poe2 v2026.10.13.3 의 실제 줄
+    const extraLayer = { '농포 #개 발사': 'Fires {0} Pustule', '농포 #개로 제한': 'Limit {0} pustule' }
+    // 보조 층 키와 글자가 같은 legacy 키는 refutedLegacy 몫이라 여기서 보지 않는다
+    const legacyOnly = { '농포 # 개 발사': 'Limit {0} pustules', '농포 #개 발사': 'Limit {0} pustules' }
+    const ggpk = ggpkForms(extraLayer, { '농포 #개로 제한': ['Limit {0} pustules'] })
+    expect(spacedRefutedLegacy(extraLayer, legacyOnly, ggpk)).toEqual(new Map([['농포 # 개 발사', 'Limit {0} pustules']]))
+  })
+
+  it('GGPK 가 legacy 영문을 둘 이상의 한글에 두면 부정하지 않는다(부호만 다른 한글은 하나로 센다)', () => {
+    const extra = { K: 'Text Y' }
+    expect(refutedLegacy(extra, { K: 'Text X' }, ggpkForms({ N1: 'Text X', N2: 'Text X' })).size).toBe(0)
+    expect(refutedLegacy(extra, { K: 'Text X' }, ggpkForms({ '#의 최대 단계': 'Text X', '+#의 최대 단계': 'Text X' }))).toEqual(new Set(['K']))
   })
 
   it('띄어쓰기만 다른 한글은 같은 주인이라 대소문자만 다른 GGPK 영문을 막지 않는다', () => {
