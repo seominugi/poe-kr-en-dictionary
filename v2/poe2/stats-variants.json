@@ -209,7 +209,9 @@
     "Thorny Ground duration is {0} seconds"
   ],
   "가시 지속시간 #초": [
-    "Spike duration is {0} seconds"
+    "Spike duration is {0} seconds",
+    "+{0} second to Spike duration",
+    "+{0} seconds to Spike duration"
   ],
   "가호 지속시간 #초": [
     "Guard duration is {0} seconds"
@@ -267,6 +269,12 @@
   ],
   "강화된 공격의 반복 횟수 +#, 소모한 격분 충전 하나당 추가 +#": [
     "Empowered Attacks Repeat +{0} time, and a further +{1} times per Frenzy Charge consumed"
+  ],
+  "강화된 공격이 범위 내 적들의 위세 5당 피해의 #%를 화염 피해로 획득, 최대 #%": [
+    "Empowered Attacks Gain +{0}% of Damage as Fire Damage per 5 Power of enemies in range, up to +{1}%"
+  ],
+  "강화된 주문이 피해의 #%를 번개 피해로 획득": [
+    "Empowered Spells Gain +{0}% of damage as Lightning Damage"
   ],
   "거울 간격 #미터": [
     "Length between mirrors is {0} metres"
@@ -404,12 +412,16 @@
     "Contains {0} additional Polished Scarabs"
   ],
   "구름 반경 #미터": [
-    "Cloud radius is {0} metres"
+    "Cloud radius is {0} metres",
+    "+{0} metre to cloud radius",
+    "+{0} metres to cloud radius"
   ],
   "구름 지속시간 #초": [
     "Cloud duration is {0} seconds",
     "Cloud Duration is {0} second",
-    "Cloud Duration is {0} seconds"
+    "Cloud Duration is {0} seconds",
+    "+{0} second to Cloud duration",
+    "+{0} seconds to Cloud duration"
   ],
   "구슬 근처에서 번개 스킬을 집중 유지하는 동안 #초마다 타격": [
     "Strikes every {0} second while Channelling a Lightning Skill near the Orb",
@@ -437,7 +449,9 @@
     "{0}% increased Effectiveness of Breach Monsters"
   ],
   "균열 지속시간 #초": [
-    "Fissure duration is {0} seconds"
+    "Fissure duration is {0} seconds",
+    "+{0} second to Fissure duration",
+    "+{0} seconds to Fissure duration"
   ],
   "균열이 반경 #미터 이상으로 확대\n균열이 살아 있는 균열 몬스터가 있을 경우 개방 상태 유지": [
     "Breaches expand to at least {0} metres in radius\nBreaches remain open while there are alive Breach Monsters"
@@ -627,7 +641,9 @@
     "Targeting radius is {0} metres"
   ],
   "대상에 근접한 적 최대 #마리에게 추가로 광선 발사": [
-    "Fires beams at up to {0} additional Enemies near the target"
+    "Fires beams at up to {0} additional Enemies near the target",
+    "Fires beams at up to +{0} additional Enemy near the target",
+    "Fires beams at up to +{0} additional Enemies near the target"
   ],
   "덩굴 길이 #미터": [
     "Vine length is {0} metres"
@@ -709,7 +725,8 @@
   ],
   "디버프 지속시간 #초": [
     "Debuff duration is {0} seconds",
-    "Debuff duration {0} second"
+    "Debuff duration {0} second",
+    "+{0} second to Debuff duration"
   ],
   "떨어지는 망치 지속시간 #초": [
     "Hammerfall duration is {0} seconds"
@@ -1221,9 +1238,6 @@
   "무도 무기: 치명타 피해 보너스 #%": [
     "Martial Weapon: #% to Critical Damage Bonus"
   ],
-  "무도 무기: 카오스 피해 #~# 추가": [
-    "Martial Weapon: Adds # to # Chaos damage"
-  ],
   "무리 규모 #% 감소": [
     "{0}% reduced Pack Size"
   ],
@@ -1278,6 +1292,9 @@
   ],
   "반발 반경 #미터": [
     "Backlash radius is {0} metres"
+  ],
+  "반복 시 주는 피해 #% 증폭": [
+    "Repeats deal +{0}% more Damage"
   ],
   "받는 피해 #% 감폭": [
     "{0}% less Damage taken"
@@ -1655,9 +1672,15 @@
   "보주 지속시간 #초": [
     "Orb duration is {0} seconds"
   ],
+  "복사된 투사체가 주는 피해 #% 증폭": [
+    "Copied Projectiles deal +{0}% more damage"
+  ],
   "볼트 #개 발사": [
     "Fires {0} bolts",
     "Fires {0} Bolts"
+  ],
+  "볼트 최대 #개 보관 가능": [
+    "Can store +{0} Bolts"
   ],
   "볼트 충격 반경 #미터": [
     "Bolt impact radius is {0} metres"
@@ -1738,7 +1761,9 @@
     "Limit {0} Bone Constructs"
   ],
   "뼈 구조물 지속시간 #초": [
-    "Bone Construct duration is {0} seconds"
+    "Bone Construct duration is {0} seconds",
+    "+{0} second to Bone Construct duration",
+    "+{0} seconds to Bone Construct duration"
   ],
   "사술이 #%의 확률로 사술 방지 적에게 영향을 줌": [
     "Hex has {0}% chance to affect Hexproof Enemies"
@@ -1878,7 +1903,9 @@
     "Limit {0} Minions"
   ],
   "소환수 오라 반경 #미터": [
-    "Minion Aura radius is {0} metres"
+    "Minion Aura radius is {0} metres",
+    "+{0} metre to Minion Aura radius",
+    "+{0} metres to Minion Aura radius"
   ],
   "소환수 이동 속도 #% 감소": [
     "{0}% reduced Minion Movement Speed"
@@ -1912,6 +1939,9 @@
   ],
   "소환수의 최대 생명력 #% 증폭": [
     "Minions have {0}% more Maximum Life"
+  ],
+  "소환수의 최대 생명력의 #%와 동일한 추가 화염 피해를 줌": [
+    "Deals additional Fire damage equal to +{0}% of Minion's maximum Life"
   ],
   "소환수의 치명타 명중 확률 #% 감소": [
     "Grants Minions {0}% reduced Critical Hit Chance"
@@ -2260,6 +2290,9 @@
   ],
   "이름 없는 자의 의례가 추가 지도 #개까지 지속": [
     "The Rite of the Nameless lasts {0} additional maps"
+  ],
+  "이전에 순차적으로 발사한 불씨 하나당 불씨가 주는 피해 #% 증폭": [
+    "+{0}% more Damage for each previous Ember fired in sequence"
   ],
   "인내 충전 #개 추가 부여": [
     "Grants {0} additional Endurance Charges"
@@ -3020,6 +3053,13 @@
   "최근 4초 이내 회피 구르기를 사용한 경우 회피 구르기 거리 +#미터": [
     "+{0} metres to Dodge Roll distance if you've Dodge Rolled Recently"
   ],
+  "최대 #개의 대상에게 촉수를 뻗음": [
+    "Fires tendrils at up to {0} Target"
+  ],
+  "최대 #단계": [
+    "Maximum {0} Stage",
+    "Maximum {0} Stages"
+  ],
   "최대 #번 튕김": [
     "Bounces up to {0} times"
   ],
@@ -3036,6 +3076,9 @@
     "Buff duration is {0} seconds or until your Empowered bolts are expended",
     "Maximum Buff duration is {0} second",
     "Maximum Buff duration is {0} seconds"
+  ],
+  "최대 열기 #": [
+    "+{0} to Maximum Heat"
   ],
   "최대 징표 지속시간 #초": [
     "Maximum Mark duration is {0} seconds"
@@ -3082,7 +3125,9 @@
   "충격 반경 #미터": [
     "Impact Radius is {0} metres",
     "Impact radius is {0} metre",
-    "Impact radius is {0} metres"
+    "Impact radius is {0} metres",
+    "+{0} metre to impact radius",
+    "+{0} metres to impact radius"
   ],
   "충격 번개 반경 #미터": [
     "Crash Lightning radius is {0} metres"
@@ -3094,7 +3139,9 @@
     "Shockwave length is {0} metres"
   ],
   "충격파 반경 #미터": [
-    "Shockwave radius is {0} metres"
+    "Shockwave radius is {0} metres",
+    "+{0} metre to Shockwave radius",
+    "+{0} metres to Shockwave radius"
   ],
   "충격파가 주는 피해 #% 감폭": [
     "Shockwave deals {0}% less Damage"
@@ -3176,7 +3223,9 @@
     "Inflicts {0} Corrupted Blood Debuff"
   ],
   "타락한 피 지속시간 #초": [
-    "Corrupted Blood duration is {0} seconds"
+    "Corrupted Blood duration is {0} seconds",
+    "+{0} second to Corrupted Blood duration",
+    "+{0} seconds to Corrupted Blood duration"
   ],
   "탄창 1개당 볼트 #개 장전": [
     "{0} Bolts loaded per clip"
@@ -3254,7 +3303,9 @@
     "Pulse and explosion radius are {0} metres"
   ],
   "파동 반경 #미터": [
-    "Pulse radius is {0} metres"
+    "Pulse radius is {0} metres",
+    "+{0} metre to Pulse radius",
+    "+{0} metres to Pulse radius"
   ],
   "파동이 #초 동안 이동 방해 적용": [
     "Pulses apply Hinder for {0} seconds"
@@ -3266,7 +3317,9 @@
     "Wave radius is {0} metres"
   ],
   "파장 폭 #미터": [
-    "Wave width is {0} metres"
+    "Wave width is {0} metres",
+    "Wave width is +{0} metre",
+    "Wave width is +{0} metres"
   ],
   "포식한 영혼 최대 #개": [
     "Maximum {0} Eaten Souls"
@@ -3509,7 +3562,9 @@
   "화살 지속시간 #초": [
     "Arrow duration is {0} seconds",
     "Maximum Arrow duration is {0} second",
-    "Maximum Arrow duration is {0} seconds"
+    "Maximum Arrow duration is {0} seconds",
+    "+{0} second to Arrow duration",
+    "+{0} seconds to Arrow duration"
   ],
   "화살 충격 반경 #미터": [
     "Arrow impact radius is {0} metres"

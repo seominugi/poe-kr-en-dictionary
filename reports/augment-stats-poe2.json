@@ -1,7 +1,7 @@
 {
-  "generated": 319,
-  "replacedLegacy": 430,
-  "aliases": 35,
+  "generated": 429,
+  "replacedLegacy": 460,
+  "aliases": 34,
   "unresolved": [
     {
       "ko": "모든 장비: 접미어 속성 부여의 최대 개수 +# 개, local maximum mods allowed + [#]",
@@ -14,29 +14,9 @@
       "status": "no-body"
     },
     {
-      "ko": "방어구: #초마다 #초 동안 룬 수호 최대치의 # %와 동일한 가호 획득",
-      "en": "Armour: Every {0} seconds, gain Guard equal to {2} % of maximum Runic Ward for {1} seconds",
-      "status": "no-body"
-    },
-    {
-      "ko": "갑옷 : 모든 원소 저항 최대치 -# %, 모든 원소 저항 +# %",
-      "en": "Body Armours : -{0} % to all Maximum Elemental Resistances , +{1} % to all Elemental Resistances",
-      "status": "sign-mismatch-in-part"
-    },
-    {
       "ko": "갑옷 : 명중 당했을 때 받는 카오스 피해의 # %를 무작위 원소 피해로 받음",
       "en": "Body Armours : {0} % of Chaos Damage from Hits taken as a Damage of a random Element",
       "status": "no-body"
-    },
-    {
-      "ko": "갑옷 : 정신력 +# , 레벨 2당 정신력 -#",
-      "en": "Body Armours : +{0} to Spirit , -{1} to Spirit per 2 Levels",
-      "status": "sign-mismatch-in-part"
-    },
-    {
-      "ko": "갑옷 : 점화 될 수 없음, 공격 명중 시 받는 물리 피해 -#",
-      "en": "Body Armours : Cannot be Ignited , -{0} Physical Damage taken from Attack Hits",
-      "status": "ambiguous-in-part"
     },
     {
       "ko": "갑옷 : 장착한 방어구 아이템 의 힘 요구사항의 총합의 # %와 동일한 에너지 보호막 최대치 획득",
@@ -64,16 +44,6 @@
       "status": "no-body"
     },
     {
-      "ko": "장화 : 룬 수호 최대치 # 당 에너지 보호막 재충전 속도 #% 증가",
-      "en": "Boots : {1}% increased Energy Shield Recharge Rate per {0} maximum Runic Ward",
-      "status": "no-body"
-    },
-    {
-      "ko": "장화 : 처치한 적의 #미터 내에 있는 적들에게 과잉살상 피해의 # %를 줌",
-      "en": "Boots : Deal {1} % of Overkill damage to enemies within {0} metres of the enemy killed",
-      "status": "no-body"
-    },
-    {
       "ko": "장화 : 이동 속도 증가 및 감소 수치를",
       "en": "Boots : Increases and Reductions to Movement Speed also",
       "status": "no-body"
@@ -89,51 +59,8 @@
       "status": "no-body"
     },
     {
-      "ko": "활 : 이 무기로 명중 시 막기 확률 #%당 물리 피해 #~# 추가",
-      "en": "Bows : Hits with this weapon have {1} to {2} Added Physical Damage per {0}% Block Chance",
-      "status": "no-body"
-    },
-    {
       "ko": "버클러 : companions gain onslaught when you parry [#]",
       "en": "Bucklers : companions gain onslaught when you parry [{0}]",
-      "status": "no-body"
-    },
-    {
-      "ko": "시전자 무기 : 생명력 최대치의 # %를 추가 룬 수호 최대치로 획득 , 생명력 최대치 # % 감폭",
-      "en": "Caster Weapon : Gain {0} % of maximum Life as Extra maximum Runic Ward , {1} % less maximum Life",
-      "status": "ambiguous-in-part"
-    },
-    {
-      "ko": "석궁, 활 또는 창: 적 명중 시 #초 동안 적의 위세 와 동일한 추가 냉기 피해 최대치 획득, 최대 총 #",
-      "en": "Crossbow, Bow or Spear: On Hitting an enemy, gains maximum added Cold damage equal to the enemy's Power for {0} seconds, up to a total of {1}",
-      "status": "no-body"
-    },
-    {
-      "ko": "장갑 : 명중 시 # % 확률로 추가 연계 축적",
-      "en": "Gloves : {0} % chance to build an additional Combo on Hit",
-      "status": "ambiguous",
-      "candidates": [
-        "명중 시 #% 확률로 추가 연계 축적",
-        "명중 시 #% 확률로 추가 연계 1 축적"
-      ]
-    },
-    {
-      "ko": "장갑 : 일반 정확도 # % 증가",
-      "en": "Gloves : {0} % increased Accuracy Rating",
-      "status": "ambiguous",
-      "candidates": [
-        "일반 정확도 #% 증가",
-        "정확도 #% 증가"
-      ]
-    },
-    {
-      "ko": "장갑 : 힘 1당 방어도 +#",
-      "en": "Gloves : +{0} to Armour per Strength",
-      "status": "no-body"
-    },
-    {
-      "ko": "장갑 : 플레이어가 치명타 로 명중 시키는 적이 #초 동안 생명력 재생 속도 # % 감소",
-      "en": "Gloves : Enemies you Critically Hit get {1} % reduced Life Regeneration Rate for {0} seconds",
       "status": "no-body"
     },
     {
@@ -152,11 +79,6 @@
       "status": "no-body"
     },
     {
-      "ko": "투구 : 치명타 확률 # % 증가, 치명타 피해 보너스 없음",
-      "en": "Helmets : {0} % increased Critical Hit Chance, You have no Critical Damage Bonus",
-      "status": "ambiguous-in-part"
-    },
-    {
       "ko": "투구 : 낮은 생명력 상태일 때 일반 회피 # % 증가, 명중 피해의 # %가 자신보다 피해를 받는 반려수 의 생명력에 먼저 적용",
       "en": "Helmets : {0} % increased Global Evasion Rating when on Low Life , {1} % of Damage from Hits is taken from your Damageable Companion 's Life before you",
       "status": "no-body"
@@ -172,52 +94,9 @@
       "status": "no-body"
     },
     {
-      "ko": "투구 : 저주 를 건 적의 카오스 저항 -# %",
-      "en": "Helmets : Enemies you Curse have -{0} % to Chaos Resistance",
-      "status": "sign-mismatch"
-    },
-    {
-      "ko": "투구 : 낮은 생명력 상태에 도달 시 인내 충전 #개 획득, #초에 한 번씩만 획득",
-      "en": "Helmets : Gain {0} Endurance Charge on reaching Low Life , only once every {1} seconds",
-      "status": "no-body"
-    },
-    {
-      "ko": "투구 : 지난 #초 이내 명중 으로 상실한 생명력의 # %와 동일한 방어도 획득",
-      "en": "Helmets : Gain Armour equal to {1} % of Life Lost from Hits in the past {0} seconds",
-      "status": "no-body"
-    },
-    {
-      "ko": "투구 : 야만적인 타격 을 받을 시 #초 동안 생명력 최대치의 # %와 동일한 가호 획득",
-      "en": "Helmets : Gain Guard equal to {1} % of maximum Life for {0} seconds on taking Savage Hit",
-      "status": "no-body"
-    },
-    {
-      "ko": "투구 : 소환수 최대 생명력 # % 증가",
-      "en": "Helmets : Minions have {0} % increased maximum Life",
-      "status": "ambiguous",
-      "candidates": [
-        "소환수 최대 생명력 #% 증가",
-        "소환수의 최대 생명력 #% 증가"
-      ]
-    },
-    {
       "ko": "투구 : 스킬 효과 지속시간 #% 증가 재사용 대기시간 회복 속도 #% 증가",
       "en": "Helmets: #% increased Skill Effect Duration #% increased Cooldown Recovery Rate",
       "status": "no-body"
-    },
-    {
-      "ko": "투구 : 소환수 최대 생명력 #% 증가",
-      "en": "Helmets: Minions have #% increased maximum Life",
-      "status": "ambiguous",
-      "candidates": [
-        "소환수 최대 생명력 #% 증가",
-        "소환수의 최대 생명력 #% 증가"
-      ]
-    },
-    {
-      "ko": "무도 무기 , 마법봉 또는 지팡이: 모든 원소 저항 -# %, 피해의 # %를 무작위 원소 추가 피해로 획득",
-      "en": "Martial Weapon , Wand or Staff: -{0} % to all Elemental Resistances , Gain {1} % of Damage as Extra Damage of a random Element",
-      "status": "sign-mismatch-in-part"
     },
     {
       "ko": "무도 무기 : 점화 확률 #% 증가",
@@ -232,51 +111,6 @@
     {
       "ko": "무도 무기 : 이 무기로 공격 시 #%의 확률로 번개 노출 유발",
       "en": "Martial Weapon: Attacks with this Weapon have #% chance to inflict Lightning Exposure",
-      "status": "no-body"
-    },
-    {
-      "ko": "육척봉 또는 창: 근접 명중 시 격노 # 획득, 격노 최대치 -#",
-      "en": "Quarterstaff or Spear: Gain {0} Rage on Melee Hit , -{1} to Maximum Rage",
-      "status": "sign-mismatch-in-part"
-    },
-    {
-      "ko": "육척봉 : 스킬 사용 시 소모한 연계 하나당 #초 동안 가호 # 획득",
-      "en": "Quarterstaves : Gain {1} Guard for {0} seconds per Combo expended when using Skills",
-      "status": "no-body"
-    },
-    {
-      "ko": "셉터 : 플레이어에게 접근 해 있는 반려수들 의 모든 원소 저항 -# %, 플레이어에게 접근 해 있는 반려수들 이 피해의 # %를 무작위 원소 추가 피해로 획득",
-      "en": "Sceptres : Companions in your Presence have -{0} % to all Elemental Resistances , Companions in your Presence Gain {1} % of Damage as Extra Damage of a random Element",
-      "status": "sign-mismatch-in-part"
-    },
-    {
-      "ko": "방패: 공격 피해 막기 확률에 행운 적용, 피격 을 막아낼 시 피해의 # %를 받음",
-      "en": "Shields: Chance to Block Damage is Lucky , You take {0} % of damage from Blocked Hits",
-      "status": "ambiguous-in-part"
-    },
-    {
-      "ko": "방패: 막기 확률 # %당 피해의 #%를 화염 으로 획득",
-      "en": "Shields: Gain {1}% of damage as Fire damage per {0} % Chance to Block",
-      "status": "no-body"
-    },
-    {
-      "ko": "부적 : 격노 5당 받는 피해의 # %를 생명력으로 회생 하는 효과도 부여",
-      "en": "Talismans : Every {0} Rage also grants 5 % of Damage taken Recouped as Life",
-      "status": "no-body"
-    },
-    {
-      "ko": "부적 : 소모한 총 격노 20당 드루이드의 기량 # 획득",
-      "en": "Talismans : Gain {0} Druidic Prowess for every 20 total Rage spent",
-      "status": "no-body"
-    },
-    {
-      "ko": "마법봉 또는 지팡이: 주문 스킬이 # %의 확률로 투사체 #개 추가 발사",
-      "en": "Wand or Staff: {0} % chance for Spell Skills to fire {1} additional Projectiles",
-      "status": "no-body"
-    },
-    {
-      "ko": "마법봉 또는 지팡이: 주문 스킬이 #%의 확률로 투사체 #개 추가 발사",
-      "en": "Wand or Staff: #% chance for Spell Skills to fire # additional Projectiles",
       "status": "no-body"
     }
   ]

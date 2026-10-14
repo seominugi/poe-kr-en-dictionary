@@ -406,7 +406,14 @@ async function build(version, { allowExtensionLosses = false } = {}) {
       statVariants,
       ...extraVariants,
     )
-    const augment = buildAugmentStatLayer({ categories: augmentCategories, bodies, legacy })
+    const augment = buildAugmentStatLayer({
+      categories: augmentCategories,
+      bodies,
+      legacy,
+      // GGPK SoulCoreStats 를 그린 증강물 줄(poe-game-data v2026.10.14 이상). 없으면 legacy 단서만으로 다시 만든다
+      ggpk: readJsonObject(join(gameDataVersionRoot, 'dict', 'augment-stats.json')),
+      ggpkVariants: readJsonObject(join(gameDataVersionRoot, 'augment-stat-variants.json')),
+    })
     statsLegacy = {
       ...Object.fromEntries(Object.entries(legacy).filter(([ko]) => !augment.covered.has(ko))),
       ...augment.layer,

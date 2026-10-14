@@ -7,8 +7,10 @@
 // 어떻게: 한글을 짓지 않는다(전역 §30). 범주는 poe-game-data dict/augment-categories.json(GGPK
 // SoulCoreStatCategories), 본문은 poe-game-data 스탯 사전(stats·stats-extra·skill-stats 와 변형)에서 고른다.
 // 게임 꼴은 콜론 앞 띄어쓰기가 없다(「방어구: 기절 한계치 +100」). 어떤 (범주, 본문) 쌍이 있는지는 GGPK 의
-// SoulCoreStats 표가 정본이지만 poe-game-data 가 그 표를 내보내지 않는다 — 그래서 legacy 줄을 쌍의 단서로만
-// 쓰고 글자는 정본으로 바꾼다. 정본으로 만들 수 없는 줄은 legacy 그대로 두고 unresolved 로 알린다.
+// SoulCoreStats 표가 정본이다 — poe-game-data 가 그 행을 스탯 설명으로 그린 틀을 dict/augment-stats.json 으로 낸다
+// (poe-ggpk-extractor lib/augment-dict.mjs, 2026-10-14). 그 줄을 모두 싣고, legacy 줄은 숫자까지 접은 꼴이 같은 GGPK 줄이
+// 있으면 그 줄로 대신한다. 그 파일이 없거나 GGPK 줄이 없는 legacy 줄만 예전처럼 legacy 를 쌍의 단서로 삼아 범주 표 + 정본 스탯
+// 본문으로 다시 만든다. 그래도 정본으로 만들 수 없는 줄은 legacy 그대로 두고 unresolved 로 알린다.
 import { keyForm } from './extension-dict-layers.js'
 
 const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
@@ -72,7 +74,7 @@ function resolveBody(bodies, body) {
  * Energy Shield」) 이웃 조각을 이어 붙인 것부터 찾는다. 잇는 「, 」 는 legacy·추출기 렌더의 꼴이다 — 게임이
  * 같은 꼴로 잇는지는 확인하지 못했다(2026-10-14).
  */
-function resolveLine(bodies, body) {
+export function resolveLine(bodies, body) {
   const whole = resolveBody(bodies, body)
   if (whole.status !== 'no-body') return whole
   const segments = body.split(/,\s+/)
@@ -125,9 +127,17 @@ function aliasKoFor({ tidy, ko, en }) {
   return signedKo === generated.filter(Boolean).length ? ko.replace(/[+-](?=#)/g, '') : null
 }
 
+// legacy 줄과 GGPK 줄을 맞추는 비교형 — 토큰 흔적·대소문자·부호·자리 번호에 더해 숫자도 접는다(legacy 는 값을 박은 줄
+// 「Armour: +10 to maximum Life」 도 있다. GGPK 틀은 「+{0}」)
+export const lineForm = (en) => keyForm(tidyStatEn(en)).replace(/\d+(?:\.\d+)?/g, '#')
+
 /**
- * @param {{ categories: Record<string, string>, bodies: Map<string, Map<string, string>>, legacy: Record<string, string> }} input
- *   categories 범주 { 한글: 영문 } · bodies indexStatBodies 결과 · legacy 범주 줄을 찾을 ko→en 사전
+ * @param {{
+ *   categories: Record<string, string>, bodies: Map<string, Map<string, string>>, legacy: Record<string, string>,
+ *   ggpk?: Record<string, string>, ggpkVariants?: Record<string, string[]>,
+ * }} input
+ *   categories 범주 { 한글: 영문 } · bodies indexStatBodies 결과 · legacy 범주 줄을 찾을 ko→en 사전 ·
+ *   ggpk poe-game-data dict/augment-stats.json { 한글: 영문 } · ggpkVariants augment-stat-variants.json { 한글: [영문, …] }
  * @returns {{
  *   layer: Record<string, string>,      // 생성한 줄 { 한글: 영문 }
  *   covered: Set<string>,               // 생성 층이 대신하는 legacy 한글 키 — 병합에서 뺀다
@@ -135,10 +145,21 @@ function aliasKoFor({ tidy, ko, en }) {
  *   unresolved: Array<{ ko: string, en: string, status: string, candidates?: string[] }>,
  * }}
  */
-export function buildAugmentStatLayer({ categories, bodies, legacy }) {
+export function buildAugmentStatLayer({ categories, bodies, legacy, ggpk = {}, ggpkVariants = {} }) {
   const catKoByEn = new Map(Object.entries(categories).map(([ko, en]) => [en, ko]))
   const heads = [...catKoByEn.keys()].sort((a, b) => b.length - a.length).map(escapeRe)
   const lineRe = new RegExp(`^(${heads.join('|')}):\\s*(.*)$`, 's')
+
+  // GGPK 줄의 비교형 → { ko, en }. 비교형이 같은데 한글이 다른 GGPK 줄이 있으면(같은 문장의 다른 범주가 아니라 정말 갈린 것)
+  // 그 꼴로는 legacy 를 맞추지 않는다 — 어느 한글인지 고를 수 없다
+  const ggpkByForm = new Map()
+  const addForm = (ko, en) => {
+    const form = lineForm(en)
+    const prev = ggpkByForm.get(form)
+    ggpkByForm.set(form, prev === undefined || prev?.ko === ko ? prev ?? { ko, en } : null)
+  }
+  for (const [ko, en] of Object.entries(ggpk)) if (typeof en === 'string') addForm(ko, en)
+  for (const [ko, list] of Object.entries(ggpkVariants)) for (const en of Array.isArray(list) ? list : []) addForm(ko, en)
 
   const rows = []
   const unresolved = []
@@ -148,6 +169,11 @@ export function buildAugmentStatLayer({ categories, bodies, legacy }) {
     const match = tidy.match(lineRe)
     // 본문에 글자가 없으면 아이템 속성 줄이다(「Armour: #」 → 「방어도: #」) — 범주 줄이 아니다
     if (!match || !/[A-Za-z]/.test(match[2])) continue
+    const hit = ggpkByForm.get(lineForm(en))
+    if (hit) {
+      rows.push({ legacyKo: ko, legacyEn: en, tidy, ko: hit.ko, en: hit.en, ggpk: true })
+      continue
+    }
     const [, catEn, body] = match
     const found = resolveLine(bodies, body)
     if (found.status !== 'ok') {
@@ -160,6 +186,7 @@ export function buildAugmentStatLayer({ categories, bodies, legacy }) {
   // 같은 한글에 다른 영문이 생기면(정본 색인에선 일어나지 않아야 한다) 그 한글은 싣지 않는다
   const enByKo = new Map()
   for (const row of rows) {
+    if (row.ggpk) continue
     const prev = enByKo.get(row.ko)
     enByKo.set(row.ko, prev === undefined || prev === row.en ? row.en : null)
   }
@@ -167,20 +194,31 @@ export function buildAugmentStatLayer({ categories, bodies, legacy }) {
   const layer = {}
   const covered = new Set()
   const aliases = {}
+  const alias = (ko, en) => {
+    const list = aliases[ko] ?? (aliases[ko] = [])
+    if (!list.includes(en)) list.push(en)
+  }
   for (const row of rows) {
-    if (enByKo.get(row.ko) === null) {
+    // GGPK 줄은 그 줄 그대로다 — 다시 만든 줄끼리만 한글이 겹치는지 본다(GGPK 의 같은 한글 다른 영문은 변형 파일이 싣는다)
+    if (!row.ggpk && enByKo.get(row.ko) === null) {
       unresolved.push({ ko: row.legacyKo, en: row.legacyEn, status: 'conflict' })
       continue
     }
-    layer[row.ko] = row.en
     covered.add(row.legacyKo)
-    // 토큰화 흔적이 없는 legacy 영문(화면 문장과 맞을 수 있는 키)이 생성 영문과 표기가 다르면 별칭으로 남긴다
-    if (row.tidy === row.legacyEn.trim() && flatten(row.tidy) !== flatten(row.en)) {
+    // 다시 만든 줄의 한글이 GGPK 줄에도 있으면 GGPK 영문이 이기고, 다시 만든 영문은 별칭으로 남긴다
+    if (!row.ggpk && typeof ggpk[row.ko] === 'string' && flatten(ggpk[row.ko]) !== flatten(row.en)) alias(row.ko, row.en)
+    else layer[row.ko] = row.en
+    // 토큰화 흔적이 없는 legacy 영문(화면 문장과 맞을 수 있는 키)이 생성 영문과 표기가 다르면 별칭으로 남긴다. 값을 박은
+    // legacy 영문(「+10 to maximum Life」 ← 「+{0}」)은 화면 숫자와 맞을 때만 쓰이는 키라 별칭으로 남기지 않는다 — 틀 자체의 숫자
+    // (「per 1 Spirit」)는 값이 아니므로, 숫자가 생성 영문과 같으면 별칭으로 남긴다
+    const numbers = (en) => (flatten(en).match(/\d+(?:\.\d+)?/g) ?? []).join(',')
+    if (row.tidy === row.legacyEn.trim() && flatten(row.tidy) !== flatten(row.en) && numbers(row.tidy) === numbers(row.en)) {
       const aliasKo = aliasKoFor(row)
-      if (aliasKo === null) continue
-      const list = aliases[aliasKo] ?? (aliases[aliasKo] = [])
-      if (!list.includes(row.tidy)) list.push(row.tidy)
+      if (aliasKo !== null) alias(aliasKo, row.tidy)
     }
   }
+  // GGPK 줄은 legacy 에 단서가 없어도 모두 싣는다(새 증강물 줄). 같은 한글의 다른 GGPK 영문은 별칭으로
+  for (const [ko, en] of Object.entries(ggpk)) if (typeof en === 'string') layer[ko] = en
+  for (const [ko, list] of Object.entries(ggpkVariants)) for (const en of Array.isArray(list) ? list : []) alias(ko, en)
   return { layer, covered, aliases, unresolved }
 }
