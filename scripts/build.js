@@ -51,30 +51,43 @@ export function guardExtraStats(extra, merged, translated = new Map(), refuted =
     else if (isRefuted(ko)) replacing.push([ko, en])
     else guarded++
   }
-  // 이 영문들을 owners·translated 의 다른 한글이 쥐고 있으면 빼고, 목록 안에서 한 영문을 둘 이상이 원하면 모두 뺀다
-  const claim = (pairs, owners) => {
-    const free = pairs.filter(([ko, en]) => !hasOtherOwner(owners, keyForm(en), ko) && !hasOtherOwner(translated, keyForm(en), ko))
-    const claims = new Map()
-    for (const [, en] of free) claims.set(keyForm(en), (claims.get(keyForm(en)) ?? 0) + 1)
-    const won = free.filter(([, en]) => claims.get(keyForm(en)) === 1)
-    return { won, blocked: pairs.length - free.length, ambiguous: free.length - won.length }
+  // 한 영문을 원하는 문장들 — 부정 짝과 새 키를 함께 센다(GGPK 가 한 영문을 두 문장에 두면 어느 쪽도 고르지 않는다). 부호·띄어쓰기만
+  // 다른 한글(「#의 최대 단계」·「+#의 최대 단계」)은 한 문장이다 — refutedLegacy 가 주인을 세는 기준과 같다(독립 검토)
+  const sentences = new Map()
+  for (const [ko, en] of [...replacing, ...adding]) {
+    if (!sentences.has(keyForm(en))) sentences.set(keyForm(en), new Set())
+    sentences.get(keyForm(en)).add(unsigned(normKo(ko)))
   }
+  const reason = new Map() // 못 실은 키 → 'blocked' | 'ambiguous'
+  // 이 영문들을 owners·translated 의 다른 한글이 쥐고 있으면 빼고(blocked), 다른 문장도 그 영문을 원하면 뺀다(ambiguous)
+  const claim = (pairs, owners) => pairs.filter(([ko, en]) => {
+    const form = keyForm(en)
+    if (hasOtherOwner(owners, form, ko) || hasOtherOwner(translated, form, ko)) reason.set(ko, 'blocked')
+    else if (sentences.get(form).size > 1) reason.set(ko, 'ambiguous')
+    else return true
+    return false
+  })
   // 바꾸지 못한 부정 짝은 옛 영문을 계속 쥐므로, 그 영문을 다른 부정 짝이 새로 가져가면 한 영문이 두 한글로 간다(맞바꿈·사슬 —
   // 독립 검토). 못 바꾼 짝을 주인으로 되돌려 더 바뀌지 않을 때까지 다시 정한다 — 못 바꾼 짝은 늘기만 하므로 끝난다.
   let stuck = new Set()
-  let first
+  let replaced
   for (;;) {
     const owners = formsOf(Object.entries(merged).filter(([ko]) => !isRefuted(ko) || stuck.has(ko)))
-    first = claim(replacing.filter(([ko]) => !stuck.has(ko)), owners)
-    const won = new Set(first.won.map(([ko]) => ko))
+    replaced = claim(replacing.filter(([ko]) => !stuck.has(ko)), owners)
+    const won = new Set(replaced.map(([ko]) => ko))
     const next = new Set(replacing.map(([ko]) => ko).filter((ko) => !won.has(ko)))
     if (next.size === stuck.size) break
     stuck = next
   }
-  const replacedKo = new Set(first.won.map(([ko]) => ko))
-  const second = claim(adding, formsOf([...Object.entries(merged).filter(([ko]) => !replacedKo.has(ko)), ...first.won]))
-  for (const [ko, en] of [...first.won, ...second.won]) layer[ko] = en
-  return { layer, guarded: guarded + stuck.size + second.blocked, ambiguous: second.ambiguous }
+  const replacedKo = new Set(replaced.map(([ko]) => ko))
+  const added = claim(adding, formsOf([...Object.entries(merged).filter(([ko]) => !replacedKo.has(ko)), ...replaced]))
+  for (const [ko, en] of [...replaced, ...added]) layer[ko] = en
+  const failed = [...reason].filter(([ko]) => !(ko in layer)).map(([, why]) => why)
+  return {
+    layer,
+    guarded: guarded + failed.filter((why) => why === 'blocked').length,
+    ambiguous: failed.filter((why) => why === 'ambiguous').length,
+  }
 }
 
 /**
@@ -467,7 +480,7 @@ async function build(version, { allowExtensionLosses = false } = {}) {
       const { layer, guarded, ambiguous } = guardExtraStats(extraStats, kept(withoutExtra), live, refuted)
       legacyCat = { ...kept(statsLegacy), ...layer }
       console.log(`  stats 보조 층: ${Object.keys(layer).length}개 (다른 한글이 차지한 영문이라 뺌 ${guarded} · 한 영문에 한글이 여럿이라 뺌 ${ambiguous} · GGPK 가 부정한 legacy 짝 ${refuted.size} · 띄어쓰기만 다른 legacy 키에서 뺌 ${dropped.size})`)
-      for (const ko of refuted) console.log(`    GGPK 가 부정한 legacy 짝: 「${ko}」 "${legacyOnly[ko]}" → ${layer[ko] === extraStats[ko] ? `"${layer[ko]}"` : "(새 영문을 다른 한글이 쥐어 legacy 유지)"}`)
+      for (const ko of refuted) console.log(`    GGPK 가 부정한 legacy 짝: 「${ko}」 "${legacyOnly[ko]}" → ${layer[ko] === extraStats[ko] ? `"${layer[ko]}"` : "(바꾸지 못해 legacy 유지 — 새 영문을 다른 한글이 쥐었거나 다른 문장도 원한다)"}`)
       for (const [ko, en] of dropped) console.log(`    띄어쓰기만 다른 legacy 키의 부정된 짝을 뺌: 「${ko}」 "${en}"`)
     }
 

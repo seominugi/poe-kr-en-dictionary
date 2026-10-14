@@ -88,8 +88,16 @@ describe('refutedLegacy', () => {
     const refuted = new Set(['R'])
     // R 은 K 가 쥔 "New Text" 로 못 바뀌고, N 은 R 이 계속 쥔 "Old Text" 를 못 싣는다
     expect(guardExtraStats(extraLayer, merged, new Map(), refuted)).toEqual({ layer: {}, guarded: 2, ambiguous: 0 })
-    // 부정된 짝과 새 키가 같은 새 영문을 원하면 새 키가 막힌다
-    expect(guardExtraStats({ R: 'Fresh', N: 'Fresh' }, { R: 'Old Text' }, new Map(), refuted)).toEqual({ layer: { R: 'Fresh' }, guarded: 1, ambiguous: 0 })
+    // 부정된 짝과 새 키(다른 문장)가 같은 새 영문을 원하면 GGPK 가 한 영문을 두 문장에 둔 것이라 둘 다 싣지 않는다 — R 은 legacy 유지
+    expect(guardExtraStats({ R: 'Fresh', N: 'Fresh' }, { R: 'Old Text' }, new Map(), refuted)).toEqual({ layer: {}, guarded: 0, ambiguous: 2 })
+  })
+
+  it('부호·띄어쓰기만 다른 새 한글들은 한 문장이라 서로 모호하게 만들지 않는다 — 풀려난 옛 영문이 사라지지 않게(독립 검토 재현)', () => {
+    const extra = { A: 'Maximum {0} Stages', '#의 최대 단계': '{0} maximum stages', '+#의 최대 단계': '+{0} maximum Stages' }
+    const merged = { A: '{0} maximum stages' }
+    const refuted = refutedLegacy(extra, merged, ggpkForms(extra))
+    expect(refuted).toEqual(new Set(['A']))
+    expect(guardExtraStats(extra, merged, new Map(), refuted)).toEqual({ layer: extra, guarded: 0, ambiguous: 0 })
   })
 
   it('부정된 짝끼리 맞바꾸거나 사슬로 옛 영문을 넘겨받을 때, 하나라도 못 바꾸면 그 옛 영문을 가져가지 않는다(독립 검토 재현)', () => {
