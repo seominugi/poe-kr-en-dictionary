@@ -43,7 +43,9 @@ export function extractGameData(version) {
     try {
       const data = JSON.parse(readFileSync(path, 'utf-8'))
       if (data && typeof data === 'object' && !Array.isArray(data)) {
-        Object.assign(extracted[category], data)
+        // 같은 한글을 쓰는 다른 영문이 있으면 값이 `[영문, …]` 다(poe-game-data v2026.10.19~, 「팽팽한 석궁」 = Tense·Taut
+        // Crossbow). 이 사전은 한글 → 영문이라 첫 값 — 배열이 되기 전에 실리던 선점 값 — 만 쓴다.
+        for (const [ko, en] of Object.entries(data)) extracted[category][ko] = Array.isArray(en) ? en[0] : en
       }
     } catch (e) {
       // 한 카테고리가 깨져도 나머지는 살린다 — 사전 전체가 비는 것이 더 나쁘다.
