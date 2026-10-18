@@ -42,9 +42,14 @@ export function frontendLayers(version) {
  */
 export const COLON_LABEL_LAYERS = ['augmentCategories']
 
+// poe-game-data 이름 사전(dict/{items,gems,currency,common,…})은 같은 한글을 쓰는 다른 영문을 `[영문, …]` 로 싣는다
+// (v2026.10.19~). 프론트 번역기는 한글 → 영문이라 첫 값 — 배열 전에 실리던 선점 값 — 만 쓴다(mergeDictionaries.js firstValues).
+const firstValues = (data) =>
+  data && Object.fromEntries(Object.entries(data).map(([ko, en]) => [ko, Array.isArray(en) ? en[0] : en]))
+
 /** 한 층의 사전을 프론트가 싣는 키 모양으로 바꾼다 */
 export function layerEntries(layer, data) {
-  const entries = Object.entries(data ?? {})
+  const entries = Object.entries(firstValues(data) ?? {})
   return COLON_LABEL_LAYERS.includes(layer.name) ? entries.map(([ko, en]) => [`${ko}:`, `${en}:`]) : entries
 }
 
@@ -60,7 +65,7 @@ function readJson(path) {
 
 /** 로컬 경로에서 한 층을 읽는다. 없으면 null. */
 export function readLocalLayer(version, layer, { gameDataRoot = CONFIG.GAME_DATA_ROOT } = {}) {
-  if (layer.from === 'gameData') return readJson(join(gameDataRoot, version, 'dict', `${layer.file}.json`))
+  if (layer.from === 'gameData') return firstValues(readJson(join(gameDataRoot, version, 'dict', `${layer.file}.json`)))
   if (layer.from === 'legacy') return readJson(join(CONFIG.LEGACY_DICT[version], `${layer.file}.json`))
   return readJson(join(CONFIG.OUTPUT[version], `${layer.file}.json`))
 }
