@@ -1,5 +1,20 @@
 # POE Korean-English Translation Dictionary
 
+> ## ⚠️ 은퇴한 저장소 (2026-10-19)
+>
+> 이 사전은 더 이상 갱신하지 않는다. 소비처를 모두 옮겼다.
+>
+> | 무엇 | 이제 어디서 |
+> |---|---|
+> | 게임 문구(아이템·고유·젬·화폐·스탯·패시브) | [poe-game-data](https://github.com/seominugi/poe-game-data) 판(`<game>/dict/*.json`, 이름 틀 `name-templates.json`) |
+> | 사람이 쓴 층(클립보드 구조 라벨·희귀 이름 조각·common 승격) | seominugi-com `public/data/translation/{poe1,poe2}/` (seominugi/seominugi-com#779) |
+> | 나랏말서미누기 확장 3.8.0+ | poe-game-data 고정 판 + 패키지 `data/` |
+> | smng-poe-pricer · poe-bookmark-atlas · 필터 make-utils | poe-game-data 판 (seominugi/smng-poe-pricer#555 · seominugi/poe-bookmark-atlas#118 · seominugi/poe-seominugi-filter-make-utils#125) |
+>
+> **파일을 지우거나 옮기지 않는다.** 아직 업데이트하지 않은 확장 **3.7.0 이하** 설치본이
+> `raw.githubusercontent.com/seominugi/poe-kr-en-dictionary/main/…` 을 읽는다. 저장소는 보관(archive)만 한다.
+
+
 POE(Path of Exile) 한글↔영어 번역 사전 데이터.
 
 ## 구조
