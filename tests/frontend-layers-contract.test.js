@@ -11,11 +11,11 @@ import { compareFrontendContract, dictDiffBetween, parseDictionarySources } from
 // seominugi-com dictionarySources.js 의 실제 모양 (2026-10-14 · seominugi-com#750 의 augmentCategories 포함, 주석 일부 생략)
 const SOURCES = `import { DATA_BASE } from '../../services/poeGameData/client.js'
 
-const V2_BASE = 'https://raw.githubusercontent.com/seominugi/poe-kr-en-dictionary/main/v2'
+const V2_BASE = 'https://raw.githubusercontent.com/west-duo/poe-kr-en-dictionary/main/v2'
 const LEGACY_POE1_KO_EN_BASE =
-  'https://raw.githubusercontent.com/seominugi/poe-kr-en-dictionary/main/dict/POE1/ko-en'
+  'https://raw.githubusercontent.com/west-duo/poe-kr-en-dictionary/main/dict/POE1/ko-en'
 const LEGACY_POE2_KO_EN_BASE =
-  'https://raw.githubusercontent.com/seominugi/poe-kr-en-dictionary/main/dict/POE2/ko-en'
+  'https://raw.githubusercontent.com/west-duo/poe-kr-en-dictionary/main/dict/POE2/ko-en'
 
 export const DICTIONARY_SOURCES = {
   // items/uniques/gems/currency/stats/clientStrings: poe-game-data(C, GGPK 추출) 파생 사전.

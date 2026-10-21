@@ -41,7 +41,7 @@ jobs:
       - name: Checkout poe-game-data (lock tag)
         uses: actions/checkout@v4
         with:
-          repository: seominugi/poe-game-data
+          repository: west-duo/poe-game-data
           ref: ${{ steps.lock.outputs.tag }}
           path: poe-game-data
 

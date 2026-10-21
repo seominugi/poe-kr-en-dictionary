@@ -6,13 +6,15 @@
 >
 > | 무엇 | 이제 어디서 |
 > |---|---|
-> | 게임 문구(아이템·고유·젬·화폐·스탯·패시브) | [poe-game-data](https://github.com/seominugi/poe-game-data) 판(`<game>/dict/*.json`, 이름 틀 `name-templates.json`) |
-> | 사람이 쓴 층(클립보드 구조 라벨·희귀 이름 조각·common 승격) | seominugi-com `public/data/translation/{poe1,poe2}/` (seominugi/seominugi-com#779) |
+> | 게임 문구(아이템·고유·젬·화폐·스탯·패시브) | [poe-game-data](https://github.com/west-duo/poe-game-data) 판(`<game>/dict/*.json`, 이름 틀 `name-templates.json`) |
+> | 사람이 쓴 층(클립보드 구조 라벨·희귀 이름 조각·common 승격) | seominugi-com `public/data/translation/{poe1,poe2}/` (west-duo/seominugi-com#779) |
 > | 나랏말서미누기 확장 3.8.0+ | poe-game-data 고정 판 + 패키지 `data/` |
-> | smng-poe-pricer · poe-bookmark-atlas · 필터 make-utils | poe-game-data 판 (seominugi/smng-poe-pricer#555 · seominugi/poe-bookmark-atlas#118 · seominugi/poe-seominugi-filter-make-utils#125) |
+> | smng-poe-pricer · poe-bookmark-atlas · 필터 make-utils | poe-game-data 판 (west-duo/smng-poe-pricer#555 · west-duo/poe-bookmark-atlas#118 · west-duo/poe-seominugi-filter-make-utils#125) |
 >
 > **파일을 지우거나 옮기지 않는다.** 아직 업데이트하지 않은 확장 **3.7.0 이하** 설치본이
 > `raw.githubusercontent.com/seominugi/poe-kr-en-dictionary/main/…` 을 읽는다. 저장소는 보관(archive)만 한다.
+> 그 주소는 2026-10-22 조직 이전 뒤 `west-duo/poe-kr-en-dictionary` 로 넘겨져 읽힌다 — **개인 계정
+> `seominugi` 에 같은 이름의 저장소를 만들면 넘김이 끊겨 옛 설치본의 번역이 멈춘다.**
 
 
 > **이 파일이 유일한 프로젝트 지침이다** (Claude Code·Codex 공통, 2026-09-24 `CLAUDE.md` 에서 옮김 — 그 전까지 Codex 는 이 지침을 읽지 못했다). Claude Code(2.1.277+)는 저장소에 `CLAUDE.md` 가 없으면 이 파일을 읽는다 — **`CLAUDE.md` 를 다시 만들지 않는다.**

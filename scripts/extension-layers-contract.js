@@ -17,7 +17,7 @@ import { extensionLayers } from './extension-dict-layers.js'
 export const BACKGROUND_PATH = 'background.js'
 const VERSIONS = ['poe1', 'poe2']
 const FUNCTIONS = { poe1: 'fetchPoe1TranslationData', poe2: 'fetchPoe2TranslationData' }
-const RAW_BASE = 'https://raw.githubusercontent.com/seominugi/poe-kr-en-dictionary/main'
+const RAW_BASE = 'https://raw.githubusercontent.com/west-duo/poe-kr-en-dictionary/main'
 
 /** `const NAME = { key: `${POE_DICTIONARY_RAW_BASE}/path`, ... };` 의 경로들 */
 function readUrlBlock(text, name, problems) {

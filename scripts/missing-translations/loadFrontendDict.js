@@ -22,7 +22,7 @@ import { frontendLayers, layerEntries, readLocalLayer } from '../frontend-dict-l
  */
 export const DEFAULT_DATA_TAG = DATA_LOCK.tag
 
-const cdnBase = (tag) => `https://cdn.jsdelivr.net/gh/seominugi/poe-game-data@${tag}`
+const cdnBase = (tag) => `https://cdn.jsdelivr.net/gh/west-duo/poe-game-data@${tag}`
 
 async function fetchJson(url) {
   const res = await fetch(url)
