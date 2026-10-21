@@ -102,7 +102,7 @@ describe('extensionMap — 병합 모델', () => {
 })
 
 // background.js 의 실제 모양 (Naratmalssami-POE 2026-10-12, 검색용 상수 생략)
-const BACKGROUND = `const POE_DICTIONARY_RAW_BASE = 'https://raw.githubusercontent.com/seominugi/poe-kr-en-dictionary/main';
+const BACKGROUND = `const POE_DICTIONARY_RAW_BASE = 'https://raw.githubusercontent.com/west-duo/poe-kr-en-dictionary/main';
 
 const POE2_V2_TRANSLATION_URLS = {
     stats: \`\${POE_DICTIONARY_RAW_BASE}/v2/poe2/stats.json\`,

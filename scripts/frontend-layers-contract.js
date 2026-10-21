@@ -23,7 +23,7 @@ const VERSIONS = ['poe1', 'poe2']
 const DICT_PATHS = VERSIONS.map((v) => `${v}/dict`)
 
 /** 프론트가 이 저장소를 읽는 주소. 프론트는 main 을 읽는다 */
-const REPO_RAW = 'https://raw.githubusercontent.com/seominugi/poe-kr-en-dictionary/main'
+const REPO_RAW = 'https://raw.githubusercontent.com/west-duo/poe-kr-en-dictionary/main'
 
 /**
  * dictionarySources.js 글자에서 버전별 층을 읽는다.
